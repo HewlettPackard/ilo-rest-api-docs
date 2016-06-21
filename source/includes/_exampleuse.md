@@ -67,6 +67,15 @@ processes the pending settings.
 * Avoids the need for complex job queues.
 
 ### Updating the BIOS settings example
+```shell
+curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/rest/v1/Systems/1/bios/settings -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"AdminName": "NewName"}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
 	</br></br>
@@ -195,6 +204,15 @@ minimum and maximum character lengths, as well as regular expressions for string
 - And other meta-data.
 
 ## Setting or Changing the BIOS Administrator and Setup Password
+```shell
+curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/rest/v1/Systems/1/bios/settings -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"OldAdminPassword": "oldpassword", "AdminPassword": "newpassword"}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
 	</br></br>
@@ -222,6 +240,15 @@ request body.
 When the server is reset, the BIOS settings are validated and adopted.
 
 ## Updating the Administrator BIOS password example
+```shell
+curl -H "Content-Type: application/json" -H "X-HPRESTFULAPI-AuthToken: <hash of password>" -X PATCH --data "@data.json" https://{iLO}/rest/v1/Systems/1/bios/settings -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"OldAdminPassword": "oldpassword", "AdminPassword": "newpassword"}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
 	</br></br>
@@ -247,6 +274,15 @@ property in the request body.
   * `PATCH {ilo-ip-address}/rest/v1/Systems/1/BIOS`
 
 ### Reverting BIOS UEFI settings to default example
+```shell
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/rest/v1/Systems/1/bios/settings -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"BaseConfig": "default"}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex06_bios_revert_default.py">ex06_bios_revert_default.py</a></b>
 	</br></br>
@@ -283,6 +319,15 @@ When the sever is reset, the BIOS UEFI settings are reverted to default.
 and then apply some specific settings in one operation.
 
 ## Enabling BIOS UEFI Secure Boot example
+```shell
+curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/rest/v1/Systems/1/SecureBoot -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"SecureBootEnable":true}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex05_enable_secure_boot.py">ex05_enable_secure_boot.py</a></b>
 	</br></br>
@@ -496,6 +541,10 @@ NVMe | Slot | Slot number | NVMe drive number (The number is based on bus enumer
 NVMe | Embedded | Bay number | 1 (Each drive bay has 1 NVMe drive.) |  | NVMe.Emb.1.1
 
 ### Change UEFI boot order example
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex07_change_boot_order.py">ex07_change_boot_order.py</a></b>
 	</br></br>
@@ -555,6 +604,15 @@ Actions are `POST` operations with an `Action` property that names the action to
 or more parameter properties.
 
 ### Reset a server example
+```shell
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/rest/v1/systems/1 -u username:password --insecure
+```
+
+<blockquote class="lang-specific shell">
+	<p>Contents of data.json</p>
+    <p>{"Action":"Reset"}</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex04_reset_server.py">ex04_reset_server.py</a></b>
 	</br></br>
@@ -575,7 +633,9 @@ Minimum required session ID privileges: Configure
 The server resets and reboots.
 
 ## Download Active Health System Data
-> e.g. `GET /ahsdata/HP_8CW4340017_20340417.ahs?from=2016-02-16&&to=2016-02-19&&case_no=90125&&co_name=HPE&&contact_name=John Smith&&email=dummy-email-address@hpe.com&&phone=555-555-5555`
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
 
 Active Health System (AHS) data may be accessed by first discoverying the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
 
@@ -598,6 +658,10 @@ Active Health System (AHS) data may be accessed by first discoverying the resour
 If successful, the response is an HTTP 200 level status code and a binary download which can be saved to a file.
 
 ## Finding the iLO mac address
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex09_find_ilo_mac_address.py">ex09_find_ilo_mac_address.py</a></b>
 	</br></br>
@@ -606,6 +670,10 @@ If successful, the response is an HTTP 200 level status code and a binary downlo
 Before you search for the iLO mac address, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
 ## Adding an iLO user account
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex10_add_ilo_user_account.py">ex10_add_ilo_user_account.py</a></b>
 	</br></br>
@@ -613,12 +681,11 @@ Before you search for the iLO mac address, you must create an instance of a `Res
 </blockquote>
 Before you add an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
-
-
-
-
-
 ## Setting a license key
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex31_set_license_key.py">ex31_set_license_key.py</a></b>
 	</br></br>
@@ -630,19 +697,14 @@ Before you set a license key, you must create an instance of a `RestObject` or `
 
 
 ## Changing an iLO user account
+<blockquote class="lang-specific shell">
+	<p>For more information click on the python tab.</p>
+</blockquote>
+
 <blockquote class="lang-specific python">
-    <b>For full Redfish examples click here:</br>
-    
-    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a></br>
-    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex12_remove_ilo_account.py ">ex12_remove_ilo_account.py</a></br>
-     <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex19_reset_ilo.py">ex19_reset_ilo.py</a></b>
-	
-	
+    <b>For full Redfish examples click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a>, <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex12_remove_ilo_account.py ">ex12_remove_ilo_account.py</a></b>
 	</br></br>
-    <b>For full Rest examples click here:</br>
-    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a></br>
-    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex12_remove_ilo_account.py">ex12_remove_ilo_account.py</a></br>
-     <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex19_reset_ilo.py">ex19_reset_ilo.py</a></b></br>
+    <b>For full Rest examples click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a>, <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex12_remove_ilo_account.py">ex12_remove_ilo_account.py</a></b>
 </blockquote>
 
 Before you change an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
