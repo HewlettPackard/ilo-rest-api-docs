@@ -73,12 +73,12 @@ iLO_host = "https://{iLO}"
 login_account = "admin"
 login_password = "password"
 
-# Create a REST object
-REST_OBJ = ilorest.rest_client(base_url=iLO_host,username=login_account, \
-                      password=login_password, default_prefix='/rest/v1')
-					  
+## Create a REDFISH object
+REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+                          password=login_password, default_prefix='/redfish/v1')
+
 # Login into the server and create a session
-REST_OBJ.login(auth="session")
+REDFISH_OBJ.login(auth="session")
 ```
 
 > Contents of data.json
@@ -166,15 +166,15 @@ iLO_host = "https://{iLO}"
 login_account = "admin"
 login_password = "password"
 
-# Create a REST object
-REST_OBJ = ilorest.rest_client(base_url=iLO_host,username=login_account, \
-                      password=login_password, default_prefix='/rest/v1')
-					  
+## Create a REDFISH object
+REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+                          password=login_password, default_prefix='/redfish/v1')
+
 # Login into the server and create a session
-REST_OBJ.login(auth="session")
+REDFISH_OBJ.login(auth="session")
 
 # Logout of the current session
-REST_OBJ.logout()
+REDFISH_OBJ.logout()
 ```
 
 iLO supports a limited number of simultaneous sessions.  If you do not log out of a session it will expire automatically after a time of inactivity.  However, it is good practice to log out when finished with a session.
