@@ -92,6 +92,10 @@ When the server is reset, the BIOS settings are validated and adopted.
 
 
 ## Reading BIOS Defaults example
+```shell
+curl https://{iLO}/rest/v1/systems/1/bios/BaseConfigs/ -i --insecure -u username:password -L
+```
+
 ```python
 import sys
 import ilorest
@@ -110,7 +114,7 @@ REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
 REDFISH_OBJ.login(auth="session")
 
 # Do a GET on a given path
-response = REDFISH_OBJ.get("/redfish/v1/systems/1/bios/BaseConfigs/", None)
+response = REDFISH_OBJ.get("/rest/v1/systems/1/bios/BaseConfigs/", None)
 
 # Print out the response
 sys.stdout.write("%s\n" % response)
@@ -599,19 +603,15 @@ If successful, the response is an HTTP 200 level status code and a binary downlo
 	</br></br>
     <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex09_find_ilo_mac_address.py">ex09_find_ilo_mac_address.py</a></b>
 </blockquote>
-Before you enable secure boot, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
+Before you search for the iLO mac address, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
-
-
-
-
-## Adding iLO user account
+## Adding an iLO user account
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex10_add_ilo_user_account.py">ex10_add_ilo_user_account.py</a></b>
 	</br></br>
     <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex10_add_ilo_user_account.py">ex10_add_ilo_user_account.py</a></b>
 </blockquote>
-Before you enable secure boot, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
+Before you add an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
 
 
@@ -624,7 +624,7 @@ Before you enable secure boot, you must create an instance of a `RestObject` or 
 	</br></br>
     <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex31_set_license_key.py">ex31_set_license_key.py</a></b>
 </blockquote>
-Before you enable secure boot, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
+Before you set a license key, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
 
 
@@ -645,4 +645,4 @@ Before you enable secure boot, you must create an instance of a `RestObject` or 
      <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex19_reset_ilo.py">ex19_reset_ilo.py</a></b></br>
 </blockquote>
 
-Before you enable secure boot, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
+Before you change an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.

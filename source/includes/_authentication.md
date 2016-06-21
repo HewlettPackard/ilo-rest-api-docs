@@ -56,31 +56,6 @@ REDFISH_OBJ.login(auth="basic")
 REDFISH_OBJ.logout()
 ```
 
-> JSON response example:
-
-```json    
-    {
-    	"@odata.context": "/redfish/v1/$metadata#Systems",
-    	"@odata.id": "/redfish/v1/Systems/",
-    	"@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
-    	"Description": "Computer Systems view",
-    	"MemberType": "ComputerSystem.1",
-    	"Members": [{
-    		"@odata.id": "/redfish/v1/Systems/1/"
-    	}],
-    	"Members@odata.count": 1,
-    	"Name": "Computer Systems",
-    	"Total": 1,
-    	"Type": "Collection.1.0.0",
-    	"links": {
-    		"Member": [{
-    			"href": "/rest/v1/systems/1"
-    		}],
-    		"self": "/rest/v1/systems"
-    	}
-    }
-```
-
 The RESTful API allows you to use HTTP Basic Authentication using a valid iLO user name and password.
 
 ## Creating and Using Sessions
