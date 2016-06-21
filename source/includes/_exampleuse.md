@@ -682,8 +682,13 @@ Before you search for the iLO mac address, you must create an instance of a `Res
 Before you add an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
 ## Setting a license key
+```shell
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/rest/v1/Managers/1/LicenseService -u username:password --insecure
+```
+
 <blockquote class="lang-specific shell">
-	<p>For more information click on the python tab.</p>
+	<p>Contents of data.json</p>
+    <p>{"LicenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"}</p>
 </blockquote>
 
 <blockquote class="lang-specific python">
