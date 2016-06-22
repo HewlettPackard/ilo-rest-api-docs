@@ -637,6 +637,12 @@ The server resets and reboots.
 	<p>For more information click on the python tab.</p>
 </blockquote>
 
+<blockquote class="lang-specific python">
+    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
+	</br></br>
+    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
+</blockquote>
+
 Active Health System (AHS) data may be accessed by first discoverying the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
 
 1.  Iterate the Managers collection at `https://{iLO}/redfish/v1/managers/`.  For traditional iLO-based server architectures there is a single manager representing iLO 4 itself.
