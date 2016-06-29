@@ -1,4 +1,4 @@
-# Using the HPE RESTful Interface Tool
+# Using the RESTful Interface Tool
 
 Although not a requirement, you can use the RESTful Interface Tool with the RESTful API. This
 command line tool provides a level of abstraction and convenience above direct access to the
