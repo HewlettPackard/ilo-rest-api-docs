@@ -2911,7 +2911,7 @@ Parameters:
 * ResourceRemoved
 * Alert
 
-"**EventID**" (string) - TODO - what makes sense here?
+"**EventID**" (string)
 
 "**EventTimestamp**" (date-time)
 
@@ -2927,7 +2927,7 @@ Parameters:
 
 "**MessageArgs**" (array of strings used to substitute into the MessageID tokens)
 
-"**OriginOfCondition**" (the uri of the resource associated with this event) - TODO - what makes sense here?
+"**OriginOfCondition**" (the uri of the resource associated with this event)
 
 > example "SubmitTestEvent" action:
 
@@ -6170,7 +6170,7 @@ Secondary key server port number. Set to null to clear the value.
 
 ### POST Action "TestESKMConnections"
 
-Test Enterprise Storage Key Manager connections.  TODO - need to describe this better -what's the outcome?
+Test Enterprise Storage Key Manager connections.  
 
 > example "TestESKMConnections" action:
 
@@ -6282,7 +6282,7 @@ Imports a Trusted Certificate and iLO 4 is reset.
 
 Parameters:
 
-"**Certificate**" (The certificate as a base-64 string) - TODO correct?
+"**Certificate**" (The certificate as a base-64 string) 
 
 > example "ImportCertificate" action:
 
@@ -6622,7 +6622,7 @@ Enable or disable UEFI Secure Boot (takes effect on next boot).
 
 ## HpSecurityService
 
-TODO - what's up with this?
+
 
 **Properties**
 
@@ -8991,7 +8991,7 @@ Several of the properties in this resource represent the details of the last fir
 
 This property indicates the URI location a client my upload a firmware image directly to iLO 4.
 
-> TODO:  example
+> 
 
 **Actions**
 
@@ -9003,7 +9003,7 @@ Parameters:
 
 "**FirmwareURI**" (uri) the URI of the firmware image
 
-"**TPMOverrideFlag**" (boolean) with one of the following value(s): - TODO (is this really a boolean?
+"**TPMOverrideFlag**" (boolean) with one of the following value(s): 
 
 * true
 * false
@@ -9318,7 +9318,7 @@ Parameters:
 * DirectImportCert
 * ImportCertUri
 
-"**CertInput**" (The certificate as a base-64 string) - TODO correct?
+"**CertInput**" (The certificate as a base-64 string) 
 
 > example "ImportCertificate" action:
 
@@ -9373,7 +9373,7 @@ Delete Single Sign On record by record number.
 
 Parameters:
 
-"**RecordNumber**" (integer) - TODO - is this really an integer?
+"**RecordNumber**" (integer) 
 
 > example "DeleteSSORecordbyNumber" action:
 
@@ -10395,7 +10395,7 @@ Federation commands are dispatched to the URI described by this property.
 
 **JSONPath**: `/Oem/Hp/links/VSPLogLocation/extref` (read only string) without the Redfish OData-Version header
 
-TODO:  describe this better
+ 
 
 ### Redundancy.MaxNumSupported
 
@@ -13551,4 +13551,3 @@ OData-Version: 4.0
 
 {}
 ```
-
