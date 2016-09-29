@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://dl.dropboxusercontent.com/u/95847291/github%20images/slate/slate_screenshot_new.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
 
-<p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
+<p align="center"><em>The example above was created with Slate. Check it out at <a href="https://hewlettpackard.github.io/ilo4-rest-api-docs/">HewlettPackard.github.io/ilo4-rest-api-docs/</a>.</em></p>
 
 Features
 ------------
