@@ -110,7 +110,7 @@ html, body {
     }
   }
 
-  img+.tocify {
+  img+.tocify, .lang-selector+.tocify {
     margin-top: $logo-margin;
   }
 
@@ -193,6 +193,17 @@ html, body {
     @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
+    }
+  }
+    
+  // Added to style level H3 headers in TOC - see https://github.com/lord/slate/wiki/Deeper-Nesting
+  .tocify-subheader {
+    .tocify-subheader {
+      .tocify-item>a {
+        // Styling here for a level 2 nesting. For example -> 
+        padding-left: $nav-padding + $nav-indent * 2;
+        font-size: 12px;
+      }
     }
   }
 

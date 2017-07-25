@@ -17,6 +17,11 @@ set :fonts_dir, 'fonts'
 
 # Activate the syntax highlighter
 activate :syntax
+#ready do  ### MRG - this caused an error in ./deploy.sh and middleman build --verbose ('split' not defined)
+#  require './lib/multilang.rb'
+#end
+
+activate :sprockets
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
