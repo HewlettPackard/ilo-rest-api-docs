@@ -11,5 +11,5 @@ toc_footers:
 includes:
 
 
-search: true
+search: false
 ---

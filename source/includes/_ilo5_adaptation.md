@@ -1497,6 +1497,9 @@ The following properties are removed for Redfish conformance:
 |/PostDiscoveryMode|The mode which the system operates during the discovery section of POST.|
 |/SMBIOS|A reference to the SMBIOS records associated with this system.|
 |/SmartStorageConfig|An array of references to SmartStorage elements associated with this system.|
+|/ProcessorJitterControl|Allows the user to set the Processor Jitter Control mode and Frequency at run time.|
+|/CurrentPowerOnTimeSeconds|Shows the amount of time (in seconds) that has passed since the server was last powered on.|
+|/PowerOnMinutes|Retrieves the virtual clock value, in minutes, since the server was first powered on. |
 
 ####HpeLogEntry Additions
     @odata.type: #HpeLogEntry.v2_0_0.HpeLogEntry
@@ -1516,6 +1519,8 @@ The following properties are removed for Redfish conformance:
 |/BbuPowerSupply|Battery Backup Unit Power Supply action determines what occurs when a server is running on battery power.|
 |/HasPowerMetering|Indicates if the system has power metering.|
 |/MinimumSafelyAchievableCap|Minimum Safely Achievable Cap is the lowest cap value that is safe for a group power manager to apply to a particular server. It can either be identical to or slightly greater than the 0 percent cap value calculated during ROM power burn.|
+|/HighEfficiencyMode|The redundant power supply mode that is used when redundant power supplies are configured.|
+
 
 ####HpeSecurityService Additions
     @odata.type: #HpeSecurityService.v2_0_0.HpeSecurityService
@@ -1523,6 +1528,8 @@ The following properties are removed for Redfish conformance:
 |Property|Note|
 |--------|-------------------|
 |/SecurityState|The operational security level of this Manager.|
+|/LoginSecurityBanner|Allows you to configure the security banner displayed on the iLO login screen.|
+|/CurrentCipher|Displays the current cipher in use.|
 
 ####HpeServerChassis Additions
     @odata.type: #HpeServerChassis.v2_0_0.HpeServerChassis
@@ -1579,6 +1586,7 @@ The following properties are removed for Redfish conformance:
 |/Links/Thumbnail|A link to static images in Manager.|
 |/RIBCLEnabled|This property enables or disables RIBCL for the management processor. The management processor requires reset when this field is modified.|
 |/WebGuiEnabled|This property enables or disables WEB GUI access for the management processor. The management processor requires reset when this field is modified.|
+|/PersistentMouseKeyboardEnabled| This property enables or disables the persistent keyboard and mouse feature.|
 
 ####HpeiLOEmbeddedMedia Additions
     @odata.type: #HpeiLOEmbeddedMedia.v2_0_0.HpeiLOEmbeddedMedia

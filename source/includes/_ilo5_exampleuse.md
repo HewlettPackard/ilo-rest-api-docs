@@ -3,60 +3,111 @@
 NOTE:  The examples in this section use a pseudo-code syntax for clarity. JSON pointer syntax is used to indicate specific properties.
 
 ## Reading BIOS Current Settings
+
+To GET the current BIOS configuration:
+
 <blockquote class="lang-specific python">
-    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/restobject.py">RestObject source code</a>
+    <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/_redfishobject.py">RedfishObject source code</a>
 </blockquote>
 
 ```shell
-curl https://{iLO}/redfish/v1/systems/1/bios/settings -i --insecure -u username:password -L
+curl https://{iLO}/redfish/v1/systems/1/bios/settings/ -i --insecure -u username:password -L
 ```
 
 ```python
 import sys
-from restobject import RestObject
+from _redfishobject import RedfishObject
 
-# When running remotely connect using the iLO address, iLO account name, 
-# and password to send https requests
+# When running remotely, connect using the iLO address, iLO account name,
+# and password to send https requests.
 iLO_host = "https://{iLO}"
 iLO_account = "admin"
 iLO_password = "password"
 
 #Create a REST object
-REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
-instances = REST_OBJ.search_for_type("HpBios.")
+REDFISH_OBJ = RedfishObject(iLO_host, iLO_account, iLO_password)
+#Get the resource you need.
+response = REDFISH_OBJ.redfish_get("/redfish/v1/systems/1/bios/")
+print response
 
-for instance in instances:
-	response = REST_OBJ.rest_get(instance["href"])
-	print response
 ```
 
 > Response
 
 ```json
 {
-	"AcpiRootBridgePxm": "Enabled",
-	"AcpiSlit": "Enabled",
-	"AdjSecPrefetch": "Enabled",
-	"AdminEmail": "",
-	"AdminName": "",
+  "@Redfish.Settings": {
+    "@odata.type": "#Settings.v1_0_0.Settings",
+    "ETag": "5DFD7F66",
+    "Messages": [
+      {
+        "MessageId": "Base.1.0.Success"
+      }
+    ],
+    "SettingsObject": {
+      "@odata.id": "/redfish/v1/systems/1/bios/settings/"
+    },
+    "Time": "2001-05-07T20:28:28+00:00"
+  },
+  "@odata.context": "/redfish/v1/$metadata#Bios.Bios",
+  "@odata.etag": "W/\"D230AB047BF85050500CD97692925EA4\"",
+  "@odata.id": "/redfish/v1/systems/1/bios/",
+  "@odata.type": "#Bios.v1_0_0.Bios",
+  "Actions": {
+    "#Bios.ChangePassword": {
+      "target": "/redfish/v1/systems/1/bios/settings/Actions/Bios.ChangePasswords/"
+    },
+    "#Bios.ResetBios": {
+      "target": "/redfish/v1/systems/1/bios/settings/Actions/Bios.ResetBios/"
+    }
+  },
+  "AttributeRegistry": "BiosAttributeRegistryU32.v1_1_20",
+  "Attributes": {
+    "AcpiHpet": "Enabled",
+    "AcpiRootBridgePxm": "Enabled",
 	...
-	
 	...
-	"WakeOnLan": "Enabled",
-	"links": {
-		"self": {
-			"href": "/redfish/v1/systems/1/bios/Settings"
-		}
-	}
+  
+    "XptPrefetcher": "Enabled",
+    "iSCSIPolicy": "SoftwareInitiator"
+  },
+  "Id": "bios",
+  "Name": "BIOS Current Settings",
+  "Oem": {
+    "Hpe": {
+      "@odata.type": "#HpeBiosExt.v2_0_0.HpeBiosExt",
+      "Links": {
+        "BaseConfigs": {
+          "@odata.id": "/redfish/v1/systems/1/bios/baseconfigs/"
+        },
+        "Boot": {
+          "@odata.id": "/redfish/v1/systems/1/bios/boot/"
+        },
+        "Mappings": {
+          "@odata.id": "/redfish/v1/systems/1/bios/mappings/"
+        },
+        "ScalablePmem": {
+          "@odata.id": "/redfish/v1/systems/1/bios/hpescalablepmem/"
+        },
+        "TlsConfig": {
+          "@odata.id": "/redfish/v1/systems/1/bios/tlsconfig/"
+        },
+        "iScsi": {
+          "@odata.id": "/redfish/v1/systems/1/bios/iscsi/"
+        }
+      },
+      "SettingsObject": {
+        "UnmodifiedETag": "W/\"7F8B308F162455555532A6400C9EEBC3\""
+      }
+    }
+  }
 }
 ```
 
-To GET the current BIOS configuration:
-
 The iLO RESTful API enables UEFI BIOS configuration. The link to the BIOS configuration is from the computer system object.
 
-## Changing Pending Settings and understanding "SettingsResults"
-The current configuration object for BIOS is read only. This object contains a link to a Settings resource that you can perform a PATCH operation on.  This is the "pending settings." If you GET the Settings resource, you will see that it allows PATCH commands. You can change properties and then PATCH them back to the Settings URI. Changes to pending settings do not take effect until the server is reset. Before the server is reset, the current and pending settings are independently available. After the server is reset, the pending settings are applied and you can view any errors in the SettingsResults property on the main object.
+## Changing Pending Settings and understanding "@Redfish.Settings".
+The current configuration object for BIOS is read-only. This object contains a link to a Settings resource that you can perform a PATCH operation on. This is the "pending settings." If you GET the Settings resource, the returned information shows that you can perform PATCH operations. You can change properties and then perform a PATCH patch operatoin using the Settings URI. Changes to pending settings do not take effect until the server is reset. Before the server is reset, the current and pending settings are independently available. After the server is reset, the pending settings are applied and you can view any errors in the "@Redfish.Settings" property on the main object.
 
 There are benefits to handling BIOS settings in this way:
 
@@ -68,18 +119,17 @@ processes the pending settings.
 
 ### Updating the BIOS settings example
 ```shell
-curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings -u username:password --insecure
+curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings/ -u username:password --insecure
 ```
 
 <blockquote class="lang-specific shell">
 	<p>Contents of data.json</p>
-    <p>{"AdminName": "NewName"}</p>
+    <p>{"Attributes":{"AdminName": "NewName"}}</p>
 </blockquote>
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
 	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
 </blockquote>
 The minimum required session ID privileges is `Configure.`
 
@@ -90,8 +140,8 @@ Result = `{ilo-ip-address}/redfish/v1/Systems/1/BIOS`
 4. Find a link in `BiosObj` called `Settings` and note this URI.
 5. Obtain the BIOS settings using the URI from step 4.
   * `GET {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
-6. Create a new JSON object with the `AdminName` property changed to `{"AdminName":"Joe
-Smith"}`.
+6. Create a new JSON object with the `AdminName` property changed to `{"Attributes":{"AdminName":"Joe
+Smith"}}`.
 7. Update the BIOS settings. You only need to send the updated `AdminName` property in the
 request body.
   * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
@@ -101,23 +151,26 @@ When the server is reset, the BIOS settings are validated and adopted.
 
 
 ## Reading BIOS Defaults example
+
+The BIOS current configuration object contains a link to a separate read-only object, `BaseConfigs`, which lists the BIOS default settings. To get the BIOS `BaseConfigs` resource:
+
 ```shell
 curl https://{iLO}/redfish/v1/systems/1/bios/BaseConfigs/ -i --insecure -u username:password -L
 ```
 
 ```python
 import sys
-import ilorest
+from redfish import AuthMethod, redfish_logger, redfish_client
 
-# When running remotely connect using the iLO address, iLO account name, 
-# and password to send https requests
-iLO_host = "https://{iLO}"
+# When running remotely, connect using the iLO address, iLO account name,
+# and password to send https requests.
+iLO_host = "https://16.84.27.67"
 login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
-                          password=login_password, default_prefix='/redfish/v1')
+REDFISH_OBJ = redfish_client(base_url=iLO_host,username=login_account, \
+                          password=login_password, default_prefix="/redfish/v1")
 
 # Login into the server and create a session
 REDFISH_OBJ.login(auth="session")
@@ -138,33 +191,31 @@ The results looks something like this:
 
 ```json
 {
-	"BaseConfigs": [{
-		"default": {
-			"AcpiRootBridgePxm": "Enabled",
-			"AcpiSlit": "Enabled",
-			...
-			
-			...
-			"VlanPriority": 0,
-			"WakeOnLan": "Enabled"
-		}
-	}],
-	"Capabilities": {
-		"BaseConfig": true,
-		"BaseConfigs": false
-	},
-	"Modified": "2016-04-21T01:52:17+00:00",
-	"Name": "BIOS Default Settings",
-	"Type": "HpBaseConfigs.0.10.0",
-	"links": {
-		"self": {
-			"href": "/redfish/v1/systems/1/bios/BaseConfigs"
-		}
-	}
+    "@odata.context": "/redfish/v1/$metadata#HpeBaseConfigs.HpeBaseConfigs",
+    "@odata.etag": "W/\"1BAB2532EC201D1D1DFED6F112252823\"",
+    "@odata.id": "/redfish/v1/systems/1/bios/baseconfigs/",
+    "@odata.type": "#HpeBaseConfigs.v2_0_0.HpeBaseConfigs",
+    "BaseConfigs": [
+        {
+            "default": {
+                "AcpiHpet": "Enabled",
+                "AcpiRootBridgePxm": "Enabled",
+                "AcpiSlit": "Enabled",
+                 ...
+		 ...
+                "XptPrefetcher": "Auto",
+                "iSCSIPolicy": "SoftwareInitiator"
+            }
+        }
+    ],
+    "Capabilities": {
+        "BaseConfig": true,
+        "BaseConfigs": false
+    },
+    "Id": "baseconfigs",
+    "Name": "BIOS Default Settings"
 }
 ```
-
-The BIOS current configuration object contains a link to a separate read-only object, the `BaseConfigs`, which list the BIOS default settings. To get the BIOS `BaseConfigs` resource:
 
 Notice that `BaseConfigs` contains an array of default sets (or base configuration sets). Each base config set contains a list of BIOS properties and their default values. The default base config set contains the BIOS manufacturing defaults. It is possible for `BaseConfigs` to contain other sets, like `default.user` for user custom defaults.
 
@@ -183,6 +234,7 @@ The BIOS attribute registries contains three top-level arrays:
 - **Menus:** Array containing the BIOS attributes menus and their hierarchy. This can be used
 (for instance) to build a user interface that resembles the local BIOS Setup, or to group
 properties that are related such as `ProcessorOptions` and `UsbOptions.`
+- **Attributes:** Array containing BIOS attributes and information about the attributes such as type, values, etc.
 - **Dependencies:** Array containing a list of dependencies of BIOS attributes on this server.
 This includes inter-setting dependencies that might cause one BIOS setting to change its
 value or its `ReadOnly` property based on the value of another BIOS setting.
@@ -203,90 +255,30 @@ BIOS 25
 minimum and maximum character lengths, as well as regular expressions for string attributes.
 - And other meta-data.
 
-## Setting or Changing the BIOS Administrator and Setup Password
-```shell
-curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings -u username:password --insecure
-```
-
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"OldAdminPassword": "oldpassword", "AdminPassword": "newpassword"}</p>
-</blockquote>
-
-<blockquote class="lang-specific python">
-    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
-</blockquote>
-
-To change the Administrator and Power On passwords, you must change two properties for each password in the Pending Settings resource:
-* **Administrator password**: Set `AdminPassword` to the new password and `OldAdminPassword` to the old password.
-* **Power On password**: Set `PowerOnPassword` to the new password and
-`OldPowerOnPassword` with the old password.
-
-If you the old password is not set, you must use a blank string ("") for the old password property.
-
-1. Iterate through `/redfish/v1/Systems` and choose a member ComputerSystem.
-  * Result = `{ilo-ip-address}/redfish/v1/Systems/1/BIOS`
-2. Find a link in the `Oem/Hp/links` called `Bios` and note the `BiosURI`.
-3. `GET BiosObj` from `BiosURI` and note that it only allows `GET` (this is the current settings).
-4. Find a link in `BiosObj` called `Settings` and note this URI.
-5. Create a new JSON object with the `AdminPassword` and `OldAdminPassword` property
-changed to `{"AdminPassword":"@Pa$$w0rd", "OldAdminPassword":""}.`
-6. Update the BIOS settings. You only need to send the updated `AdminName` property in the
-request body.
-  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
-
-When the server is reset, the BIOS settings are validated and adopted.
-
-## Updating the Administrator BIOS password example
-```shell
-curl -H "Content-Type: application/json" -H "X-HPRESTFULAPI-AuthToken: <hash of password>" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings -u username:password --insecure
-```
-
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"OldAdminPassword": "oldpassword", "AdminPassword": "newpassword"}</p>
-</blockquote>
-
-<blockquote class="lang-specific python">
-    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex03_change_bios_setting.py">ex03_change_bios_setting.py</a></b>
-</blockquote>
-To change the Administrator and Power On passwords, you must change two properties for each password:
-
-| HTTP Header Name | Value |
-| ------------- | ------------- |
-| `X-HPRESTFULAPI-AuthToken` | A string consisting of the uppercase SHA256 hex digest of the administrator password. In Python this is `hashlib.sha256(bios_password.encode()).hexdigest().upper().` |
-
-
-## Example reset all BIOS and boot order settings to factory defaults
-1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem.` Find a child resource of type
-`HpBios` that allows `PATCH` operations (there might be more than one but for this exercise, just choose the first
-one).
-  * `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
-2. Obtain the BIOS and boot order settings.
-  * `GET {ilo-ip-address}/redfish/v1/Systems/1/BIOS`
-3. Create a new JSON object with the `RestoreManufacturingDefaults` property and change the value to yes.
-4. Reset the BIOS and boot order settings. You only need to send the updated `RestoreManufacturingDefaults`
+## Example to reset all BIOS and boot order settings to factory defaults
+1. Iterate through `/redfish/v1/Systems/` and choose a member `ComputerSystem.` Find the BIOS settings resource by following the `Bios` property link.
+      * BiosSettingsURI = `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
+2. Obtain the BIOS and boot order pending settings.
+      * GET @ `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
+3. Create a new JSON object with the `RestoreManufacturingDefaults` property and change the value to `Yes`. Be sure to include the top level JSON `Attributes` property.
+      * JSON = {"Attributes":{"RestoreManufacturingDefaults":"Yes"}}
+4. Make a PATCH request with the new JSON to the `BiosSettingsUri`. You only need to send the updated `RestoreManufacturingDefaults`
 property in the request body.
-  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/BIOS`
+      * `PATCH {"Attributes":{"RestoreManufacturingDefaults":"Yes"}} @ {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
 
 ### Reverting BIOS UEFI settings to default example
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings -u username:password --insecure
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Systems/1/bios/settings/ -u username:password --insecure
 ```
 
 <blockquote class="lang-specific shell">
 	<p>Contents of data.json</p>
-    <p>{"BaseConfig": "default"}</p>
+    <p>{"Attributes":{"BaseConfig": "default"}}</p>
 </blockquote>
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex06_bios_revert_default.py">ex06_bios_revert_default.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex06_bios_revert_default.py">ex06_bios_revert_default.py</a></b>
+	</br>
 </blockquote>
 The BIOS Settings resource supports a special feature that allows you to revert BIOS settings
 to default for the selected resource. This is accomplished by performing the PATCH or PUT
@@ -298,29 +290,29 @@ settings all in one operation.
 resources. To determine if the BIOS resource supports reverting the settings to default, `GET` the
 BIOS `BaseConfigs` resource, and view the `Capabilities` property.
 
-1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem`. Find a
-child resource of type `HpBios` that allows `PUT` operations (there might be more than one
-but for this exercise, just choose the first one).
-  * `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
-2. Obtain the BIOS UEFI settings.
-  * `GET {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
-3. Change or add the BaseConfig property to `{"BaseConfig":"default"}` in the response
-body.
-4. Update the BIOS UEFI settings.
-  * `PUT {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings`
+1. Iterate through `/redfish/v1/Systems/` and choose a member `ComputerSystem`. Find the BIOS settings resource by following the `Bios` property link.
+      * BiosSettingsURI = `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
+2. Obtain the BIOS pending settings.
+      * GET @ `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
+3. Create a new JSON object with the `BaseConfig` property and change the value to `default`. Be sure to include the top level JSON `Attributes` property.
+      * JSON = {"Attributes":{"BaseConfig":"default"}}
+4. Make a PUT request with the new JSON to the `BiosSettingsUri`. You only need to send the updated `BaseConfig`
+property in the request body.
+      * `PUT {"Attributes":{"BaseConfig":"default"}} @ {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Settings/`
+      
 When the sever is reset, the BIOS UEFI settings are reverted to default.
 
 **NOTE:**
 
 * You might also view the default values for BIOS settings by finding the resource type
-`HpBaseConfigs.`
+`HpeBaseConfigs.`
   * `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/BaseConfigs`
 * `BaseConfig` can be combined with other property values to first reset everything to default
 and then apply some specific settings in one operation.
 
 ## Enabling BIOS UEFI Secure Boot example
 ```shell
-curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/SecureBoot -u username:password --insecure
+curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{iLO}/redfish/v1/Systems/1/SecureBoot/ -u username:password --insecure
 ```
 
 <blockquote class="lang-specific shell">
@@ -330,22 +322,21 @@ curl -H "Content-Type: application/json" -X PATCH --data "@data.json" https://{i
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex05_enable_secure_boot.py">ex05_enable_secure_boot.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex05_enable_secure_boot.py">ex05_enable_secure_boot.py</a></b>
+	</br>
 </blockquote>
 The minimum required session ID privileges is `Configure.`
 
-1. Iterate through `/redfish/v1/Systems` and choose a member ComputerSystem. Find a child
+1. Iterate through `/redfish/v1/Systems/` and choose a member ComputerSystem. Find a child
 resource of type `HpSecureBoot` that allows `PATCH` operations (there might be more than
-one but for this exercise, just choose the first one).
-  * `{ilo-ip-address}/redfish/v1/Systems/1/SecureBoot`
+one, but for this exercise, choose the first one).
+  * `{ilo-ip-address}/redfish/v1/Systems/1/SecureBoot/`
 2. Obtain the secure boot settings.
-  * `GET {ilo-ip-address}/redfish/v1/Systems/1/SecureBoot`
+  * `GET {ilo-ip-address}/redfish/v1/Systems/1/SecureBoot/`
 3. Create a new JSON object with the `SecureBootEnable` property changed to
 `{"SecureBootEnable":true}.`
-4. Update the secure boot settings. You only need to send the updated `SecureBootEnable`
+4. Update the secure boot settings. Send the updated `SecureBootEnable`
 property in the request body.
-  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/SecureBoot`
+  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/SecureBoot/`
 
 When the sever is reset, the boot settings are validated and adopted.
 
@@ -355,21 +346,21 @@ When the sever is reset, the boot settings are validated and adopted.
 
 ```json
 {
-    "iSCSIBootSources": [
+    "iSCSISources": [
         {
-             "iSCSIBootAttemptInstance": 1,
+             "iSCSIAttemptInstance": 1,
              ...
         },
         {
-             "iSCSIBootAttemptInstance": 2,
+             "iSCSIAttemptInstance": 2,
              ...
         },
         {
-             "iSCSIBootAttemptInstance": 0,
+             "iSCSIAttemptInstance": 0,
              ...
         },
         {
-             "iSCSIBootAttemptInstance": 0,
+             "iSCSIAttemptInstance": 0,
              ...
         }
     ],
@@ -379,14 +370,14 @@ When the sever is reset, the boot settings are validated and adopted.
 
 ```json
 {
-	"iSCSIBootSources": [
+	"iSCSISources": [
 		{}, 
 		{
 			"iSCSIConnectRetry": 2
 		}, 
 		{
-			"iSCSIBootAttemptInstance": 3,
-			"iSCSIBootAttemptName": "Name",
+			"iSCSIAttemptInstance": 3,
+			"iSCSIAttemptName": "Name",
 			"iSCSINicSource": "NicBootX"
 			...
 		}, 
@@ -397,14 +388,14 @@ When the sever is reset, the boot settings are validated and adopted.
 
 The iSCSI Software Initiator allows you to configure an iSCSI target device to be used as a boot
 source. The BIOS current configuration object contains a link to a separate resource of type
-`HpiSCSISoftwareInitiator.` The BIOS current configuration resource and the iSCSI Software
+`HpeiSCSISoftwareInitiator.` The BIOS current configuration resource and the iSCSI Software
 Initiator current configuration resources are read-only. To change iSCSI settings, you need to
 follow another link to the `Settings` resource, which allows `PUT` and `PATCH` operations.
 
-The iSCSI target configurations are represented in an `iSCSIBootSources` property, that is an
+The iSCSI target configurations are represented in an `iSCSISources` property, that is an
 array of objects, each containing the settings for a single target. The size of the array represents
 the total number of iSCSI boot sources that can be configured at the same time. Many mutable
-properties exist, including `iSCSIBootAttemptInstance,` which can be set to a unique integer
+properties exist, including `iSCSIAttemptInstance,` which can be set to a unique integer
 in the range [1, *N*], where N is the boot sources array size. By default, this *instance number* is 0
 for all objects, indicating that the object should be ignored when configuring iSCSI.
 
@@ -418,19 +409,19 @@ configuration resource. This property is an array of strings representing the po
 that can be used as targets for iSCSI boot configuration. To confirm which NIC device each string
 corresponds to, it is recommended to cross-reference two other resources:
 
-* A resource of type `HpBiosMapping` can be found through a `Mappings` link in the BIOS
+* A resource of type `HpeBiosMapping` can be found through a `Mappings` link in the BIOS
 current configurations resource. Within its `BiosPciSettingsMappings` property is an
 array of mappings between BIOS-specific device strings (such as the `NIC` source string)
 and a `CorrelatableID` string that can be used to refer to the same device in non-BIOS
 contexts.
-* A collection of `HpServerPciDevices` may be found through a PCIDevices link in the
+* A collection of `HpeServerPciDevices` may be found through a PCIDevices link in the
 `ComputerSystem` resource. The specific PCI device corresponding to the NIC instance
 can be found by searching for the `CorrelatableID` that will usually match a
-`UEFIDevicePath.` Once the `HpServerPciDevice` resource is found, you have access
+`UEFIDevicePath.` Once the `HpeServerPciDevice` resource is found, you have access
 to all the human-readable properties useful for describing a NIC source.
 
-Changing the `iSCSIBootSources` and `iSCSIInitiatorName` settings can be done through
-`PATCH` operations, very similar to how `HpBios` settings are changed. However, whereas all BIOS
+Changing the `iSCSISources` and `iSCSIInitiatorName` settings can be done through
+`PATCH` operations, very similar to how `HpeBios` settings are changed. However, whereas all BIOS
 settings are located in a single flat object, iSCSI settings are nested into arrays and sub-objects.
 When doing a `PATCH` operation, use empty objects (`{}`) in place of those boot source objects
 that you do not want to alter.
@@ -440,7 +431,7 @@ and you would like to edit some existing settings, and add a third source.
 
 1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem.` Find a
 child resource of type `HpiSCSISoftwareInitiator` that allows PATCH operations.
-  * `{ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings`
+  * `{ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
 2. Inspect the existing `iSCSIBootSources` array. You need to inspect the
 `iSCSIBootAttemptInstance` property of each object to find the boot sources you are
 prefer to change.
@@ -454,7 +445,7 @@ containing all the new settings, and most importantly, a new unique value of
 iSCSIBootAttemptInstance.
 
 4. Change the iSCSI software initiator settings.
-  * `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings` 
+  * `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/` 
 
 
 
@@ -482,10 +473,6 @@ of multiple boot options using the same instance. For example, this can be the p
 for a multi-port NIC.
 * **Qualifier:** The fifth section is optional, and describes the logical protocol (for example, IPv4,
 IPv6, and iSCSI).
-
-The Structured Boot String information is part of the `BootSources[]property` in the
-`HpServerBootSettings` object and the `StructuredName` property in the
-`HpServerPciDevice` object.
 
 ### UEFI boot structured name string examples
 **Table 1 Examples**
@@ -547,11 +534,10 @@ NVMe | Embedded | Bay number | 1 (Each drive bay has 1 NVMe drive.) |  | NVMe.Em
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex07_change_boot_order.py">ex07_change_boot_order.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex07_change_boot_order.py">ex07_change_boot_order.py</a></b>
+	</br>
 </blockquote>
 The BIOS current configuration object contains a link to a separate read-only resource of type
-`HpServerBootSettings` that lists the UEFI Boot Order current configuration. This is the system
+`HpeServerBootSettings` that lists the UEFI Boot Order current configuration. This is the system
 boot order when the system is configured in the UEFI Boot Mode. The UEFI Boot Order current
 configuration resource contains a `BootSources` property, which is an array of UEFI boot sources.
 Each object in that array has a unique `StructuredBootString,` among other properties that
@@ -570,21 +556,20 @@ operation). To change the UEFI Boot Order, you need to follow the link to a sepa
 resource that you can perform a `PATCH` operation on that contains the pending UEFI Boot Order
 settings, and update that `PersistentBootConfigOrder` and/or the `DesiredBootDevices`
 properties in that Settings resource. The settings remain pending until next reboot, and the results
-are reflected back in the `SettingsResults` property in the UEFI Boot Order current configuration
+are reflected back in the `@Redfish.Settings` property in the UEFI Boot Order current configuration
 resource.
 
 **Prerequisites:** Minimum required session ID privileges: Configure
 
-1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem.` Find a child resource of type
-`HpServerBootSettings` that allows `PATCH` operations (there might be more than one but for this exercise,
-just choose the first one).
-  * `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings`
+1. Iterate through `/redfish/v1/Systems/` and choose a member `ComputerSystem.` Find a child resource of type
+`HpeServerBootSettings` that allows `PATCH` operations (there might be more than one, but for this exercise, hoose the first one).
+  * `{ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings/`
 2. Obtain the UEFI boot order.
-  * `GET {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings`
+  * `GET {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings/`
 3. Create a new JSON object with the `PersistentBootConfigOrder` property and change the boot order.
 4. Change the UEFI boot order. You only need to send the updated `PersistentBootConfigOrder` property in
 the request body.
-  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings`
+  * `PATCH {ilo-ip-address}/redfish/v1/Systems/1/BIOS/Boot/Settings/`
 
 When the sever is reset, the new boot order is validated and used.
       
@@ -605,30 +590,30 @@ or more parameter properties.
 
 ### Reset a server example
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/systems/1 -u username:password --insecure
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/systems/1/ -u username:password --insecure
 ```
 
 <blockquote class="lang-specific shell">
 	<p>Contents of data.json</p>
-    <p>{"Action":"Reset"}</p>
+    <p>{"Action":"ComputerSystem.Reset", "ResetType":"ForceRestart"}</p>
 </blockquote>
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex04_reset_server.py">ex04_reset_server.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex04_reset_server.py">ex04_reset_server.py</a></b>
+	</br>
 </blockquote>
 **Prerequisites** 
 
 Minimum required session ID privileges: Configure
 
-1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem` that allows `POST` operations.
-  * `{ilo-ip-address}/redfish/v1/Systems/1`
+1. Iterate through `/redfish/v1/Systems/` and choose a member `ComputerSystem` that allows `POST` operations.
+  * `{ilo-ip-address}/redfish/v1/Systems/1/`
+2. Get the "Actions" -> "#ComputerSystem.Reset" -> "target" Uri.
 2. Construct an Action object to submit to iLO.
-  * `{"Action":"Reset","ResetType":"ForceRestart"}`
-3. Change the `Action` and `ResetType` properties to `{"Action":"Reset","ResetType":"ForceRestart"}.`
-4. Reset the server.
-  * `POST {ilo-ip-address}/redfish/v1/Systems/1`
+  * `{"Action":"ComputerSystem.Reset","ResetType":"ForceRestart"}`
+3. Change the `Action` and `ResetType` properties to `{"Action":"ComputerSystem.Reset","ResetType":"ForceRestart"}.`
+4. Reset the server by posting the body to the target Uri.
+  * `POST {ilo-ip-address}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/`
 
 The server resets and reboots.
 
@@ -639,11 +624,10 @@ The server resets and reboots.
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
+	</br>
 </blockquote>
 
-Active Health System (AHS) data may be accessed by first discoverying the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
+Active Health System (AHS) data may be accessed by first discoverying the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem/`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
 
 1.  Iterate the Managers collection at `https://{iLO}/redfish/v1/managers/`.  For traditional iLO-based server architectures there is a single manager representing iLO 5 itself.
 
@@ -670,8 +654,7 @@ If successful, the response is an HTTP 200 level status code and a binary downlo
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex09_find_ilo_mac_address.py">ex09_find_ilo_mac_address.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex09_find_ilo_mac_address.py">ex09_find_ilo_mac_address.py</a></b>
+	</br>
 </blockquote>
 Before you search for the iLO mac address, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
@@ -682,14 +665,13 @@ Before you search for the iLO mac address, you must create an instance of a `Res
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex10_add_ilo_user_account.py">ex10_add_ilo_user_account.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex10_add_ilo_user_account.py">ex10_add_ilo_user_account.py</a></b>
+	</br>
 </blockquote>
 Before you add an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
 ## Setting a license key
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Managers/1/LicenseService -u username:password --insecure
+curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Managers/1/LicenseService/ -u username:password --insecure
 ```
 
 <blockquote class="lang-specific shell">
@@ -699,8 +681,7 @@ curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iL
 
 <blockquote class="lang-specific python">
     <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex31_set_license_key.py">ex31_set_license_key.py</a></b>
-	</br></br>
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex31_set_license_key.py">ex31_set_license_key.py</a></b>
+	</br>
 </blockquote>
 Before you set a license key, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.
 
@@ -715,7 +696,6 @@ Before you set a license key, you must create an instance of a `RestObject` or `
 <blockquote class="lang-specific python">
     <b>For full Redfish examples click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a>, <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex12_remove_ilo_account.py ">ex12_remove_ilo_account.py</a></b>
 	</br></br>
-    <b>For full Rest examples click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex11_modify_ilo_user_account.py">ex11_modify_ilo_user_account.py</a>, <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/redfish/ex12_remove_ilo_account.py">ex12_remove_ilo_account.py</a></b>
 </blockquote>
 
 Before you change an iLO user account, you must create an instance of a `RestObject` or `RedfishObject`. The class constructor takes the iLO hostname/IP address, iLO login username, and password as arguments. The class also initializes a login session, gets systems resources, and message registries.

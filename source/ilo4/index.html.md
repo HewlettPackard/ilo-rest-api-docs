@@ -29,5 +29,5 @@ includes:
   - ilo4_evtshdr
   - ilo4_events
 
-search: true
+search: false
 ---

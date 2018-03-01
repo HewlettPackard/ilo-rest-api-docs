@@ -6,20 +6,6 @@ With modern scripting languages, you can easily write simple REST clients for RE
  
 ## Redfish Conformance
 
-The iLO RESTful API was first released with iLO 4 2.00 on HPE Gen9 servers. The iLO RESTful API also functioned as the starting point for the new Redfish 1.0 DMTF standard at [http:// www.dmtf.org/standards/redfish](http://www.dmtf.org/standards/redfish)
-
-Since the introduction of the iLO RESTful API, a number of changes were introduced into the Redfish standard by the DMTF SPMF members.
-
-iLO 4 2.30 and later was the first generation of iLO to support the Redfish API.  Because the standard is moving, iLO 5 supports a 2nd generation REST API that removes portions that were not part of the standard, while keeping and enhancing the HPE extensions.
-
-iLO 4 achieved Redfish 1.0 conformance and backward compatibility by:
-
-1. Mirroring the resource model at both /redfish/v1/ and /rest/v1.
-1. Returning both compatibility and Redfish properties by default.
-1. Returning only Redfish conformant properties (with Hewlett Packard Enterprise extensions) if the Redfish-required OData header is included in the request (`OData-Version: 4.0`).
-
-Full details on how Redfish 1.0 was implemented in iLO 4 2.30 and how it impacts clients written for previous versions is found here:  [http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en](http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en "Redfish Implementation on HP RESTful API for HPE iLO 4 - Technical White Paper")
-
 iLO 5's Redfish conformance details are available in this document in the "**iLO 5 Adaptation Guide**" section.
 
 

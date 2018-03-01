@@ -11,9 +11,9 @@ This is very similar to the way BIOS is configured.
 
 The resource sub-tree is linked into the ComputerSystem resource:
 
-```
-GET /redfish/v1/systems/{item}/
+> GET /redfish/v1/systems/{item}/
 
+```json
 {
   "Oem": {
     "Hpe": {
@@ -24,9 +24,11 @@ GET /redfish/v1/systems/{item}/
   }
 }
 ```
+
 This URI is the GET-only current configuration.  This resource links to the pending configuration.  The `@odata.type` is `SmartStorageConfig.v2_0_0.SmartStorageConfig`
 
 An example of the SmartStorageConfig resource:
+
 ```json
 {
     "@Redfish.Settings": {
@@ -124,13 +126,13 @@ An example of the SmartStorageConfig resource:
 The controller configuration is accurate after boot, before any online changes are administered via SSA.
 A live version of this data is available in iLO-data/smartstorage/.
 
-```
-PATCH /redfish/v1/Systems/1/smartstorageconfig/settings/
+> PATCH /redfish/v1/Systems/{item}/smartstorageconfig/settings/
 
+```json
 {
     "DataGuard": "Strict",
     "ExpandPriority": "High",
-    "RebuildPriority": "High" 
+    "RebuildPriority": "High",
     "ReadCachePercent": 20
 }
 ``` 
@@ -140,8 +142,9 @@ PATCH /redfish/v1/Systems/1/smartstorageconfig/settings/
 The logical drive inventory is accurate after boot, before any online changes are administered via SSA.
 A live version of this data is available in iLO-data/smartstorage/.
 
-```
-GET /redfish/v1/Systems/1/smartstorageconfig/
+> GET /redfish/v1/Systems/{item}/smartstorageconfig/
+
+```json
 {
    "LocationFormat": "PCISlot",
    "DataGuard": "Strict",
@@ -172,16 +175,17 @@ GET /redfish/v1/Systems/1/smartstorageconfig/
             ],
             "SpareDrives": []
         }
-    ],
- 
-   ...
+    ]
+}
 ``` 
 
 
 ## Create logical drives
 
-```
-PUT /redfish/v1/Systems/1/smartstorageconfig/settings/
+
+> PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
+
+```json
 {
     "LogicalDrives": [
        {
@@ -192,19 +196,20 @@ PUT /redfish/v1/Systems/1/smartstorageconfig/settings/
           "DataDrives": [
                 "1I:1:1",
                 "1I:1:2"
-            ]
+          ],
           "SpareDrives": [
                 "1I:1:3"
-            ],
+          ],
           "Accelerator": "ControllerCache" 
        }
-]
-…
+    ]
+}
 ```
 
 
-```
-PUT /redfish/v1/Systems/1/smartstorageconfig/settings/
+> PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
+
+```json
 {
     "LogicalDrives": [
        {
@@ -217,31 +222,30 @@ PUT /redfish/v1/Systems/1/smartstorageconfig/settings/
              "DataDriveMinimumSizeGiB": 1000
           }
        }
-    ...
     ]
-...
-
+}
 ``` 
 
 
 ## Delete logical drives
 
-```
-PUT /redfish/v1/systems/1/smartstorageconfig/settings/
+> PUT /redfish/v1/systems/{item}/smartstorageconfig/settings/
+
+```json
 {
    "LogicalDrives": [
       {
-         "Actions": ["Action":"LogicalDriveDelete"],         
-         "VolumeUniqueIdentifier": "600123459AF45456664443",
-         ...
+         "Actions": ["Action": "LogicalDriveDelete"],
+         "VolumeUniqueIdentifier": "600123459AF45456664443"
       }
     ],
     "DataGuard": "Permissive",
 }
 ```
 
-```
-PATCH /redfish/v1/systems/1/smartstorageconfig/settings/
+> PATCH /redfish/v1/systems/{item}/smartstorageconfig/settings/
+
+```json
 {
    "LogicalDrives": [],
     "DataGuard": "Disabled",
@@ -259,8 +263,9 @@ PATCH /redfish/v1/systems/1/smartstorageconfig/settings/
 ## Sanitize drives
 Physical drive erase:
 
-```
-PUT /redfish/v1/systems/1/smartstorageconfig/settings/
+> PUT /redfish/v1/systems/{item}/smartstorageconfig/settings/
+
+```json
 {
     "Actions": [
         {
@@ -273,16 +278,8 @@ PUT /redfish/v1/systems/1/smartstorageconfig/settings/
         }
     ]
 }
-...
 
 ```
 
 Sanitize is a long running operation and the drive is not available (for RAID config) until sanitize is complete. The status can be checked from the iLO/SmartStorage data.
-
-
-
-
-
-
-
 

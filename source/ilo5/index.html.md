@@ -36,5 +36,5 @@ includes:
   - ilo5_events
   - ilo5_troubleshooting
 
-search: true
+search: false
 ---
