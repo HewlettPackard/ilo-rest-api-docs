@@ -1967,11 +1967,11 @@ or more parameter properties.</p>
     <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
 </blockquote>
 
-<p>Active Health System (AHS) data may be accessed by first discoverying the resource of type <code class="prettyprint">HpiLOActiveHealthSystem</code>.  This is typically at <code class="prettyprint">https://{iLO}/redfish/v1/managers/{item}/activehealthsystem</code>.  Refer to the section on Iterating Collections for details on how to navigate the data model.</p>
+<p>Active Health System (AHS) data may be accessed by first discovering the resource of type <code class="prettyprint">HpiLOActiveHealthSystem</code>.  This is typically at <code class="prettyprint">https://{iLO}/redfish/v1/managers/{item}/activehealthsystem</code>.  Refer to the section on Iterating Collections for details on how to navigate the data model.</p>
 
 <ol>
 <li><p>Iterate the Managers collection at <code class="prettyprint">https://{iLO}/redfish/v1/managers/</code>.  For traditional iLO-based server architectures there is a single manager representing iLO 4 itself.</p></li>
-<li><p>Find the <code class="prettyprint">Link</code> property refering to the <code class="prettyprint">HpiLOActiveHealthSystem</code> and follow that link.</p></li>
+<li><p>Find the <code class="prettyprint">Link</code> property referring to the <code class="prettyprint">HpiLOActiveHealthSystem</code> and follow that link.</p></li>
 <li><p>GET the <code class="prettyprint">HpiLOActiveHealthSystem</code> resource and look for the URI indicated by <code class="prettyprint">Links.AHSLocation.extref</code>.</p></li>
 <li><p>Perform a GET to this URI with the following query parameters to define the download time range and embed customer case information:</p></li>
 </ol>
