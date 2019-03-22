@@ -229,29 +229,36 @@ A live version of this data is available in iLO-data/smartstorage/.
 
 ## Delete logical drives
 
-> PUT /redfish/v1/systems/{item}/smartstorageconfig/settings/
+There are two ways to delete logical drives.  The first enables you to remove specific logical drives by Volume Unique Identifier.  The second can be used to remove all logical drives.
+
+The `Actions` property is not present by default in the resource but must be added with an HTTPS PUT operation.
+
+**NOTE:  that the `Actions` property here is under the specific logical drive you wish to delete.**
+
+> PUT /redfish/v1/Systems/{item}/SmartStorageConfig/Settings/
 
 ```json
 {
    "LogicalDrives": [
       {
-         "Actions": ["Action": "LogicalDriveDelete"],
+         "Actions": [{"Action": "LogicalDriveDelete"}],
          "VolumeUniqueIdentifier": "600123459AF45456664443"
       }
     ],
-    "DataGuard": "Permissive",
+    "DataGuard": "Permissive"
 }
 ```
 
-> PATCH /redfish/v1/systems/{item}/smartstorageconfig/settings/
+> PATCH /redfish/v1/Systems/{item}/SmartStorageConfig/Settings/
 
 ```json
 {
-   "LogicalDrives": [],
-    "DataGuard": "Disabled",
+    "LogicalDrives": [],
+    "DataGuard": "Disabled"
 }
 ```
 
+A system reboot is required for the Smart Storage firmware to validate and perform any requested changes.  The result of the operations will be available in the current configuration resource at `/redfish/v1/Systems/{item}/SmartStorageConfig/` (the parent resource of the settings resource.)
 
 ### DataGuard rules 
 
@@ -259,11 +266,10 @@ A live version of this data is available in iLO-data/smartstorage/.
 + When DataGuard is set to Permissive, logical drives are deleted if the delete action is specified. Omitted logical drives are not deleted.
 + When DataGuard is set to Strict, in any case, logical drives are not deleted. If a logical drive is omitted or a delete action is found on a logical drive, the request returns an error. 
 
-
 ## Sanitize drives
 Physical drive erase:
 
-> PUT /redfish/v1/systems/{item}/smartstorageconfig/settings/
+> PATCH /redfish/v1/systems/{item}/smartstorageconfig/settings/
 
 ```json
 {
@@ -276,7 +282,8 @@ Physical drive erase:
                 "1I:1:2"
             ]
         }
-    ]
+    ],
+    "DataGuard": "Disabled"
 }
 
 ```

@@ -643,11 +643,11 @@ The server resets and reboots.
     <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex46_get_ahs_data.py">ex46_get_ahs_data.py</a></b>
 </blockquote>
 
-Active Health System (AHS) data may be accessed by first discoverying the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
+Active Health System (AHS) data may be accessed by first discovering the resource of type `HpiLOActiveHealthSystem`.  This is typically at `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem`.  Refer to the section on Iterating Collections for details on how to navigate the data model.
 
 1.  Iterate the Managers collection at `https://{iLO}/redfish/v1/managers/`.  For traditional iLO-based server architectures there is a single manager representing iLO 4 itself.
 
-2.  Find the `Link` property refering to the `HpiLOActiveHealthSystem` and follow that link.
+2.  Find the `Link` property referring to the `HpiLOActiveHealthSystem` and follow that link.
 
 3.  GET the `HpiLOActiveHealthSystem` resource and look for the URI indicated by `Links.AHSLocation.extref`.
 

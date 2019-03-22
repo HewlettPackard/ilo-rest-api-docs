@@ -68,54 +68,41 @@ restored.
 * Server state information— Server power state (ON/OFF), Server UID LED states, iLO and server clock settings.
 
 
+## Backing up the iLO 5 configuration
 
+> Find the information about the BackupRestoreService
 
+> GET `/redfish/v1/Managers/1/BackupRestoreService`
 
-
-## Backing up the iLO configuration
-
-
-```
-GET redfish/v1/Managers/1/BackupRestoreService
-
- {
- "Actions": {
-    "#HpeiLOBackupRestoreSystem.Apply": {
-      "target": "/redfish/v1/Managers/1/BackupRestoreService/Actions/HpeiLOBackupRestoreService.Apply/“
-    }
-  },
- "Links": {
-    "BackupLocation": {
-       "extref": "/bkupdata/backup.enc?password=BackupPassword“
-    },
-    "HttpPushUri": "/cgi-bin/uploadBackupFile"
-  },
- "Name": “Backup Restore Service"
-}
-
-``` 
-
-## Restoring the iLO configuration
-
-```
-POST redfish/v1/Managers/1/BackupRestoreService
-
+```json
 {
- "Actions": {
-    "#HpeiLOBackupRestoreSystem.Apply": {
-      "target": "/redfish/v1/Managers/1/BackupRestoreService/Actions/HpeiLOBackupRestoreService.Apply/“
-    }
-  },
- "Links": {
-    "BackupLocation": {
-       "extref": "/bkupdata/backup.enc?password=BackupPassword“
+    "@odata.context": "/redfish/v1/$metadata#HpeiLOBackupRestoreService.HpeiLOBackupRestoreService",
+    "@odata.etag": "W/\"D863AC37\"",
+    "@odata.id": "/redfish/v1/Managers/1/BackupRestoreService",
+    "@odata.type": "#HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService",
+    "Id": "BackupRestoreService",
+    "BackupFileLocation": "/bkupdata/HPE_MXQ32200VV_20020928_0712.bak",
+    "BackupFiles": {
+        "@odata.id": "/redfish/v1/Managers/1/BackupRestoreService/BackupFiles"
     },
-    "HttpPushUri": "/cgi-bin/uploadBackupFile"
-  },
- "Name": “Backup Restore Service"
+    "HttpPushUri": "/cgi-bin/uploadRestoreFile",
+    "Name": "Backup Restore Service"
 }
-
 ``` 
+
+> GET the backup file based upon the `BackupFileLocation` URI
+
+> GET `/bkupdata/HPE_MXQ32200VV_20020928_0712.bak`
+
+The GET operation to the BackupFileLocation URI returns HTTP 200 with `Content Type: application/octet-stream`.  This is the binary image of the backup file.
+
+## Restoring the iLO 5 configuration
+
+> POST `/cgi-bin/uploadRestoreFile`
+
+The content type of the POST must be Form Data and include the session key
+
+
 
 
 

@@ -16,6 +16,7 @@ The Redfish standard schema package DSP8010 version 2016.2 introduced the "Updat
 |iLO Repository|A persistent storage location on the server that can hold software or firmware update components.
 |Update Task Queue|An iLO managed queue of update operations. iLO might not be the actual update agent. Other update agents include Smart Update Manager (SUM) and the UEFI BIOS.
 |Install Set|A pre-defined sequence of update tasks managed using the iLO REST API that can be added to the Update Task Queue with an "Invoke" action.
+|Maintenance Window|A defined time window that may be used with an Update Task create or Install Set Invoke commands to associate a time with the operation.
 
 ## Redfish Update Service Operations
 The Update Service is available as a link (`UpdateService`) from the Redfish root resource (`/redfish/v1/`). The Update Service complies with the Redfish `UpdateService` schema.
@@ -29,7 +30,7 @@ Item (generic) at /redfish/v1/UpdateService/FirmwareInventory/{item}
 
 **HTTP Allow**:  GET
 
-####Adapting from iLO 4 HpSwFwInventory to iLO 5 Redfish Inventory
+#### Adapting from iLO 4 HpSwFwInventory to iLO 5 Redfish Inventory
 
 The following attributes of items in the iLO 4 inventory have been replaced in the iLO 5 Redfish conformant inventory:
 
@@ -84,9 +85,11 @@ iLO validates the uploaded binary image and flashes any applicable targets immed
 
 This is the general pseudocode to correlate applicable updates in the iLO Repository to updatable items from the inventory.
 
-```python
+1.  Use the FirmwareInventory and SoftwareInventory data to evaluate the current software and firmware running on the server.
+
+```
 for component in /redfish/v1/updateservice/componentrepository:
-    for inventory_item in /redfish/v1/updateservice/inventory:
+    for inventory_item in /redfish/v1/updateservice/firmwareinventory:
     
 	    # if "DeviceClass" is populated in the inventory item
 		if DeviceClass in inventory_item:
@@ -101,17 +104,17 @@ for component in /redfish/v1/updateservice/componentrepository:
 
 ```
 
-Note:  iLO can render a "DeviceClass" string in cases where iLO knows specifically about the firmware item. Most other inventory entries omit DeviceClass.
+<aside class="notice">
+iLO can render a "DeviceClass" string in cases where iLO knows specifically about the firmware item. Most other inventory entries omit DeviceClass.
+</aside>
 
 
-### Uploading Components to iLO Repository
-After determining which new components should be added to the repository, do so using the [upload instructions](#upload-components).
-
-### Creating Update Tasks
-After the needed components are uploaded to the iLO Repository, you may create a task to install them using the [create task instructions](#creating-update-tasks).
-
-### Managing Install Sets
-You may also orchestrate sequences of multiple update tasks using "install sets". See [Install Sets](#install-sets) for more information.
+2.  Upload new components to the iLO Repository
+3.  Optionally create or modify Install Sets to bundle multiple components in the iLO Repository into an ordered list of update operations.
+4.  Optionally create Maintenance Windows to specify pre-determined time ranges for udpate tasks to be executed.
+5.  Create tasks individually or Invoke an Install Set to populate the task list. Use either a time range for each task or specify a Maintenance Window to automatically associate the timed window with the created tasks.
+6.  Monitor update operations and handle any errors
+7.  Optionally remove any completed Tasks, Maintenance Windows, Install Sets, or components that are no longer required.
 
 ## Software and Firmware Management Operations
 
@@ -198,10 +201,10 @@ Smart Component Example:
 ```
 
 <aside class="notice">
-NOTE: The iLO Repository uses the filename of the components as the unique key. No two components can share the same filename and an upload of a file using an existing filename overwrites the existing file. If the existing file is referenced in a task or install set, it is locked and cannot be replaced. All HPE supplied components have version information in the filename; therefore, filename conflicts are easily avoided.
+The iLO Repository uses filename of the components as the unique key. No two components can share the same filename and an upload of a file using an existing filename overwrites the existing file. If the existing file is referenced in a task or install set, it is locked and cannot be replaced. All HPE supplied components have version information in the filename to avoid any filename conflicts.
 </aside>
 
-####Waiting for Uploads to Complete
+#### Waiting for Uploads to Complete
 After uploading the component, iLO must verify and write the contents to the repository. The client may track this progress by polling on `Oem/Hpe/State` property in the UpdateService. Values are:
 
 |State|Detail|
@@ -226,7 +229,7 @@ NOTE: If iLO 5 is updating firmware components, the UpdateService indicates "Bus
 #### Inventory Components in iLO Repository
 The iLO Repository is a collection that supports the $expand operation. Perform a GET operation on the collection and its members to inventory the repository.
 
-Available data for each members includes:
+Available data for each member includes:
 
 |Property|PATCHable?|Detail|
 |---|---|---|
@@ -234,7 +237,7 @@ Available data for each members includes:
 |Filename|No|Unique file name|
 |Version|No|Version as a string|
 |SizeBytes|No|Size in Bytes|
-|Criticality|Yes|Recommended, optional, critical, and so on.
+|Criticality|Yes|Recommended, optional, critical.
 |Created|No|Time the component was added to the repository.|
 |Locked|No|True if the component is referenced by a task or install set.
 |ComponentUri|No|URI of the component binary.
@@ -247,7 +250,7 @@ Available data for each members includes:
 Perform a DELETE operation on the repository collection member to remove it from the repository.
 
 <aside class="notice">
-NOTE: Components referenced in a task or install set are locked and not replaceable or deletable.
+NOTE: Components referenced in a task or install set are locked and not replaceable or deletable.  In order to remove referenced components, any install sets or tasks that refer to it must first be deleted.
 </aside>
 
 #### Free Space
@@ -296,7 +299,12 @@ for component in componentrepository:
 ### Tasks
 
 #### Update Agents and Strong Queue Order
-Because different updates must be performed in different environments, the update agent may vary by use case or client preference.
+Different updates must be performed in different ways:
+* Using iLO 5 over the management network
+* During server power on by UEFI BISO
+* Under an Operating System with SUM
+
+The `UpdateableBy` property indicates which "update agent" may perform the update.
 
 For an update to be applied to a running operating system, SUM or SUT must run on the OS. SUM/SUT checks for pending tasks that include `RuntimeAgent` in the `UpdateableBy` property.
 
@@ -304,7 +312,7 @@ For an update to be applied during UEFI POST, UEFI checks for pending tasks that
 
 For an update to be applied any time by iLO, iLO checks for pending tasks that include `Bmc` in the `UpdateableBy` property. Note that items that are updateable by iLO are never marked as updatable by any other agent.
 
-Because of the strong ordering of the task queue, updaters do not bypass another pending item or exception item to find something to update. This can result in task queue stalls. For example, if the top fo the queue is marked as `Uefi` update, and the second item is marked `RuntimeAgent`, SUM/SUT won't process their item until the system has rebooted, and UEFI has processed its top item.
+Because of the strong ordering of the task queue, updaters do not bypass another pending item or exception item to find something to update. This can result in task queue stalls. For example, if the top of the queue is marked as `Uefi` update, and the second item is marked `RuntimeAgent`, SUM/SUT won't process their item until the system has rebooted, and UEFI has processed its top item.
 
 Updaters process the queue in order, looking at the task state:
 
@@ -331,6 +339,7 @@ Create a new Task resource to schedule Update tasks. POST a new task object to t
 HPE components update all applicable targets within a system. For that reason, there is no ability to indicate a specific target.
 </aside>
 
+
 >Example that enables an component to be updated by either SUM or UEFI:
 ```json
 {
@@ -340,9 +349,7 @@ HPE components update all applicable targets within a system. For that reason, t
 		"RuntimeAgent"
 	],
 	"Command": "ApplyUpdate",
-	"Component": {
-		"@odata.id": "/redfish/v1/updateservice/componentrepository/1/"
-	},
+	"Component": "<component-name>",
 	"TPMOverride": true
 }
 ```
@@ -355,17 +362,58 @@ HPE components update all applicable targets within a system. For that reason, t
 		"Bmc"
 	],
 	"Command": "ApplyUpdate",
-	"Component": {
-		"@odata.id": "/redfish/v1/updateservice/componentrepository/1/"
-	}
+	"Component": "<component-name>",
 }
 ```
 
-This creates a new task in the `Pending` state at the end of the queue. If it assigned to the `Bmc` and is at the top of the queue, iLO starts operating on it immediately. Otherwise, the new task is operated on as soon as an updater runs and finds the new task.
+This creates a new task in the `Pending` state at the end of the queue.  If it assigned to the `Bmc` and is at the top of the queue, iLO starts operating on it immediately. Otherwise, the new task is operated on as soon as an updater runs and finds the new task.
 
-<aside class="notice">
+<aside class="warning">
 If a TPM is installed and in use on the system, the `"TPMOverride": true` property must be set on the task.
 </aside>
+
+#### Creating Scheduled Tasks
+Starting with iLO 5 1.30 a client may specify a time window for a task.  Time is always relative to iLO's clock.  Two options exist for creating scheduled tasks:  explicit time ranges or Maintenance Windows.
+
+##### Explicit Time Range:  Include `StartAfter` and `Expire` in Task Create POST
+`StartAfter` and `Expire` are two times that can be included in the task create POST operation.  You may specify either or both.  Each must be formatted as an ISO 8601 time string.
+
+Tasks in the `Pending` state will not begin execution until iLO time is after `StartAfter`.  If for some reason an update does not start and remains in a `Pending` state until after the `Expire` time, it will never be executed and the State will be Expired.  This can happen for instance if a task is to be executed by UEFI and no reboot happens during the time window.
+
+##### Maintenance Window
+See the section on Maintenance Windows later for more details on the use of Maintenance Windows.
+
+If a client creates a Maintenance Window, this window may be specified (by `Id`) in the creation of a task.
+
+```json
+{
+    "Name": "Unique Client supplied friendly name of this task item.",
+    "UpdatableBy": [
+		"Bmc"
+	],
+    "Command": "ApplyUpdate",
+    "Component": "<component-name>",
+    "MaintenanceWindow": "<maintence-window-id>"
+}
+```
+
+#### Creating Wait Tasks
+
+Wait tasks can be used to insert time between two other tasks.  The `UpdatableBy` property should contain only one update agent chosen based upon the updater that needs the time.
+
+>Example that causes UEFI to Wait for 30 seconds:
+```json
+{
+	"Name": "Pause 30 seconds",
+	"UpdatableBy": [
+		"Uefi"
+	],
+	"Command": "Wait",
+	"WaitTimeSeconds": 30
+}
+```
+
+`WaitTimeSeconds` can be in the range 0-3600 seconds.s
 
 #### Retiring and Removing Tasks
 
@@ -383,7 +431,41 @@ Tasks can be added to the task queue that cannot execute to completion. In this 
 
 * A task requires the UEFI BIOS to execute it (`Uefi`). In this case the task does not execute until the server is rebooted.
 * A task requires SUM or SUT to execute it (`RuntimeAgent`). In this case the task does not execute until either SUM or SUT is executed on the server.  If neither is installed, the task waits forever.
-* A task might result in an exception state. In this case, the task will remain in the queue and no further tasks will execute until the Task Queue is cleared and reset.
+* A task might result in an exception state. In this case, the task will remain in the queue and no further tasks will be executed until the Task Queue is cleared and reset.
+* A task may be scheduled to execute during a time range in the past or in the future.
+
+### Maintenance Windows
+*New for iLO 5 1.30*
+
+Tasks can be created and Install Sets invoked with either an explicit time range (specifying `StartAfter` and `Expire` times) or by referring by `Id` to a Maintenance Window.
+
+The Maintenance Window collection is pointed to by UpdateService `Oem/Hpe/MaintenanceWindows`:
+
+A special feature of Maintenance Windows is that any task associated with a Maintenance Window may be rescheduled by PATCHing the Maintenance Window instead of modifying multiple tasks.
+
+#### Creating Maintenance Windows
+> POST a new object to the Maintenance Window collection:
+
+```json
+{
+    "Name": "unique name of the Maintenance Window.",
+    "StartAfter": "ISO 8601 Redfish-style time string of earliest execution - null for no start time specified",
+    "Expire": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time"
+}
+```
+Any of these properties may be PATCHed to modify an existing Maintenance Window.
+
+<aside class="warning">
+The `Id` property (and the URI of the item) is derived from the `Name` property.  PATCHing `Name` is not recommended because it will change the `Id` and the URI of the item.  **This can invalidate references to the item.**
+</aside>
+
+#### Referring to Maintenance Windows
+Each Maintenance Window has an `Id` string property.  Use this value with the `MaintenanceWindow` property when creating a task or invoking an install set.
+
+#### Removing Maintenance Windows
+Maintenance Windows are removed by performing a DELETE operation on the Maintenance Window member.
+
+Maintenance Windows will eventually be outdated with times in the past and should be removed.
 
 ### Install Sets
 Create a new install set resource to create Install Sets. POST a new install set object to the install set collection pointed to by UpdateService `Oem/Hpe/InstallSets`:
@@ -402,7 +484,7 @@ Each Install Set must have a unique `"Name"` property. Additionally, the name of
     "Name": "unique name of the install set.",
     "Sequence": [{
         "Name": "Client supplied friendly name of this task item.",
-        "IsRecovery" false,
+        "IsRecovery": false,
         "UpdatableBy": [
             "Uefi",
             "RuntimeAgent"
@@ -424,6 +506,50 @@ Invoking an install set causes iLO to append the task queue with new tasks, each
 As good practice, a client should clear the task queue before invoking an install set. iLO does not do this automatically because of various task results that might need to be preserved.
 </aside>
 
+```
+POST /redfish/v1/updateservice/installsets/{id}/Actions/HpeComponentInstallSet.Invoke
+Content-Type: application/json
+```
+```json
+{
+    "ClearTaskQueue": true,
+}
+```
+
+##### Scheduled Install Sets
+Starting with iLO 5 1.30 a client may specify a time window for an Install Set.  Time is always relative to iLO's clock.  Two options exist for creating scheduled tasks:  explicit time ranges or Maintenance Windows.
+
+##### Explicit Time Range:  Include `StartAfter` and `Expire` in Invoke
+`StartAfter` and `Expire` are two times that can be included in `Invoke` Action.  You may specify either or both.  Each must be formatted as an ISO 8601 time string.
+
+Each task in the Install Set will be created with this explicit time range.  Tasks in the `Pending` state will not begin execution until iLO time is after `StartAfter`.  If for some reason an update does not start and remains in a `Pending` state until after the `Expire` time, it will never be executed and the State will be Expired.  This can happen for instance if a task is to be executed by UEFI and no reboot happens during the time window.
+
+```
+POST /redfish/v1/updateservice/installsets/{id}/Actions/HpeComponentInstallSet.Invoke
+Content-Type: application/json
+```
+```json
+{
+	"ClearTaskQueue": true,
+	"StartAfter": "ISO 8601 Redfish-style time string of earliest execution - null for no start time specified",
+	"Expire": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time"
+}
+```
+
+##### Maintenance Windows
+If a client creates a Maintenance Window, this window may be specified (by `Id`) in the Install Set `Invoke`.
+
+```
+POST /redfish/v1/updateservice/installsets/{id}/Actions/HpeComponentInstallSet.Invoke
+Content-Type: application/json
+```
+```json
+{
+    "ClearTaskQueue": true,
+    "MaintenanceWindow": "<maintenence-windows-Id>"
+}
+```
+
 #### Removing Install Sets
 Install Sets are removed by performing a DELETE operation on the install set member.
 
@@ -437,10 +563,10 @@ One of the install sets on the system might be marked with a property `"IsRecove
 
 'Administrate Recovery Set' iLO user privilege is required to modify or remove this install set.". This is called `SystemRecoveryConfigPriv` in the REST API's Account privileges. This privilege enables users to alter or remove this recovery install set.
 
-The recovery install set should only be modified with care and hold a minimal set of firmware updates needed to make the server bootable. These firmware items should also be .BIN files directly flashable by iLO. The order is important because the install set is the order of update.
+The recovery install set should only be modified with care and hold a minimal set of firmware updates needed to make the server bootable. These firmware image file must be directly flashable by iLO. The order is important because the install set is the order of update.
 
 ## Firmware Verification
-The Firmware Verification feature allows you to run an on-demand scan or implement scheduled scans.
+Firmware Verification, available with the *iLO Advanced Premium Security Edition*, enables you to run an on-demand verification scan or implement scheduled scans.
 
 To respond to detected issues, choose between logging the results, or logging the results and initiating a
 repair action that uses a recovery install set.
@@ -448,9 +574,9 @@ repair action that uses a recovery install set.
 Depending on the scan results, information is logged in the Active Health System Log and the Integrated
 Management Log.
 
-The following firmware types are supported:
-* iLO firmware
-* System ROM (BIOS)
+The following firmware items are verified:
+* iLO 5
+* System UEFI BIOS
 * System Programmable Logic Device (CPLD)
 * Server Platform Services (SPS) Firmware
 * Innovation Engine (IE) Firmware
@@ -459,22 +585,24 @@ When a firmware verification scan is in progress, you cannot install firmware up
 to the iLO Repository.
 
 ### Configuring Firmware Verification
+Available with *iLO Advanced Premium Security Edition*
+
 Firmware Verification scan options:
 
-* Enable Background Scan ("`EnableBackgroundScan`")— Enables or disables Firmware Verification scanning. When enabled, iLO
+* Enable Background Scan ("`EnableBackgroundScan`") enables or disables Firmware Verification scanning. When enabled, iLO
 scans the supported installed firmware for file corruption.
-* Integrity Failure Action ("`OnIntegrityFailure`") — Determines the action iLO takes when a problem is found during a
+* Integrity Failure Action ("`OnIntegrityFailure`") determines the action iLO takes when a problem is found during a
 Firmware Verification scan.
   * To log the results, patch "`LogOnly`".
   * To log the results and initiate a repair action, patch "`LogAndRepairAutomatically`".
 
-If a problem is detected for a supported firmware type, iLO checks for the affected firmware type in
+If a problem is detected for a supported firmware item, iLO checks for the affected firmware type in
 a protected install set. By default, this set is the System recovery set. If a firmware
 image is available, iLO flashes that firmware image to complete the repair.
 
-* Scan Interval ("`ScanEveryDays`") — Sets the background scan frequency in days. Valid values are from 1 to 365.
+* Scan Interval ("`ScanEveryDays`") sets the background scan frequency in days. Valid values are from 1 to 365.
 
->GET:  https://{{HOST}}/redfish/v1/UpdateService/
+>GET /redfish/v1/UpdateService/
 
 
 ```json
@@ -494,8 +622,9 @@ image is available, iLO flashes that firmware image to complete the repair.
 ```
 
 ### Initiating a Firmware Verification Scan
+Available with *iLO Advanced Premium Security Edition*
 
 You may manually start a firmware verification scan by invoking the action "StartFirmwareIntegrityCheck". You must have the iLO Advanced Premium Security Edition license to use this feature.
 
->POST:  https://{{HOST}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck
+>POST /redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck
 

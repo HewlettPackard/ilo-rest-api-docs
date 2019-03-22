@@ -8,13 +8,54 @@ With modern scripting languages, you can easily write simple REST clients for RE
 
 iLO 5's Redfish conformance details are available in this document in the "**iLO 5 Adaptation Guide**" section.
 
+## iLO 5 1.40 New Features and Changes
 
-## REST APIs Architected using HATEOS
+iLO 5 1.40 adds support for several Redfish features:
 
-Representational State Transfer (REST) is a web service that uses basic CRUD (Create, Read, Update, Delete, and Patch) operations performed on resources using HTTP commands such as POST, GET, PUT, PATCH, and DELETE. The iLO RESTful API is designed using a REST architecture called HATEOS (Hypermedia as the Engine of Application State). This architecture allows the client to interact with iLO through a simple fixed URL (rest/v1) and several other top-level URIs documented in the iLO Data Model. The rest of the data model is discoverable by following clearly identified “links” in the data. This has the advantage that the client does not need to know a set of fixed URLs. When you create a script to automate tasks using the iLO RESTful API, you only need to hardcode this simple URL and design the script to discover the REST API URLs that are needed to complete a task. To learn more about REST and HATEOAS concepts, see:
+* Redfish 1.6 support for the OpenAPI standard
+* Directory Services Configuration (`ExternalAccountProvider`)
+* Local account roles (`Role`)
+* TelemetryService support for CPU utilization (`TelemetryService`)
+* Persistent Memory support (`MemoryDomains` and `MemoryChunks`)
+* Improved `EthernetInterfaces` implementation for iLO's network
+* Redfish host interface
 
-* [http://en.wikipedia.org/wiki/Representational_state_transfer](http://en.wikipedia.org/wiki/Representational_state_transfer)
-* [http://en.wikipedia.org/wiki/HATEOAS](http://en.wikipedia.org/wiki/HATEOAS)
+Additionally, it includes support for new iLO 5 1.40 features:
+
+* One-button secure erase (in `ComputerSystem` HPE OEM schema)
+* iLO Configuration Backup and Restore (new `HpeiLOBackupRestoreService` HPE OEM schema)
+* Configuration support for firmware downgrade policy (in `UpdateService` HPE OEM schema)
+* Workload Performance advisor (new `HpeWorkloadPerformanceAdvisor` HPE OEM schema)
+
+### Redfish 1.6 and OpenAPI
+
+iLO 5 version 1.40 and later is conformant with the new Redfish 1.6 requirement to fix certain resource URIs in the data model.
+
+Several resource URIs have been changed to conform to Redfish 1.6.  A properly written Redfish client which traverses the data model and finds the URIs dynamically should not be affected, but clients which make assumptions about URIs may require modififications.
+
+#### Trailing Slashes on URIs
+
+iLO 5 versions prior to 1.40 would return an HTTP 308 Redirect back to clients who requested URIs without a trailing slash.  Clients must follow 308 Redirect to the alternate URI (the same URI path with a trailing slash.)  In order to conform to Redfsh 1.6, iLO 5 1.40 changes this behavior and aliases the same resources at both URIs.  Requesting a URI with or without a trailing slash will return similar results with the exception that URIs in the returned data will be different.  GETs of URIs with trailing slash will return links (@odata.id) with trailing slashes, and GETs of URIs without trailing slashes will return links without trailing slashes.
+
+|Version|Behavior|
+|---|---|
+|1.10-1.3x|`GET /redfish/v1/Systems` redirects (308) to `/redfish/v1/Systems/`|
+|1.40-later|`GET /redfish/v1/Systems` returns result similar to `GET /redfish/v1/Systems/`|
+
+#### Changed URIs
+
+The following URIs have changed in iLO 5 1.40 and later to conform to Redfish 1.6:
+
+|Old URI in iLO 5 1.10-1.3x|New URI Required by Redfish 1.6|
+|---|---|
+|`/redfish/v1/Chassis/{chassisId}/Drives/{interface}/{driveId}`|`/redfish/v1/Chassis/{systemId}/Drives/{driveId}`|
+|`/redfish/v1/Systems/{systemId}/Storage/{interface}/{storageId}`|`/redfish/v1/Systems/{systemId}/Storage/{storageId}`|
+|`/redfish/v1/Systems/{systemId}/Storage/{interface}/{storageId}/Volumes/{volumeId}`|`/redfish/v1/Systems/{systemId}/Storage/{storageId}/Volumes/{volumeId}`|
+|`/redfish/v1/Systems/{systemId}/NetworkInterfaces/{nId}/NetworkDeviceFunctions/{ndfId}`|`/redfish/v1/Chassis/{chassisId}/NetworkAdapters/{nId}/NetworkDeviceFunctions/{ndfId}`|
+|`/redfish/v1/Systems/{systemId}/NetworkInterfaces/{nicId}/NetworkPorts/{nportId}`|`/redfish/v1/Chassis/{chassisId}/NetworkAdapters/{Id}/NetworkPorts/{nportId}`|
+|`/redfish/v1/Schemas/{Id}/`|`/redfish/v1/JsonSchemas/{Id}`|
+|`/redfish/v1/Schemas/`|`/redfish/v1/JsonSchemas`|
+|`/redfish/v1/Managers/{managerId}/NetworkService/`|`/redfish/v1/Managers/{managerId}/NetworkProtocol`|
 
 ## Key benefits of the iLO RESTful API
 

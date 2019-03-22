@@ -15,10 +15,13 @@ includes:
   - ilo5_authentication
   - ilo5_performingaction
   - ilo5_adaptation
+  - ilo5_accountservice
   - ilo5_exampleuse
   - ilo5_updateservicedoc
   - ilo5_biosdoc
   - ilo5_certauthdoc
+  - ilo5_vnic
+  - ilo5_securesystemerase
   - ilo5_smartstoragedoc
   - ilo5_errorhandling
   - ilo5_subscribing
