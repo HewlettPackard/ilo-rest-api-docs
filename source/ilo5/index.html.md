@@ -19,7 +19,7 @@ includes:
   - ilo5_exampleuse
   - ilo5_updateservicedoc
   - ilo5_biosdoc
-  - ilo5_certauthdoc
+  - ilo5_sslcertdoc
   - ilo5_vnic
   - ilo5_securesystemerase
   - ilo5_smartstoragedoc

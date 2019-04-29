@@ -73,11 +73,11 @@ OData-Version: 4.0
 
 **Prerequisites**: Configure iLO Settings privilege.
 
-/redfish/v1/managers/{item}/securityservice/certificateauthentication/ 
+/redfish/v1/managers/{item}/securityservice/httpscert/ 
 
 ```
 
-example “HpeCertAuth.ImportCACertificate” action:
+example “HpeHttpsCert.ImportCertificate” action:
 
 POST <target-uri>
 Content-Type: application/json

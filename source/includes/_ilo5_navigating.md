@@ -1,21 +1,13 @@
 # Navigating the Data Model
 
-Unlike some simple REST service, this API is designed to be implemented on many different models of servers and other IT infrastructure devices for years to come.  These devices may be quite different from one another.  For this reason, the API does not specify the URIs to various resources. Do not assume the BIOS version information is always at a particular URI.
+The Redfish API is designed to be implemented on many different models of servers and other IT infrastructure devices for years to come.  These devices may be quite different from one another.  For this reason, the Redfish API does not specify the URIs to various resources. For example, a client cannot assume the BIOS version information is always at a particular URI.
 
-This is more complex for the client, but is necessary to make sure the data model can change to accommodate various future server architectures without requiring specification changes. As an example, if the BIOS version is at `/redfish/v1/systems/1/`, and a client assumed it is always there, the client would then break when the interface is implemented on a different type of architecture with many compute nodes, each with its own BIOS version. 
+This is more complex for the client, but is necessary to make sure the data model can change to accommodate various future server architectures without requiring specification changes. As an example, if the BIOS version is at `/redfish/v1/Systems/1`, and a client assumed it is always there, the client would then break when the interface is implemented on a different type of architecture with many compute nodes, each with its own BIOS version, or on other vendor implementations. 
 
-<aside class="warning">
-A select few URIs are documented to be stable starting points. Your client code should not assume anything about the URIs that you find in the data model. You must treat them as opaque strings or your client will not interoperate with other implementations of the RESTful API.  
-</aside>
+## Redfish 1.6 (iLO 5 1.40 or later) URI Templates
+As of Redfish 1.6, a number of resource types have URI template specifications to be compatible with OpenAPI 3.0.  Please see the Redfish 1.6 CSDL schema for details on URI templates for specific types.
 
-The supported stable URIs are those referenced directly in this API reference and include:
-
-* /redfish/v1/
-* /redfish/v1/systems/
-* /redfish/v1/chassis/
-* /redfish/v1/managers/
-* /redfish/v1/sessions/
-
+A client must still perform GET operations on a Redfish API service in order to discover what resources are available.  For instance, just because a Chassis has a template of `/redfish/v1/Chassis/{ChassisId}` means that a client must still GET `/redfish/v1/Chassis` in order to find the valid values of `{ChassisId}`.
 
 ## Iterating Collections
 

@@ -341,6 +341,7 @@ HPE components update all applicable targets within a system. For that reason, t
 
 
 >Example that enables an component to be updated by either SUM or UEFI:
+
 ```json
 {
 	"Name": "Unique Client supplied friendly name of this task item.",
@@ -355,6 +356,7 @@ HPE components update all applicable targets within a system. For that reason, t
 ```
 
 >Example that enables an binary component to be updated by iLO:
+
 ```json
 {
 	"Name": "Unique Client supplied friendly name of this task item.",
@@ -362,7 +364,7 @@ HPE components update all applicable targets within a system. For that reason, t
 		"Bmc"
 	],
 	"Command": "ApplyUpdate",
-	"Component": "<component-name>",
+	"Component": "<component-name>"
 }
 ```
 
