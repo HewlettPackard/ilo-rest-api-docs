@@ -588,23 +588,15 @@ NOTE:   If an error occurs, indicated by a return code 4xx or 5xx, an ExtendedEr
 
           <h1 id="navigating-the-data-model">Navigating the Data Model</h1>
 
-<p>Unlike some simple REST service, this API is designed to be implemented on many different models of servers and other IT infrastructure devices for years to come.  These devices may be quite different from one another.  For this reason, the API does not specify the URIs to various resources. Do not assume the BIOS version information is always at a particular URI.</p>
+<p>The Redfish API is designed to be implemented on many different models of servers and other IT infrastructure devices for years to come.  These devices may be quite different from one another.  For this reason, the Redfish API does not specify the URIs to various resources. For example, a client cannot assume the BIOS version information is always at a particular URI.</p>
 
-<p>This is more complex for the client, but is necessary to make sure the data model can change to accommodate various future server architectures without requiring specification changes. As an example, if the BIOS version is at <code class="prettyprint">/redfish/v1/systems/1/</code>, and a client assumed it is always there, the client would then break when the interface is implemented on a different type of architecture with many compute nodes, each with its own BIOS version. </p>
+<p>This is more complex for the client, but is necessary to make sure the data model can change to accommodate various future server architectures without requiring specification changes. As an example, if the BIOS version is at <code class="prettyprint">/redfish/v1/Systems/1</code>, and a client assumed it is always there, the client would then break when the interface is implemented on a different type of architecture with many compute nodes, each with its own BIOS version, or on other vendor implementations. </p>
 
-<aside class="warning">
-A select few URIs are documented to be stable starting points. Your client code should not assume anything about the URIs that you find in the data model. You must treat them as opaque strings or your client will not interoperate with other implementations of the RESTful API.  
-</aside>
+<h2 id="redfish-1-6-ilo-5-1-40-or-later-uri-templates">Redfish 1.6 (iLO 5 1.40 or later) URI Templates</h2>
 
-<p>The supported stable URIs are those referenced directly in this API reference and include:</p>
+<p>As of Redfish 1.6, a number of resource types have URI template specifications to be compatible with OpenAPI 3.0.  Please see the Redfish 1.6 CSDL schema for details on URI templates for specific types.</p>
 
-<ul>
-<li>/redfish/v1/</li>
-<li>/redfish/v1/systems/</li>
-<li>/redfish/v1/chassis/</li>
-<li>/redfish/v1/managers/</li>
-<li>/redfish/v1/sessions/</li>
-</ul>
+<p>A client must still perform GET operations on a Redfish API service in order to discover what resources are available.  For instance, just because a Chassis has a template of <code class="prettyprint">/redfish/v1/Chassis/{ChassisId}</code> means that a client must still GET <code class="prettyprint">/redfish/v1/Chassis</code> in order to find the valid values of <code class="prettyprint">{ChassisId}</code>.</p>
 
 <h2 id="iterating-collections">Iterating Collections</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>iLO<span class="o">}</span>/redfish/v1/systems/ -i --insecure -u username:password -L
@@ -6470,33 +6462,31 @@ HPE components update all applicable targets within a system. For that reason, t
 </aside>
 
 <blockquote>
-<p>Example that enables an component to be updated by either SUM or UEFI:
-<code class="prettyprint">json
-{
-    &quot;Name&quot;: &quot;Unique Client supplied friendly name of this task item.&quot;,
-    &quot;UpdatableBy&quot;: [
-        &quot;Uefi&quot;,
-        &quot;RuntimeAgent&quot;
-    ],
-    &quot;Command&quot;: &quot;ApplyUpdate&quot;,
-    &quot;Component&quot;: &quot;&lt;component-name&gt;&quot;,
-    &quot;TPMOverride&quot;: true
-}
-</code></p>
-
-<p>Example that enables an binary component to be updated by iLO:
-<code class="prettyprint">json
-{
-    &quot;Name&quot;: &quot;Unique Client supplied friendly name of this task item.&quot;,
-    &quot;UpdatableBy&quot;: [
-        &quot;Bmc&quot;
-    ],
-    &quot;Command&quot;: &quot;ApplyUpdate&quot;,
-    &quot;Component&quot;: &quot;&lt;component-name&gt;&quot;,
-}
-</code></p>
+<p>Example that enables an component to be updated by either SUM or UEFI:</p>
 </blockquote>
-
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique Client supplied friendly name of this task item."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"UpdatableBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Uefi"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"RuntimeAgent"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplyUpdate"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;component-name&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TPMOverride"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example that enables an binary component to be updated by iLO:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique Client supplied friendly name of this task item."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"UpdatableBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Bmc"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ApplyUpdate"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;component-name&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>This creates a new task in the <code class="prettyprint">Pending</code> state at the end of the queue.  If it assigned to the <code class="prettyprint">Bmc</code> and is at the top of the queue, iLO starts operating on it immediately. Otherwise, the new task is operated on as soon as an updater runs and finds the new task.</p>
 
 <aside class="warning">
@@ -7125,9 +7115,9 @@ OData-Version: 4.0
 
 <p><strong>Prerequisites</strong>: Configure iLO Settings privilege.</p>
 
-<p>/redfish/v1/managers/{item}/securityservice/certificateauthentication/ </p>
+<p>/redfish/v1/managers/{item}/securityservice/httpscert/ </p>
 <pre class="highlight plaintext"><code>
-example “HpeCertAuth.ImportCACertificate” action:
+example “HpeHttpsCert.ImportCertificate” action:
 
 POST &lt;target-uri&gt;
 Content-Type: application/json
