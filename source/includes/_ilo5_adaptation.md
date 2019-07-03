@@ -4,6 +4,26 @@ This section is a guide to help client code adapt from the iLO 4 RESTful API to 
 ## Introduction
 The iLO 5 RESTful API is fully conformant with Redfish. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model to enable value for the customer.
 
+## iLO 5 has the following additions not implemented in iLO 4:
+* HPE Embedded Remote Support
+* HPE Persistent Memory
+* HPE Smart Storage and Logical drive configuration
+* Redfish 1.6 OpenAPI 3.0 support (URIs conform to Redfish 1.6 templates)
+* Redfish Advanced Communiation Device (NetworkAdapter) model for certain network adapters
+* Redfish Directory Authentication configuration
+* Redfish Firmware Inventory and `UpdateService`
+* Redfish Role based local user administration
+* Redfish Storage/Drive/Volume model for NVMe and other direct attached storage
+* Redfish TaskService for long running operations
+* Redfish Telemetry service for CPU metrics
+* Redfish host Interface ("Virtual NIC")
+* Workload Performance Advisor
+* iLO 5 Backup and Restore configuration
+* iLO 5 Certificate based authentication configuration
+* iLO 5 Component Update Repository
+* iLO 5 Firmware Recovery Set
+* iLO 5 One-button secure erase
+
 ## Chunked Transfer Encoding
 Unlike iLO 4, iLO 5 responds to all HTTP operations using Chunked Transfer Encoding. This enables features like $expand that require very large responses.
 
@@ -249,9 +269,9 @@ NOTES:
 
 ###  iLO 5 $expand Example
 
-GET /redfish/v1/Chassis/ (a collection without $expand)
+> GET /redfish/v1/Chassis (a collection without $expand)
 
-```
+```json
 {
   "@odata.context": "/redfish/v1/$metadata#Chassis",
   "@odata.etag": "W/\"C2E4D1CC\"",
@@ -269,9 +289,9 @@ GET /redfish/v1/Chassis/ (a collection without $expand)
 }
 ```
 
-GET /redfish/v1/Chassis/?$expand=. (a collection with $expand abbreviated for clarity)
+> GET /redfish/v1/Chassis?$expand=. (a collection with $expand abbreviated for clarity)
 
-```
+```json
 {
   "@odata.context": "/redfish/v1/$metadata#Chassis",
   "@odata.etag": "W/\"C2E4D1CC\"",
@@ -302,6 +322,25 @@ GET /redfish/v1/Chassis/?$expand=. (a collection with $expand abbreviated for cl
   "Name": "Computer System Chassis"
 }
 ```
+## iLO 5 "only" Query Parameter
+iLO 5 1.40 and later supports the `only` query parameter documented in the Redfish API specification.  This query parameter is ignored except on collections with only one member.  Examples include the `ComputerSystemCollection`, `ChassisCollection`, and `ManagerCollection`.
+
+###  iLO 5 `only` Example
+
+> GET /redfish/v1/Chassis?only
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.etag": "W/\"E85F6E4B\"",
+    "@odata.id": "/redfish/v1/Chassis/1/",
+    "@odata.type": "#Chassis.v1_6_0.Chassis",
+    "Id": "1",
+    "ChassisType": "RackMount",
+}
+```
+
+(JSON output is abbreviated)
 
 ## iLO 5 Data Model Changes
 

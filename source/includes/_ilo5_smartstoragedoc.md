@@ -187,6 +187,7 @@ A live version of this data is available in iLO-data/smartstorage/.
 
 ```json
 {
+    "DataGuard": "Disabled",
     "LogicalDrives": [
        {
           "CapacityGiB": 558,
@@ -211,6 +212,7 @@ A live version of this data is available in iLO-data/smartstorage/.
 
 ```json
 {
+    "DataGuard": "Disabled",
     "LogicalDrives": [
        {
           "LogicalDriveName": "MyLD",      

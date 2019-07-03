@@ -23,6 +23,8 @@ includes:
   - ilo5_vnic
   - ilo5_securesystemerase
   - ilo5_smartstoragedoc
+  - ilo5_configurepmm
+  - ilo5_drivebaymapping
   - ilo5_errorhandling
   - ilo5_subscribing
   - ilo5_resttool

@@ -387,6 +387,8 @@ See the section on Maintenance Windows later for more details on the use of Main
 
 If a client creates a Maintenance Window, this window may be specified (by `Id`) in the creation of a task.
 
+>Example that uses a Maintenance Window
+
 ```json
 {
     "Name": "Unique Client supplied friendly name of this task item.",
@@ -404,6 +406,7 @@ If a client creates a Maintenance Window, this window may be specified (by `Id`)
 Wait tasks can be used to insert time between two other tasks.  The `UpdatableBy` property should contain only one update agent chosen based upon the updater that needs the time.
 
 >Example that causes UEFI to Wait for 30 seconds:
+
 ```json
 {
 	"Name": "Pause 30 seconds",

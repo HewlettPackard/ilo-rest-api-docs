@@ -13,6 +13,7 @@ iLO 5's Redfish conformance details are available in this document in the "**iLO
 iLO 5 1.40 adds support for several Redfish features:
 
 * Redfish 1.6 support for the OpenAPI standard
+* Support for the `?only` query parameter for easier access to key data
 * Directory Services Configuration (`ExternalAccountProvider`)
 * Local account roles (`Role`)
 * TelemetryService support for CPU utilization (`TelemetryService`)
@@ -56,6 +57,13 @@ The following URIs have changed in iLO 5 1.40 and later to conform to Redfish 1.
 |`/redfish/v1/Schemas/{Id}/`|`/redfish/v1/JsonSchemas/{Id}`|
 |`/redfish/v1/Schemas/`|`/redfish/v1/JsonSchemas`|
 |`/redfish/v1/Managers/{managerId}/NetworkService/`|`/redfish/v1/Managers/{managerId}/NetworkProtocol`|
+
+#### New `?only` Query Parameter
+Starting in iLO 5 1.40, appending `?only` to GETs on single-member collections returns the one and only member instead.  This is a convenient and efficient way to get to important data faster.
+
+`GET /redfish/v1/Systems?only` returns the one and only `ComputerSystem` resource instead of the collection that includes it.
+
+This works for collections that have only one member.  Otherwise the GET returns the collection as if the query parameter was omitted.
 
 ## Key benefits of the iLO RESTful API
 

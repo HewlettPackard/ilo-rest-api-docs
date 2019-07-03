@@ -18458,10 +18458,10 @@ HpSmartStorageArrayController
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Links/PhysicalDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)|
-|```Links/LogicalDrives```|Collection of [HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)|
+|```Links/PhysicalDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|```Links/LogicalDrives```|Collection of [HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)|
 |```Links/StorageEnclosures```|Collection of [HpeSmartStorageStorageEnclosure](#hpesmartstoragestorageenclosure-v2_0_0-hpesmartstoragestorageenclosure)|
-|```Links/UnconfiguredDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)|
+|```Links/UnconfiguredDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 
 ### AdapterType
 Member of [HpeSmartStorageArrayController.v2_2_0.HpeSmartStorageArrayController](#hpesmartstoragearraycontroller-v2_2_0-hpesmartstoragearraycontroller)
@@ -19477,8 +19477,8 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 |Type|integer|
 |Read Only|True|
 
-## HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive
-```@odata.type: "#HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive"```
+## HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive
+```@odata.type: "#HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive"```
 
 HpSmartStorageDiskDrive
 ### Resource Instances
@@ -19489,7 +19489,7 @@ HpSmartStorageDiskDrive
 |```/redfish/v1/systems/{item}/smartstorage/hostbusadapters/{item}/diskdrives/{item}```||
 
 ### BlockSizeBytes
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19499,7 +19499,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### CapacityGB
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19509,7 +19509,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### CapacityLogicalBlocks
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19519,7 +19519,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### CapacityMiB
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19529,7 +19529,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### CarrierApplicationVersion
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19539,7 +19539,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### CarrierAuthenticationStatus
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19558,7 +19558,7 @@ The following are the supported values:
 |```NotApplicable```|Carrier does not support authentication|
 
 ### CurrentTemperatureCelsius
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19568,7 +19568,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### DiskDriveStatusReasons (array)
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 ```DiskDriveStatusReasons``` is an array containing elements of:
 
 
@@ -19602,7 +19602,7 @@ The following are the supported values:
 |```Unrecoverable```|The drive is in an unrecoverable condition|
 
 ### DiskDriveUse
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19622,7 +19622,7 @@ The following are the supported values:
 |```Unknown```|The current use of the disk drive is not known.|
 
 ### EncryptedDrive
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19632,7 +19632,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### EraseCompletionPercentage
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19642,7 +19642,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### ErasePattern
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19654,7 +19654,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 ### FirmwareVersion
 **FirmwareVersion.Current**
 **FirmwareVersion.Current.VersionString**
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19664,7 +19664,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### IndicatorLED
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19684,7 +19684,7 @@ The following are the supported values:
 |```Off```|The Indicator LED is off.|
 
 ### InterfaceSpeedMbps
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19694,7 +19694,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### InterfaceType
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19714,7 +19714,7 @@ The following are the supported values:
 |```Unknown```|Information is unavailable|
 
 ### LegacyBootPriority
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19732,7 +19732,7 @@ The following are the supported values:
 |```None```|Legacy boot not supported on this physical drive|
 
 ### Location
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19742,7 +19742,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### LocationFormat
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19760,7 +19760,7 @@ The following are the supported values:
 |```SwitchPort:SwitchBay:Bay```|This format typically used in a SAS switch context where the drive would be identified using the switch port, ICM bay number for the switch and drive bay|
 
 ### Manufacturer
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19770,7 +19770,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### MaximumTemperatureCelsius
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19780,7 +19780,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### MediaType
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19798,7 +19798,7 @@ The following are the supported values:
 |```SMR```|The drive media type is shingled magnetic recording|
 
 ### MinimumGoodFirmwareVersion
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19808,7 +19808,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### Model
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19818,7 +19818,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### NativeBlockSizeBytes
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19828,7 +19828,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### PhyCount
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19838,7 +19838,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### PortCount
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19848,7 +19848,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### PowerOnHours
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19858,7 +19858,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### RotationalSpeedRpm
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19868,7 +19868,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### SSDEnduranceUtilizationPercentage
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19878,7 +19878,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### SerialNumber
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19888,7 +19888,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### SpareRebuildMode
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19905,11 +19905,11 @@ The following are the supported values:
 |```Roaming```|This drive will permanently replace a failed drive. The failed drive will become a spare. This spare drive cannot be shared between arrays.|
 
 ### Status
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### TransferSpeedMbps
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19919,7 +19919,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.10|
 
 ### UncorrectedReadErrors
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19929,7 +19929,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.40|
 
 ### UncorrectedWriteErrors
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19939,7 +19939,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 |Added|iLO 5 1.40|
 
 ### WWID
-Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)
+Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)
 
 | | |
 |---|---|
@@ -19959,7 +19959,7 @@ Member of [HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive](#hpesmartst
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)|
+|```Members[]```|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 
 ### Members (array)
 Member of HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection
@@ -19995,7 +19995,7 @@ HpSmartStorageHostBusAdapter
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Links/Drives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)|
+|```Links/Drives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 
 ### FirmwareVersion
 **FirmwareVersion.Current**
@@ -20113,8 +20113,8 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 |Type|integer|
 |Read Only|True|
 
-## HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive
-```@odata.type: "#HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive"```
+## HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive
+```@odata.type: "#HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive"```
 
 HpSmartStorageLogicalDrive
 ### Resource Instances
@@ -20125,10 +20125,10 @@ HpSmartStorageLogicalDrive
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Links/DataDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive)|
+|```Links/DataDrives```|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 
 ### AccelerationMethod
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20147,7 +20147,7 @@ The following are the supported values:
 |```SmartCache```|Reads and writes to the logical drive are being cached by a caching logical drive.|
 
 ### BlockSizeBytes
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20157,7 +20157,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### CapacityMiB
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20167,7 +20167,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### DriveAccessName
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20177,7 +20177,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### DriveGeometryCylinders
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20187,7 +20187,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### DriveGeometryHeads
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20197,7 +20197,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### DriveGeometrySectors
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20207,7 +20207,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### InterfaceType
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20226,7 +20226,7 @@ The following are the supported values:
 |```Unknown```|Information is unavailable|
 
 ### LegacyBootPriority
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20243,7 +20243,7 @@ The following are the supported values:
 |```None```|Legacy boot not supported on this logical drive|
 
 ### LogicalDriveEncryption
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20253,7 +20253,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### LogicalDriveEncryptionDataKeysVolatile
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20263,7 +20263,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### LogicalDriveEncryptionDataKeysVolatileBackup
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20273,7 +20273,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### LogicalDriveEncryptionDataKeysVolatileStatus
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20293,7 +20293,7 @@ The following are the supported values:
 |```DeleteInProgress```|The volatile keys are being removed|
 
 ### LogicalDriveName
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20303,7 +20303,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### LogicalDriveNumber
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20313,7 +20313,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### LogicalDriveStatusReasons (array)
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 ```LogicalDriveStatusReasons``` is an array containing elements of:
 
 
@@ -20353,7 +20353,7 @@ The following are the supported values:
 |```NewLogDrvKeyRekeyRequestReceived```|The logical drive is encrypted and has received a request to rekey all data with a new logical drive encryption key. The logical drive is online|
 
 ### LogicalDriveType
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20373,7 +20373,7 @@ The following are the supported values:
 |```SplitMirrorSetBackupOrphan```|This drive was being used as the backup storage drive of a split mirror set that no longer exists|
 
 ### MediaType
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20393,7 +20393,7 @@ The following are the supported values:
 |```Unknown```|Information is unavailable|
 
 ### ParityInitializationCompletionPercentage
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20403,7 +20403,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### ParityInitializationType
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20420,7 +20420,7 @@ The following are the supported values:
 |```Rapid```|Both data and parity blocks are initialized in the foreground and the logical drive will not be available to the operating system until initialization completes|
 
 ### PartitionInformation
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20430,7 +20430,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### Raid
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20453,7 +20453,7 @@ The following are the supported values:
 |```60```|Fault tolerance is achieved by storing multiple sets parity data and striping the data across 8 or more disk drives|
 
 ### RebuildCompletionPercentage
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20463,7 +20463,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### SmartCacheState
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20488,11 +20488,11 @@ The following are the supported values:
 |```Unknown```|The state of the cache is unknown|
 
 ### Status
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### StripSizeBytes
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20502,7 +20502,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### StripeSizeBytes
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20512,7 +20512,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### TransformationCompletionPercentage
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20522,7 +20522,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 |Added|iLO 5 1.10|
 
 ### VolumeUniqueIdentifier
-Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)
+Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)
 
 | | |
 |---|---|
@@ -20541,7 +20541,7 @@ Member of [HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive](#hpes
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive)|
+|```Members[]```|[HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)|
 
 ### Members (array)
 Member of HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveCollection
@@ -24553,7 +24553,7 @@ The following are the supported values:
 |```LRNVDIMM```|
 |```SO_RDIMM_72b```|
 |```SO_UDIMM_72b```|
-|```DCPMM```|
+|```PMM```|
 
 ### Oem.Hpe.BlocksRead
 Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
@@ -24606,6 +24606,15 @@ The following are the supported values:
 |```GoodPartiallyInUse```|DIMM is functioning properly but partially in use.|
 |```MapOutConfiguration```|DIMM mapped out due to configuration error.|
 |```MapOutError```|DIMM mapped out due to training failure.|
+
+### Oem.Hpe.MaxOperatingSpeedMTs
+Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+
+| | |
+|---|---|
+|Description|Maximum capable speed of the device, in megatransfers per second (MT/s).|
+|Type|integer or null|
+|Read Only|True|
 
 ### Oem.Hpe.MinimumVoltageVoltsX10
 Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
@@ -24992,9 +25001,7 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|```Volatile```|Volatile memory|
 |```PMEM```|Byte accessible persistent memory|
-|```Block```|Block accesible memory|
 
 ### InterleaveSets (array)
 Member of [MemoryChunks.v1_2_2.MemoryChunks](#memorychunks-v1_2_2-memorychunks)

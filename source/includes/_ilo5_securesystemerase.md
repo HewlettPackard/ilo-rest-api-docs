@@ -95,3 +95,32 @@ The server will need to be re-provisioned to be used after this operation.
   * Date, time, DST, and time zone will be reset.
   * System will boot the most recent BIOS revision flashed.
 * Intelligent Provisioning will not boot and will need to be reinstalled.
+
+## Troubleshooting
+
+In some situations the One-button secure erase function may return an HTTP 500 Internal Server Error.
+
+> HTTP 500 Internal Server Error
+
+
+```json
+{
+    "error": {
+        "code": "iLO.0.10.ExtendedInfo",
+        "message": "See @Message.ExtendedInfo for more information.",
+        "@Message.ExtendedInfo": [
+            {
+                "MessageId": "Base.1.0.InternalError"
+            }
+        ],
+    }
+}
+
+```
+In the event of this error:
+
+1)	Check if the installed BIOS firmware supports One-button secure erase. Note: This feature is supported only on Gen10 servers and above that have been updated with SPP version 2019.03.0 or later.
+2)	If the system is already updated with the correct BIOS firmware version, then reboot the server. Once the system booted, execute the One-button secure erase again using POST action URI.
+
+For more troubleshooting tips and One-button secure erase FAQ, please refer *“Intelligent Provisioning User Guide for HPE ProLiant Gen10 Servers and HPE Synergy”*
+https://support.hpe.com/hpsc/doc/public/display?docId=a00017037en_us 
