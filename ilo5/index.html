@@ -269,6 +269,7 @@
 
 <ul>
 <li>Redfish 1.6 support for the OpenAPI standard</li>
+<li>Support for the <code class="prettyprint">?only</code> query parameter for easier access to key data</li>
 <li>Directory Services Configuration (<code class="prettyprint">ExternalAccountProvider</code>)</li>
 <li>Local account roles (<code class="prettyprint">Role</code>)</li>
 <li>TelemetryService support for CPU utilization (<code class="prettyprint">TelemetryService</code>)</li>
@@ -355,6 +356,14 @@
 <td><code class="prettyprint">/redfish/v1/Managers/{managerId}/NetworkProtocol</code></td>
 </tr>
 </tbody></table>
+
+<h4 id="new-only-query-parameter">New <code class="prettyprint">?only</code> Query Parameter</h4>
+
+<p>Starting in iLO 5 1.40, appending <code class="prettyprint">?only</code> to GETs on single-member collections returns the one and only member instead.  This is a convenient and efficient way to get to important data faster.</p>
+
+<p><code class="prettyprint">GET /redfish/v1/Systems?only</code> returns the one and only <code class="prettyprint">ComputerSystem</code> resource instead of the collection that includes it.</p>
+
+<p>This works for collections that have only one member.  Otherwise the GET returns the collection as if the query parameter was omitted.</p>
 
 <h2 id="key-benefits-of-the-ilo-restful-api">Key benefits of the iLO RESTful API</h2>
 
@@ -1035,6 +1044,29 @@ When writing new Redfish REST client code, the first example is the recommended 
 
 <p>The iLO 5 RESTful API is fully conformant with Redfish. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model to enable value for the customer.</p>
 
+<h2 id="ilo-5-has-the-following-additions-not-implemented-in-ilo-4">iLO 5 has the following additions not implemented in iLO 4:</h2>
+
+<ul>
+<li>HPE Embedded Remote Support</li>
+<li>HPE Persistent Memory</li>
+<li>HPE Smart Storage and Logical drive configuration</li>
+<li>Redfish 1.6 OpenAPI 3.0 support (URIs conform to Redfish 1.6 templates)</li>
+<li>Redfish Advanced Communiation Device (NetworkAdapter) model for certain network adapters</li>
+<li>Redfish Directory Authentication configuration</li>
+<li>Redfish Firmware Inventory and <code class="prettyprint">UpdateService</code></li>
+<li>Redfish Role based local user administration</li>
+<li>Redfish Storage/Drive/Volume model for NVMe and other direct attached storage</li>
+<li>Redfish TaskService for long running operations</li>
+<li>Redfish Telemetry service for CPU metrics</li>
+<li>Redfish host Interface (&ldquo;Virtual NIC&rdquo;)</li>
+<li>Workload Performance Advisor</li>
+<li>iLO 5 Backup and Restore configuration</li>
+<li>iLO 5 Certificate based authentication configuration</li>
+<li>iLO 5 Component Update Repository</li>
+<li>iLO 5 Firmware Recovery Set</li>
+<li>iLO 5 One-button secure erase</li>
+</ul>
+
 <h2 id="chunked-transfer-encoding">Chunked Transfer Encoding</h2>
 
 <p>Unlike iLO 4, iLO 5 responds to all HTTP operations using Chunked Transfer Encoding. This enables features like $expand that require very large responses.</p>
@@ -1291,54 +1323,78 @@ Client code should verify that it invokes actions according to the Redfish speci
 
 <h3 id="ilo-5-expand-example">iLO 5 $expand Example</h3>
 
-<p>GET /redfish/v1/Chassis/ (a collection without $expand)</p>
-<pre class="highlight plaintext"><code>{
-  "@odata.context": "/redfish/v1/$metadata#Chassis",
-  "@odata.etag": "W/\"C2E4D1CC\"",
-  "@odata.id": "/redfish/v1/Chassis/",
-  "@odata.type": "#ChassisCollection.ChassisCollection",
-  "Description": "Computer System Chassis View",
-  "MemberType": "#Chassis.v1_2_0.Chassis",
-  "Members": [
-    {
-      "@odata.id": "/redfish/v1/Chassis/1/"
-    }
-  ],
-  "Members@odata.count": 1,
-  "Name": "Computer System Chassis"
-}
-</code></pre>
-<p>GET /redfish/v1/Chassis/?$expand=. (a collection with $expand abbreviated for clarity)</p>
-<pre class="highlight plaintext"><code>{
-  "@odata.context": "/redfish/v1/$metadata#Chassis",
-  "@odata.etag": "W/\"C2E4D1CC\"",
-  "@odata.id": "/redfish/v1/Chassis/",
-  "@odata.type": "#ChassisCollection.ChassisCollection",
-  "Description": "Computer System Chassis View",
-  "MemberType": "#Chassis.v1_2_0.Chassis",
-  "Members": [
-    {
-      "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
-      "@odata.etag": "W/\"5D370742\"",
-      "@odata.id": "/redfish/v1/Chassis/1/",
-      "@odata.type": "#Chassis.v1_2_0.Chassis",
-      "ChassisType": "RackMount",
-      "Id": "1",
-      "Manufacturer": "HPE",
-      "Model": "ProLiant ML350 Gen10",
-      "Name": "Computer System Chassis",
-      "SKU": "SKU NUMBER",
-      "SerialNumber": "SERIAL NUMBER",
-      "Status": {
-        "Health": "OK",
-        "State": "Starting"
-      }
-    }
-  ],
-  "Members@odata.count": 1,
-  "Name": "Computer System Chassis"
-}
-</code></pre>
+<blockquote>
+<p>GET /redfish/v1/Chassis (a collection without $expand)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/$metadata#Chassis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W/</span><span class="se">\"</span><span class="s2">C2E4D1CC</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ChassisCollection.ChassisCollection"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer System Chassis View"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Chassis.v1_2_0.Chassis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Members"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Members@odata.count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer System Chassis"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>GET /redfish/v1/Chassis?$expand=. (a collection with $expand abbreviated for clarity)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/$metadata#Chassis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W/</span><span class="se">\"</span><span class="s2">C2E4D1CC</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ChassisCollection.ChassisCollection"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer System Chassis View"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Chassis.v1_2_0.Chassis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Members"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/$metadata#Chassis/Members/$entity"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@odata.etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W/</span><span class="se">\"</span><span class="s2">5D370742</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Chassis.v1_2_0.Chassis"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ChassisType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RackMount"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HPE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProLiant ML350 Gen10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer System Chassis"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SKU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU NUMBER"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERIAL NUMBER"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Health"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starting"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Members@odata.count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer System Chassis"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="ilo-5-only-query-parameter">iLO 5 &ldquo;only&rdquo; Query Parameter</h2>
+
+<p>iLO 5 1.40 and later supports the <code class="prettyprint">only</code> query parameter documented in the Redfish API specification.  This query parameter is ignored except on collections with only one member.  Examples include the <code class="prettyprint">ComputerSystemCollection</code>, <code class="prettyprint">ChassisCollection</code>, and <code class="prettyprint">ManagerCollection</code>.</p>
+
+<h3 id="ilo-5-only-example">iLO 5 <code class="prettyprint">only</code> Example</h3>
+
+<blockquote>
+<p>GET /redfish/v1/Chassis?only</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/$metadata#Chassis.Chassis"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W/</span><span class="se">\"</span><span class="s2">E85F6E4B</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Chassis.v1_6_0.Chassis"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ChassisType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RackMount"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>(JSON output is abbreviated)</p>
+
 <h2 id="ilo-5-data-model-changes">iLO 5 Data Model Changes</h2>
 
 <aside class="warning">
@@ -6508,6 +6564,10 @@ If a TPM is installed and in use on the system, the `&ldquo;TPMOverride&rdquo;: 
 <p>See the section on Maintenance Windows later for more details on the use of Maintenance Windows.</p>
 
 <p>If a client creates a Maintenance Window, this window may be specified (by <code class="prettyprint">Id</code>) in the creation of a task.</p>
+
+<blockquote>
+<p>Example that uses a Maintenance Window</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique Client supplied friendly name of this task item."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"UpdatableBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6523,19 +6583,17 @@ If a TPM is installed and in use on the system, the `&ldquo;TPMOverride&rdquo;: 
 <p>Wait tasks can be used to insert time between two other tasks.  The <code class="prettyprint">UpdatableBy</code> property should contain only one update agent chosen based upon the updater that needs the time.</p>
 
 <blockquote>
-<p>Example that causes UEFI to Wait for 30 seconds:
-<code class="prettyprint">json
-{
-    &quot;Name&quot;: &quot;Pause 30 seconds&quot;,
-    &quot;UpdatableBy&quot;: [
-        &quot;Uefi&quot;
-    ],
-    &quot;Command&quot;: &quot;Wait&quot;,
-    &quot;WaitTimeSeconds&quot;: 30
-}
-</code></p>
+<p>Example that causes UEFI to Wait for 30 seconds:</p>
 </blockquote>
-
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pause 30 seconds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"UpdatableBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Uefi"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wait"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"WaitTimeSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code class="prettyprint">WaitTimeSeconds</code> can be in the range 0-3600 seconds.s</p>
 
 <h4 id="retiring-and-removing-tasks">Retiring and Removing Tasks</h4>
@@ -7276,6 +7334,34 @@ manufacturing default state. The feature complies with specification NIST SP 800
 <li><p>Intelligent Provisioning will not boot and will need to be reinstalled.</p></li>
 </ul>
 
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>In some situations the One-button secure erase function may return an HTTP 500 Internal Server Error.</p>
+
+<blockquote>
+<p>HTTP 500 Internal Server Error</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO.0.10.ExtendedInfo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"See @Message.ExtendedInfo for more information."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Message.ExtendedInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"MessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Base.1.0.InternalError"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>In the event of this error:</p>
+
+<p>1)  Check if the installed BIOS firmware supports One-button secure erase. Note: This feature is supported only on Gen10 servers and above that have been updated with SPP version 2019.03.0 or later.
+2)  If the system is already updated with the correct BIOS firmware version, then reboot the server. Once the system booted, execute the One-button secure erase again using POST action URI.</p>
+
+<p>For more troubleshooting tips and One-button secure erase FAQ, please refer <em>“Intelligent Provisioning User Guide for HPE ProLiant Gen10 Servers and HPE Synergy”</em>
+https://support.hpe.com/hpsc/doc/public/display?docId=a00017037en_us </p>
+
           <h1 id="smartstorage-configuration">SmartStorage configuration</h1>
 
 <h2 id="introduction">Introduction</h2>
@@ -7459,6 +7545,7 @@ A live version of this data is available in iLO-data/smartstorage/.</p>
 <p>PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"DataGuard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disabled"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"LogicalDrives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="p">{</span><span class="w">
           </span><span class="s2">"CapacityGiB"</span><span class="p">:</span><span class="w"> </span><span class="mi">558</span><span class="p">,</span><span class="w">
@@ -7481,6 +7568,7 @@ A live version of this data is available in iLO-data/smartstorage/.</p>
 <p>PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"DataGuard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disabled"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"LogicalDrives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="p">{</span><span class="w">
           </span><span class="s2">"LogicalDriveName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyLD"</span><span class="p">,</span><span class="w">      
@@ -7558,6 +7646,522 @@ A live version of this data is available in iLO-data/smartstorage/.</p>
 </span></code></pre>
 <p>Sanitize is a long running operation and the drive is not available (for RAID config) until sanitize is complete. The status can be checked from the iLO/SmartStorage data.</p>
 
+          <h1 id="hpe-persistent-memory-configuration">HPE Persistent Memory Configuration</h1>
+
+<p>Configuration of HPE Persistent Memory featuring Intel Optane persistent memory modules (PMM) uses the Redfish MemoryChunk, MemoryDomain, and TaskService to manage goal configurations. Please note that the HPE RESTful Interface tool v2.5.0 provides commands for inventory and configuration of PMMs. The new HPE Persistent Memory Management Utility provides a graphical experience for managing PMMs. Both tools use the iLO RESTful API, but add a layer of abstraction for the user.</p>
+
+<h2 id="concepts-and-terms">Concepts and Terms</h2>
+
+<table><thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Interleave Set</td>
+<td>A group of Memory Regions that are interleaved together. Represented by a MemoryChunk in Redfish.</td>
+</tr>
+<tr>
+<td>Memory Chunk</td>
+<td>A Memory Chunk is a group of one or more regions. The chunk represents an interleave set. Memory Domains and Chunks will ONLY be reported for Persistent Regions. Volatile Regions will be treated just like DIMMs with no such data reported.</td>
+</tr>
+<tr>
+<td>Memory Domain</td>
+<td>Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.  Informational only, not configurable.</td>
+</tr>
+<tr>
+<td>Memory Region</td>
+<td>A region is a portion of a DIMM of a specific size and mode. A DIMM can have one or more regions. Regions can be the same or different mode on a DIMM.</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>For PMM, this is a device made available in filesystem (OS) source.</td>
+</tr>
+</tbody></table>
+
+<h2 id="overview">Overview</h2>
+
+<p>To create a MemoryChunk and Regions required, POST a MemoryChunk to the MemoryChunkCollection in a specific MemoryDomain. In the POST, list the DIMMs that should be included in MemorySet for the MemoryChunk, based on the <code class="prettyprint">InterleavableMemorySets</code> in the MemoryDomain. All DIMMs on the socket related to the MemoryDomain must be configured in a MemoryChunk in order for the configuration to succeed.</p>
+
+<p>To delete a MemoryChunk, DELETE the MemoryChunk from the MemoryChunkCollection. Deleting a MemoryChunk will result in the corresponding memory region being set to volatile memory.</p>
+
+<p>POST will only be supported for persistent Memory Chunks. Remaining capacity will be configured as volatile. Only persistent Memory Chunks will be reported in the system, since volatile interleaving is not reported for standard DIMMs.</p>
+
+<p>Only one Interleaved MemoryChunk is supported, and that Interleaved MemoryChunk must include all DIMMs on that socket. This matches what is specified in the MemoryDomain&rsquo;s <code class="prettyprint">InterleavableMemorySets</code>. If several POST requests are issued to configure multiple Interleaved MemoryChunks on a socket, iLO will reject the POST. iLO ensures all CPU installed PMMs are included in the memory set for a POST that is creating an interleaved Memory Chunk. This also checks for duplicate DIMM entries.</p>
+
+<h4 id="memory-population-violations">Memory Population Violations</h4>
+
+<p>If the memory population rules are violated, then configuration through the iLO RESTful API is not supported. Configuration may fail or have unexpected results.</p>
+
+<h3 id="memorychunk-post-properties">MemoryChunk POST properties</h3>
+
+<ul>
+<li><code class="prettyprint">AddressRangeType</code>: required</li>
+<li><code class="prettyprint">MemoryChunkSizeMiB</code>: optional, default value is 0. Maximum is the sum total of the CapacityMiB of each Memory in the <code class="prettyprint">InterleaveSets</code>. Specify this or <code class="prettyprint">MemoryChunkSizePercentage</code>, but not both. In order to create the PMM goal configuration, sizes will be converted to a percentage. During this conversion, the size may change slightly.</li>
+<li><code class="prettyprint">IsMirrorEnabled</code>: optional, default value is false</li>
+<li><code class="prettyprint">IsSpare</code>: optional, default is false.</li>
+<li><code class="prettyprint">InterleaveSets</code>: required. Must match one of the <code class="prettyprint">InterleavableMemorySets</code> in the corresponding MemoryDomain.  If <code class="prettyprint">InterleaveSet</code> is empty, all possible Memory in the Memory Domain will be included in the Memory Chunk by default. BIOS will use best interleaving.</li>
+<li><code class="prettyprint">Oem.Hpe.MemoryChunkSizePercentage</code>: optional, default value is 0. Specify this or <code class="prettyprint">MemoryChunkSizeMiB</code>, but not both. <code class="prettyprint">MemoryChunkSizePercentage</code> is recommended.</li>
+</ul>
+
+<p><strong>Note</strong>: The values specified by <code class="prettyprint">MemoryChunkSizeMiB</code> or <code class="prettyprint">MemoryChunkSizePercentage</code> must be the same across all POST requests on a given socket (Memory Domain).</p>
+
+<h4 id="example-memorychunk-post">Example MemoryChunk POST</h4>
+
+<p>The example below is a POST body for creating a MemoryChunk using the <code class="prettyprint">MemoryChunkSizePercentage</code> property. The PMMs on processor 1 in slots 6 and 7 will be interleaved and provisioned to 50% persistent memory (App Direct) mode. The remaining 50% is set to volatile (memory) mode.</p>
+
+<blockquote>
+<p>POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+       </span><span class="p">}</span><span class="w">    
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Memory"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/proc1dimm6/"</span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Memory"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/proc1dimm7/"</span><span class="p">}</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+<h2 id="configuration-tasks">Configuration Tasks</h2>
+
+<p>Since the POST and DELETE modifications to the MemoryChunks are applied on system reboot, iLO will create a Task for each request. The Tasks are managed by the TaskService. On success, the POST and DELETE responses will include information about the corresponding Task. All the staged Tasks will be provided to BIOS on reboot. BIOS will process all the Tasks, in order, to create new Goal Configurations for each impacted PMMs. If Goal Configurations cannot be created, then ALL of the Tasks will fail, and the Task status will report the reason for the failure. PATCH to the MemoryChunk is not supported, so reconfiguration of existing configurations must first DELETE the existing MemoryChunks before creating a new configuration.</p>
+
+<p>Example response to a MemoryChunk POST:</p>
+
+<blockquote>
+<p>Status: 202 Accepted</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/$metadata#Task.Task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.etag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W/</span><span class="se">\"</span><span class="s2">D793BCE6</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/TaskService/Tasks/1545/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Task.v1_3_0.Task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1545"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO Task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 1545"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"HttpOperation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"JsonBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">AddressRangeType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">PMEM</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">InterleaveSets</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">Memory</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">@odata.id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/redfish/v1/Systems/1/Memory/proc1dimm6/</span><span class="se">\"</span><span class="s2">}},{</span><span class="se">\"</span><span class="s2">Memory</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">@odata.id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/redfish/v1/Systems/1/Memory/proc1dimm7/</span><span class="se">\"</span><span class="s2">}}],</span><span class="se">\"</span><span class="s2">Oem</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Hpe</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">MemoryChunkSizePercentage</span><span class="se">\"</span><span class="s2">:100}}}"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"TargetUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"StartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-06T16:18:50Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TaskMonitor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/TaskService/TaskMonitors/1545/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TaskState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="post-and-task-limits">POST and Task limits</h3>
+
+<p>iLO will limit the total number of Tasks to a minimum of 192. </p>
+
+<h2 id="configuration-sequencing">Configuration Sequencing</h2>
+
+<p>The intent of configuration will only be inferred from the sequence in which the requests are made. As such, any DELETE requests must precede any POST requests relating to MemoryDomains on the same socket. A DELETE request and a POST request may be performed in the same reboot, as long as they follow this rule.</p>
+
+<h2 id="example-1-reconfigure-to-change-interleaving">Example 1: Reconfigure to Change Interleaving</h2>
+
+<p><strong>Start</strong>: Example configuration is two PMMs, A1 and A2, of 16 GiB each on a single socket on the same memory controller. There are two existing MemoryChunks, MC1 and MC2, for 100% persistent memory non-interleaved.</p>
+
+<p><strong>Goal</strong>: Reconfigure these two PMMs to be 100% persistent memory interleaved.</p>
+
+<p><strong>Solution</strong>: The client would first issue a DELETE request on MC1 and a separate DELETE request on MC2. This would create two New Tasks in the 
+TaskService. The client would then issue a POST request on the MemoryDomain&rsquo;s Memory Chunk Collection. The POST body includes DIMMs A1 and A2 in the corresponding <code class="prettyprint">InterleaveSets</code> with an 
+<code class="prettyprint">Oem.Hpe.MemoryChunkSizePercentage</code> of 100% or a <code class="prettyprint">MemoryChunkSizeMiB</code> of 32GiB. This would result in three New Tasks in the TaskService queue to be consumed on 
+reboot. See details steps below:</p>
+
+<p>Step 1. Delete MC1</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/MC1</code></p>
+</blockquote>
+
+<p>Step 2. Delete MC2</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/MC2</code></p>
+</blockquote>
+
+<p>Step 3. Create new configuration: <strong>Option 1</strong> using MemoryChunkSizePercentage</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A1/"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A2/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 4. Create new configuration: <strong>Option 2</strong> using MemoryChunkSizeMiB</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"MemoryChunkSizeMiB"</span><span class="p">:</span><span class="w"> </span><span class="mi">32768</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A1/"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A2/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 5. Reboot system to apply changes staged in iLO as Tasks.</p>
+
+<h2 id="example-2-reconfigure-to-change-memory-provisioning-on-two-socket-system">Example 2: Reconfigure to change Memory Provisioning on Two-Socket System</h2>
+
+<p><strong>Start</strong>: Example configuration is two PMMs, A1 and A2, of 16GiB each on a single socket on the same memory controller. There are two existing MemoryChunks, MC1 and MC2, for 100% persistent memory non-interleaved. Also, two PMMs, B1 and B2, of 16GiB each on a single socket (separate than A1 and A2) on the same memory controller with two existing MemoryChunks, MC3 and MC4, for 100% persistent memory non-interleaved.</p>
+
+<p><strong>Goal</strong>: Reconfigure these four PMMs to be 50% persistent memory non-interleaved. The remaining 50% is volatile (memory mode).</p>
+
+<p><strong>Solution</strong>: The client would first issue separate DELETE requests on MC1, MC2, MC3, and MC4. This would create four New Tasks in the TaskService. The client would then issue a POST request on the Memroy Chunk Collection of the MemoryDomain corresponding to A1 with A1 in the corresponding <code class="prettyprint">InterleaveSets</code> and an <code class="prettyprint">Oem.Hpe.MemoryChunkSizePercentage</code> of 50% or a <code class="prettyprint">MemoryChunkSizeMiB</code> of 16GiB. The client would repeat this POST request on the MemoryDomains corresponding to A2, B1, and B2 with each of those respective DIMMs in their own <code class="prettyprint">InterleaveSets</code>. This would result in eight New Tasks in the TaskService queue that would be consumed on reboot. See detailed steps below:</p>
+
+<p>Step 1. Delete MC1</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/MC1</code></p>
+</blockquote>
+
+<p>Step 2. Delete MC2</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/MC2</code></p>
+</blockquote>
+
+<p>Step 3. Delete MC3</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks/MC3</code></p>
+</blockquote>
+
+<p>Step 4. Delete MC4</p>
+
+<blockquote>
+<p>DELETE <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks/MC4</code></p>
+</blockquote>
+
+<p>Step 5. Create new configuration using MemoryChunkSizePercentage for A1.</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A1/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 6. Create new configuration using MemoryChunkSizePercentage for A2.</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/A2/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 7. Create new configuration using MemoryChunkSizePercentage for B1.</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/B1/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 8. Create new configuration using MemoryChunkSizePercentage for B2.</p>
+
+<blockquote>
+<p>POST <code class="prettyprint">/redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"AddressRangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMEM"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Oem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"Hpe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"MemoryChunkSizePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="s2">"InterleaveSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"Memory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Systems/1/Memory/B2/"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Step 9. Reboot system to apply changes staged in iLO as Tasks.</p>
+
+          <h1 id="managing-apollo-drive-bay-mapping">Managing Apollo Drive Bay Mapping</h1>
+
+<p>The HPE Apollo 2000 System with the HPE Apollo r2800 Chassis (including the Storage Expander Backplane) supports 24 SFF HPE SmartDrives. The SFF drive bays can be assigned to specific server nodes.</p>
+
+<p><strong>CAUTION: Changing the drive bay mapping configuration might cause data loss or data corruption. For example, consider a configuration with drive bays two through seven assigned to node 1, with the drives configured as a RAID0 volume. Data corruption might occur if you change the drive bay mapping so that the configured drives are no longer available.</strong></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li>HPE iLO 5 firmware 1.20 or later </li>
+<li>Storage enclosure processor firmware 1.00 or later</li>
+<li>Chassis firmware 1.2.10 or later</li>
+</ul>
+
+<h2 id="getting-host-port-topology-details">Getting host port topology details</h2>
+
+<p>The HostPortsInfo JSON object displays the node number and SAS controller associated with each server host port. Before you change the drive bay mapping, HPE recommends using the following REST API to view and understand the PortNumber mapping: </p>
+
+<blockquote>
+<p>GET /redfish/v1/Chassis/1/AccHddService</p>
+
+<p>This action returns the HostPortsInfo JSON object.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"HostPortsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"NodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SlotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"NodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SlotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"NodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SlotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"NodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SlotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="getting-current-and-pending-drive-bay-mapping">Getting current and pending drive bay mapping</h2>
+
+<blockquote>
+<p>GET /redfish/v1/Chassis/1/AccHddService/zone</p>
+</blockquote>
+
+<p>This action returns the CurrentZoneConfiguration and PendingZoneConfiguration JSON objects.</p>
+
+<blockquote>
+<p>The CurrentZoneConfiguration JSON object displays the current drive bay mapping in the chassis.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"CurrentZoneConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"HostPort"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>**Note: The value PortNumber null indicates that a drive bay is not assigned.</em>*</p>
+
+<blockquote>
+<p>The PendingZoneConfiguration JSON object displays the pending drive bay mapping configuration. This configuration will not be applied until all nodes remain powered off for at least 5 seconds.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"PendingZoneConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"HostPort"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>**Note: The value PortNumber null indicates that a drive bay is not assigned.</em>*</p>
+
+<h2 id="configuring-drive-bay-mapping">Configuring drive bay mapping</h2>
+
+<p>You can make drive bay mapping configuration changes from any server node. The changes take effect when all server nodes in the Apollo 2000 system chassis are powered off and the Chassis firmware is able to reset the Storage Expander backplane. All nodes must remain powered off for at least 5 seconds after you initiate the configuration change.</p>
+
+<p>The following example shows three drive bays assigned to each node.</p>
+
+<blockquote>
+<p>POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.ConfigureZone</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"HostPort"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="mi">3</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="mi">8</span><span class="p">,</span><span class="w">
+          </span><span class="mi">9</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">13</span><span class="p">,</span><span class="w">
+          </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="mi">15</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"BayNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="mi">21</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"PortNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This action returns a response indicating that all server nodes in the chassis must remain powered off for at least 5 seconds for the changes to take effect.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO.0.10.ExtendedInfo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"See @Message.ExtendedInfo for more information."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Message.ExtendedInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"MessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO.2.9.ChassisResetRequired"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="setting-drive-bay-mapping-to-the-default-configuration">Setting drive bay mapping to the default configuration</h2>
+
+<p>The default configuration divides the 24 SFF drive bays by the number of server host ports in the Apollo 2000 Chassis. In a configuration with four 1U servers, the default drive bay configuration is six drive bays allocated to each of the four server slots. In a configuration with two 2U servers, the default drive bay configuration is 12 drive bays allocated to each of the two server slots.</p>
+
+<p>POST an empty JSON object to URI to set drive bay mapping to the default configuration.</p>
+
+<blockquote>
+<p>POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.LoadDefault</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<p>This action returns a response indicating that all server nodes in the chassis must remain powered off for at least 5 seconds for the changes to take effect.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO.0.10.ExtendedInfo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"See @Message.ExtendedInfo for more information."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"@Message.ExtendedInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"MessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iLO.2.9.ChassisResetRequired"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
           <h1 id="error-messages-and-registries-in-the-ilo-restful-api">Error messages and registries in the iLO RESTful API</h1>
 
 <blockquote>
@@ -8332,23 +8936,23 @@ RESTful API. For more information, see: <a href="http://www.hpe.com/info/resttoo
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives</code></td>
-<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives/{item}</code></td>
-<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives</code></td>
-<td style="text-align: left">Collection of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
+<td style="text-align: left">Collection of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}</code></td>
-<td style="text-align: left"><a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
+<td style="text-align: left"><a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/DataDrives</code></td>
-<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/StorageEnclosures</code></td>
@@ -8360,11 +8964,11 @@ RESTful API. For more information, see: <a href="http://www.hpe.com/info/resttoo
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives</code></td>
-<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives/{item}</code></td>
-<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters</code></td>
@@ -8376,11 +8980,11 @@ RESTful API. For more information, see: <a href="http://www.hpe.com/info/resttoo
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives</code></td>
-<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left">Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives/{item}</code></td>
-<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td style="text-align: left"><a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">/redfish/v1/Systems/{item}/SmartStorageConfig</code></td>
@@ -57589,11 +58193,11 @@ See the Redfish standard schema and specification for information on common Stat
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Links/PhysicalDrives</code></td>
-<td>Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td>Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">Links/LogicalDrives</code></td>
-<td>Collection of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
+<td>Collection of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">Links/StorageEnclosures</code></td>
@@ -57601,7 +58205,7 @@ See the Redfish standard schema and specification for information on common Stat
 </tr>
 <tr>
 <td><code class="prettyprint">Links/UnconfiguredDrives</code></td>
-<td>Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td>Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 </tbody></table>
 
@@ -60412,9 +61016,9 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 </tr>
 </tbody></table>
 
-<h2 id="hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</h2>
+<h2 id="hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</h2>
 
-<p><code class="prettyprint">@odata.type: &quot;#HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive&quot;</code></p>
+<p><code class="prettyprint">@odata.type: &quot;#HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive&quot;</code></p>
 
 <p>HpSmartStorageDiskDrive</p>
 
@@ -60442,7 +61046,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="blocksizebytes">BlockSizeBytes</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60470,7 +61074,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="capacitygb">CapacityGB</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60498,7 +61102,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="capacitylogicalblocks">CapacityLogicalBlocks</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60526,7 +61130,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="capacitymib">CapacityMiB</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60554,7 +61158,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="carrierapplicationversion">CarrierApplicationVersion</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60582,7 +61186,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="carrierauthenticationstatus">CarrierAuthenticationStatus</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60636,7 +61240,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="currenttemperaturecelsius">CurrentTemperatureCelsius</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60664,7 +61268,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="diskdrivestatusreasons-array">DiskDriveStatusReasons (array)</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a>
 <code class="prettyprint">DiskDriveStatusReasons</code> is an array containing elements of:</p>
 
 <table><thead>
@@ -60771,7 +61375,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="diskdriveuse">DiskDriveUse</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60829,7 +61433,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="encrypteddrive">EncryptedDrive</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60857,7 +61461,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="erasecompletionpercentage">EraseCompletionPercentage</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60885,7 +61489,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <h3 id="erasepattern">ErasePattern</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60915,7 +61519,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 
 <p><strong>FirmwareVersion.Current</strong>
 <strong>FirmwareVersion.Current.VersionString</strong>
-Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -60943,7 +61547,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="indicatorled">IndicatorLED</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61001,7 +61605,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="interfacespeedmbps">InterfaceSpeedMbps</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61029,7 +61633,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="interfacetype">InterfaceType</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61087,7 +61691,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="legacybootpriority">LegacyBootPriority</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61137,7 +61741,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="location">Location</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61165,7 +61769,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="locationformat">LocationFormat</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61215,7 +61819,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="manufacturer">Manufacturer</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61243,7 +61847,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="maximumtemperaturecelsius">MaximumTemperatureCelsius</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61271,7 +61875,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="mediatype">MediaType</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61321,7 +61925,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="minimumgoodfirmwareversion">MinimumGoodFirmwareVersion</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61349,7 +61953,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="model">Model</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61377,7 +61981,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="nativeblocksizebytes">NativeBlockSizeBytes</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61405,7 +62009,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="phycount">PhyCount</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61433,7 +62037,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="portcount">PortCount</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61461,7 +62065,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="poweronhours">PowerOnHours</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61489,7 +62093,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="rotationalspeedrpm">RotationalSpeedRpm</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61517,7 +62121,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="ssdenduranceutilizationpercentage">SSDEnduranceUtilizationPercentage</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61545,7 +62149,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="serialnumber">SerialNumber</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61573,7 +62177,7 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="sparerebuildmode">SpareRebuildMode</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61619,12 +62223,12 @@ Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">Hp
 
 <h3 id="status">Status</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a>
 See the Redfish standard schema and specification for information on common Status object.</p>
 
 <h3 id="transferspeedmbps">TransferSpeedMbps</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61652,7 +62256,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="uncorrectedreaderrors">UncorrectedReadErrors</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61680,7 +62284,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="uncorrectedwriteerrors">UncorrectedWriteErrors</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61708,7 +62312,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="wwid">WWID</h3>
 
-<p>Member of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_0_1.HpeSmartStorageDiskDrive</a></p>
+<p>Member of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive</a></p>
 
 <table><thead>
 <tr>
@@ -61766,7 +62370,7 @@ See the Redfish standard schema and specification for information on common Stat
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Members[]</code></td>
-<td><a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td><a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 </tbody></table>
 
@@ -61852,7 +62456,7 @@ Member of HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection<
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Links/Drives</code></td>
-<td>Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td>Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 </tbody></table>
 
@@ -62157,9 +62761,9 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 </tr>
 </tbody></table>
 
-<h2 id="hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</h2>
+<h2 id="hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</h2>
 
-<p><code class="prettyprint">@odata.type: &quot;#HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive&quot;</code></p>
+<p><code class="prettyprint">@odata.type: &quot;#HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive&quot;</code></p>
 
 <p>HpSmartStorageLogicalDrive</p>
 
@@ -62187,13 +62791,13 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Links/DataDrives</code></td>
-<td>Collection of <a href="#hpesmartstoragediskdrive-v2_0_1-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
+<td>Collection of <a href="#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive">HpeSmartStorageDiskDrive</a></td>
 </tr>
 </tbody></table>
 
 <h3 id="accelerationmethod">AccelerationMethod</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62247,7 +62851,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="blocksizebytes">BlockSizeBytes</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62275,7 +62879,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="capacitymib">CapacityMiB</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62303,7 +62907,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="driveaccessname">DriveAccessName</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62331,7 +62935,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="drivegeometrycylinders">DriveGeometryCylinders</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62359,7 +62963,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="drivegeometryheads">DriveGeometryHeads</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62387,7 +62991,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="drivegeometrysectors">DriveGeometrySectors</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62415,7 +63019,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="interfacetype">InterfaceType</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62469,7 +63073,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="legacybootpriority">LegacyBootPriority</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62515,7 +63119,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldriveencryption">LogicalDriveEncryption</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62543,7 +63147,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldriveencryptiondatakeysvolatile">LogicalDriveEncryptionDataKeysVolatile</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62571,7 +63175,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldriveencryptiondatakeysvolatilebackup">LogicalDriveEncryptionDataKeysVolatileBackup</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62599,7 +63203,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldriveencryptiondatakeysvolatilestatus">LogicalDriveEncryptionDataKeysVolatileStatus</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62657,7 +63261,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldrivename">LogicalDriveName</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62685,7 +63289,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldrivenumber">LogicalDriveNumber</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62713,7 +63317,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldrivestatusreasons-array">LogicalDriveStatusReasons (array)</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a>
 <code class="prettyprint">LogicalDriveStatusReasons</code> is an array containing elements of:</p>
 
 <table><thead>
@@ -62844,7 +63448,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="logicaldrivetype">LogicalDriveType</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62902,7 +63506,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="mediatype">MediaType</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62960,7 +63564,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="parityinitializationcompletionpercentage">ParityInitializationCompletionPercentage</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -62988,7 +63592,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="parityinitializationtype">ParityInitializationType</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63034,7 +63638,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="partitioninformation">PartitionInformation</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63062,7 +63666,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="raid">Raid</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63132,7 +63736,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="rebuildcompletionpercentage">RebuildCompletionPercentage</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63160,7 +63764,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="smartcachestate">SmartCacheState</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63238,12 +63842,12 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 
 <h3 id="status">Status</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a>
 See the Redfish standard schema and specification for information on common Status object.</p>
 
 <h3 id="stripsizebytes">StripSizeBytes</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63271,7 +63875,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="stripesizebytes">StripeSizeBytes</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63299,7 +63903,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="transformationcompletionpercentage">TransformationCompletionPercentage</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63327,7 +63931,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 <h3 id="volumeuniqueidentifier">VolumeUniqueIdentifier</h3>
 
-<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_2_1.HpeSmartStorageLogicalDrive</a></p>
+<p>Member of <a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive</a></p>
 
 <table><thead>
 <tr>
@@ -63381,7 +63985,7 @@ See the Redfish standard schema and specification for information on common Stat
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Members[]</code></td>
-<td><a href="#hpesmartstoragelogicaldrive-v2_2_1-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
+<td><a href="#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive">HpeSmartStorageLogicalDrive</a></td>
 </tr>
 </tbody></table>
 
@@ -74166,7 +74770,7 @@ Member of <a href="#memory-v1_7_0-memory">Memory.v1_7_0.Memory</a></p>
 <td><code class="prettyprint">SO_UDIMM_72b</code></td>
 </tr>
 <tr>
-<td><code class="prettyprint">DCPMM</code></td>
+<td><code class="prettyprint">PMM</code></td>
 </tr>
 </tbody></table>
 
@@ -74329,6 +74933,30 @@ Member of <a href="#memory-v1_7_0-memory">Memory.v1_7_0.Memory</a></p>
 <tr>
 <td><code class="prettyprint">MapOutError</code></td>
 <td>DIMM mapped out due to training failure.</td>
+</tr>
+</tbody></table>
+
+<h3 id="oem-hpe-maxoperatingspeedmts">Oem.Hpe.MaxOperatingSpeedMTs</h3>
+
+<p>Member of <a href="#memory-v1_7_0-memory">Memory.v1_7_0.Memory</a></p>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Description</td>
+<td>Maximum capable speed of the device, in megatransfers per second (MT/s).</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>integer or null</td>
+</tr>
+<tr>
+<td>Read Only</td>
+<td>True</td>
 </tr>
 </tbody></table>
 
@@ -75346,16 +75974,8 @@ See the Redfish standard schema and specification for information on common Stat
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">Volatile</code></td>
-<td>Volatile memory</td>
-</tr>
-<tr>
 <td><code class="prettyprint">PMEM</code></td>
 <td>Byte accessible persistent memory</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Block</code></td>
-<td>Block accesible memory</td>
 </tr>
 </tbody></table>
 
@@ -97560,7 +98180,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ahsdisabled">iLO.2.7.AHSDisabled</h3>
+<h3 id="ilo-2-8-ahsdisabled">iLO.2.8.AHSDisabled</h3>
 
 <p>Modifying AHS properties is not possible with AHS disabled.</p>
 
@@ -97584,7 +98204,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-accepted">iLO.2.7.Accepted</h3>
+<h3 id="ilo-2-8-accepted">iLO.2.8.Accepted</h3>
 
 <p>Indicates that one or more properties were correctly changed, but may not be in effect yet.</p>
 
@@ -97608,7 +98228,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-actionparametervaluenotinlist">iLO.2.7.ActionParameterValueNotInList</h3>
+<h3 id="ilo-2-8-actionparametervaluenotinlist">iLO.2.8.ActionParameterValueNotInList</h3>
 
 <p>Indicates that the correct value type was supplied for the action parameter, but the value is not supported. (The value is not in the enumeration list.)</p>
 
@@ -97632,7 +98252,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-alertdestinationassociationerror">iLO.2.7.AlertDestinationAssociationError</h3>
+<h3 id="ilo-2-8-alertdestinationassociationerror">iLO.2.8.AlertDestinationAssociationError</h3>
 
 <p>AlertDestination cannot be configured with both SNMPv1 and SNMPv3.</p>
 
@@ -97656,7 +98276,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-alertmailfeaturedisabled">iLO.2.7.AlertMailFeatureDisabled</h3>
+<h3 id="ilo-2-8-alertmailfeaturedisabled">iLO.2.8.AlertMailFeatureDisabled</h3>
 
 <p>AlertMail feature is disabled.</p>
 
@@ -97680,7 +98300,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-alreadyinprogress">iLO.2.7.AlreadyInProgress</h3>
+<h3 id="ilo-2-8-alreadyinprogress">iLO.2.8.AlreadyInProgress</h3>
 
 <p>An operation is already in progress.</p>
 
@@ -97704,7 +98324,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-alreadyuptodate">iLO.2.7.AlreadyUpToDate</h3>
+<h3 id="ilo-2-8-alreadyuptodate">iLO.2.8.AlreadyUpToDate</h3>
 
 <p>The update did not occur because the component was already up to date.</p>
 
@@ -97728,7 +98348,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-apmpowercapmodeinused">iLO.2.7.ApmPowerCapModeInUsed</h3>
+<h3 id="ilo-2-8-apmpowercapmodeinused">iLO.2.8.ApmPowerCapModeInUsed</h3>
 
 <p>Operation is currently unavailable because the power regulator is set to APM Power Capping Mode.</p>
 
@@ -97752,7 +98372,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-arraypropertyalreadyexists">iLO.2.7.ArrayPropertyAlreadyExists</h3>
+<h3 id="ilo-2-8-arraypropertyalreadyexists">iLO.2.8.ArrayPropertyAlreadyExists</h3>
 
 <p>Duplicate value.</p>
 
@@ -97776,7 +98396,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-arraypropertyoutofbound">iLO.2.7.ArrayPropertyOutOfBound</h3>
+<h3 id="ilo-2-8-arraypropertyoutofbound">iLO.2.8.ArrayPropertyOutOfBound</h3>
 
 <p>The number of items in the array exceeds the maximum number supported.</p>
 
@@ -97800,7 +98420,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-arraypropertyvaluebadparam">iLO.2.7.ArrayPropertyValueBadParam</h3>
+<h3 id="ilo-2-8-arraypropertyvaluebadparam">iLO.2.8.ArrayPropertyValueBadParam</h3>
 
 <p>The property value is not valid.</p>
 
@@ -97824,7 +98444,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-batterybackupunitsettingsdisabled">iLO.2.7.BatteryBackupUnitSettingsDisabled</h3>
+<h3 id="ilo-2-8-batterybackupunitsettingsdisabled">iLO.2.8.BatteryBackupUnitSettingsDisabled</h3>
 
 <p>Battery Backup Unit settings are currently disabled.</p>
 
@@ -97848,7 +98468,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-biosactiontbd">iLO.2.7.BiosActionTBD</h3>
+<h3 id="ilo-2-8-biosactiontbd">iLO.2.8.BiosActionTBD</h3>
 
 <p>The BIOS action supplied in the POST operation is not yet implemented.</p>
 
@@ -97872,7 +98492,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-biospasswordinfoinvalid">iLO.2.7.BiosPasswordInfoInvalid</h3>
+<h3 id="ilo-2-8-biospasswordinfoinvalid">iLO.2.8.BiosPasswordInfoInvalid</h3>
 
 <p>The stored BIOS password information is invalid. A system reboot is neccessary to retore password defaults.</p>
 
@@ -97896,7 +98516,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-biospasswordmismatch">iLO.2.7.BiosPasswordMismatch</h3>
+<h3 id="ilo-2-8-biospasswordmismatch">iLO.2.8.BiosPasswordMismatch</h3>
 
 <p>The provided OldPassword does not match the stored BIOS password.</p>
 
@@ -97920,7 +98540,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-calibrateinprogress">iLO.2.7.CalibrateInProgress</h3>
+<h3 id="ilo-2-8-calibrateinprogress">iLO.2.8.CalibrateInProgress</h3>
 
 <p>Power calibrate is in progress.</p>
 
@@ -97944,7 +98564,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-cannotremovedefaultlanguagepack">iLO.2.7.CannotRemoveDefaultLanguagePack</h3>
+<h3 id="ilo-2-8-cannotremovedefaultlanguagepack">iLO.2.8.CannotRemoveDefaultLanguagePack</h3>
 
 <p>Cannot remove default language pack.</p>
 
@@ -97968,7 +98588,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-cannotremovelanguagepack">iLO.2.7.CannotRemoveLanguagePack</h3>
+<h3 id="ilo-2-8-cannotremovelanguagepack">iLO.2.8.CannotRemoveLanguagePack</h3>
 
 <p>Cannot remove language pack.</p>
 
@@ -97992,7 +98612,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-cannotremovelicense">iLO.2.7.CannotRemoveLicense</h3>
+<h3 id="ilo-2-8-cannotremovelicense">iLO.2.8.CannotRemoveLicense</h3>
 
 <p>Cannot remove the base license.</p>
 
@@ -98016,7 +98636,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-chassispowerdataunavailable">iLO.2.7.ChassisPowerDataUnAvailable</h3>
+<h3 id="ilo-2-8-chassispowerdataunavailable">iLO.2.8.ChassisPowerDataUnAvailable</h3>
 
 <p>Chassis power regulation data is currently unavailable.</p>
 
@@ -98040,7 +98660,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-chassisresetrequired">iLO.2.7.ChassisResetRequired</h3>
+<h3 id="ilo-2-8-chassisresetrequired">iLO.2.8.ChassisResetRequired</h3>
 
 <p>The chassis properties were correctly changed, but will not take effect until the chassis is reset or all nodes in chassis remain powered off for at least 5 seconds.</p>
 
@@ -98064,7 +98684,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-componentuploadalreadyinprogress">iLO.2.7.ComponentUploadAlreadyInProgress</h3>
+<h3 id="ilo-2-8-componentuploadalreadyinprogress">iLO.2.8.ComponentUploadAlreadyInProgress</h3>
 
 <p>A component upload operation is already in progress.</p>
 
@@ -98088,7 +98708,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-componentuploadfailed">iLO.2.7.ComponentUploadFailed</h3>
+<h3 id="ilo-2-8-componentuploadfailed">iLO.2.8.ComponentUploadFailed</h3>
 
 <p>A component upload operation failed.</p>
 
@@ -98112,7 +98732,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-demolicensekeypreviouslyinstalled">iLO.2.7.DemoLicenseKeyPreviouslyInstalled</h3>
+<h3 id="ilo-2-8-demolicensekeypreviouslyinstalled">iLO.2.8.DemoLicenseKeyPreviouslyInstalled</h3>
 
 <p>A license was previously activated and now a demo key may not be used.</p>
 
@@ -98136,7 +98756,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-deviceisbusy">iLO.2.7.DeviceIsBusy</h3>
+<h3 id="ilo-2-8-deviceisbusy">iLO.2.8.DeviceIsBusy</h3>
 
 <p>Device was not available for communication.</p>
 
@@ -98160,7 +98780,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-deviceresetrequired">iLO.2.7.DeviceResetRequired</h3>
+<h3 id="ilo-2-8-deviceresetrequired">iLO.2.8.DeviceResetRequired</h3>
 
 <p>Indicates that one or more properties were correctly changed, but will not take effect until device is reset.</p>
 
@@ -98184,7 +98804,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-diagstestalreadyrunning">iLO.2.7.DiagsTestAlreadyRunning</h3>
+<h3 id="ilo-2-8-diagstestalreadyrunning">iLO.2.8.DiagsTestAlreadyRunning</h3>
 
 <p>A diagnostics self test is already running.</p>
 
@@ -98208,7 +98828,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-downgradenotallowed">iLO.2.7.DowngradeNotAllowed</h3>
+<h3 id="ilo-2-8-downgradenotallowed">iLO.2.8.DowngradeNotAllowed</h3>
 
 <p>The task did not execute because a downgrade is not allowed by policy.</p>
 
@@ -98232,7 +98852,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-downgradepolicyalreadyset">iLO.2.7.DowngradePolicyAlreadySet</h3>
+<h3 id="ilo-2-8-downgradepolicyalreadyset">iLO.2.8.DowngradePolicyAlreadySet</h3>
 
 <p>The downgrade policy has been set and cannot be changed.</p>
 
@@ -98256,7 +98876,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-eskmserversnotconfigured">iLO.2.7.ESKMServersNotConfigured</h3>
+<h3 id="ilo-2-8-eskmserversnotconfigured">iLO.2.8.ESKMServersNotConfigured</h3>
 
 <p>Enterprise Secure Key Manager Servers are not configured.</p>
 
@@ -98280,7 +98900,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-etagtoolong">iLO.2.7.ETagTooLong</h3>
+<h3 id="ilo-2-8-etagtoolong">iLO.2.8.ETagTooLong</h3>
 
 <p>The supplied ETag is too long. The maximum supported ETag length is 63 bytes.</p>
 
@@ -98304,7 +98924,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-emptydnsname">iLO.2.7.EmptyDNSName</h3>
+<h3 id="ilo-2-8-emptydnsname">iLO.2.8.EmptyDNSName</h3>
 
 <p>DNS name is empty.</p>
 
@@ -98328,7 +98948,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-errorintializingeskm">iLO.2.7.ErrorIntializingESKM</h3>
+<h3 id="ilo-2-8-errorintializingeskm">iLO.2.8.ErrorIntializingESKM</h3>
 
 <p>Failed to initialize ESKM.</p>
 
@@ -98352,7 +98972,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-eventlogcleared">iLO.2.7.EventLogCleared</h3>
+<h3 id="ilo-2-8-eventlogcleared">iLO.2.8.EventLogCleared</h3>
 
 <p>Event log cleared successfully.</p>
 
@@ -98376,7 +98996,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-eventsubscriptionmodified">iLO.2.7.EventSubscriptionModified</h3>
+<h3 id="ilo-2-8-eventsubscriptionmodified">iLO.2.8.EventSubscriptionModified</h3>
 
 <p>The event subscription was modified successfully.</p>
 
@@ -98400,7 +99020,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-eventsubscriptionremoved">iLO.2.7.EventSubscriptionRemoved</h3>
+<h3 id="ilo-2-8-eventsubscriptionremoved">iLO.2.8.EventSubscriptionRemoved</h3>
 
 <p>The event subscription was removed successfully.</p>
 
@@ -98424,7 +99044,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-extendedinfo">iLO.2.7.ExtendedInfo</h3>
+<h3 id="ilo-2-8-extendedinfo">iLO.2.8.ExtendedInfo</h3>
 
 <p>Indicates that extended information is available.</p>
 
@@ -98448,7 +99068,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-fwflashsuccesstpmoverrideenabled">iLO.2.7.FWFlashSuccessTPMOverrideEnabled</h3>
+<h3 id="ilo-2-8-fwflashsuccesstpmoverrideenabled">iLO.2.8.FWFlashSuccessTPMOverrideEnabled</h3>
 
 <p>A Trusted Module is  detected in this system. If you have not performed the proper OS encryption procedures, you will lose access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. TPMOverrideFlag is enabled and firmware flash initiated.</p>
 
@@ -98472,7 +99092,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-fwflashsuccesstrustedmoduleoverrideenabled">iLO.2.7.FWFlashSuccessTrustedModuleOverrideEnabled</h3>
+<h3 id="ilo-2-8-fwflashsuccesstrustedmoduleoverrideenabled">iLO.2.8.FWFlashSuccessTrustedModuleOverrideEnabled</h3>
 
 <p>A Trusted Module (type unspecified) is installed in the system and TPMOverrideFlag is enabled. Firmware flash initiated.</p>
 
@@ -98496,7 +99116,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-fwflashtpmoverrideflagrequired">iLO.2.7.FWFlashTPMOverrideFlagRequired</h3>
+<h3 id="ilo-2-8-fwflashtpmoverrideflagrequired">iLO.2.8.FWFlashTPMOverrideFlagRequired</h3>
 
 <p>A Trusted Module is  detected in this system. Failure to perform proper OS encryption procedures will result in loss of access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. If you do not have your recovery key or have not suspended encryption software, cancel this firmware upload. Failure to follow these instructions will result in loss of access to your data. To continue with firmware flash TPMOverrideFlag is required.</p>
 
@@ -98520,7 +99140,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-fwflashtrustedmoduleoverrideflagrequired">iLO.2.7.FWFlashTrustedModuleOverrideFlagRequired</h3>
+<h3 id="ilo-2-8-fwflashtrustedmoduleoverrideflagrequired">iLO.2.8.FWFlashTrustedModuleOverrideFlagRequired</h3>
 
 <p>A Trusted Module (type unspecified) is installed in the system, TPMOverrideFlag is required for firmware flash to proceed.</p>
 
@@ -98544,7 +99164,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-firmwareflashalreadyinprogress">iLO.2.7.FirmwareFlashAlreadyInProgress</h3>
+<h3 id="ilo-2-8-firmwareflashalreadyinprogress">iLO.2.8.FirmwareFlashAlreadyInProgress</h3>
 
 <p>A firmware upgrade operation is already in progress.</p>
 
@@ -98568,7 +99188,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-generatingcertificate">iLO.2.7.GeneratingCertificate</h3>
+<h3 id="ilo-2-8-generatingcertificate">iLO.2.8.GeneratingCertificate</h3>
 
 <p>Generating the X509 Certificate.</p>
 
@@ -98592,7 +99212,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-harddrivezonefailure">iLO.2.7.HardDriveZoneFailure</h3>
+<h3 id="ilo-2-8-harddrivezonefailure">iLO.2.8.HardDriveZoneFailure</h3>
 
 <p>Hard Drive Zoning was in error state.</p>
 
@@ -98616,7 +99236,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-icruinvalidaddress">iLO.2.7.ICRUInvalidAddress</h3>
+<h3 id="ilo-2-8-icruinvalidaddress">iLO.2.8.ICRUInvalidAddress</h3>
 
 <p>ICRU returned invalid address for translation.</p>
 
@@ -98640,7 +99260,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-icrunotsupported">iLO.2.7.ICRUNotSupported</h3>
+<h3 id="ilo-2-8-icrunotsupported">iLO.2.8.ICRUNotSupported</h3>
 
 <p>ICRU feature or function is not supported on the system.</p>
 
@@ -98664,7 +99284,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ipv6configurationerror">iLO.2.7.IPv6ConfigurationError</h3>
+<h3 id="ilo-2-8-ipv6configurationerror">iLO.2.8.IPv6ConfigurationError</h3>
 
 <p>The specified IPv6 configuration caused an error.</p>
 
@@ -98688,7 +99308,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-importcertsuccessful">iLO.2.7.ImportCertSuccessful</h3>
+<h3 id="ilo-2-8-importcertsuccessful">iLO.2.8.ImportCertSuccessful</h3>
 
 <p>Import Certificate was successful.</p>
 
@@ -98712,7 +99332,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-importcertsuccessfuliloresetinprogress">iLO.2.7.ImportCertSuccessfuliLOResetinProgress</h3>
+<h3 id="ilo-2-8-importcertsuccessfuliloresetinprogress">iLO.2.8.ImportCertSuccessfuliLOResetinProgress</h3>
 
 <p>Import Certificate was successful and the management processor is being reset.</p>
 
@@ -98736,7 +99356,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-importcertificatefailed">iLO.2.7.ImportCertificateFailed</h3>
+<h3 id="ilo-2-8-importcertificatefailed">iLO.2.8.ImportCertificateFailed</h3>
 
 <p>Failed importing Certificate.</p>
 
@@ -98760,7 +99380,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-importssoparamerror">iLO.2.7.ImportSSOParamError</h3>
+<h3 id="ilo-2-8-importssoparamerror">iLO.2.8.ImportSSOParamError</h3>
 
 <p>Not a valid parameter.</p>
 
@@ -98784,7 +99404,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-importssourierror">iLO.2.7.ImportSSOUriError</h3>
+<h3 id="ilo-2-8-importssourierror">iLO.2.8.ImportSSOUriError</h3>
 
 <p>Not a valid Uri to import SSO certificate.</p>
 
@@ -98808,7 +99428,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-indicatorledinvalidstatechange">iLO.2.7.IndicatorLedInvalidStateChange</h3>
+<h3 id="ilo-2-8-indicatorledinvalidstatechange">iLO.2.8.IndicatorLedInvalidStateChange</h3>
 
 <p>The request to change the state of the Indicator LED cannot be granted because the current state is either Blinking or is Unknown.</p>
 
@@ -98832,7 +99452,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-installsetwriteerror">iLO.2.7.InstallSetWriteError</h3>
+<h3 id="ilo-2-8-installsetwriteerror">iLO.2.8.InstallSetWriteError</h3>
 
 <p>The InstallSet write failed.</p>
 
@@ -98856,7 +99476,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-interfacedisabledresetrequired">iLO.2.7.InterfaceDisabledResetRequired</h3>
+<h3 id="ilo-2-8-interfacedisabledresetrequired">iLO.2.8.InterfaceDisabledResetRequired</h3>
 
 <p>Disabling one or more interfaces/features will cause certain functionalities to be not available. Please refer to User Guide for details on the implications. Changes will not take effect until the management processor is reset</p>
 
@@ -98880,7 +99500,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-internalerrorwithparam">iLO.2.7.InternalErrorWithParam</h3>
+<h3 id="ilo-2-8-internalerrorwithparam">iLO.2.8.InternalErrorWithParam</h3>
 
 <p>The operation was not successful due to an internal service error (shown), but the service is still operational.</p>
 
@@ -98904,7 +99524,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidconfigurationspecified">iLO.2.7.InvalidConfigurationSpecified</h3>
+<h3 id="ilo-2-8-invalidconfigurationspecified">iLO.2.8.InvalidConfigurationSpecified</h3>
 
 <p>The specified configuration is not valid.</p>
 
@@ -98928,7 +99548,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidconfigurationspecifiedforfederation">iLO.2.7.InvalidConfigurationSpecifiedForFederation</h3>
+<h3 id="ilo-2-8-invalidconfigurationspecifiedforfederation">iLO.2.8.InvalidConfigurationSpecifiedForFederation</h3>
 
 <p>iLO Federation Management cannot be supported in the current configuration.</p>
 
@@ -98952,7 +99572,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invaliddwelltime">iLO.2.7.InvalidDwellTime</h3>
+<h3 id="ilo-2-8-invaliddwelltime">iLO.2.8.InvalidDwellTime</h3>
 
 <p>The dwell time specified is not valid.</p>
 
@@ -98976,7 +99596,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidengineid">iLO.2.7.InvalidEngineID</h3>
+<h3 id="ilo-2-8-invalidengineid">iLO.2.8.InvalidEngineID</h3>
 
 <p>EngineID should be a hexadecimal number starting with 0x (for example, 0x0102030405abcdef). The string length should be an even number, greater than or equal to 6 characters (excluding the &ldquo;0x&rdquo;), and less than or equal to 32 characters.</p>
 
@@ -99000,7 +99620,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidindex">iLO.2.7.InvalidIndex</h3>
+<h3 id="ilo-2-8-invalidindex">iLO.2.8.InvalidIndex</h3>
 
 <p>The Index is not valid.</p>
 
@@ -99024,7 +99644,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidlicensekey">iLO.2.7.InvalidLicenseKey</h3>
+<h3 id="ilo-2-8-invalidlicensekey">iLO.2.8.InvalidLicenseKey</h3>
 
 <p>The license key is not valid.</p>
 
@@ -99048,7 +99668,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidoperationforautopoweronstate">iLO.2.7.InvalidOperationForAutoPowerOnState</h3>
+<h3 id="ilo-2-8-invalidoperationforautopoweronstate">iLO.2.8.InvalidOperationForAutoPowerOnState</h3>
 
 <p>The operation was not successful because the current auto power on mode specifies power is to remain off.</p>
 
@@ -99072,7 +99692,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidoperationforsystemstate">iLO.2.7.InvalidOperationForSystemState</h3>
+<h3 id="ilo-2-8-invalidoperationforsystemstate">iLO.2.8.InvalidOperationForSystemState</h3>
 
 <p>The operation was not successful due to the current power state (for example, attempting to turn the power off when it is already off).</p>
 
@@ -99096,7 +99716,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidpassphraselength">iLO.2.7.InvalidPassphraseLength</h3>
+<h3 id="ilo-2-8-invalidpassphraselength">iLO.2.8.InvalidPassphraseLength</h3>
 
 <p>The passphrase must contain 8 to 49 characters.</p>
 
@@ -99120,7 +99740,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidpasswordcomplexity">iLO.2.7.InvalidPasswordComplexity</h3>
+<h3 id="ilo-2-8-invalidpasswordcomplexity">iLO.2.8.InvalidPasswordComplexity</h3>
 
 <p>The password failed the complexity enforcement.</p>
 
@@ -99144,7 +99764,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-invalidpasswordlength">iLO.2.7.InvalidPasswordLength</h3>
+<h3 id="ilo-2-8-invalidpasswordlength">iLO.2.8.InvalidPasswordLength</h3>
 
 <p>The password length is not valid.</p>
 
@@ -99168,7 +99788,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-licensekeydenied">iLO.2.7.LicenseKeyDenied</h3>
+<h3 id="ilo-2-8-licensekeydenied">iLO.2.8.LicenseKeyDenied</h3>
 
 <p>The license key activation was refused.  Includes details.</p>
 
@@ -99192,7 +99812,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-licensekeynotsupported">iLO.2.7.LicenseKeyNotSupported</h3>
+<h3 id="ilo-2-8-licensekeynotsupported">iLO.2.8.LicenseKeyNotSupported</h3>
 
 <p>The license key supplied is unsupported on this system.  The key may activate a different product or unsupported tier.</p>
 
@@ -99216,7 +99836,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-licensekeyrequired">iLO.2.7.LicenseKeyRequired</h3>
+<h3 id="ilo-2-8-licensekeyrequired">iLO.2.8.LicenseKeyRequired</h3>
 
 <p>A license key is required to use this operation or feature.</p>
 
@@ -99240,7 +99860,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-loginattemptdelayed">iLO.2.7.LoginAttemptDelayed</h3>
+<h3 id="ilo-2-8-loginattemptdelayed">iLO.2.8.LoginAttemptDelayed</h3>
 
 <p>The login was not successful, so the service enforces a delay before another login is allowed.</p>
 
@@ -99264,7 +99884,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-loginattemptdelayedseconds">iLO.2.7.LoginAttemptDelayedSeconds</h3>
+<h3 id="ilo-2-8-loginattemptdelayedseconds">iLO.2.8.LoginAttemptDelayedSeconds</h3>
 
 <p>The login was not successful, so the service enforces a delay before another login is allowed.</p>
 
@@ -99288,7 +99908,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-mctpdiscoverydisabled">iLO.2.7.MCTPDiscoveryDisabled</h3>
+<h3 id="ilo-2-8-mctpdiscoverydisabled">iLO.2.8.MCTPDiscoveryDisabled</h3>
 
 <p>Telemetry service and Workload Performance advisor will be not available with MCTP discovery disabled.</p>
 
@@ -99312,7 +99932,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-maxproviders">iLO.2.7.MaxProviders</h3>
+<h3 id="ilo-2-8-maxproviders">iLO.2.8.MaxProviders</h3>
 
 <p>The maximum number of providers are already registered.</p>
 
@@ -99336,7 +99956,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-maxvirtualmediaconnectionestablished">iLO.2.7.MaxVirtualMediaConnectionEstablished</h3>
+<h3 id="ilo-2-8-maxvirtualmediaconnectionestablished">iLO.2.8.MaxVirtualMediaConnectionEstablished</h3>
 
 <p>No more Virtual Media connections are available, because the maximum number of connections are already established.</p>
 
@@ -99360,7 +99980,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-membistvariablesnotsupported">iLO.2.7.MembistVariablesNotSupported</h3>
+<h3 id="ilo-2-8-membistvariablesnotsupported">iLO.2.8.MembistVariablesNotSupported</h3>
 
 <p>Membist variables are not supported on the system.</p>
 
@@ -99384,7 +100004,31 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-noeventsubscriptions">iLO.2.7.NoEventSubscriptions</h3>
+<h3 id="ilo-2-8-memoryinterleaveseterror">iLO.2.8.MemoryInterleaveSetError</h3>
+
+<p>The memory set specified in InterleaveSets is not supported.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left"></th>
+<th style="text-align: left"></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Message Format</td>
+<td style="text-align: left">&ldquo;The memory set specified in InterleaveSets is not supported.&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align: left">Severity</td>
+<td style="text-align: left">Warning</td>
+</tr>
+<tr>
+<td style="text-align: left">Resolution</td>
+<td style="text-align: left">Ensure the memory set specified in InterleaveSets matches the first set in the memory domain&rsquo;s InterleavableMemrorySets.</td>
+</tr>
+</tbody></table>
+
+<h3 id="ilo-2-8-noeventsubscriptions">iLO.2.8.NoEventSubscriptions</h3>
 
 <p>There are no event subscriptions registerd.</p>
 
@@ -99408,7 +100052,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nopowermetering">iLO.2.7.NoPowerMetering</h3>
+<h3 id="ilo-2-8-nopowermetering">iLO.2.8.NoPowerMetering</h3>
 
 <p>No support for power metering available on platform.</p>
 
@@ -99432,7 +100076,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nosnmpalertdestinationsconfigured">iLO.2.7.NoSNMPAlertDestinationsConfigured</h3>
+<h3 id="ilo-2-8-nosnmpalertdestinationsconfigured">iLO.2.8.NoSNMPAlertDestinationsConfigured</h3>
 
 <p>No SNMP alert destinations configured or none of the configured destinations are associated with SNMPv1 protocol or SNMPv3 protocol and user.</p>
 
@@ -99456,7 +100100,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nosamples">iLO.2.7.NoSamples</h3>
+<h3 id="ilo-2-8-nosamples">iLO.2.8.NoSamples</h3>
 
 <p>No power history samples are available.</p>
 
@@ -99480,7 +100124,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-noscriptedvirtualmediaconnectionavailable">iLO.2.7.NoScriptedVirtualMediaConnectionAvailable</h3>
+<h3 id="ilo-2-8-noscriptedvirtualmediaconnectionavailable">iLO.2.8.NoScriptedVirtualMediaConnectionAvailable</h3>
 
 <p>No scripted virtual media connections exist to perform the operation.</p>
 
@@ -99504,7 +100148,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nospacefordnsname">iLO.2.7.NoSpaceforDNSName</h3>
+<h3 id="ilo-2-8-nospacefordnsname">iLO.2.8.NoSpaceforDNSName</h3>
 
 <p>No space to store DNS name.</p>
 
@@ -99528,7 +100172,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-novirtualmediaconnectionavailable">iLO.2.7.NoVirtualMediaConnectionAvailable</h3>
+<h3 id="ilo-2-8-novirtualmediaconnectionavailable">iLO.2.8.NoVirtualMediaConnectionAvailable</h3>
 
 <p>No Virtual Media connections exist to perform the operation.</p>
 
@@ -99552,7 +100196,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nodeassignedcrossregion">iLO.2.7.NodeAssignedCrossRegion</h3>
+<h3 id="ilo-2-8-nodeassignedcrossregion">iLO.2.8.NodeAssignedCrossRegion</h3>
 
 <p>Each zone can only manage the node in the same region, cannot manage overlap region.</p>
 
@@ -99576,7 +100220,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-nodenotpresentinzone">iLO.2.7.NodeNotPresentInZone</h3>
+<h3 id="ilo-2-8-nodenotpresentinzone">iLO.2.8.NodeNotPresentInZone</h3>
 
 <p>Operation is currently unavailable because there is no node installed in the zone.</p>
 
@@ -99600,7 +100244,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-notsupportedonnic">iLO.2.7.NotSupportedOnNIC</h3>
+<h3 id="ilo-2-8-notsupportedonnic">iLO.2.8.NotSupportedOnNIC</h3>
 
 <p>This property is not supported by the indicated network port.</p>
 
@@ -99624,7 +100268,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-notvalidipaddrordns">iLO.2.7.NotValidIPAddrOrDNS</h3>
+<h3 id="ilo-2-8-notvalidipaddrordns">iLO.2.8.NotValidIPAddrOrDNS</h3>
 
 <p>The value for the property is not a valid IPv4/v6 address or DNS name.</p>
 
@@ -99648,7 +100292,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-notvalidipaddress">iLO.2.7.NotValidIPAddress</h3>
+<h3 id="ilo-2-8-notvalidipaddress">iLO.2.8.NotValidIPAddress</h3>
 
 <p>The value for the property is not a valid IP address.</p>
 
@@ -99672,7 +100316,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-notvalidsubnetmask">iLO.2.7.NotValidSubnetMask</h3>
+<h3 id="ilo-2-8-notvalidsubnetmask">iLO.2.8.NotValidSubnetMask</h3>
 
 <p>The value for the property is not a valid subnet mask.</p>
 
@@ -99696,7 +100340,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-operationwillcompleteaftersystempost">iLO.2.7.OperationWillCompleteAfterSystemPOST</h3>
+<h3 id="ilo-2-8-operationwillcompleteaftersystempost">iLO.2.8.OperationWillCompleteAfterSystemPOST</h3>
 
 <p>The value for the property will be applied after System BIOS POST completes.</p>
 
@@ -99720,7 +100364,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powercapoacntrld">iLO.2.7.PowerCapOACntrld</h3>
+<h3 id="ilo-2-8-powercapoacntrld">iLO.2.8.PowerCapOACntrld</h3>
 
 <p>The enclosure Onboard Administrator is currently managing the power cap.</p>
 
@@ -99744,7 +100388,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powercapromcntrld">iLO.2.7.PowerCapROMCntrld</h3>
+<h3 id="ilo-2-8-powercapromcntrld">iLO.2.8.PowerCapROMCntrld</h3>
 
 <p>The System ROM is currently managing the power cap.</p>
 
@@ -99768,7 +100412,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powerlimitmaynottakeeffect">iLO.2.7.PowerLimitMayNotTakeEffect</h3>
+<h3 id="ilo-2-8-powerlimitmaynottakeeffect">iLO.2.8.PowerLimitMayNotTakeEffect</h3>
 
 <p>One of power limit setpoint may become unreachable due to power limit range is unknown. It&rsquo;s not recommended configure power limit setpoint when power limit range is unknown.</p>
 
@@ -99792,7 +100436,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powerregulationnotdisable">iLO.2.7.PowerRegulationNotDisable</h3>
+<h3 id="ilo-2-8-powerregulationnotdisable">iLO.2.8.PowerRegulationNotDisable</h3>
 
 <p>Operation is currently unavailable because chassis power regulation is enabled.</p>
 
@@ -99816,7 +100460,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powersettingadjustrequired">iLO.2.7.PowerSettingAdjustRequired</h3>
+<h3 id="ilo-2-8-powersettingadjustrequired">iLO.2.8.PowerSettingAdjustRequired</h3>
 
 <p>Indicates that one or more power limit setting were correctly changed, but will not take effect until power regulation enable and power regulator mode switch to user configurable mode.</p>
 
@@ -99840,7 +100484,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powervaluebadparam">iLO.2.7.PowerValueBadParam</h3>
+<h3 id="ilo-2-8-powervaluebadparam">iLO.2.8.PowerValueBadParam</h3>
 
 <p>The power cap value is not valid.</p>
 
@@ -99864,7 +100508,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powervalueinvalidcalibrationdata">iLO.2.7.PowerValueInvalidCalibrationData</h3>
+<h3 id="ilo-2-8-powervalueinvalidcalibrationdata">iLO.2.8.PowerValueInvalidCalibrationData</h3>
 
 <p>The request to set the power cap failed. Invalid power cap calibration data. The Power Cap feature is currently unavailable.</p>
 
@@ -99888,7 +100532,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powervaluenotoptimal">iLO.2.7.PowerValueNotOptimal</h3>
+<h3 id="ilo-2-8-powervaluenotoptimal">iLO.2.8.PowerValueNotOptimal</h3>
 
 <p>Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than this threshold.</p>
 
@@ -99912,7 +100556,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powervalueunavailable">iLO.2.7.PowerValueUnAvailable</h3>
+<h3 id="ilo-2-8-powervalueunavailable">iLO.2.8.PowerValueUnAvailable</h3>
 
 <p>Advanced power capping is not currently available due to the system configuration or state.</p>
 
@@ -99936,7 +100580,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-powervalueunsupported">iLO.2.7.PowerValueUnSupported</h3>
+<h3 id="ilo-2-8-powervalueunsupported">iLO.2.8.PowerValueUnSupported</h3>
 
 <p>Advanced power capping is not supported on this system.</p>
 
@@ -99960,7 +100604,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-primaryeskmserveraccessible">iLO.2.7.PrimaryESKMServerAccessible</h3>
+<h3 id="ilo-2-8-primaryeskmserveraccessible">iLO.2.8.PrimaryESKMServerAccessible</h3>
 
 <p>Only the primary ESKM server is accessible.</p>
 
@@ -99984,7 +100628,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-primarysecondaryaddressesresolvetosameserver">iLO.2.7.PrimarySecondaryAddressesResolveToSameServer</h3>
+<h3 id="ilo-2-8-primarysecondaryaddressesresolvetosameserver">iLO.2.8.PrimarySecondaryAddressesResolveToSameServer</h3>
 
 <p>Primary and secondary ESKM server addresses resolve to the same server.</p>
 
@@ -100008,7 +100652,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-primarysecondaryeskmserversaccessible">iLO.2.7.PrimarySecondaryESKMServersAccessible</h3>
+<h3 id="ilo-2-8-primarysecondaryeskmserversaccessible">iLO.2.8.PrimarySecondaryESKMServersAccessible</h3>
 
 <p>Both primary and secondary ESKM servers are accessible.</p>
 
@@ -100032,7 +100676,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertynotsupported">iLO.2.7.PropertyNotSupported</h3>
+<h3 id="ilo-2-8-propertynotsupported">iLO.2.8.PropertyNotSupported</h3>
 
 <p>The property is not supported.</p>
 
@@ -100056,7 +100700,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertynotwritableorunknown">iLO.2.7.PropertyNotWritableOrUnknown</h3>
+<h3 id="ilo-2-8-propertynotwritableorunknown">iLO.2.8.PropertyNotWritableOrUnknown</h3>
 
 <p>The request included a value for a  read-only or unknown property.</p>
 
@@ -100080,7 +100724,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertyvaluebadparam">iLO.2.7.PropertyValueBadParam</h3>
+<h3 id="ilo-2-8-propertyvaluebadparam">iLO.2.8.PropertyValueBadParam</h3>
 
 <p>The property value is not valid.</p>
 
@@ -100104,7 +100748,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertyvalueexceedsmaxlength">iLO.2.7.PropertyValueExceedsMaxLength</h3>
+<h3 id="ilo-2-8-propertyvalueexceedsmaxlength">iLO.2.8.PropertyValueExceedsMaxLength</h3>
 
 <p>The value for the property exceeds the maximum length.</p>
 
@@ -100128,7 +100772,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertyvalueincompatible">iLO.2.7.PropertyValueIncompatible</h3>
+<h3 id="ilo-2-8-propertyvalueincompatible">iLO.2.8.PropertyValueIncompatible</h3>
 
 <p>The value for the property is the correct type, but this value is incompatible with the current value of another property.</p>
 
@@ -100152,7 +100796,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertyvalueoutofrange">iLO.2.7.PropertyValueOutOfRange</h3>
+<h3 id="ilo-2-8-propertyvalueoutofrange">iLO.2.8.PropertyValueOutOfRange</h3>
 
 <p>The value for the property is out of range.</p>
 
@@ -100176,7 +100820,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-propertyvaluerequired">iLO.2.7.PropertyValueRequired</h3>
+<h3 id="ilo-2-8-propertyvaluerequired">iLO.2.8.PropertyValueRequired</h3>
 
 <p>Indicates that a property was required but not specified.</p>
 
@@ -100200,7 +100844,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-recoveryinstallsetrequired">iLO.2.7.RecoveryInstallSetRequired</h3>
+<h3 id="ilo-2-8-recoveryinstallsetrequired">iLO.2.8.RecoveryInstallSetRequired</h3>
 
 <p>A recovery install set is required for this action.</p>
 
@@ -100224,7 +100868,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-repairnotsupported">iLO.2.7.RepairNotSupported</h3>
+<h3 id="ilo-2-8-repairnotsupported">iLO.2.8.RepairNotSupported</h3>
 
 <p>IML event with this severity is not supported to be repaired. IML events with Critical or Warning severities can marked as repaired.</p>
 
@@ -100248,7 +100892,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-requiredpropertymissing">iLO.2.7.RequiredPropertyMissing</h3>
+<h3 id="ilo-2-8-requiredpropertymissing">iLO.2.8.RequiredPropertyMissing</h3>
 
 <p>Indicates that a required property is not specified.</p>
 
@@ -100272,7 +100916,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resetinprogress">iLO.2.7.ResetInProgress</h3>
+<h3 id="ilo-2-8-resetinprogress">iLO.2.8.ResetInProgress</h3>
 
 <p>A management processor reset is in progress.</p>
 
@@ -100296,7 +100940,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resetrequired">iLO.2.7.ResetRequired</h3>
+<h3 id="ilo-2-8-resetrequired">iLO.2.8.ResetRequired</h3>
 
 <p>One or more properties were changed, but these changes will not take effect until the management processor is reset.</p>
 
@@ -100320,7 +100964,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resourcebeingflashed">iLO.2.7.ResourceBeingFlashed</h3>
+<h3 id="ilo-2-8-resourcebeingflashed">iLO.2.8.ResourceBeingFlashed</h3>
 
 <p>The change to the requested resource failed because the resource is being flashed.</p>
 
@@ -100344,7 +100988,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resourceinusewithdetail">iLO.2.7.ResourceInUseWithDetail</h3>
+<h3 id="ilo-2-8-resourceinusewithdetail">iLO.2.8.ResourceInUseWithDetail</h3>
 
 <p>The change could not be made because the resource was in use or in a transitioning state.</p>
 
@@ -100368,7 +101012,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resourcenotreadyretry">iLO.2.7.ResourceNotReadyRetry</h3>
+<h3 id="ilo-2-8-resourcenotreadyretry">iLO.2.8.ResourceNotReadyRetry</h3>
 
 <p>The resource is present but is not ready to perform operations due to an internal condition such as initialization or reset.</p>
 
@@ -100392,7 +101036,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-resourcetemporarilyunavailable">iLO.2.7.ResourceTemporarilyUnavailable</h3>
+<h3 id="ilo-2-8-resourcetemporarilyunavailable">iLO.2.8.ResourceTemporarilyUnavailable</h3>
 
 <p>The resource is temporarily unavailable because the firmware is being flashed.</p>
 
@@ -100416,7 +101060,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-smbiosrecordnotfound">iLO.2.7.SMBIOSRecordNotFound</h3>
+<h3 id="ilo-2-8-smbiosrecordnotfound">iLO.2.8.SMBIOSRecordNotFound</h3>
 
 <p>The SMBIOS record type is not found or is not supported on the system.</p>
 
@@ -100440,7 +101084,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-snmpalertdisabled">iLO.2.7.SNMPAlertDisabled</h3>
+<h3 id="ilo-2-8-snmpalertdisabled">iLO.2.8.SNMPAlertDisabled</h3>
 
 <p>The operation could not be completed because SNMP alerts are disabled.</p>
 
@@ -100464,7 +101108,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-snmpdisabled">iLO.2.7.SNMPDisabled</h3>
+<h3 id="ilo-2-8-snmpdisabled">iLO.2.8.SNMPDisabled</h3>
 
 <p>Modifying SNMP properties is not possible with SNMP disabled.</p>
 
@@ -100488,7 +101132,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-snmptestalertfailed">iLO.2.7.SNMPTestAlertFailed</h3>
+<h3 id="ilo-2-8-snmptestalertfailed">iLO.2.8.SNMPTestAlertFailed</h3>
 
 <p>The SNMP Test Alert did not send successfully.</p>
 
@@ -100512,7 +101156,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-sntpconfigurationmanagedbydhcpandisreadonly">iLO.2.7.SNTPConfigurationManagedByDHCPAndIsReadOnly</h3>
+<h3 id="ilo-2-8-sntpconfigurationmanagedbydhcpandisreadonly">iLO.2.8.SNTPConfigurationManagedByDHCPAndIsReadOnly</h3>
 
 <p>SNTP configuration is currently managed by DHCP and is therefore read-only.</p>
 
@@ -100536,7 +101180,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ssocertficateempty">iLO.2.7.SSOCertficateEmpty</h3>
+<h3 id="ilo-2-8-ssocertficateempty">iLO.2.8.SSOCertficateEmpty</h3>
 
 <p>SSO Certificate is Empty.</p>
 
@@ -100560,7 +101204,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ssocertificatereaderror">iLO.2.7.SSOCertificateReadError</h3>
+<h3 id="ilo-2-8-ssocertificatereaderror">iLO.2.8.SSOCertificateReadError</h3>
 
 <p>SSO Certificate Read Error.</p>
 
@@ -100584,7 +101228,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ssonospaceerror">iLO.2.7.SSONoSpaceError</h3>
+<h3 id="ilo-2-8-ssonospaceerror">iLO.2.8.SSONoSpaceError</h3>
 
 <p>No space to store SSO certificate.</p>
 
@@ -100608,7 +101252,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ssorecordnotfound">iLO.2.7.SSORecordNotFound</h3>
+<h3 id="ilo-2-8-ssorecordnotfound">iLO.2.8.SSORecordNotFound</h3>
 
 <p>SSO Record Not Found.</p>
 
@@ -100632,7 +101276,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-samplesnotcaptured">iLO.2.7.SamplesNotCaptured</h3>
+<h3 id="ilo-2-8-samplesnotcaptured">iLO.2.8.SamplesNotCaptured</h3>
 
 <p>Samples are not captured for %1 duration.</p>
 
@@ -100656,7 +101300,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-secondaryeskmserveraccessible">iLO.2.7.SecondaryESKMServerAccessible</h3>
+<h3 id="ilo-2-8-secondaryeskmserveraccessible">iLO.2.8.SecondaryESKMServerAccessible</h3>
 
 <p>Only the secondary ESKM server is accessible.</p>
 
@@ -100680,7 +101324,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-serverconfigurationlockenabled">iLO.2.7.ServerConfigurationLockEnabled</h3>
+<h3 id="ilo-2-8-serverconfigurationlockenabled">iLO.2.8.ServerConfigurationLockEnabled</h3>
 
 <p>Server Configuration Lock is enabled.</p>
 
@@ -100704,7 +101348,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-successfeedback">iLO.2.7.SuccessFeedback</h3>
+<h3 id="ilo-2-8-successfeedback">iLO.2.8.SuccessFeedback</h3>
 
 <p>The operation completed successfully.</p>
 
@@ -100728,7 +101372,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-syslogfeaturedisabled">iLO.2.7.SyslogFeatureDisabled</h3>
+<h3 id="ilo-2-8-syslogfeaturedisabled">iLO.2.8.SyslogFeatureDisabled</h3>
 
 <p>Remote Syslog feature is disabled.</p>
 
@@ -100752,7 +101396,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-systempoweroffrequired">iLO.2.7.SystemPowerOffRequired</h3>
+<h3 id="ilo-2-8-systempoweroffrequired">iLO.2.8.SystemPowerOffRequired</h3>
 
 <p>To perform this operation, power off the system. AutoPowerOn must be set to achieve a power restore.</p>
 
@@ -100776,7 +101420,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-systemresetrequired">iLO.2.7.SystemResetRequired</h3>
+<h3 id="ilo-2-8-systemresetrequired">iLO.2.8.SystemResetRequired</h3>
 
 <p>The system properties were correctly changed, but will not take effect until the system is reset.</p>
 
@@ -100800,7 +101444,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-tokenrequired">iLO.2.7.TokenRequired</h3>
+<h3 id="ilo-2-8-tokenrequired">iLO.2.8.TokenRequired</h3>
 
 <p>Proper &lsquo;X-HPRESTFULAPI-AuthToken&rsquo; authorization token not provided.</p>
 
@@ -100824,7 +101468,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unablemodifyrights">iLO.2.7.UnableModifyRights</h3>
+<h3 id="ilo-2-8-unablemodifyrights">iLO.2.8.UnableModifyRights</h3>
 
 <p>Unable to modify user rights.</p>
 
@@ -100848,7 +101492,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unabletomodifyaftervirtualmediainsert">iLO.2.7.UnableToModifyAfterVirtualMediaInsert</h3>
+<h3 id="ilo-2-8-unabletomodifyaftervirtualmediainsert">iLO.2.8.UnableToModifyAfterVirtualMediaInsert</h3>
 
 <p>The value for the property cannot be changed after virual media image is inserted.</p>
 
@@ -100872,7 +101516,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unabletomodifyduetomissingcomponent">iLO.2.7.UnableToModifyDueToMissingComponent</h3>
+<h3 id="ilo-2-8-unabletomodifyduetomissingcomponent">iLO.2.8.UnableToModifyDueToMissingComponent</h3>
 
 <p>The value for the property cannot be changed because a related hardware component is not installed.</p>
 
@@ -100896,7 +101540,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unabletomodifyduringsystempost">iLO.2.7.UnableToModifyDuringSystemPOST</h3>
+<h3 id="ilo-2-8-unabletomodifyduringsystempost">iLO.2.8.UnableToModifyDuringSystemPOST</h3>
 
 <p>The value for the property cannot be changed while the computer system BIOS is in POST.</p>
 
@@ -100920,7 +101564,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unauthorizedloginattempt">iLO.2.7.UnauthorizedLoginAttempt</h3>
+<h3 id="ilo-2-8-unauthorizedloginattempt">iLO.2.8.UnauthorizedLoginAttempt</h3>
 
 <p>The login was not successful, because the supplied credentials could not be authorized.</p>
 
@@ -100944,7 +101588,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unsupportedcipheralgo">iLO.2.7.UnsupportedCipherAlgo</h3>
+<h3 id="ilo-2-8-unsupportedcipheralgo">iLO.2.8.UnsupportedCipherAlgo</h3>
 
 <p>Incompatible Cipher Algorithm in FIPS or CNSA Mode.</p>
 
@@ -100968,7 +101612,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unsupportedoperation">iLO.2.7.UnsupportedOperation</h3>
+<h3 id="ilo-2-8-unsupportedoperation">iLO.2.8.UnsupportedOperation</h3>
 
 <p>This operation is not supported by RIS for the current system.</p>
 
@@ -100992,7 +101636,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unsupportedoperationinchassisversion">iLO.2.7.UnsupportedOperationInChassisVersion</h3>
+<h3 id="ilo-2-8-unsupportedoperationinchassisversion">iLO.2.8.UnsupportedOperationInChassisVersion</h3>
 
 <p>This operation is not supported by the current version of the XL Chassis firmware.</p>
 
@@ -101016,7 +101660,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unsupportedoperationinlegacybootmode">iLO.2.7.UnsupportedOperationInLegacyBootMode</h3>
+<h3 id="ilo-2-8-unsupportedoperationinlegacybootmode">iLO.2.8.UnsupportedOperationInLegacyBootMode</h3>
 
 <p>This operation is not supported when the system Boot Mode is set to Legacy BIOS.</p>
 
@@ -101040,7 +101684,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-unsupportedoperationinsystembios">iLO.2.7.UnsupportedOperationInSystemBIOS</h3>
+<h3 id="ilo-2-8-unsupportedoperationinsystembios">iLO.2.8.UnsupportedOperationInSystemBIOS</h3>
 
 <p>This operation is not supported by the current version of the system BIOS.</p>
 
@@ -101064,7 +101708,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatebadparameter">iLO.2.7.UpdateBadParameter</h3>
+<h3 id="ilo-2-8-updatebadparameter">iLO.2.8.UpdateBadParameter</h3>
 
 <table><thead>
 <tr>
@@ -101086,7 +101730,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatecancelled">iLO.2.7.UpdateCancelled</h3>
+<h3 id="ilo-2-8-updatecancelled">iLO.2.8.UpdateCancelled</h3>
 
 <table><thead>
 <tr>
@@ -101108,7 +101752,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatedependencyfailure">iLO.2.7.UpdateDependencyFailure</h3>
+<h3 id="ilo-2-8-updatedependencyfailure">iLO.2.8.UpdateDependencyFailure</h3>
 
 <table><thead>
 <tr>
@@ -101130,7 +101774,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatefailed">iLO.2.7.UpdateFailed</h3>
+<h3 id="ilo-2-8-updatefailed">iLO.2.8.UpdateFailed</h3>
 
 <table><thead>
 <tr>
@@ -101152,7 +101796,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updateinpost">iLO.2.7.UpdateInPOST</h3>
+<h3 id="ilo-2-8-updateinpost">iLO.2.8.UpdateInPOST</h3>
 
 <table><thead>
 <tr>
@@ -101174,7 +101818,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updateinterrupted">iLO.2.7.UpdateInterrupted</h3>
+<h3 id="ilo-2-8-updateinterrupted">iLO.2.8.UpdateInterrupted</h3>
 
 <table><thead>
 <tr>
@@ -101196,7 +101840,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updateinvalidfile">iLO.2.7.UpdateInvalidFile</h3>
+<h3 id="ilo-2-8-updateinvalidfile">iLO.2.8.UpdateInvalidFile</h3>
 
 <table><thead>
 <tr>
@@ -101218,7 +101862,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updateinvalidos">iLO.2.7.UpdateInvalidOS</h3>
+<h3 id="ilo-2-8-updateinvalidos">iLO.2.8.UpdateInvalidOS</h3>
 
 <table><thead>
 <tr>
@@ -101240,7 +101884,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatenotapplicable">iLO.2.7.UpdateNotApplicable</h3>
+<h3 id="ilo-2-8-updatenotapplicable">iLO.2.8.UpdateNotApplicable</h3>
 
 <table><thead>
 <tr>
@@ -101262,7 +101906,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updaterepositoryunavailable">iLO.2.7.UpdateRepositoryUnavailable</h3>
+<h3 id="ilo-2-8-updaterepositoryunavailable">iLO.2.8.UpdateRepositoryUnavailable</h3>
 
 <table><thead>
 <tr>
@@ -101284,7 +101928,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatetaskqueuefull">iLO.2.7.UpdateTaskQueueFull</h3>
+<h3 id="ilo-2-8-updatetaskqueuefull">iLO.2.8.UpdateTaskQueueFull</h3>
 
 <p>The Invoke action was not successful because the update task queue is full.</p>
 
@@ -101308,7 +101952,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatetaskqueuewriteerror">iLO.2.7.UpdateTaskQueueWriteError</h3>
+<h3 id="ilo-2-8-updatetaskqueuewriteerror">iLO.2.8.UpdateTaskQueueWriteError</h3>
 
 <p>The UpdateTaskQueue write failed.</p>
 
@@ -101332,7 +101976,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatetemporarilyunavailable">iLO.2.7.UpdateTemporarilyUnavailable</h3>
+<h3 id="ilo-2-8-updatetemporarilyunavailable">iLO.2.8.UpdateTemporarilyUnavailable</h3>
 
 <table><thead>
 <tr>
@@ -101354,7 +101998,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatewithpoweroff">iLO.2.7.UpdateWithPowerOff</h3>
+<h3 id="ilo-2-8-updatewithpoweroff">iLO.2.8.UpdateWithPowerOff</h3>
 
 <table><thead>
 <tr>
@@ -101376,7 +102020,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-updatewithpoweron">iLO.2.7.UpdateWithPowerOn</h3>
+<h3 id="ilo-2-8-updatewithpoweron">iLO.2.8.UpdateWithPowerOn</h3>
 
 <table><thead>
 <tr>
@@ -101398,7 +102042,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-useralreadyexist">iLO.2.7.UserAlreadyExist</h3>
+<h3 id="ilo-2-8-useralreadyexist">iLO.2.8.UserAlreadyExist</h3>
 
 <p>The user or login user name already exists.</p>
 
@@ -101422,7 +102066,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-usernamealreadyexists">iLO.2.7.UserNameAlreadyExists</h3>
+<h3 id="ilo-2-8-usernamealreadyexists">iLO.2.8.UserNameAlreadyExists</h3>
 
 <p>Duplicate SNMPv3 User.</p>
 
@@ -101446,7 +102090,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-virtualmediaisdisabled">iLO.2.7.VirtualMediaIsDisabled</h3>
+<h3 id="ilo-2-8-virtualmediaisdisabled">iLO.2.8.VirtualMediaIsDisabled</h3>
 
 <p>Virtual Media has been disabled.</p>
 
@@ -101470,7 +102114,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-zonepowerlimitexceeded">iLO.2.7.ZonePowerLimitExceeded</h3>
+<h3 id="ilo-2-8-zonepowerlimitexceeded">iLO.2.8.ZonePowerLimitExceeded</h3>
 
 <p>The sum of zone power limit cannot be more than chassis power limit.</p>
 
@@ -101494,7 +102138,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-iloresetandsystemrebootrequired">iLO.2.7.iLOResetAndSystemRebootRequired</h3>
+<h3 id="ilo-2-8-iloresetandsystemrebootrequired">iLO.2.8.iLOResetAndSystemRebootRequired</h3>
 
 <p>Indicates that one or more properties were correctly changed, but will not take effect until device is reset and system is rebooted.</p>
 
@@ -101518,7 +102162,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ilosubnetconflict">iLO.2.7.iLOSubnetConflict</h3>
+<h3 id="ilo-2-8-ilosubnetconflict">iLO.2.8.iLOSubnetConflict</h3>
 
 <p>The subnet being configured has conflicts.</p>
 
@@ -101542,7 +102186,7 @@ Member of VolumeCollection.VolumeCollection</p>
 </tr>
 </tbody></table>
 
-<h3 id="ilo-2-7-ilovirtualnicdisabled">iLO.2.7.iLOVirtualNICDisabled</h3>
+<h3 id="ilo-2-8-ilovirtualnicdisabled">iLO.2.8.iLOVirtualNICDisabled</h3>
 
 <p>The Virtual NIC is disabled.</p>
 
@@ -101563,222 +102207,6 @@ Member of VolumeCollection.VolumeCollection</p>
 <tr>
 <td style="text-align: left">Resolution</td>
 <td style="text-align: left">Enable iLO Virtual NIC to perform this operation.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskaborted">TaskEvent.1.0.TaskAborted</h3>
-
-<p>The task with id %1 has been aborted.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has been aborted.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">Critical</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskcancelled">TaskEvent.1.0.TaskCancelled</h3>
-
-<p>The task with id %1 has been cancelled.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has been cancelled.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">Warning</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskcompletedok">TaskEvent.1.0.TaskCompletedOK</h3>
-
-<p>The task with id %1 has completed.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has completed.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">OK</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskcompletedwarning">TaskEvent.1.0.TaskCompletedWarning</h3>
-
-<p>The task with id %1 has completed with warnings.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has completed with warnings.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">Warning</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskpaused">TaskEvent.1.0.TaskPaused</h3>
-
-<p>The task with id %1 has been paused.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has been paused.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">Warning</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskprogesschanged">TaskEvent.1.0.TaskProgessChanged</h3>
-
-<p>The task with id %1 has changed to progress %2 percent complete.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has changed to progress %2 percent complete.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">OK</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskremoved">TaskEvent.1.0.TaskRemoved</h3>
-
-<p>The task with id %1 has been removed.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has been removed.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">Warning</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskresumed">TaskEvent.1.0.TaskResumed</h3>
-
-<p>The task with id %1 has been resumed.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has been resumed.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">OK</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
-</tr>
-</tbody></table>
-
-<h3 id="taskevent-1-0-taskstarted">TaskEvent.1.0.TaskStarted</h3>
-
-<p>The task with id %1 has started.</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left"></th>
-<th style="text-align: left"></th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Message Format</td>
-<td style="text-align: left">&ldquo;The task with id %1 has started.&rdquo;</td>
-</tr>
-<tr>
-<td style="text-align: left">Severity</td>
-<td style="text-align: left">OK</td>
-</tr>
-<tr>
-<td style="text-align: left">Resolution</td>
-<td style="text-align: left">None.</td>
 </tr>
 </tbody></table>
 
