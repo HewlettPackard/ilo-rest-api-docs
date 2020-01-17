@@ -1,5 +1,5 @@
 
-### Base.1.0.AccessDenied
+### Base.1.4.AccessDenied
 While attempting to access, connect to, or transfer to/from another resource, the service was denied access.
 
 | | |
@@ -8,7 +8,7 @@ While attempting to access, connect to, or transfer to/from another resource, th
 |Severity|Critical
 |Resolution|Verify that the URI is correct and that the service has the appropriate credentials.
 
-### Base.1.0.AccountForSessionNoLongerExists
+### Base.1.4.AccountForSessionNoLongerExists
 The account for the current session is removed, and the current session is also removed.
 
 | | |
@@ -17,7 +17,7 @@ The account for the current session is removed, and the current session is also 
 |Severity|OK
 |Resolution|Attempt to connect using a valid account.
 
-### Base.1.0.AccountModified
+### Base.1.4.AccountModified
 The account was modified successfully.
 
 | | |
@@ -26,7 +26,7 @@ The account was modified successfully.
 |Severity|OK
 |Resolution|None.
 
-### Base.1.0.AccountNotModified
+### Base.1.4.AccountNotModified
 The request was unable to modify the account.
 
 | | |
@@ -35,7 +35,7 @@ The request was unable to modify the account.
 |Severity|Warning
 |Resolution|If the operation did not complete, check the authorization or the request body for issues and resubmit the request.
 
-### Base.1.0.AccountRemoved
+### Base.1.4.AccountRemoved
 The account was removed successfully.
 
 | | |
@@ -44,7 +44,7 @@ The account was removed successfully.
 |Severity|OK
 |Resolution|None.
 
-### Base.1.0.ActionNotSupported
+### Base.1.4.ActionNotSupported
 The action supplied in the POST operation is not supported by the resource.
 
 | | |
@@ -53,7 +53,7 @@ The action supplied in the POST operation is not supported by the resource.
 |Severity|Critical
 |Resolution|The action was invalid or the wrong resource was the target. See the implementation documentation for assistance.
 
-### Base.1.0.ActionParameterDuplicate
+### Base.1.4.ActionParameterDuplicate
 The action was submitted with a duplicate parameter in the request body.
 
 | | |
@@ -62,7 +62,7 @@ The action was submitted with a duplicate parameter in the request body.
 |Severity|Warning
 |Resolution|Resubmit the action with only one instance of the parameter in the request body.
 
-### Base.1.0.ActionParameterMissing
+### Base.1.4.ActionParameterMissing
 The requested action is missing a parameter that is required to process the action.
 
 | | |
@@ -71,7 +71,7 @@ The requested action is missing a parameter that is required to process the acti
 |Severity|Critical
 |Resolution|Resubmit the action with the required parameter in the request body.
 
-### Base.1.0.ActionParameterNotSupported
+### Base.1.4.ActionParameterNotSupported
 The action parameter is not supported on the target resource.
 
 | | |
@@ -80,7 +80,7 @@ The action parameter is not supported on the target resource.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the parameter and resubmit the request.
 
-### Base.1.0.ActionParameterUnknown
+### Base.1.4.ActionParameterUnknown
 An action was submitted, but a supplied parameter did not match any of the known parameters.
 
 | | |
@@ -89,7 +89,7 @@ An action was submitted, but a supplied parameter did not match any of the known
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the invalid parameter and resubmit the request.
 
-### Base.1.0.ActionParameterValueFormatError
+### Base.1.4.ActionParameterValueFormatError
 The value type is correct, but the format is not supported or the size/length is exceeded.
 
 | | |
@@ -98,7 +98,7 @@ The value type is correct, but the format is not supported or the size/length is
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the parameter value in the request body and resubmit the request.
 
-### Base.1.0.ActionParameterValueTypeError
+### Base.1.4.ActionParameterValueTypeError
 The parameter contains an incorrect value type. For example, a number value for a string parameter type.
 
 | | |
@@ -107,7 +107,7 @@ The parameter contains an incorrect value type. For example, a number value for 
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the parameter value in the request body and resubmit the request.
 
-### Base.1.0.CouldNotEstablishConnection
+### Base.1.4.CouldNotEstablishConnection
 An attempt to access the resource, image, or file at the URI was unsuccessful because a session could not be established.
 
 | | |
@@ -116,7 +116,7 @@ An attempt to access the resource, image, or file at the URI was unsuccessful be
 |Severity|Critical
 |Resolution|Verify that the URI contains a valid and reachable node name, protocol information, and other URI components.
 
-### Base.1.0.CreateFailedMissingReqProperties
+### Base.1.4.CreateFailedMissingReqProperties
 A create operation was attempted on a resource, but a required property was missing from the request.
 
 | | |
@@ -125,7 +125,7 @@ A create operation was attempted on a resource, but a required property was miss
 |Severity|Critical
 |Resolution|If the operation did not complete, include the required property with a valid value in the request body and resubmit the request.
 
-### Base.1.0.CreateLimitReachedForResource
+### Base.1.4.CreateLimitReachedForResource
 Additional resources cannot be created.
 
 | | |
@@ -134,7 +134,7 @@ Additional resources cannot be created.
 |Severity|Critical
 |Resolution|If the operation did not complete, delete resources and resubmit the request.
 
-### Base.1.0.Created
+### Base.1.4.Created
 The resource has been created successfully.
 
 | | |
@@ -143,7 +143,16 @@ The resource has been created successfully.
 |Severity|OK
 |Resolution|None
 
-### Base.1.0.EventSubscriptionLimitExceeded
+### Base.1.4.EmptyJSON
+Indicates that the request body contained an empty JSON object when one or more properties are expected in the body.
+
+| | |
+|:---|:---|
+|Message Format|"The request body submitted contained an empty JSON object and the service is unable to process it."
+|Severity|Warning
+|Resolution|Add properties in the JSON object and resubmit the request.
+
+### Base.1.4.EventSubscriptionLimitExceeded
 The event subscription establishment has been requested, but the operation did not complete. The number of simultaneous subscriptions exceeded the maximum number allowed by the implementation.
 
 | | |
@@ -152,7 +161,16 @@ The event subscription establishment has been requested, but the operation did n
 |Severity|Critical
 |Resolution|Before attempting to establish the event subscription, reduce the number of subscriptions or increase the maximum number of simultaneous subscriptions allowed (if supported).
 
-### Base.1.0.InsufficientPrivilege
+### Base.1.4.GeneralError
+Indicates that a general error has occurred.  Use in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.
+
+| | |
+|:---|:---|
+|Message Format|"A general error has occurred. See Resolution for information on how to resolve the error."
+|Severity|Critical
+|Resolution|None.
+
+### Base.1.4.InsufficientPrivilege
 The account or credentials associated with the current session are not authorized to perform the requested operation.
 
 | | |
@@ -161,7 +179,7 @@ The account or credentials associated with the current session are not authorize
 |Severity|Critical
 |Resolution|Retry the operation with an authorized account or credentials.
 
-### Base.1.0.InternalError
+### Base.1.4.InternalError
 The request did not complete due to an unknown internal error, but the service is still operational.
 
 | | |
@@ -170,7 +188,16 @@ The request did not complete due to an unknown internal error, but the service i
 |Severity|Critical
 |Resolution|Resubmit the request. If the problem persists, consider resetting the service.
 
-### Base.1.0.InvalidObject
+### Base.1.4.InvalidIndex
+The Index is not valid.
+
+| | |
+|:---|:---|
+|Message Format|"The Index %1 is not a valid offset into the array."
+|Severity|Warning
+|Resolution|Verify the index value provided is within the bounds of the array.
+
+### Base.1.4.InvalidObject
 The object is not valid.
 
 | | |
@@ -179,7 +206,7 @@ The object is not valid.
 |Severity|Critical
 |Resolution|If the operation did not complete, the object is malformed or the URI is incorrect. Make the appropriate corrections and resubmit the request.
 
-### Base.1.0.MalformedJSON
+### Base.1.4.MalformedJSON
 The request body contains malformed JSON.
 
 | | |
@@ -188,7 +215,16 @@ The request body contains malformed JSON.
 |Severity|Critical
 |Resolution|Verify that the request body is valid JSON and resubmit the request.
 
-### Base.1.0.NoValidSession
+### Base.1.4.NoOperation
+Indicates that the requested operation will not perform any changes on the service.
+
+| | |
+|:---|:---|
+|Message Format|"The request body submitted contain no data to act upon and no changes to the resource took place."
+|Severity|Warning
+|Resolution|Add properties in the JSON object and resubmit the request.
+
+### Base.1.4.NoValidSession
 The operation did not complete because a valid session is required in order to access resources.
 
 | | |
@@ -197,7 +233,7 @@ The operation did not complete because a valid session is required in order to a
 |Severity|Critical
 |Resolution|Establish a session before attempting any operations.
 
-### Base.1.0.PropertyDuplicate
+### Base.1.4.PropertyDuplicate
 A duplicate property is in the request body.
 
 | | |
@@ -206,7 +242,7 @@ A duplicate property is in the request body.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the duplicate property from the request body and resubmit the request.
 
-### Base.1.0.PropertyMissing
+### Base.1.4.PropertyMissing
 The request does not include a required property.
 
 | | |
@@ -215,7 +251,7 @@ The request does not include a required property.
 |Severity|Warning
 |Resolution|If the operation did not complete, verify the property is in the request body and has a valid value.
 
-### Base.1.0.PropertyNotWritable
+### Base.1.4.PropertyNotWritable
 The request included a value for a read-only property.
 
 | | |
@@ -224,7 +260,7 @@ The request included a value for a read-only property.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the property from the request body and resubmit the request.
 
-### Base.1.0.PropertyUnknown
+### Base.1.4.PropertyUnknown
 An unknown property is in the request body.
 
 | | |
@@ -233,7 +269,7 @@ An unknown property is in the request body.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the unknown property from the request body and resubmit the request.
 
-### Base.1.0.PropertyValueFormatError
+### Base.1.4.PropertyValueFormatError
 The value type is correct, but the format is not supported or the size/length is exceeded.
 
 | | |
@@ -242,7 +278,16 @@ The value type is correct, but the format is not supported or the size/length is
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### Base.1.0.PropertyValueNotInList
+### Base.1.4.PropertyValueModified
+Indicates that a property was given the correct value type but the value of that property was modified.  Examples are truncated or rounded values.
+
+| | |
+|:---|:---|
+|Message Format|"The property %1 was assigned the value %2 due to modification by the service."
+|Severity|Warning
+|Resolution|No resolution is required.
+
+### Base.1.4.PropertyValueNotInList
 The value type is correct, but the value is not supported.
 
 | | |
@@ -251,7 +296,7 @@ The value type is correct, but the value is not supported.
 |Severity|Warning
 |Resolution|If the operation did not complete, choose a value from the enumeration list and resubmit your request.
 
-### Base.1.0.PropertyValueTypeError
+### Base.1.4.PropertyValueTypeError
 The property value contains an incorrect property type. For example, a number value for a string property type.
 
 | | |
@@ -260,7 +305,7 @@ The property value contains an incorrect property type. For example, a number va
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### Base.1.0.QueryNotSupported
+### Base.1.4.QueryNotSupported
 The query is not supported by the implementation.
 
 | | |
@@ -269,7 +314,7 @@ The query is not supported by the implementation.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the query parameter and resubmit the request.
 
-### Base.1.0.QueryNotSupportedOnResource
+### Base.1.4.QueryNotSupportedOnResource
 The query is not supported on the resource. For example, a start/count query is attempted on a resource that is not a collection.
 
 | | |
@@ -278,7 +323,7 @@ The query is not supported on the resource. For example, a start/count query is 
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the query parameters and resubmit the request.
 
-### Base.1.0.QueryParameterOutOfRange
+### Base.1.4.QueryParameterOutOfRange
 The query parameter value is out of range for the resource. For example, a page is requested that is outside the valid page range.
 
 | | |
@@ -287,7 +332,7 @@ The query parameter value is out of range for the resource. For example, a page 
 |Severity|Warning
 |Resolution|Specify a query parameter value that is within range. For example, a page that is within the valid range of pages.
 
-### Base.1.0.QueryParameterValueFormatError
+### Base.1.4.QueryParameterValueFormatError
 The value type is correct, but the format is not supported or the size/length was exceeded.
 
 | | |
@@ -296,7 +341,7 @@ The value type is correct, but the format is not supported or the size/length wa
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.
 
-### Base.1.0.QueryParameterValueTypeError
+### Base.1.4.QueryParameterValueTypeError
 The query parameter contains an incorrect value type. For example, a number supplied for a query parameter that requires a string.
 
 | | |
@@ -305,16 +350,16 @@ The query parameter contains an incorrect value type. For example, a number supp
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.
 
-### Base.1.0.ResourceAlreadyExists
-The create resource operation did not complete because the resource already exists.
+### Base.1.4.ResourceAlreadyExists
+Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.
 
 | | |
 |:---|:---|
-|Message Format|"The requested resource already exists."
+|Message Format|"The requested resource of type %1 with the property %2 with the value %3 already exists."
 |Severity|Critical
-|Resolution|Do not attempt the create operation because the resource already exists.
+|Resolution|Do not repeat the create operation as the resource has already been created.
 
-### Base.1.0.ResourceAtUriInUnknownFormat
+### Base.1.4.ResourceAtUriInUnknownFormat
 The URI is valid, but the resource or image at that URI is in a format that is not supported by the service.
 
 | | |
@@ -323,7 +368,7 @@ The URI is valid, but the resource or image at that URI is in a format that is n
 |Severity|Critical
 |Resolution|Place a resource, image, or file that is supported by the service at the URI.
 
-### Base.1.0.ResourceAtUriUnauthorized
+### Base.1.4.ResourceAtUriUnauthorized
 An attempt to access the resource, image, or file at the URI is unauthorized.
 
 | | |
@@ -332,7 +377,7 @@ An attempt to access the resource, image, or file at the URI is unauthorized.
 |Severity|Critical
 |Resolution|Verify that the appropriate access is provided for the service to access the URI.
 
-### Base.1.0.ResourceCannotBeDeleted
+### Base.1.4.ResourceCannotBeDeleted
 A delete operation was attempted on a resource that cannot be deleted.
 
 | | |
@@ -341,7 +386,16 @@ A delete operation was attempted on a resource that cannot be deleted.
 |Severity|Critical
 |Resolution|Do not attempt to delete a resource that does not support the REST API DELETE operation.
 
-### Base.1.0.ResourceInStandby
+### Base.1.4.ResourceExhaustion
+Indicates that a resource could not satisfy the request due to some unavailability of resources.  An example is that available capacity has been allocated.
+
+| | |
+|:---|:---|
+|Message Format|"The resource %1 was unable to satisfy the request due to unavailability of resources."
+|Severity|Critical
+|Resolution|Ensure that the resources are available and resubmit the request.
+
+### Base.1.4.ResourceInStandby
 Indicates that the request could not be performed because the resource is in standby.
 
 | | |
@@ -350,7 +404,7 @@ Indicates that the request could not be performed because the resource is in sta
 |Severity|Critical
 |Resolution|Ensure that the resource is in the correct power state and resubmit the request.
 
-### Base.1.0.ResourceInUse
+### Base.1.4.ResourceInUse
 The request to change the resource was rejected because the resource was in use or in transition.
 
 | | |
@@ -359,7 +413,7 @@ The request to change the resource was rejected because the resource was in use 
 |Severity|Warning
 |Resolution|If the operation did not complete, wait until the resource is free and resubmit the request.
 
-### Base.1.0.ResourceMissingAtURI
+### Base.1.4.ResourceMissingAtURI
 The operation expected an image or resource at the provided URI, but found none.
 
 | | |
@@ -368,7 +422,25 @@ The operation expected an image or resource at the provided URI, but found none.
 |Severity|Critical
 |Resolution|Place a valid resource at the URI or correct the URI and resubmit the request.
 
-### Base.1.0.ServiceInUnknownState
+### Base.1.4.ResourceNotFound
+Indicates that the operation expected a resource identifier that corresponds to an existing resource but one was not found.
+
+| | |
+|:---|:---|
+|Message Format|"The requested resource of type %1 named %2 was not found."
+|Severity|Critical
+|Resolution|Provide a valid resource identifier and resubmit the request.
+
+### Base.1.4.ResourceTypeIncompatible
+Indicates that the resource type of the operation does not match that for the operation destination.  Examples of when this can happen include during a POST to a collection using the wrong resource type, an update where the @odata.types do not match or on a major version incompatability.
+
+| | |
+|:---|:---|
+|Message Format|"The @odata.type of the request body %1 is incompatible with the @odata.type of the resource which is %2."
+|Severity|Critical
+|Resolution|Resubmit the request with a payload compatible with the resource's schema.
+
+### Base.1.4.ServiceInUnknownState
 The operation did not complete because the service is in an unknown state and cannot take incoming requests.
 
 | | |
@@ -377,7 +449,7 @@ The operation did not complete because the service is in an unknown state and ca
 |Severity|Critical
 |Resolution|If the operation did not complete, restart the service and resubmit the request.
 
-### Base.1.0.ServiceShuttingDown
+### Base.1.4.ServiceShuttingDown
 The operation did not complete because the service is shutting down.
 
 | | |
@@ -386,7 +458,7 @@ The operation did not complete because the service is shutting down.
 |Severity|Critical
 |Resolution|If the operation did not complete, resubmit the request when the service is available.
 
-### Base.1.0.ServiceTemporarilyUnavailable
+### Base.1.4.ServiceTemporarilyUnavailable
 The service is temporarily unavailable.
 
 | | |
@@ -395,7 +467,7 @@ The service is temporarily unavailable.
 |Severity|Critical
 |Resolution|Wait for the indicated retry duration and retry the operation.
 
-### Base.1.0.SessionLimitExceeded
+### Base.1.4.SessionLimitExceeded
 Session establishment has been requested, but the operation did not complete because the number of simultaneous sessions exceeded the maximum number allowed by the implementation.
 
 | | |
@@ -404,7 +476,16 @@ Session establishment has been requested, but the operation did not complete bec
 |Severity|Critical
 |Resolution|Before attempting to establish the session, reduce the number of sessions or increase the maximum number of simultaneous sessions allowed (if supported).
 
-### Base.1.0.SourceDoesNotSupportProtocol
+### Base.1.4.SessionTerminated
+Indicates that the DELETE operation on the Session resource resulted in the successful termination of the session.
+
+| | |
+|:---|:---|
+|Message Format|"The session was successfully terminated."
+|Severity|OK
+|Resolution|No resolution is required.
+
+### Base.1.4.SourceDoesNotSupportProtocol
 While attempting to access, connect to, or transfer from another location, the other end of the connection did not support the specified protocol.
 
 | | |
@@ -413,7 +494,16 @@ While attempting to access, connect to, or transfer from another location, the o
 |Severity|Critical
 |Resolution|Change protocols or URIs. 
 
-### Base.1.0.Success
+### Base.1.4.StringValueTooLong
+Indicates that a string value passed to the given resource exceeded its length limit. An example is when a shorter limit is imposed by an implementation than that allowed by the specification.
+
+| | |
+|:---|:---|
+|Message Format|"The string %1 exceeds the length limit %2."
+|Severity|Warning
+|Resolution|Resubmit the request with an appropriate string length.
+
+### Base.1.4.Success
 The operation completed successfully.
 
 | | |
@@ -422,7 +512,7 @@ The operation completed successfully.
 |Severity|OK
 |Resolution|None
 
-### Base.1.0.UnrecognizedRequestBody
+### Base.1.4.UnrecognizedRequestBody
 The service detected a request body with malformed JSON.
 
 | | |
@@ -548,7 +638,7 @@ A previously requested property value change was reverted because the current ha
 |Severity|Warning
 |Resolution|Ensure that the system's hardware configuration supports the property value.
 
-### iLO.2.8.AHSDisabled
+### iLO.2.13.AHSDisabled
 Modifying AHS properties is not possible with AHS disabled.
 
 | | |
@@ -557,7 +647,7 @@ Modifying AHS properties is not possible with AHS disabled.
 |Severity|Warning
 |Resolution|Enable AHS, and then modify the AHS properties.
 
-### iLO.2.8.Accepted
+### iLO.2.13.Accepted
 Indicates that one or more properties were correctly changed, but may not be in effect yet.
 
 | | |
@@ -566,7 +656,7 @@ Indicates that one or more properties were correctly changed, but may not be in 
 |Severity|OK
 |Resolution|None
 
-### iLO.2.8.ActionParameterValueNotInList
+### iLO.2.13.ActionParameterValueNotInList
 Indicates that the correct value type was supplied for the action parameter, but the value is not supported. (The value is not in the enumeration list.)
 
 | | |
@@ -575,7 +665,7 @@ Indicates that the correct value type was supplied for the action parameter, but
 |Severity|Warning
 |Resolution|Choose a value from the enumeration list and resubmit the request if the operation failed.
 
-### iLO.2.8.AlertDestinationAssociationError
+### iLO.2.13.AlertDestinationAssociationError
 AlertDestination cannot be configured with both SNMPv1 and SNMPv3.
 
 | | |
@@ -584,7 +674,7 @@ AlertDestination cannot be configured with both SNMPv1 and SNMPv3.
 |Severity|Warning
 |Resolution|For SNMPv1 alert, configure SNMPAlertProtocol to SNMPv1. For SNMPv3 alert, configure SNMPAlertProtocol to SNMPv3.
 
-### iLO.2.8.AlertMailFeatureDisabled
+### iLO.2.13.AlertMailFeatureDisabled
 AlertMail feature is disabled.
 
 | | |
@@ -593,7 +683,7 @@ AlertMail feature is disabled.
 |Severity|Warning
 |Resolution|Enable AlertMail feature to send test alert message.
 
-### iLO.2.8.AlreadyInProgress
+### iLO.2.13.AlreadyInProgress
 An operation is already in progress.
 
 | | |
@@ -602,7 +692,7 @@ An operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current operation to complete, and then retry the operation.
 
-### iLO.2.8.AlreadyUpToDate
+### iLO.2.13.AlreadyUpToDate
 The update did not occur because the component was already up to date.
 
 | | |
@@ -611,7 +701,7 @@ The update did not occur because the component was already up to date.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ApmPowerCapModeInUsed
+### iLO.2.13.ApmPowerCapModeInUsed
 Operation is currently unavailable because the power regulator is set to APM Power Capping Mode.
 
 | | |
@@ -620,7 +710,7 @@ Operation is currently unavailable because the power regulator is set to APM Pow
 |Severity|Warning
 |Resolution|Change the power regulator to other modes rather than APM Power Capping Mode through APM interface.
 
-### iLO.2.8.ArrayPropertyAlreadyExists
+### iLO.2.13.ArrayPropertyAlreadyExists
 Duplicate value.
 
 | | |
@@ -629,16 +719,16 @@ Duplicate value.
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### iLO.2.8.ArrayPropertyOutOfBound
+### iLO.2.13.ArrayPropertyOutOfBound
 The number of items in the array exceeds the maximum number supported.
 
 | | |
 |:---|:---|
-|Message Format|"An array %1 was supplied with %2 items that exceeds the maximum supported count of %3."
+|Message Format|"An array %1 was supplied with %2 items that does not meet the minimum supported count of %3 or exceeds the maximum supported count of %4."
 |Severity|Warning
 |Resolution|Retry the operation using the correct number of items for the array.
 
-### iLO.2.8.ArrayPropertyValueBadParam
+### iLO.2.13.ArrayPropertyValueBadParam
 The property value is not valid.
 
 | | |
@@ -647,7 +737,7 @@ The property value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.BatteryBackupUnitSettingsDisabled
+### iLO.2.13.BatteryBackupUnitSettingsDisabled
 Battery Backup Unit settings are currently disabled.
 
 | | |
@@ -656,7 +746,7 @@ Battery Backup Unit settings are currently disabled.
 |Severity|Warning
 |Resolution|To re-enable Battery Backup Unit settings, disable Scalable Persistent Memory functionality in the system ROM RBSU.
 
-### iLO.2.8.BiosActionTBD
+### iLO.2.13.BiosActionTBD
 The BIOS action supplied in the POST operation is not yet implemented.
 
 | | |
@@ -665,7 +755,7 @@ The BIOS action supplied in the POST operation is not yet implemented.
 |Severity|Critical
 |Resolution|The action was invalid or the wrong resource was the target. See the implementation documentation for assistance.
 
-### iLO.2.8.BiosPasswordInfoInvalid
+### iLO.2.13.BiosPasswordInfoInvalid
 The stored BIOS password information is invalid. A system reboot is neccessary to retore password defaults.
 
 | | |
@@ -674,7 +764,7 @@ The stored BIOS password information is invalid. A system reboot is neccessary t
 |Severity|Critical
 |Resolution|The system will need to be rebooted to restore BIOS password information to defaults.
 
-### iLO.2.8.BiosPasswordMismatch
+### iLO.2.13.BiosPasswordMismatch
 The provided OldPassword does not match the stored BIOS password.
 
 | | |
@@ -683,7 +773,7 @@ The provided OldPassword does not match the stored BIOS password.
 |Severity|Critical
 |Resolution|Retry the action with the matching password.
 
-### iLO.2.8.CalibrateInProgress
+### iLO.2.13.CalibrateInProgress
 Power calibrate is in progress.
 
 | | |
@@ -692,7 +782,7 @@ Power calibrate is in progress.
 |Severity|Warning
 |Resolution|Wait for previous power calibrate complete or stop previous power calibrate, and then retry the operation.
 
-### iLO.2.8.CannotRemoveDefaultLanguagePack
+### iLO.2.13.CannotRemoveDefaultLanguagePack
 Cannot remove default language pack.
 
 | | |
@@ -701,7 +791,7 @@ Cannot remove default language pack.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.CannotRemoveLanguagePack
+### iLO.2.13.CannotRemoveLanguagePack
 Cannot remove language pack.
 
 | | |
@@ -710,7 +800,7 @@ Cannot remove language pack.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.CannotRemoveLicense
+### iLO.2.13.CannotRemoveLicense
 Cannot remove the base license.
 
 | | |
@@ -719,7 +809,7 @@ Cannot remove the base license.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ChassisPowerDataUnAvailable
+### iLO.2.13.ChassisPowerDataUnAvailable
 Chassis power regulation data is currently unavailable.
 
 | | |
@@ -728,7 +818,7 @@ Chassis power regulation data is currently unavailable.
 |Severity|Warning
 |Resolution|Reset the management processor or chassis manager, and then retry the operation.
 
-### iLO.2.8.ChassisResetRequired
+### iLO.2.13.ChassisResetRequired
 The chassis properties were correctly changed, but will not take effect until the chassis is reset or all nodes in chassis remain powered off for at least 5 seconds.
 
 | | |
@@ -737,7 +827,7 @@ The chassis properties were correctly changed, but will not take effect until th
 |Severity|Warning
 |Resolution|Reset chassis or remain power off for all nodes in chassis for at least 5 seconds for the settings to take effect.
 
-### iLO.2.8.ComponentUploadAlreadyInProgress
+### iLO.2.13.ComponentUploadAlreadyInProgress
 A component upload operation is already in progress.
 
 | | |
@@ -746,7 +836,7 @@ A component upload operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current component upload to complete, and then retry the operation.
 
-### iLO.2.8.ComponentUploadFailed
+### iLO.2.13.ComponentUploadFailed
 A component upload operation failed.
 
 | | |
@@ -755,7 +845,16 @@ A component upload operation failed.
 |Severity|Warning
 |Resolution|Wait for the current component upload to complete, and then retry the operation.
 
-### iLO.2.8.DemoLicenseKeyPreviouslyInstalled
+### iLO.2.13.DailyUpdateLimitExceeded
+An update operation failed due to exceeding a daily limit.
+
+| | |
+|:---|:---|
+|Message Format|"An update operation failed due to exceeding a daily limit."
+|Severity|Warning
+|Resolution|Retry the operation at a later date.
+
+### iLO.2.13.DemoLicenseKeyPreviouslyInstalled
 A license was previously activated and now a demo key may not be used.
 
 | | |
@@ -764,7 +863,7 @@ A license was previously activated and now a demo key may not be used.
 |Severity|Warning
 |Resolution|The system is no longer eligible for demo licenses.
 
-### iLO.2.8.DeviceIsBusy
+### iLO.2.13.DeviceIsBusy
 Device was not available for communication.
 
 | | |
@@ -773,7 +872,7 @@ Device was not available for communication.
 |Severity|Warning
 |Resolution|Retry the attempted operation after a delay.
 
-### iLO.2.8.DeviceResetRequired
+### iLO.2.13.DeviceResetRequired
 Indicates that one or more properties were correctly changed, but will not take effect until device is reset.
 
 | | |
@@ -782,7 +881,7 @@ Indicates that one or more properties were correctly changed, but will not take 
 |Severity|Warning
 |Resolution|Reset the device for the settings to take effect.
 
-### iLO.2.8.DiagsTestAlreadyRunning
+### iLO.2.13.DiagsTestAlreadyRunning
 A diagnostics self test is already running.
 
 | | |
@@ -791,7 +890,7 @@ A diagnostics self test is already running.
 |Severity|Warning
 |Resolution|Stop the running test and try again.
 
-### iLO.2.8.DowngradeNotAllowed
+### iLO.2.13.DowngradeNotAllowed
 The task did not execute because a downgrade is not allowed by policy.
 
 | | |
@@ -800,7 +899,7 @@ The task did not execute because a downgrade is not allowed by policy.
 |Severity|Warning
 |Resolution|Obtain the latest available component and retry, and clear the task from the queue so processing can continue.
 
-### iLO.2.8.DowngradePolicyAlreadySet
+### iLO.2.13.DowngradePolicyAlreadySet
 The downgrade policy has been set and cannot be changed.
 
 | | |
@@ -809,7 +908,7 @@ The downgrade policy has been set and cannot be changed.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ESKMServersNotConfigured
+### iLO.2.13.ESKMServersNotConfigured
 Enterprise Secure Key Manager Servers are not configured.
 
 | | |
@@ -818,7 +917,7 @@ Enterprise Secure Key Manager Servers are not configured.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ETagTooLong
+### iLO.2.13.ETagTooLong
 The supplied ETag is too long. The maximum supported ETag length is 63 bytes.
 
 | | |
@@ -827,7 +926,7 @@ The supplied ETag is too long. The maximum supported ETag length is 63 bytes.
 |Severity|Warning
 |Resolution|Retry the operation using an ETag with a length of 63 bytes or less.
 
-### iLO.2.8.EmptyDNSName
+### iLO.2.13.EmptyDNSName
 DNS name is empty.
 
 | | |
@@ -836,7 +935,7 @@ DNS name is empty.
 |Severity|Warning
 |Resolution|Retry the request with a valid DNS name.
 
-### iLO.2.8.ErrorIntializingESKM
+### iLO.2.13.ErrorIntializingESKM
 Failed to initialize ESKM.
 
 | | |
@@ -845,7 +944,7 @@ Failed to initialize ESKM.
 |Severity|Warning
 |Resolution|Check if Account Group, Local CA Certificate Name, Login Name and Password are correct and try again.
 
-### iLO.2.8.EventLogCleared
+### iLO.2.13.EventLogCleared
 Event log cleared successfully.
 
 | | |
@@ -854,7 +953,7 @@ Event log cleared successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.EventSubscriptionModified
+### iLO.2.13.EventSubscriptionModified
 The event subscription was modified successfully.
 
 | | |
@@ -863,7 +962,7 @@ The event subscription was modified successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.EventSubscriptionRemoved
+### iLO.2.13.EventSubscriptionRemoved
 The event subscription was removed successfully.
 
 | | |
@@ -872,7 +971,7 @@ The event subscription was removed successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ExtendedInfo
+### iLO.2.13.ExtendedInfo
 Indicates that extended information is available.
 
 | | |
@@ -881,7 +980,7 @@ Indicates that extended information is available.
 |Severity|OK
 |Resolution|See @Message.ExtendedInfo for more information.
 
-### iLO.2.8.FWFlashSuccessTPMOverrideEnabled
+### iLO.2.13.FWFlashSuccessTPMOverrideEnabled
 A Trusted Module is  detected in this system. If you have not performed the proper OS encryption procedures, you will lose access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. TPMOverrideFlag is enabled and firmware flash initiated.
 
 | | |
@@ -890,7 +989,7 @@ A Trusted Module is  detected in this system. If you have not performed the prop
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.FWFlashSuccessTrustedModuleOverrideEnabled
+### iLO.2.13.FWFlashSuccessTrustedModuleOverrideEnabled
 A Trusted Module (type unspecified) is installed in the system and TPMOverrideFlag is enabled. Firmware flash initiated.
 
 | | |
@@ -899,7 +998,7 @@ A Trusted Module (type unspecified) is installed in the system and TPMOverrideFl
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.FWFlashTPMOverrideFlagRequired
+### iLO.2.13.FWFlashTPMOverrideFlagRequired
 A Trusted Module is  detected in this system. Failure to perform proper OS encryption procedures will result in loss of access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. If you do not have your recovery key or have not suspended encryption software, cancel this firmware upload. Failure to follow these instructions will result in loss of access to your data. To continue with firmware flash TPMOverrideFlag is required.
 
 | | |
@@ -908,7 +1007,7 @@ A Trusted Module is  detected in this system. Failure to perform proper OS encry
 |Severity|Warning
 |Resolution|Please set the TPMOverrideFlag to true and try again.
 
-### iLO.2.8.FWFlashTrustedModuleOverrideFlagRequired
+### iLO.2.13.FWFlashTrustedModuleOverrideFlagRequired
 A Trusted Module (type unspecified) is installed in the system, TPMOverrideFlag is required for firmware flash to proceed.
 
 | | |
@@ -917,7 +1016,7 @@ A Trusted Module (type unspecified) is installed in the system, TPMOverrideFlag 
 |Severity|Warning
 |Resolution|Please set the TPMOverrideFlag to true and try again.
 
-### iLO.2.8.FirmwareFlashAlreadyInProgress
+### iLO.2.13.FirmwareFlashAlreadyInProgress
 A firmware upgrade operation is already in progress.
 
 | | |
@@ -926,7 +1025,7 @@ A firmware upgrade operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current firmware flash to complete, and then retry the operation.
 
-### iLO.2.8.GeneratingCertificate
+### iLO.2.13.GeneratingCertificate
 Generating the X509 Certificate.
 
 | | |
@@ -935,7 +1034,16 @@ Generating the X509 Certificate.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.HardDriveZoneFailure
+### iLO.2.13.HardDriveZoneBackupFailure
+Backup hard drive zoning configuration to BMC has encountered an error.
+
+| | |
+|:---|:---|
+|Message Format|"Backup hard drive zoning configuration to BMC has encountered an error."
+|Severity|Warning
+|Resolution|Retry the operation. If the problem persists, consider resetting the BMC or the entire chassis.
+
+### iLO.2.13.HardDriveZoneFailure
 Hard Drive Zoning was in error state.
 
 | | |
@@ -944,7 +1052,7 @@ Hard Drive Zoning was in error state.
 |Severity|Critical
 |Resolution|Retry the operation. If the problem persists, consider resetting the entire chassis.
 
-### iLO.2.8.ICRUInvalidAddress
+### iLO.2.13.ICRUInvalidAddress
 ICRU returned invalid address for translation.
 
 | | |
@@ -953,7 +1061,7 @@ ICRU returned invalid address for translation.
 |Severity|Warning
 |Resolution|Input valid address for translation.
 
-### iLO.2.8.ICRUNotSupported
+### iLO.2.13.ICRUNotSupported
 ICRU feature or function is not supported on the system.
 
 | | |
@@ -962,7 +1070,7 @@ ICRU feature or function is not supported on the system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.IPv6ConfigurationError
+### iLO.2.13.IPv6ConfigurationError
 The specified IPv6 configuration caused an error.
 
 | | |
@@ -971,7 +1079,7 @@ The specified IPv6 configuration caused an error.
 |Severity|Warning
 |Resolution|Resolve the indicated error in the configuration data.
 
-### iLO.2.8.ImportCertSuccessful
+### iLO.2.13.ImportCertSuccessful
 Import Certificate was successful.
 
 | | |
@@ -980,7 +1088,7 @@ Import Certificate was successful.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ImportCertSuccessfuliLOResetinProgress
+### iLO.2.13.ImportCertSuccessfuliLOResetinProgress
 Import Certificate was successful and the management processor is being reset.
 
 | | |
@@ -989,7 +1097,7 @@ Import Certificate was successful and the management processor is being reset.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ImportCertificateFailed
+### iLO.2.13.ImportCertificateFailed
 Failed importing Certificate.
 
 | | |
@@ -998,7 +1106,7 @@ Failed importing Certificate.
 |Severity|Warning
 |Resolution|Retry the operation with proper Certificate information.
 
-### iLO.2.8.ImportSSOParamError
+### iLO.2.13.ImportSSOParamError
 Not a valid parameter.
 
 | | |
@@ -1007,7 +1115,7 @@ Not a valid parameter.
 |Severity|Warning
 |Resolution|Retry the request with valid parameters.
 
-### iLO.2.8.ImportSSOUriError
+### iLO.2.13.ImportSSOUriError
 Not a valid Uri to import SSO certificate.
 
 | | |
@@ -1016,7 +1124,7 @@ Not a valid Uri to import SSO certificate.
 |Severity|Warning
 |Resolution|Retry the request with valid URI.
 
-### iLO.2.8.IndicatorLedInvalidStateChange
+### iLO.2.13.IndicatorLedInvalidStateChange
 The request to change the state of the Indicator LED cannot be granted because the current state is either Blinking or is Unknown.
 
 | | |
@@ -1025,7 +1133,7 @@ The request to change the state of the Indicator LED cannot be granted because t
 |Severity|Warning
 |Resolution|Please wait until the server has completed its reserved state.
 
-### iLO.2.8.InstallSetWriteError
+### iLO.2.13.InstallSetWriteError
 The InstallSet write failed.
 
 | | |
@@ -1034,7 +1142,7 @@ The InstallSet write failed.
 |Severity|Warning
 |Resolution|Ensure a valid name for the item and that space exists to hold the item.
 
-### iLO.2.8.InterfaceDisabledResetRequired
+### iLO.2.13.InterfaceDisabledResetRequired
 Disabling one or more interfaces/features will cause certain functionalities to be not available. Please refer to User Guide for details on the implications. Changes will not take effect until the management processor is reset
 
 | | |
@@ -1043,7 +1151,7 @@ Disabling one or more interfaces/features will cause certain functionalities to 
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.InternalErrorWithParam
+### iLO.2.13.InternalErrorWithParam
 The operation was not successful due to an internal service error (shown), but the service is still operational.
 
 | | |
@@ -1052,7 +1160,7 @@ The operation was not successful due to an internal service error (shown), but t
 |Severity|Critical
 |Resolution|Retry the operation. If the problem persists, consider resetting the service.
 
-### iLO.2.8.InvalidConfigurationSpecified
+### iLO.2.13.InvalidConfigurationSpecified
 The specified configuration is not valid.
 
 | | |
@@ -1061,7 +1169,7 @@ The specified configuration is not valid.
 |Severity|Warning
 |Resolution|Correct the configuration, and then retry the operation.
 
-### iLO.2.8.InvalidConfigurationSpecifiedForFederation
+### iLO.2.13.InvalidConfigurationSpecifiedForFederation
 iLO Federation Management cannot be supported in the current configuration.
 
 | | |
@@ -1070,7 +1178,7 @@ iLO Federation Management cannot be supported in the current configuration.
 |Severity|Warning
 |Resolution|Review the management processor network settings or Onboard Administrator settings and refer to the User Guide.
 
-### iLO.2.8.InvalidDwellTime
+### iLO.2.13.InvalidDwellTime
 The dwell time specified is not valid.
 
 | | |
@@ -1079,7 +1187,7 @@ The dwell time specified is not valid.
 |Severity|Warning
 |Resolution|Adhere to the dwell time supported.
 
-### iLO.2.8.InvalidEngineID
+### iLO.2.13.InvalidEngineID
 EngineID should be a hexadecimal number starting with 0x (for example, 0x0102030405abcdef). The string length should be an even number, greater than or equal to 6 characters (excluding the "0x"), and less than or equal to 32 characters.
 
 | | |
@@ -1088,16 +1196,7 @@ EngineID should be a hexadecimal number starting with 0x (for example, 0x0102030
 |Severity|Warning
 |Resolution|Retry the operation using an EngineID within the specified parameters.
 
-### iLO.2.8.InvalidIndex
-The Index is not valid.
-
-| | |
-|:---|:---|
-|Message Format|"The Index provided is not valid."
-|Severity|Warning
-|Resolution|Adhere to the indexes supported in the self links.
-
-### iLO.2.8.InvalidLicenseKey
+### iLO.2.13.InvalidLicenseKey
 The license key is not valid.
 
 | | |
@@ -1106,7 +1205,7 @@ The license key is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a valid license key.
 
-### iLO.2.8.InvalidOperationForAutoPowerOnState
+### iLO.2.13.InvalidOperationForAutoPowerOnState
 The operation was not successful because the current auto power on mode specifies power is to remain off.
 
 | | |
@@ -1115,7 +1214,7 @@ The operation was not successful because the current auto power on mode specifie
 |Severity|Warning
 |Resolution|Verify that the system auto power on mode is set to turn power on or follow the previous power setting.
 
-### iLO.2.8.InvalidOperationForSystemState
+### iLO.2.13.InvalidOperationForSystemState
 The operation was not successful due to the current power state (for example, attempting to turn the power off when it is already off).
 
 | | |
@@ -1124,16 +1223,16 @@ The operation was not successful due to the current power state (for example, at
 |Severity|Warning
 |Resolution|Verify that the system is in the correct power state, and then retry the operation.
 
-### iLO.2.8.InvalidPassphraseLength
-The passphrase must contain 8 to 49 characters.
+### iLO.2.13.InvalidPassphraseLength
+The passphrase length is not valid.
 
 | | |
 |:---|:---|
-|Message Format|"%1 must contain 8 to 49 characters."
+|Message Format|"%1 must contain from %2 to %3 characters."
 |Severity|Warning
 |Resolution|Correct the passphrase, and then retry the operation.
 
-### iLO.2.8.InvalidPasswordComplexity
+### iLO.2.13.InvalidPasswordComplexity
 The password failed the complexity enforcement.
 
 | | |
@@ -1142,7 +1241,7 @@ The password failed the complexity enforcement.
 |Severity|Critical
 |Resolution|Retry the operation using a corrected password.
 
-### iLO.2.8.InvalidPasswordLength
+### iLO.2.13.InvalidPasswordLength
 The password length is not valid.
 
 | | |
@@ -1151,7 +1250,16 @@ The password length is not valid.
 |Severity|Critical
 |Resolution|Retry the operation using a corrected password.
 
-### iLO.2.8.LicenseKeyDenied
+### iLO.2.13.InvalidSerialNumberLength
+The serial number length is not valid.
+
+| | |
+|:---|:---|
+|Message Format|"A valid serial number must be %1 characters of length."
+|Severity|Critical
+|Resolution|Adjust the length of the serial number and retry the operation.
+
+### iLO.2.13.LicenseKeyDenied
 The license key activation was refused.  Includes details.
 
 | | |
@@ -1160,7 +1268,7 @@ The license key activation was refused.  Includes details.
 |Severity|Warning
 |Resolution|Address the condition or use a valid license activation key.
 
-### iLO.2.8.LicenseKeyNotSupported
+### iLO.2.13.LicenseKeyNotSupported
 The license key supplied is unsupported on this system.  The key may activate a different product or unsupported tier.
 
 | | |
@@ -1169,7 +1277,7 @@ The license key supplied is unsupported on this system.  The key may activate a 
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.LicenseKeyRequired
+### iLO.2.13.LicenseKeyRequired
 A license key is required to use this operation or feature.
 
 | | |
@@ -1178,7 +1286,7 @@ A license key is required to use this operation or feature.
 |Severity|Warning
 |Resolution|Install a license key to use this feature.
 
-### iLO.2.8.LoginAttemptDelayed
+### iLO.2.13.LoginAttemptDelayed
 The login was not successful, so the service enforces a delay before another login is allowed.
 
 | | |
@@ -1187,7 +1295,7 @@ The login was not successful, so the service enforces a delay before another log
 |Severity|Warning
 |Resolution|Wait for the delay time to expire, and then retry the login.
 
-### iLO.2.8.LoginAttemptDelayedSeconds
+### iLO.2.13.LoginAttemptDelayedSeconds
 The login was not successful, so the service enforces a delay before another login is allowed.
 
 | | |
@@ -1196,7 +1304,7 @@ The login was not successful, so the service enforces a delay before another log
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MCTPDiscoveryDisabled
+### iLO.2.13.MCTPDiscoveryDisabled
 Telemetry service and Workload Performance advisor will be not available with MCTP discovery disabled.
 
 | | |
@@ -1205,7 +1313,7 @@ Telemetry service and Workload Performance advisor will be not available with MC
 |Severity|Warning
 |Resolution|Enable MCTP discovery for Telemetry service and Workload Performance advisor.
 
-### iLO.2.8.MaxProviders
+### iLO.2.13.MaxProviders
 The maximum number of providers are already registered.
 
 | | |
@@ -1214,7 +1322,7 @@ The maximum number of providers are already registered.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MaxVirtualMediaConnectionEstablished
+### iLO.2.13.MaxVirtualMediaConnectionEstablished
 No more Virtual Media connections are available, because the maximum number of connections are already established.
 
 | | |
@@ -1223,7 +1331,7 @@ No more Virtual Media connections are available, because the maximum number of c
 |Severity|Warning
 |Resolution|Close an established Virtual Media connection, and then retry creating or opening another connection.
 
-### iLO.2.8.MembistVariablesNotSupported
+### iLO.2.13.MembistVariablesNotSupported
 Membist variables are not supported on the system.
 
 | | |
@@ -1232,7 +1340,7 @@ Membist variables are not supported on the system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MemoryInterleaveSetError
+### iLO.2.13.MemoryInterleaveSetError
 The memory set specified in InterleaveSets is not supported.
 
 | | |
@@ -1241,16 +1349,34 @@ The memory set specified in InterleaveSets is not supported.
 |Severity|Warning
 |Resolution|Ensure the memory set specified in InterleaveSets matches the first set in the memory domain's InterleavableMemrorySets.
 
-### iLO.2.8.NoEventSubscriptions
-There are no event subscriptions registerd.
+### iLO.2.13.NewerVersionRequired
+Update does not meet minimum version requirements.
 
 | | |
 |:---|:---|
-|Message Format|"The opeartion can not be completed because there are no event subscribers."
+|Message Format|"Update does not meet minimum version requirements."
+|Severity|Warning
+|Resolution|Use newer version.
+
+### iLO.2.13.NoContent
+The requested resource exists but has no content.
+
+| | |
+|:---|:---|
+|Message Format|"The resource exists but has no content."
+|Severity|OK
+|Resolution|None
+
+### iLO.2.13.NoEventSubscriptions
+There are no event subscriptions registered.
+
+| | |
+|:---|:---|
+|Message Format|"The operation cannot be completed because there are no event subscribers."
 |Severity|Warning
 |Resolution|
 
-### iLO.2.8.NoPowerMetering
+### iLO.2.13.NoPowerMetering
 No support for power metering available on platform.
 
 | | |
@@ -1259,7 +1385,7 @@ No support for power metering available on platform.
 |Severity|OK
 |Resolution|Enable Power Metering on platform if supported.
 
-### iLO.2.8.NoSNMPAlertDestinationsConfigured
+### iLO.2.13.NoSNMPAlertDestinationsConfigured
 No SNMP alert destinations configured or none of the configured destinations are associated with SNMPv1 protocol or SNMPv3 protocol and user.
 
 | | |
@@ -1268,7 +1394,7 @@ No SNMP alert destinations configured or none of the configured destinations are
 |Severity|Warning
 |Resolution|Configure at least one SNMP alert destination and associate it with SNMPv1 protocol or SNMPv3 protocol and user.
 
-### iLO.2.8.NoSamples
+### iLO.2.13.NoSamples
 No power history samples are available.
 
 | | |
@@ -1277,7 +1403,7 @@ No power history samples are available.
 |Severity|OK
 |Resolution|To accumulate power history samples, power on the server, and then wait at least 5 minutes.
 
-### iLO.2.8.NoScriptedVirtualMediaConnectionAvailable
+### iLO.2.13.NoScriptedVirtualMediaConnectionAvailable
 No scripted virtual media connections exist to perform the operation.
 
 | | |
@@ -1286,7 +1412,7 @@ No scripted virtual media connections exist to perform the operation.
 |Severity|Warning
 |Resolution|Create or open a scripted virtual media connection, and then retry the operation.
 
-### iLO.2.8.NoSpaceforDNSName
+### iLO.2.13.NoSpaceforDNSName
 No space to store DNS name.
 
 | | |
@@ -1295,7 +1421,7 @@ No space to store DNS name.
 |Severity|Warning
 |Resolution|Make sure SSO database has enough space to store DNS name.
 
-### iLO.2.8.NoVirtualMediaConnectionAvailable
+### iLO.2.13.NoVirtualMediaConnectionAvailable
 No Virtual Media connections exist to perform the operation.
 
 | | |
@@ -1304,7 +1430,7 @@ No Virtual Media connections exist to perform the operation.
 |Severity|Warning
 |Resolution|Create or open a Virtual Media connection, and then retry the operation.
 
-### iLO.2.8.NodeAssignedCrossRegion
+### iLO.2.13.NodeAssignedCrossRegion
 Each zone can only manage the node in the same region, cannot manage overlap region.
 
 | | |
@@ -1313,7 +1439,7 @@ Each zone can only manage the node in the same region, cannot manage overlap reg
 |Severity|Warning
 |Resolution|Correct the out of range value, and then retry the operation.
 
-### iLO.2.8.NodeNotPresentInZone
+### iLO.2.13.NodeNotPresentInZone
 Operation is currently unavailable because there is no node installed in the zone.
 
 | | |
@@ -1322,7 +1448,7 @@ Operation is currently unavailable because there is no node installed in the zon
 |Severity|Warning
 |Resolution|Install at least one node in the zone and retry the operation.
 
-### iLO.2.8.NotSupportedOnNIC
+### iLO.2.13.NotSupportedOnNIC
 This property is not supported by the indicated network port.
 
 | | |
@@ -1331,7 +1457,7 @@ This property is not supported by the indicated network port.
 |Severity|Warning
 |Resolution|Do not specify this property on the indicated network port.
 
-### iLO.2.8.NotValidIPAddrOrDNS
+### iLO.2.13.NotValidIPAddrOrDNS
 The value for the property is not a valid IPv4/v6 address or DNS name.
 
 | | |
@@ -1340,7 +1466,7 @@ The value for the property is not a valid IPv4/v6 address or DNS name.
 |Severity|Warning
 |Resolution|Correct the IPv4/v6 address or DNS name, and then retry the operation.
 
-### iLO.2.8.NotValidIPAddress
+### iLO.2.13.NotValidIPAddress
 The value for the property is not a valid IP address.
 
 | | |
@@ -1349,7 +1475,7 @@ The value for the property is not a valid IP address.
 |Severity|Warning
 |Resolution|Use a valid IP address.
 
-### iLO.2.8.NotValidSubnetMask
+### iLO.2.13.NotValidSubnetMask
 The value for the property is not a valid subnet mask.
 
 | | |
@@ -1358,16 +1484,25 @@ The value for the property is not a valid subnet mask.
 |Severity|Warning
 |Resolution|Use a valid subnet mask.
 
-### iLO.2.8.OperationWillCompleteAfterSystemPOST
+### iLO.2.13.OperationAvailableAfterSystemPOST
+The value for the property can not be set until System BIOS POST completes.
+
+| | |
+|:---|:---|
+|Message Format|"Property %1 will be settable after the System BIOS completes POST."
+|Severity|Warning
+|Resolution|Wait to see the change in value until after the System BIOS completes POST.
+
+### iLO.2.13.OperationWillCompleteAfterSystemPOST
 The value for the property will be applied after System BIOS POST completes.
 
 | | |
 |:---|:---|
 |Message Format|"The value for property %1 will be changed after the System BIOS completes POST."
-|Severity|Information
+|Severity|OK
 |Resolution|Wait to see the change in value until after the System BIOS completes POST.
 
-### iLO.2.8.PowerCapOACntrld
+### iLO.2.13.PowerCapOACntrld
 The enclosure Onboard Administrator is currently managing the power cap.
 
 | | |
@@ -1376,7 +1511,7 @@ The enclosure Onboard Administrator is currently managing the power cap.
 |Severity|Warning
 |Resolution|Use Onboard Administrator to Manage the PowerCap
 
-### iLO.2.8.PowerCapROMCntrld
+### iLO.2.13.PowerCapROMCntrld
 The System ROM is currently managing the power cap.
 
 | | |
@@ -1385,7 +1520,7 @@ The System ROM is currently managing the power cap.
 |Severity|Warning
 |Resolution|Enable RESTful API management of the power cap in System ROM
 
-### iLO.2.8.PowerLimitMayNotTakeEffect
+### iLO.2.13.PowerLimitMayNotTakeEffect
 One of power limit setpoint may become unreachable due to power limit range is unknown. It's not recommended configure power limit setpoint when power limit range is unknown.
 
 | | |
@@ -1394,7 +1529,7 @@ One of power limit setpoint may become unreachable due to power limit range is u
 |Severity|Warning
 |Resolution|Please execute calibrate action to get power limit range then reconfigure power limit setpoint.
 
-### iLO.2.8.PowerRegulationNotDisable
+### iLO.2.13.PowerRegulationNotDisable
 Operation is currently unavailable because chassis power regulation is enabled.
 
 | | |
@@ -1403,7 +1538,7 @@ Operation is currently unavailable because chassis power regulation is enabled.
 |Severity|Warning
 |Resolution|Disable chassis power regulation, and then retry the operation.
 
-### iLO.2.8.PowerSettingAdjustRequired
+### iLO.2.13.PowerSettingAdjustRequired
 Indicates that one or more power limit setting were correctly changed, but will not take effect until power regulation enable and power regulator mode switch to user configurable mode.
 
 | | |
@@ -1412,7 +1547,7 @@ Indicates that one or more power limit setting were correctly changed, but will 
 |Severity|Warning
 |Resolution|Enable power regulation and switch power regulator mode to user configurable mode for the settings to take effect.
 
-### iLO.2.8.PowerValueBadParam
+### iLO.2.13.PowerValueBadParam
 The power cap value is not valid.
 
 | | |
@@ -1421,7 +1556,7 @@ The power cap value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.PowerValueInvalidCalibrationData
+### iLO.2.13.PowerValueInvalidCalibrationData
 The request to set the power cap failed. Invalid power cap calibration data. The Power Cap feature is currently unavailable.
 
 | | |
@@ -1430,16 +1565,16 @@ The request to set the power cap failed. Invalid power cap calibration data. The
 |Severity|Warning
 |Resolution|Restart the server to retrieve calibration data from initial POST.
 
-### iLO.2.8.PowerValueNotOptimal
+### iLO.2.13.PowerValueNotOptimal
 Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than this threshold.
 
 | | |
 |:---|:---|
-|Message Format|"Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than %1%."
+|Message Format|"Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than %1."
 |Severity|Warning
 |Resolution|Please provide an optimal value in integer considering the power cap range.
 
-### iLO.2.8.PowerValueUnAvailable
+### iLO.2.13.PowerValueUnAvailable
 Advanced power capping is not currently available due to the system configuration or state.
 
 | | |
@@ -1448,7 +1583,7 @@ Advanced power capping is not currently available due to the system configuratio
 |Severity|Warning
 |Resolution|Change the system configuration or wait for the system to become fully initialized, and then retry the operation.
 
-### iLO.2.8.PowerValueUnSupported
+### iLO.2.13.PowerValueUnSupported
 Advanced power capping is not supported on this system.
 
 | | |
@@ -1457,7 +1592,7 @@ Advanced power capping is not supported on this system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.PrimaryESKMServerAccessible
+### iLO.2.13.PrimaryESKMServerAccessible
 Only the primary ESKM server is accessible.
 
 | | |
@@ -1466,7 +1601,7 @@ Only the primary ESKM server is accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PrimarySecondaryAddressesResolveToSameServer
+### iLO.2.13.PrimarySecondaryAddressesResolveToSameServer
 Primary and secondary ESKM server addresses resolve to the same server.
 
 | | |
@@ -1475,7 +1610,7 @@ Primary and secondary ESKM server addresses resolve to the same server.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PrimarySecondaryESKMServersAccessible
+### iLO.2.13.PrimarySecondaryESKMServersAccessible
 Both primary and secondary ESKM servers are accessible.
 
 | | |
@@ -1484,7 +1619,7 @@ Both primary and secondary ESKM servers are accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PropertyNotSupported
+### iLO.2.13.PropertyNotSupported
 The property is not supported.
 
 | | |
@@ -1493,7 +1628,7 @@ The property is not supported.
 |Severity|Warning
 |Resolution|Do not attempt to modify this property.
 
-### iLO.2.8.PropertyNotWritableOrUnknown
+### iLO.2.13.PropertyNotWritableOrUnknown
 The request included a value for a  read-only or unknown property.
 
 | | |
@@ -1502,7 +1637,7 @@ The request included a value for a  read-only or unknown property.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the property from the request body and resubmit the request.
 
-### iLO.2.8.PropertyValueBadParam
+### iLO.2.13.PropertyValueBadParam
 The property value is not valid.
 
 | | |
@@ -1511,7 +1646,7 @@ The property value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.PropertyValueExceedsMaxLength
+### iLO.2.13.PropertyValueExceedsMaxLength
 The value for the property exceeds the maximum length.
 
 | | |
@@ -1520,7 +1655,7 @@ The value for the property exceeds the maximum length.
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueIncompatible
+### iLO.2.13.PropertyValueIncompatible
 The value for the property is the correct type, but this value is incompatible with the current value of another property.
 
 | | |
@@ -1529,7 +1664,7 @@ The value for the property is the correct type, but this value is incompatible w
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueOutOfRange
+### iLO.2.13.PropertyValueOutOfRange
 The value for the property is out of range.
 
 | | |
@@ -1538,7 +1673,7 @@ The value for the property is out of range.
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueRequired
+### iLO.2.13.PropertyValueRequired
 Indicates that a property was required but not specified.
 
 | | |
@@ -1547,7 +1682,7 @@ Indicates that a property was required but not specified.
 |Severity|Warning
 |Resolution|Include the required property in the request body and then retry the operation.
 
-### iLO.2.8.RecoveryInstallSetRequired
+### iLO.2.13.RecoveryInstallSetRequired
 A recovery install set is required for this action.
 
 | | |
@@ -1556,7 +1691,7 @@ A recovery install set is required for this action.
 |Severity|Critical
 |Resolution|Create a recovery install set (install set with IsRecovery property set true).
 
-### iLO.2.8.RepairNotSupported
+### iLO.2.13.RepairNotSupported
 IML event with this severity is not supported to be repaired. IML events with Critical or Warning severities can marked as repaired.
 
 | | |
@@ -1565,7 +1700,7 @@ IML event with this severity is not supported to be repaired. IML events with Cr
 |Severity|Warning
 |Resolution|Please do not try to repair IML events with severity other than Critical or Warning.
 
-### iLO.2.8.RequiredPropertyMissing
+### iLO.2.13.RequiredPropertyMissing
 Indicates that a required property is not specified.
 
 | | |
@@ -1574,7 +1709,7 @@ Indicates that a required property is not specified.
 |Severity|Warning
 |Resolution|Include the required property in the request body and then retry the operation.
 
-### iLO.2.8.ResetInProgress
+### iLO.2.13.ResetInProgress
 A management processor reset is in progress.
 
 | | |
@@ -1583,7 +1718,7 @@ A management processor reset is in progress.
 |Severity|Warning
 |Resolution|Wait for management processor reset to complete, and then retry the operation.
 
-### iLO.2.8.ResetRequired
+### iLO.2.13.ResetRequired
 One or more properties were changed, but these changes will not take effect until the management processor is reset.
 
 | | |
@@ -1592,7 +1727,7 @@ One or more properties were changed, but these changes will not take effect unti
 |Severity|Warning
 |Resolution|To enable the changed properties, reset the management processor.
 
-### iLO.2.8.ResourceBeingFlashed
+### iLO.2.13.ResourceBeingFlashed
 The change to the requested resource failed because the resource is being flashed.
 
 | | |
@@ -1601,7 +1736,7 @@ The change to the requested resource failed because the resource is being flashe
 |Severity|Warning
 |Resolution|Retry the operation when the firmware upgrade has completed.
 
-### iLO.2.8.ResourceInUseWithDetail
+### iLO.2.13.ResourceInUseWithDetail
 The change could not be made because the resource was in use or in a transitioning state.
 
 | | |
@@ -1610,7 +1745,7 @@ The change could not be made because the resource was in use or in a transitioni
 |Severity|Warning
 |Resolution|Retry the request.
 
-### iLO.2.8.ResourceNotReadyRetry
+### iLO.2.13.ResourceNotReadyRetry
 The resource is present but is not ready to perform operations due to an internal condition such as initialization or reset.
 
 | | |
@@ -1619,7 +1754,7 @@ The resource is present but is not ready to perform operations due to an interna
 |Severity|Warning
 |Resolution|Retry the operation when the resource is ready.
 
-### iLO.2.8.ResourceTemporarilyUnavailable
+### iLO.2.13.ResourceTemporarilyUnavailable
 The resource is temporarily unavailable because the firmware is being flashed.
 
 | | |
@@ -1628,7 +1763,7 @@ The resource is temporarily unavailable because the firmware is being flashed.
 |Severity|Warning
 |Resolution|Retry the operation when the firmware upgrade has completed.
 
-### iLO.2.8.SMBIOSRecordNotFound
+### iLO.2.13.SMBIOSRecordNotFound
 The SMBIOS record type is not found or is not supported on the system.
 
 | | |
@@ -1637,7 +1772,7 @@ The SMBIOS record type is not found or is not supported on the system.
 |Severity|Warning
 |Resolution|Reset the system to update the SMBIOS records. If the problem persists then the SMBIOS record type is not supported.
 
-### iLO.2.8.SNMPAlertDisabled
+### iLO.2.13.SNMPAlertDisabled
 The operation could not be completed because SNMP alerts are disabled.
 
 | | |
@@ -1646,7 +1781,7 @@ The operation could not be completed because SNMP alerts are disabled.
 |Severity|Warning
 |Resolution|Enable SNMP alerts and retry the operation.
 
-### iLO.2.8.SNMPDisabled
+### iLO.2.13.SNMPDisabled
 Modifying SNMP properties is not possible with SNMP disabled.
 
 | | |
@@ -1655,7 +1790,7 @@ Modifying SNMP properties is not possible with SNMP disabled.
 |Severity|Warning
 |Resolution|Enable SNMP, and then modify the SNMP properties.
 
-### iLO.2.8.SNMPTestAlertFailed
+### iLO.2.13.SNMPTestAlertFailed
 The SNMP Test Alert did not send successfully.
 
 | | |
@@ -1664,7 +1799,7 @@ The SNMP Test Alert did not send successfully.
 |Severity|Warning
 |Resolution|Verify the test alert content and retry.
 
-### iLO.2.8.SNTPConfigurationManagedByDHCPAndIsReadOnly
+### iLO.2.13.SNTPConfigurationManagedByDHCPAndIsReadOnly
 SNTP configuration is currently managed by DHCP and is therefore read-only.
 
 | | |
@@ -1673,7 +1808,7 @@ SNTP configuration is currently managed by DHCP and is therefore read-only.
 |Severity|Warning
 |Resolution|Disable SNTP configuration options in both DHCPv4 and DHCPv6 (see /Managers/n/NICs), and then reconfigure SNTP as desired with static settings.
 
-### iLO.2.8.SSOCertficateEmpty
+### iLO.2.13.SSOCertficateEmpty
 SSO Certificate is Empty.
 
 | | |
@@ -1682,7 +1817,7 @@ SSO Certificate is Empty.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.SSOCertificateReadError
+### iLO.2.13.SSOCertificateReadError
 SSO Certificate Read Error.
 
 | | |
@@ -1691,7 +1826,7 @@ SSO Certificate Read Error.
 |Severity|Warning
 |Resolution|Retry the request with valid SSO certificate.
 
-### iLO.2.8.SSONoSpaceError
+### iLO.2.13.SSONoSpaceError
 No space to store SSO certificate.
 
 | | |
@@ -1700,7 +1835,7 @@ No space to store SSO certificate.
 |Severity|Warning
 |Resolution|Make sure SSO database has enough space to store SSO certificate.
 
-### iLO.2.8.SSORecordNotFound
+### iLO.2.13.SSORecordNotFound
 SSO Record Not Found.
 
 | | |
@@ -1709,16 +1844,16 @@ SSO Record Not Found.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.SamplesNotCaptured
+### iLO.2.13.SamplesNotCaptured
 Samples are not captured for %1 duration.
 
 | | |
 |:---|:---|
 |Message Format|"Samples for metrics are not captured for %1 duration."
-|Severity|Ok
+|Severity|OK
 |Resolution|Wait for the current duration to complete, and then retry.
 
-### iLO.2.8.SecondaryESKMServerAccessible
+### iLO.2.13.SecondaryESKMServerAccessible
 Only the secondary ESKM server is accessible.
 
 | | |
@@ -1727,7 +1862,16 @@ Only the secondary ESKM server is accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ServerConfigurationLockEnabled
+### iLO.2.13.ServerConfigLockStatusUnknown
+The current status of Server Configuration Lock is unknown.
+
+| | |
+|:---|:---|
+|Message Format|"The current status of Server Configuration Lock is unknown."
+|Severity|Warning
+|Resolution|Ensure if the BIOS firmware supports Server Configuration Lock. If supported, reboot the server and retry the operation
+
+### iLO.2.13.ServerConfigurationLockEnabled
 Server Configuration Lock is enabled.
 
 | | |
@@ -1736,7 +1880,7 @@ Server Configuration Lock is enabled.
 |Severity|Warning
 |Resolution|Disable Server Configuration Lock to initiate secure erase of the system
 
-### iLO.2.8.SuccessFeedback
+### iLO.2.13.SuccessFeedback
 The operation completed successfully.
 
 | | |
@@ -1745,7 +1889,7 @@ The operation completed successfully.
 |Severity|OK
 |Resolution|None
 
-### iLO.2.8.SyslogFeatureDisabled
+### iLO.2.13.SyslogFeatureDisabled
 Remote Syslog feature is disabled.
 
 | | |
@@ -1754,7 +1898,7 @@ Remote Syslog feature is disabled.
 |Severity|Warning
 |Resolution|Enable remote syslog feature to send test syslog message.
 
-### iLO.2.8.SystemPowerOffRequired
+### iLO.2.13.SystemPowerOffRequired
 To perform this operation, power off the system. AutoPowerOn must be set to achieve a power restore.
 
 | | |
@@ -1763,7 +1907,16 @@ To perform this operation, power off the system. AutoPowerOn must be set to achi
 |Severity|OK
 |Resolution|To perform this operation, power off the system.
 
-### iLO.2.8.SystemResetRequired
+### iLO.2.13.SystemPowerStateChangeFailed
+System power state change failed (for example, attempting to turn the system power On/Off failed)
+
+| | |
+|:---|:---|
+|Message Format|"System power state change failed"
+|Severity|Warning
+|Resolution|Retry the request.
+
+### iLO.2.13.SystemResetRequired
 The system properties were correctly changed, but will not take effect until the system is reset.
 
 | | |
@@ -1772,7 +1925,7 @@ The system properties were correctly changed, but will not take effect until the
 |Severity|Warning
 |Resolution|Reset system for the settings to take effect.
 
-### iLO.2.8.TokenRequired
+### iLO.2.13.TokenRequired
 Proper 'X-HPRESTFULAPI-AuthToken' authorization token not provided.
 
 | | |
@@ -1781,7 +1934,7 @@ Proper 'X-HPRESTFULAPI-AuthToken' authorization token not provided.
 |Severity|Critical
 |Resolution|Create proper 'X-HPRESTFULAPI-AuthToken' authorization token. Send token in using the proper HTTP header.
 
-### iLO.2.8.UnableModifyRights
+### iLO.2.13.UnableModifyRights
 Unable to modify user rights.
 
 | | |
@@ -1790,7 +1943,7 @@ Unable to modify user rights.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UnableToModifyAfterVirtualMediaInsert
+### iLO.2.13.UnableToModifyAfterVirtualMediaInsert
 The value for the property cannot be changed after virual media image is inserted.
 
 | | |
@@ -1799,7 +1952,7 @@ The value for the property cannot be changed after virual media image is inserte
 |Severity|Warning
 |Resolution|Retry the operation during virtual media image inseration.
 
-### iLO.2.8.UnableToModifyDueToMissingComponent
+### iLO.2.13.UnableToModifyDueToMissingComponent
 The value for the property cannot be changed because a related hardware component is not installed.
 
 | | |
@@ -1808,7 +1961,7 @@ The value for the property cannot be changed because a related hardware componen
 |Severity|Warning
 |Resolution|Install the hardware component and retry the operation.
 
-### iLO.2.8.UnableToModifyDuringSystemPOST
+### iLO.2.13.UnableToModifyDuringSystemPOST
 The value for the property cannot be changed while the computer system BIOS is in POST.
 
 | | |
@@ -1817,7 +1970,7 @@ The value for the property cannot be changed while the computer system BIOS is i
 |Severity|Warning
 |Resolution|After the computer system is either fully booted or powered off, retry the operation.
 
-### iLO.2.8.UnauthorizedLoginAttempt
+### iLO.2.13.UnauthorizedLoginAttempt
 The login was not successful, because the supplied credentials could not be authorized.
 
 | | |
@@ -1826,7 +1979,7 @@ The login was not successful, because the supplied credentials could not be auth
 |Severity|Warning
 |Resolution|Log in with authorized user name and password credentials.
 
-### iLO.2.8.UnsupportedCipherAlgo
+### iLO.2.13.UnsupportedCipherAlgo
 Incompatible Cipher Algorithm in FIPS or CNSA Mode.
 
 | | |
@@ -1835,7 +1988,7 @@ Incompatible Cipher Algorithm in FIPS or CNSA Mode.
 |Severity|Warning
 |Resolution|Select compatible Cipher Algorithm.
 
-### iLO.2.8.UnsupportedOperation
+### iLO.2.13.UnsupportedOperation
 This operation is not supported by RIS for the current system.
 
 | | |
@@ -1844,7 +1997,7 @@ This operation is not supported by RIS for the current system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UnsupportedOperationInChassisVersion
+### iLO.2.13.UnsupportedOperationInChassisVersion
 This operation is not supported by the current version of the XL Chassis firmware.
 
 | | |
@@ -1853,7 +2006,7 @@ This operation is not supported by the current version of the XL Chassis firmwar
 |Severity|Warning
 |Resolution|Please update the XL Chassis firmware to latest version.
 
-### iLO.2.8.UnsupportedOperationInLegacyBootMode
+### iLO.2.13.UnsupportedOperationInLegacyBootMode
 This operation is not supported when the system Boot Mode is set to Legacy BIOS.
 
 | | |
@@ -1862,7 +2015,7 @@ This operation is not supported when the system Boot Mode is set to Legacy BIOS.
 |Severity|Warning
 |Resolution|Change the Boot Mode to UEFI and retry the operation.
 
-### iLO.2.8.UnsupportedOperationInSystemBIOS
+### iLO.2.13.UnsupportedOperationInSystemBIOS
 This operation is not supported by the current version of the system BIOS.
 
 | | |
@@ -1871,97 +2024,106 @@ This operation is not supported by the current version of the system BIOS.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UpdateBadParameter
+### iLO.2.13.UnsupportedSecurityState
+The operation was not successful due to the current security state of the management processor.
 
+| | |
+|:---|:---|
+|Message Format|"The operation was not successful due to the current security state of the management processor."
+|Severity|Warning
+|Resolution|Retry the operation with the correct security state.
+
+### iLO.2.13.UpdateBadParameter
+The update failed because a bad parameter was supplied.
 
 | | |
 |:---|:---|
 |Message Format|"The update failed because a bad parameter was supplied."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Supply correct parameters to the component and retry the update.
 
-### iLO.2.8.UpdateCancelled
-
+### iLO.2.13.UpdateCancelled
+The update was canceled by the update process.
 
 | | |
 |:---|:---|
 |Message Format|"The update was canceled by the update process."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update.
 
-### iLO.2.8.UpdateDependencyFailure
-
+### iLO.2.13.UpdateDependencyFailure
+The update did not complete because the component failed a dependency check.
 
 | | |
 |:---|:---|
 |Message Format|"The update did not complete because the component failed a dependency check."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Install any dependent components first and then retry this update.
 
-### iLO.2.8.UpdateFailed
-
+### iLO.2.13.UpdateFailed
+The update failed with a component specific error (%1).
 
 | | |
 |:---|:---|
 |Message Format|"The update failed with a component specific error (%1)."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update after remedying the component error.
 
-### iLO.2.8.UpdateInPOST
-
+### iLO.2.13.UpdateInPOST
+System must not be booted past POST in order to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System must not be booted past POST in order to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Boot to UEFI and retry the update.
 
-### iLO.2.8.UpdateInterrupted
-
+### iLO.2.13.UpdateInterrupted
+The update was interrupted.
 
 | | |
 |:---|:---|
 |Message Format|"The update was interrupted."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update.
 
-### iLO.2.8.UpdateInvalidFile
-
+### iLO.2.13.UpdateInvalidFile
+The update operation failed because the file is not valid.
 
 | | |
 |:---|:---|
 |Message Format|"The update operation failed because the file is not valid."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Remove and re-add the component to the repository and try the operation again.
 
-### iLO.2.8.UpdateInvalidOS
-
+### iLO.2.13.UpdateInvalidOS
+The update did not occur because the running OS is not valid.
 
 | | |
 |:---|:---|
 |Message Format|"The update did not occur because the running OS is not valid."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update while running the correct OS.
 
-### iLO.2.8.UpdateNotApplicable
-
+### iLO.2.13.UpdateNotApplicable
+The task was not completed because the component was not applicable to this system.
 
 | | |
 |:---|:---|
 |Message Format|"The task was not completed because the component was not applicable to this system."
-|Severity|Warning
+|Severity|Critical
 |Resolution|None.
 
-### iLO.2.8.UpdateRepositoryUnavailable
-
+### iLO.2.13.UpdateRepositoryUnavailable
+The update operation failed because the component repository is unavailable.
 
 | | |
 |:---|:---|
 |Message Format|"The update operation failed because the component repository is unavailable."
-|Severity|Warning
+|Severity|Critical
 |Resolution|None.
 
-### iLO.2.8.UpdateTaskQueueFull
+### iLO.2.13.UpdateTaskQueueFull
 The Invoke action was not successful because the update task queue is full.
 
 | | |
@@ -1970,7 +2132,7 @@ The Invoke action was not successful because the update task queue is full.
 |Severity|Critical
 |Resolution|Remove completed tasks from the update task queue to retry the operation.
 
-### iLO.2.8.UpdateTaskQueueWriteError
+### iLO.2.13.UpdateTaskQueueWriteError
 The UpdateTaskQueue write failed.
 
 | | |
@@ -1979,34 +2141,34 @@ The UpdateTaskQueue write failed.
 |Severity|Warning
 |Resolution|Ensure a valid name for the item and that space exists to hold the item.
 
-### iLO.2.8.UpdateTemporarilyUnavailable
-
+### iLO.2.13.UpdateTemporarilyUnavailable
+The system is temporarily unable to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"The system is temporarily unable to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update, ensuring that power state is stable.
 
-### iLO.2.8.UpdateWithPowerOff
-
+### iLO.2.13.UpdateWithPowerOff
+System power must be off to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System power must be off to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Power system on and retry the update.
 
-### iLO.2.8.UpdateWithPowerOn
-
+### iLO.2.13.UpdateWithPowerOn
+System power must be on to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System power must be on to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Power system on and retry the update.
 
-### iLO.2.8.UserAlreadyExist
+### iLO.2.13.UserAlreadyExist
 The user or login user name already exists.
 
 | | |
@@ -2015,7 +2177,7 @@ The user or login user name already exists.
 |Severity|Warning
 |Resolution|Try a different user or login user name.
 
-### iLO.2.8.UserNameAlreadyExists
+### iLO.2.13.UserNameAlreadyExists
 Duplicate SNMPv3 User.
 
 | | |
@@ -2024,7 +2186,7 @@ Duplicate SNMPv3 User.
 |Severity|Warning
 |Resolution|Enter a different name and try again.
 
-### iLO.2.8.VirtualMediaIsDisabled
+### iLO.2.13.VirtualMediaIsDisabled
 Virtual Media has been disabled.
 
 | | |
@@ -2033,7 +2195,7 @@ Virtual Media has been disabled.
 |Severity|Warning
 |Resolution|Enable Virtual Media to perform this operation.
 
-### iLO.2.8.ZonePowerLimitExceeded
+### iLO.2.13.ZonePowerLimitExceeded
 The sum of zone power limit cannot be more than chassis power limit.
 
 | | |
@@ -2042,7 +2204,7 @@ The sum of zone power limit cannot be more than chassis power limit.
 |Severity|Warning
 |Resolution|Correct the value avoid the sum of power limit exceeds chassis power limit, and then retry the operation.
 
-### iLO.2.8.iLOResetAndSystemRebootRequired
+### iLO.2.13.iLOResetAndSystemRebootRequired
 Indicates that one or more properties were correctly changed, but will not take effect until device is reset and system is rebooted.
 
 | | |
@@ -2051,7 +2213,7 @@ Indicates that one or more properties were correctly changed, but will not take 
 |Severity|Warning
 |Resolution|Reset the management processor and reboot the server.
 
-### iLO.2.8.iLOSubnetConflict
+### iLO.2.13.iLOSubnetConflict
 The subnet being configured has conflicts.
 
 | | |
@@ -2060,7 +2222,7 @@ The subnet being configured has conflicts.
 |Severity|Warning
 |Resolution|Configure this interface with a different IP Address or Subnet Mask.
 
-### iLO.2.8.iLOVirtualNICDisabled
+### iLO.2.13.iLOVirtualNICDisabled
 The Virtual NIC is disabled.
 
 | | |
@@ -2068,3 +2230,84 @@ The Virtual NIC is disabled.
 |Message Format|"The Virtual NIC is disabled."
 |Severity|Warning
 |Resolution|Enable iLO Virtual NIC to perform this operation.
+
+### TaskEvent.1.0.TaskAborted
+The task with id %1 has been aborted.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been aborted."
+|Severity|Critical
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCancelled
+The task with id %1 has been cancelled.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been cancelled."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCompletedOK
+The task with id %1 has completed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has completed."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCompletedWarning
+The task with id %1 has completed with warnings.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has completed with warnings."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskPaused
+The task with id %1 has been paused.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been paused."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskProgessChanged
+The task with id %1 has changed to progress %2 percent complete.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has changed to progress %2 percent complete."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskRemoved
+The task with id %1 has been removed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been removed."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskResumed
+The task with id %1 has been resumed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been resumed."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskStarted
+The task with id %1 has started.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has started."
+|Severity|OK
+|Resolution|None.

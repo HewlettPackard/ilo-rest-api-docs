@@ -8,6 +8,44 @@ With modern scripting languages, you can easily write simple REST clients for RE
 
 iLO 5's Redfish conformance details are available in this document in the "**iLO 5 Adaptation Guide**" section.
 
+## iLO 5 2.10 New Features and Changes
+### Redfish Features and Fixes
+* ComputerSystem (`/redfish/v1/Systems/{id}`) and sub-resources
+  * Added `GracefulShutdown` to the `ComputerSystem` `ResetType` list - this performs a virtual button press if the system is on and does nothing if the system of off.
+  * Added Redfish `BootOptions` for boot order management
+  * Changed `ResetBios` action to not require a `ResetType` property to conform to the Redfish standard action, which is parameterless.  NOTE:  The Redfish client must still supply and empty JSON object `{}` as a request body.
+  * Added `Status/HealthRollup` to `ComputerSystem` - this has the same value as `Health` and is provided for compatibility.
+  * Added `InterfaceEnabled` to all host `EthernetInterfaces`
+* Chassis (`/redfish/v1/Chassis/{id}`)
+  * Added `IndicatorLED` property to `Chassis`
+  * Added `PowerState` to `Chassis` resource
+  * Added `AssetTag`
+* Manager (`/redfish/v1/Managers/{id}`)
+  * Added `GracefulRestart` and `ForceRestart` `ResetType` allowable values to Manager (iLO reset)
+  * Added `DateTime` and `DateTimeLocalOffset`
+  * Added `Model`
+  * Added `Status/Health`
+* NVMe Drives
+  * Added support for `Drive::PCIeInterface` information for NVMe drives (when data is available)
+  * Added `DurableName` and `DurableNameFormat` to NVMe `Drive` resources
+* Other
+  * Added `ClearingLogic` to iLO Redfish Events registry
+  * Added and/or modified the descriptions of many schema for conformity
+  * Updated message registries to conform to MessageRegistry.v1_2_0 schema
+  * Updated the Base registry messages to include newer messages from Redfish standard Base registry.
+  * Changed schema items with ```"format": "uri"``` to ```"format": "uri-reference"``` to match Redfish 2019.1
+  * Removed X_HP-CHRP-Service-Version HTTP header in responses
+  * Added `TransferProtocol@Redfish.AllowableValues` to `UpdateService`
+  * Changed some properties in the API to not trigger Redfish events when they change to reduce event chattiness
+
+### HPE OEM Features
+* Added new OEM actions to ComputerSystem to enable special modes on reboot
+  * `ServerIntelligentDiagnosticsMode`
+  * `RestoreManufacturingDefaults`
+  * `ServerSafeMode`
+  * `RestoreSystemDefaults`
+* Added the ability to set `EndOfPostDelaySeconds`  to > 255 seconds.  When PATCHed >255, it is internally converted to whole minutes (rounded up) and reported as the rounded seconds on GET.  This enables a client to support up to 15300 seconds (255 minutes).
+
 ## iLO 5 1.40 New Features and Changes
 
 iLO 5 1.40 adds support for several Redfish features:

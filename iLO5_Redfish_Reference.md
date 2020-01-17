@@ -1,13 +1,13 @@
 # Resource Map
 |URI|Type|
 |:---|:---|
-|`/redfish/v1/`|[ServiceRoot](#serviceroot-v1_5_0-serviceroot)|
+|`/redfish/v1/`|[ServiceRoot](#serviceroot-v1_5_1-serviceroot)|
 |`/redfish/v1/AccountService`|[AccountService](#accountservice-v1_3_0-accountservice)|
 |`/redfish/v1/AccountService/Accounts`|Collection of [ManagerAccount](#manageraccount-v1_1_3-manageraccount)|
 |`/redfish/v1/AccountService/Accounts/{item}`|[ManagerAccount](#manageraccount-v1_1_3-manageraccount)|
 |`/redfish/v1/AccountService/DirectoryTest`|[HpeDirectoryTest](#hpedirectorytest-v1_0_0-hpedirectorytest)|
-|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates`|Collection of [Certificate](#certificate-v0_9_0-certificate)|
-|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}`|[Certificate](#certificate-v0_9_0-certificate)|
+|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates`|Collection of [Certificate](#certificate-v1_1_0-certificate)|
+|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}`|[Certificate](#certificate-v1_1_0-certificate)|
 |`/redfish/v1/AccountService/Roles`|Collection of [Role](#role-v1_2_1-role)|
 |`/redfish/v1/AccountService/Roles/{item}`|[Role](#role-v1_2_1-role)|
 |`/redfish/v1/AccountService/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap-v1_0_1-hpeiloaccountcertificatemap)|
@@ -19,8 +19,8 @@
 |`/redfish/v1/Chassis/{item}/Devices`|Collection of [HpeServerDevice](#hpeserverdevice-v2_0_0-hpeserverdevice)|
 |`/redfish/v1/Chassis/{item}/Devices/{item}`|[HpeServerDevice](#hpeserverdevice-v2_0_0-hpeserverdevice)|
 |`/redfish/v1/Chassis/{item}/Drives/{interface}/{item}`|[Drive](#drive-v1_0_0-drive)|
-|`/redfish/v1/Chassis/{item}/NetworkAdapters`|Collection of [NetworkAdapter](#networkadapter-v1_2_0-networkadapter)|
-|`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}`|[NetworkAdapter](#networkadapter-v1_2_0-networkadapter)|
+|`/redfish/v1/Chassis/{item}/NetworkAdapters`|Collection of [NetworkAdapter](#networkadapter-v1_3_0-networkadapter)|
+|`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}`|[NetworkAdapter](#networkadapter-v1_3_0-networkadapter)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](#networkdevicefunction-v1_3_0-networkdevicefunction)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkDeviceFunctions/{item}`|[NetworkDeviceFunction](#networkdevicefunction-v1_3_0-networkdevicefunction)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkDeviceFunctions/{item}/Settings`|[NetworkDeviceFunction](#networkdevicefunction-v1_3_0-networkdevicefunction)|
@@ -29,7 +29,7 @@
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkPorts/{item}/HpeEVB`|[HpeNetworkPortEVB](#hpenetworkportevb-v1_1_1-hpenetworkportevb)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkPorts/{item}/HpeLLDP`|[HpeNetworkPortLLDP](#hpenetworkportlldp-v1_1_1-hpenetworkportlldp)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkPorts/{item}/Settings`|[NetworkPort](#networkport-v1_2_0-networkport)|
-|`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/Settings`|[NetworkAdapter](#networkadapter-v1_2_0-networkadapter)|
+|`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/Settings`|[NetworkAdapter](#networkadapter-v1_3_0-networkadapter)|
 |`/redfish/v1/Chassis/{item}/Power`|[Power](#power-v1_3_0-power)|
 |`/redfish/v1/Chassis/{item}/Power/AccPowerService`|[HpeServerAccPowerService](#hpeserveraccpowerservice-v1_0_0-hpeserveraccpowerservice)|
 |`/redfish/v1/Chassis/{item}/Power/AccPowerService/Calibration`|[HpeServerAccPowerCalibration](#hpeserveraccpowercalibration-v1_0_0-hpeserveraccpowercalibration)|
@@ -47,8 +47,8 @@
 |`/redfish/v1/EventService/Subscriptions/{item}`|[EventDestination](#eventdestination-v1_0_0-eventdestination)|
 |`/redfish/v1/JsonSchemas`|Collection of [JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
 |`/redfish/v1/JsonSchemas/{item}`|[JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
-|`/redfish/v1/Managers`|Collection of [Manager](#manager-v1_3_3-manager)|
-|`/redfish/v1/Managers/{item}`|[Manager](#manager-v1_3_3-manager)|
+|`/redfish/v1/Managers`|Collection of [Manager](#manager-v1_5_1-manager)|
+|`/redfish/v1/Managers/{item}`|[Manager](#manager-v1_5_1-manager)|
 |`/redfish/v1/Managers/{item}/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem-v2_3_0-hpeiloactivehealthsystem)|
 |`/redfish/v1/Managers/{item}/BackupRestoreService`|[HpeiLOBackupRestoreService](#hpeilobackuprestoreservice-v2_2_0-hpeilobackuprestoreservice)|
 |`/redfish/v1/Managers/{item}/BackupRestoreService/BackupFiles`|Collection of [HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hpeilobackupfile)|
@@ -63,15 +63,15 @@
 |`/redfish/v1/Managers/{item}/FederationPeers/{item}`|[HpeiLOFederationPeers](#hpeilofederationpeers-v2_0_0-hpeilofederationpeers)|
 |`/redfish/v1/Managers/{item}/HostInterfaces`|Collection of [HostInterface](#hostinterface-v1_1_1-hostinterface)|
 |`/redfish/v1/Managers/{item}/HostInterfaces/{item}`|[HostInterface](#hostinterface-v1_1_1-hostinterface)|
-|`/redfish/v1/Managers/{item}/LicenseService`|Collection of [HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)|
-|`/redfish/v1/Managers/{item}/LicenseService/{item}`|[HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)|
+|`/redfish/v1/Managers/{item}/LicenseService`|Collection of [HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)|
+|`/redfish/v1/Managers/{item}/LicenseService/{item}`|[HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)|
 |`/redfish/v1/Managers/{item}/LogServices`|Collection of [LogService](#logservice-v1_0_0-logservice)|
 |`/redfish/v1/Managers/{item}/LogServices/IEL`|[LogService](#logservice-v1_0_0-logservice)|
-|`/redfish/v1/Managers/{item}/LogServices/IEL/Entries`|Collection of [LogEntry](#logentry-v1_0_0-logentry)|
+|`/redfish/v1/Managers/{item}/LogServices/IEL/Entries`|Collection of [LogEntry](#logentry-v1_1_0-logentry)|
 |`/redfish/v1/Managers/{item}/LogServices/IEL/Entries/{item}`|[LogEntry](#logentry-v1_0_0-logentry)|
 |`/redfish/v1/Managers/{item}/NetworkProtocol`|[ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)|
-|`/redfish/v1/Managers/{item}/RemoteSupportService`|[HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)|
-|`/redfish/v1/Managers/{item}/RemoteSupportService/ServiceEventLogs`|Collection of [LogEntry](#logentry-v1_0_0-logentry)|
+|`/redfish/v1/Managers/{item}/RemoteSupportService`|[HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)|
+|`/redfish/v1/Managers/{item}/RemoteSupportService/ServiceEventLogs`|Collection of [LogEntry](#logentry-v1_1_0-logentry)|
 |`/redfish/v1/Managers/{item}/RemoteSupportService/ServiceEventLogs/{item}`|[LogEntry](#logentry-v1_0_0-logentry)|
 |`/redfish/v1/Managers/{item}/SecurityService`|[HpeSecurityService](#hpesecurityservice-v2_2_0-hpesecurityservice)|
 |`/redfish/v1/Managers/{item}/SecurityService/CertificateAuthentication`|[HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)|
@@ -81,8 +81,8 @@
 |`/redfish/v1/Managers/{item}/SecurityService/HttpsCert`|[HpeHttpsCert](#hpehttpscert-v2_0_0-hpehttpscert)|
 |`/redfish/v1/Managers/{item}/SecurityService/SSO`|[HpeiLOSSO](#hpeilosso-v2_0_0-hpeilosso)|
 |`/redfish/v1/Managers/{item}/SecurityService/SecurityDashboard`|[HpeiLOSecurityDashboard](#hpeilosecuritydashboard-v1_0_0-hpeilosecuritydashboard)|
-|`/redfish/v1/Managers/{item}/SecurityService/SecurityDashboard/SecurityParams`|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)|
-|`/redfish/v1/Managers/{item}/SecurityService/SecurityDashboard/SecurityParams/{item}`|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)|
+|`/redfish/v1/Managers/{item}/SecurityService/SecurityDashboard/SecurityParams`|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
+|`/redfish/v1/Managers/{item}/SecurityService/SecurityDashboard/SecurityParams/{item}`|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
 |`/redfish/v1/Managers/{item}/SnmpService`|[HpeiLOSnmpService](#hpeilosnmpservice-v2_2_0-hpeilosnmpservice)|
 |`/redfish/v1/Managers/{item}/SnmpService/SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](#hpesnmpalertdestination-v2_0_0-hpesnmpalertdestination)|
 |`/redfish/v1/Managers/{item}/SnmpService/SNMPAlertDestinations/{item}`|[HpeSNMPAlertDestination](#hpesnmpalertdestination-v2_0_0-hpesnmpalertdestination)|
@@ -115,14 +115,16 @@
 |`/redfish/v1/Systems/{item}/Bios/tlsconfig`|[HpeTlsConfig](#hpetlsconfig-v1_0_0-hpetlsconfig)|
 |`/redfish/v1/Systems/{item}/Bios/tlsconfig/Settings`|[HpeTlsConfig](#hpetlsconfig-v1_0_0-hpetlsconfig)|
 |`/redfish/v1/Systems/{item}/Bios/tlsconfig/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/BootOptions`|Collection of [BootOption](#bootoption-v1_0_1-bootoption)|
+|`/redfish/v1/Systems/{item}/BootOptions/{item}`|[BootOption](#bootoption-v1_0_1-bootoption)|
 |`/redfish/v1/Systems/{item}/EthernetInterfaces`|Collection of [EthernetInterface](#ethernetinterface-v1_4_1-ethernetinterface)|
 |`/redfish/v1/Systems/{item}/EthernetInterfaces/{item}`|[EthernetInterface](#ethernetinterface-v1_4_1-ethernetinterface)|
 |`/redfish/v1/Systems/{item}/LogServices`|Collection of [LogService](#logservice-v1_0_0-logservice)|
 |`/redfish/v1/Systems/{item}/LogServices/IML`|[LogService](#logservice-v1_0_0-logservice)|
-|`/redfish/v1/Systems/{item}/LogServices/IML/Entries`|Collection of [LogEntry](#logentry-v1_0_0-logentry)|
-|`/redfish/v1/Systems/{item}/LogServices/IML/Entries/{item}`|[LogEntry](#logentry-v1_0_0-logentry)|
-|`/redfish/v1/Systems/{item}/Memory`|Collection of [Memory](#memory-v1_7_0-memory)|
-|`/redfish/v1/Systems/{item}/Memory/{item}`|[Memory](#memory-v1_7_0-memory)|
+|`/redfish/v1/Systems/{item}/LogServices/IML/Entries`|Collection of [LogEntry](#logentry-v1_1_0-logentry)|
+|`/redfish/v1/Systems/{item}/LogServices/IML/Entries/{item}`|[LogEntry](#logentry-v1_1_0-logentry)|
+|`/redfish/v1/Systems/{item}/Memory`|Collection of [Memory](#memory-v1_7_1-memory)|
+|`/redfish/v1/Systems/{item}/Memory/{item}`|[Memory](#memory-v1_7_1-memory)|
 |`/redfish/v1/Systems/{item}/MemoryDomains`|Collection of [MemoryDomain](#memorydomain-v1_2_1-memorydomain)|
 |`/redfish/v1/Systems/{item}/MemoryDomains/{item}`|[MemoryDomain](#memorydomain-v1_2_1-memorydomain)|
 |`/redfish/v1/Systems/{item}/MemoryDomains/{item}/MemoryChunks`|Collection of [MemoryChunks](#memorychunks-v1_2_2-memorychunks)|
@@ -161,8 +163,8 @@
 |`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives/{item}`|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 |`/redfish/v1/Systems/{item}/SmartStorageConfig`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
 |`/redfish/v1/Systems/{item}/SmartStorageConfig/Settings`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
-|`/redfish/v1/Systems/{item}/Storage`|Collection of [Storage](#storage-v1_1_0-storage)|
-|`/redfish/v1/Systems/{item}/Storage/{interface}/{item}`|[Storage](#storage-v1_1_0-storage)|
+|`/redfish/v1/Systems/{item}/Storage`|Collection of [Storage](#storage-v1_5_0-storage)|
+|`/redfish/v1/Systems/{item}/Storage/{interface}/{item}`|[Storage](#storage-v1_5_0-storage)|
 |`/redfish/v1/Systems/{item}/Storage/{interface}/{item}/Volumes`|Collection of [Volume](#volume-v1_0_0-volume)|
 |`/redfish/v1/Systems/{item}/Storage/{interface}/{item}/Volumes/{item}`|[Volume](#volume-v1_0_0-volume)|
 |`/redfish/v1/Systems/{item}/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice-v2_0_0-hpeusbdevice)|
@@ -183,25 +185,25 @@
 |`/redfish/v1/TelemetryService/MetricsReport`|Collection of [MetricReport](#metricreport-v1_0_0-metricreport)|
 |`/redfish/v1/TelemetryService/Triggers`|Collection of [Trigger](#trigger-v1_0_0-trigger)|
 |`/redfish/v1/TelemetryService/Triggers/{item}`|[Triggers](#triggers-v1_0_0-triggers)|
-|`/redfish/v1/UpdateService`|[UpdateService](#updateservice-v1_1_0-updateservice)|
+|`/redfish/v1/UpdateService`|[UpdateService](#updateservice-v1_1_1-updateservice)|
 |`/redfish/v1/UpdateService/ComponentRepository`|Collection of [HpeComponent](#hpecomponent-v1_0_1-hpecomponent)|
 |`/redfish/v1/UpdateService/ComponentRepository/{item}`|[HpeComponent](#hpecomponent-v1_0_1-hpecomponent)|
 |`/redfish/v1/UpdateService/FirmwareInventory`|Collection of [SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
 |`/redfish/v1/UpdateService/FirmwareInventory/{item}`|[SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
-|`/redfish/v1/UpdateService/InstallSets`|Collection of [HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)|
-|`/redfish/v1/UpdateService/InstallSets/{item}`|[HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)|
+|`/redfish/v1/UpdateService/InstallSets`|Collection of [HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)|
+|`/redfish/v1/UpdateService/InstallSets/{item}`|[HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)|
 |`/redfish/v1/UpdateService/InvalidImageRepository`|Collection of [HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpeinvalidimage)|
 |`/redfish/v1/UpdateService/InvalidImageRepository/{item}`|[HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpeinvalidimage)|
 |`/redfish/v1/UpdateService/MaintenanceWindows`|Collection of [HpeMaintenanceWindow](#hpemaintenancewindow-v1_0_1-hpemaintenancewindow)|
 |`/redfish/v1/UpdateService/MaintenanceWindows/{item}`|[HpeMaintenanceWindow](#hpemaintenancewindow-v1_0_1-hpemaintenancewindow)|
 |`/redfish/v1/UpdateService/SoftwareInventory`|Collection of [SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
 |`/redfish/v1/UpdateService/SoftwareInventory/{item}`|[SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
-|`/redfish/v1/UpdateService/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)|
-|`/redfish/v1/UpdateService/UpdateTaskQueue/{item}`|[HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)|
+|`/redfish/v1/UpdateService/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)|
+|`/redfish/v1/UpdateService/UpdateTaskQueue/{item}`|[HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)|
 ## AccountService.v1_3_0.AccountService
 ```@odata.type: "#AccountService.v1_3_0.AccountService"```
 
-This is the schema definition for the Account service. It represents the properties for this service and has links to the list of accounts.
+The AccountService resource describes the BMC user account management service. It represents the properties for this service and has links to the list of accounts.
 
 ### Managing User Accounts with the Accounts Collection
 
@@ -6467,17 +6469,107 @@ Member of [Bios.v1_0_0.Bios](#bios-v1_0_0-bios)
 |```SoftwareInitiator```|Software Initiator|
 |```AdapterInitiator```|Adapter Initiator|
 
-## Certificate.v0_9_0.Certificate
-```@odata.type: "#Certificate.v0_9_0.Certificate"```
+## BootOption.v1_0_1.BootOption
+```@odata.type: "#BootOption.v1_0_1.BootOption"```
 
-This is the schema definition for X509 certificates.
+This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System.
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+|```/redfish/v1/systems/{item}/bootoptions/{item}```|GET |
+
+### Alias
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|The alias of this Boot Source.|
+|Type|string or null|
+|Read Only|True|
+
+### BootOptionEnabled
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|A flag that shows if the Boot Option is enabled.|
+|Type|boolean or null|
+|Read Only|False|
+
+### BootOptionReference
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|The unique boot option string that is referenced in the BootOrder.|
+|Type|string or null|
+|Read Only|True|
+
+### DisplayName
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|The user-readable display string of the Boot Option.|
+|Type|string or null|
+|Read Only|True|
+
+### UefiDevicePath
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|The UEFI device path used to access this UEFI Boot Option.|
+|Type|string or null|
+|Read Only|True|
+
+## BootOptionCollection.BootOptionCollection
+```@odata.type: "#BootOptionCollection.BootOptionCollection"```
+
+A Collection of BootOption resource instances.
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+|```/redfish/v1/systems/{item}/bootoptions```|GET |
+
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|```Members[]```|[BootOption](#bootoption-v1_0_1-bootoption)|
+
+### Members (array)
+Member of BootOptionCollection.BootOptionCollection
+```Members``` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of BootOptionCollection.BootOptionCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+Member of BootOptionCollection.BootOptionCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## Certificate.v1_1_0.Certificate
+```@odata.type: "#Certificate.v1_1_0.Certificate"```
+
+The Certificate resource describes an X509 certificate.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/accountservice/externalaccountproviders/ldap/certificates/{item}```|GET PATCH DELETE |
 
 ### CertificateString
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6487,8 +6579,23 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 |Added|iLO 5 1.40|
 |Format|text|
 
+### CertificateType
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|False|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```PEM```|A PEM encoded certificate.|
+|```PKCS7```|A PEM encoded PKCS7 certificate.|
+
 ### Issuer
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6498,7 +6605,7 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 |Added|iLO 5 1.40|
 
 ### SerialNumber
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6508,7 +6615,7 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 |Added|iLO 5 1.40|
 
 ### Subject
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6518,7 +6625,7 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 |Added|iLO 5 1.40|
 
 ### ValidNotAfter
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6529,7 +6636,7 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 |Format|date-time|
 
 ### ValidNotBefore
-Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
+Member of [Certificate.v1_1_0.Certificate](#certificate-v1_1_0-certificate)
 
 | | |
 |---|---|
@@ -6541,6 +6648,8 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 
 ## CertificateCollection.CertificateCollection
 ```@odata.type: "#CertificateCollection.CertificateCollection"```
+
+A Collection of Certificate resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -6549,7 +6658,7 @@ Member of [Certificate.v0_9_0.Certificate](#certificate-v0_9_0-certificate)
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[Certificate](#certificate-v0_9_0-certificate)|
+|```Members[]```|[Certificate](#certificate-v1_1_0-certificate)|
 
 ### Members (array)
 Member of CertificateCollection.CertificateCollection
@@ -6562,7 +6671,7 @@ Member of CertificateCollection.CertificateCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of CertificateCollection.CertificateCollection
@@ -6576,7 +6685,7 @@ Member of CertificateCollection.CertificateCollection
 ## Chassis.v1_6_0.Chassis
 ```@odata.type: "#Chassis.v1_6_0.Chassis"```
 
-The schema definition for the Chassis resource represents the properties for physical components for any system. This object represents racks, rack mount servers, blades, standalone, modular systems, enclosures, and all other containers. The non-CPU/device-centric parts of the schema are accessed either directly or indirectly through this resource.
+The Chassis resource describes the physical components for a system. This object represents rack mount servers, blades, and all other containers. The non-CPU/device-centric parts of the schema are accessed either directly or indirectly through this resource.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -6586,9 +6695,9 @@ The schema definition for the Chassis resource represents the properties for phy
 |Link Name|Destination type
 |---|---|
 |```Links/ComputerSystems[]```|[ComputerSystem](#computersystem-v1_4_0-computersystem)|
-|```Links/ManagedBy[]```|[Manager](#manager-v1_3_3-manager)|
+|```Links/ManagedBy[]```|[Manager](#manager-v1_5_1-manager)|
 |```Oem/Hpe/Links/Devices```|Collection of [HpeServerDevice](#hpeserverdevice-v2_0_0-hpeserverdevice)|
-|```NetworkAdapters```|Collection of [NetworkAdapter](#networkadapter-v1_2_0-networkadapter)|
+|```NetworkAdapters```|Collection of [NetworkAdapter](#networkadapter-v1_3_0-networkadapter)|
 |```Power```|[Power](#power-v1_3_0-power)|
 |```Thermal```|[Thermal](#thermal-v1_1_0-thermal)|
 |```Links/Drives[]```|[Drive](#drive-v1_0_0-drive)|
@@ -6706,6 +6815,15 @@ Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 |Type|integer|
 |Read Only|True|
 |Added|iLO 5 1.10|
+
+### Oem.Hpe.EnclosureCPLD
+Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
+
+| | |
+|---|---|
+|Description|The CPLD version of the enclosure.|
+|Type|string|
+|Read Only|True|
 
 ### Oem.Hpe.EnclosureIndicatorLED
 Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
@@ -6841,7 +6959,7 @@ Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 **Oem.Hpe.Images.Model**
 **Oem.Hpe.Images.Model.extref**
@@ -6853,7 +6971,7 @@ Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.Location
 **Oem.Hpe.Location.GeographicLocation**
@@ -7385,6 +7503,15 @@ The following are the supported values:
 |```On```|Switch is on.|
 |```Off```|Switch is off (Default).|
 
+### Oem.Hpe.TrayID
+Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
+
+| | |
+|---|---|
+|Description|Tray ID is a platform dependent value used to identify what kind of server tray it is.|
+|Type|string|
+|Read Only|True|
+
 ### PartNumber
 Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 
@@ -7435,6 +7562,25 @@ The following are the supported values:
 A reference to the thermal metrics (power supplies, power policies, sensors) for this chassis.
 Power is a link (```"@odata.id": URI```) to another resource.
 
+### PowerState
+Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
+
+| | |
+|---|---|
+|Description|This is the current power state of the chassis.|
+|Type|string or null|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|
+|---|
+|```Null```|
+|```On```|
+|```Off```|
+|```Unknown```|
+|```Reset```|
+
 ### SKU
 Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 
@@ -7472,8 +7618,25 @@ There are no parameters for this action.
 **HpeServerChassis.FactoryResetMCTP**
 Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
 There are no parameters for this action.
+
+**HpeServerChassis.ModifyEnclosureChassisFru**
+Member of [Chassis.v1_6_0.Chassis](#chassis-v1_6_0-chassis)
+The action to modify field of enclosure chassis FRU.
+
+
+**Parameters:**
+
+**PartNumber (string)**
+
+Part Number of the enclosure chassis.
+
+**SerialNumber (string)**
+
+Serial Number of the enclosure chassis.
 ## ChassisCollection.ChassisCollection
 ```@odata.type: "#ChassisCollection.ChassisCollection"```
+
+A Collection of Chassis resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -7495,7 +7658,7 @@ Member of ChassisCollection.ChassisCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of ChassisCollection.ChassisCollection
@@ -7509,7 +7672,7 @@ Member of ChassisCollection.ChassisCollection
 ## ComputerSystem.v1_4_0.ComputerSystem
 ```@odata.type: "#ComputerSystem.v1_4_0.ComputerSystem"```
 
-The schema definition of a computer system and its properties. A computer system represents a physical or virtual machine and the local resources, such as memory, CPU, and other devices that can be accessed from that machine.
+The ComputerSystem resource describes the compute node and its properties. A ComputerSystem represents a physical or virtual machine and the local resources, such as memory, CPU, and other devices that can be accessed from that machine.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -7521,20 +7684,20 @@ The schema definition of a computer system and its properties. A computer system
 |```EthernetInterfaces```|Collection of [EthernetInterface](#ethernetinterface-v1_4_1-ethernetinterface)|
 |```Oem/Hpe/Links/USBDevices```|Collection of [HpeUSBDevice](#hpeusbdevice-v2_0_0-hpeusbdevice)|
 |```Links/Chassis[]```|[Chassis](#chassis-v1_6_0-chassis)|
-|```Memory```|Collection of [Memory](#memory-v1_7_0-memory)|
+|```Memory```|Collection of [Memory](#memory-v1_7_1-memory)|
 |```Oem/Hpe/Links/USBPorts```|Collection of [HpeUSBPort](#hpeusbport-v2_0_0-hpeusbport)|
 |```Oem/Hpe/Links/NetworkAdapters```|Collection of [HpeBaseNetworkAdapter](#hpebasenetworkadapter-v2_0_0-hpebasenetworkadapter)|
 |```Oem/Hpe/SmartStorageConfig[]```|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
 |```Processors```|Collection of [Processor](#processor-v1_0_0-processor)|
 |```SecureBoot```|[SecureBoot](#secureboot-v1_0_0-secureboot)|
-|```Storage```|Collection of [Storage](#storage-v1_1_0-storage)|
+|```Storage```|Collection of [Storage](#storage-v1_5_0-storage)|
 |```Bios```|[Bios](#bios-v1_0_0-bios)|
 |```Oem/Hpe/Links/EthernetInterfaces```|Collection of [EthernetInterface](#ethernetinterface-v1_4_1-ethernetinterface)|
 |```LogServices```|Collection of [LogService](#logservice-v1_0_0-logservice)|
 |```Oem/Hpe/Links/SmartStorage```|[HpeSmartStorage](#hpesmartstorage-v2_0_0-hpesmartstorage)|
 |```Oem/Hpe/Links/PCISlots```|Collection of [HpeServerPCISlot](#hpeserverpcislot-v2_1_0-hpeserverpcislot)|
 |```NetworkInterfaces```|Collection of [NetworkInterface](#networkinterface-v1_1_1-networkinterface)|
-|```Links/ManagedBy[]```|[Manager](#manager-v1_3_3-manager)|
+|```Links/ManagedBy[]```|[Manager](#manager-v1_5_1-manager)|
 |```Oem/Hpe/Links/PCIDevices```|Collection of [HpeServerPciDevice](#hpeserverpcidevice-v2_0_0-hpeserverpcidevice)|
 
 ### AssetTag
@@ -7562,6 +7725,20 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 |Added|iLO 5 1.10|
 
 ### Boot
+**Boot.BootOptions**
+A reference to the collection of the UEFI Boot Options associated with this Computer System.
+BootOptions is a link (```"@odata.id": URI```) to another resource.
+
+**Boot.BootOrder (array)**
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+```BootOrder``` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|True|
+
 **Boot.BootSourceOverrideEnabled**
 Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
 
@@ -8245,7 +8422,7 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 
 | | |
 |---|---|
-|Description|Supported on UEFI based systems only. The number of seconds to delay before finalizing POST with the Mode action (e.g. delay before shutdown).|
+|Description|Supported on UEFI based systems only. The number of seconds to delay before finalizing POST with the Mode action (e.g. delay before shutdown). If > 255 seconds is requested, the value is rounded up to the nearest minute.|
 |Type|integer or null|
 |Read Only|False|
 |Added|iLO 5 1.10|
@@ -8599,7 +8776,7 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.ServerFQDN
 Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
@@ -8610,6 +8787,24 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 |Type|string|
 |Read Only|False|
 |Added|iLO 5 1.20|
+
+### Oem.Hpe.ServerIntelligentDiagnosticsModeEnabled
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+
+| | |
+|---|---|
+|Description|Indicates the current state of server Intelligent Diagnostics mode.|
+|Type|boolean|
+|Read Only|True|
+
+### Oem.Hpe.ServerSafeModeEnabled
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+
+| | |
+|---|---|
+|Description|Indicates the current state of server Safe Mode.|
+|Type|boolean|
+|Read Only|True|
 
 ### Oem.Hpe.ServerSignature
 Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
@@ -8652,7 +8847,7 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.SystemROMAndiLOEraseComponentStatus
 **Oem.Hpe.SystemROMAndiLOEraseComponentStatus.BIOSSettingsEraseStatus**
@@ -9195,6 +9390,7 @@ Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computer
 |---|---|
 |On|
 |ForceOff|
+|GracefulShutdown|
 |ForceRestart|
 |Nmi|
 |PushPowerButton|
@@ -9212,6 +9408,18 @@ ResetType identifies the type of Action to be performed.
 |---|---|
 |ColdBoot|
 |AuxCycle|
+
+**HpeComputerSystemExt.ServerIntelligentDiagnosticsMode**
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+There are no parameters for this action.
+
+**HpeComputerSystemExt.ServerSafeMode**
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+There are no parameters for this action.
+
+**HpeComputerSystemExt.RestoreSystemDefaults**
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+There are no parameters for this action.
 
 **HpeComputerSystemExt.PowerButton**
 Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
@@ -9243,8 +9451,14 @@ Action to perform resetting the system BIOS settings and iLO to manufacturing de
 **HpeComputerSystemExt.ServerSigRecompute**
 Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
 There are no parameters for this action.
+
+**HpeComputerSystemExt.RestoreManufacturingDefaults**
+Member of [ComputerSystem.v1_4_0.ComputerSystem](#computersystem-v1_4_0-computersystem)
+There are no parameters for this action.
 ## ComputerSystemCollection.ComputerSystemCollection
 ```@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"```
+
+A Collection of ComputerSystem resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -9266,7 +9480,7 @@ Member of ComputerSystemCollection.ComputerSystemCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of ComputerSystemCollection.ComputerSystemCollection
@@ -9279,6 +9493,8 @@ Member of ComputerSystemCollection.ComputerSystemCollection
 
 ## Drive.v1_0_0.Drive
 ```@odata.type: "#Drive.v1_0_0.Drive"```
+
+The Drive resource describes a single physical disk drive for a system, including links to associated Volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -9355,6 +9571,7 @@ The following are the supported values:
 |Value|Description|
 |---|---|
 |```EUI```|IEEE-defined 64-bit Extended Unique Identifier|
+|```UUID```|Universally Unique Identifier|
 
 ### Location (array)
 Member of [Drive.v1_0_0.Drive](#drive-v1_0_0-drive)
@@ -9729,6 +9946,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## EthernetInterface.v1_4_1.EthernetInterface
 ```@odata.type: "#EthernetInterface.v1_4_1.EthernetInterface"```
+
+The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -10772,6 +10991,8 @@ VLANs is a link (```"@odata.id": URI```) to another resource.
 
 ## EthernetInterfaceCollection.EthernetInterfaceCollection
 ```@odata.type: "#EthernetInterfaceCollection.EthernetInterfaceCollection"```
+
+A Collection of EthernetInterface resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -10794,7 +11015,7 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of EthernetInterfaceCollection.EthernetInterfaceCollection
@@ -10807,6 +11028,8 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 
 ## EventDestinationCollection.EventDestinationCollection
 ```@odata.type: "#EventDestinationCollection.EventDestinationCollection"```
+
+A Collection of EventDestination resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -10828,7 +11051,7 @@ Member of EventDestinationCollection.EventDestinationCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of EventDestinationCollection.EventDestinationCollection
@@ -10842,7 +11065,7 @@ Member of EventDestinationCollection.EventDestinationCollection
 ## EventService.v1_0_8.EventService
 ```@odata.type: "#EventService.v1_0_8.EventService"```
 
-This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.
+The EventService resource describes the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11014,7 +11237,7 @@ Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encod
 ## HostInterface.v1_1_1.HostInterface
 ```@odata.type: "#HostInterface.v1_1_1.HostInterface"```
 
-The HostInterface schema represents a single host interface.
+The HostInterface resource describes a Redfish Host Interface, which is a method of accessing the Redfish API from the host computer system.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11030,7 +11253,7 @@ Member of [HostInterface.v1_1_1.HostInterface](#hostinterface-v1_1_1-hostinterfa
 | | |
 |---|---|
 |Type|string|
-|Read Only|false|
+|Read Only|False|
 |Added|iLO 5 1.40|
 
 The following are the supported values:
@@ -11159,7 +11382,7 @@ Member of HostInterfaceCollection.HostInterfaceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HostInterfaceCollection.HostInterfaceCollection
@@ -11203,6 +11426,8 @@ Member of [HpeBaseConfigs.v2_0_0.HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebasec
 
 ## HpeBaseNetworkAdapter.v2_0_0.HpeBaseNetworkAdapter
 ```@odata.type: "#HpeBaseNetworkAdapter.v2_0_0.HpeBaseNetworkAdapter"```
+
+The HpeBaseNetworkAdapter resource describes an Ethernet Adapter and its ports.  Clients should use the Redfish NetworkAdapter and NetworkInterface resources when available instead of this.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11454,6 +11679,8 @@ Member of [HpeBaseNetworkAdapter.v2_0_0.HpeBaseNetworkAdapter](#hpebasenetworkad
 
 ## HpeBaseNetworkAdapterCollection.HpeBaseNetworkAdapterCollection
 ```@odata.type: "#HpeBaseNetworkAdapterCollection.HpeBaseNetworkAdapterCollection"```
+
+A Collection of HpeBaseNetworkAdapter resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11475,7 +11702,7 @@ Member of HpeBaseNetworkAdapterCollection.HpeBaseNetworkAdapterCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeBaseNetworkAdapterCollection.HpeBaseNetworkAdapterCollection
@@ -11565,7 +11792,7 @@ Member of [HpeBiosMapping.v2_0_0.HpeBiosMapping](#hpebiosmapping-v2_0_0-hpebiosm
 ## HpeCertAuth.v1_1_0.HpeCertAuth
 ```@odata.type: "#HpeCertAuth.v1_1_0.HpeCertAuth"```
 
-This is the schema definition for certificate based authentication configuration.
+The HpeCertAuth resource describes the BMC certificate based authentication feature.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11639,7 +11866,7 @@ Member of [HpeCertAuth.v1_1_0.HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)
 |Type|string or null|
 |Read Only|False|
 |Added|iLO 5 1.15|
-|Format|uri|
+|Format|uri-reference|
 
 ### StrictCACModeEnabled
 Member of [HpeCertAuth.v1_1_0.HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)
@@ -11682,6 +11909,8 @@ Imports a Trusted Certificate
 Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encoded).
 ## HpeCertificateCollection.HpeCertificateCollection
 ```@odata.type: "#HpeCertificateCollection.HpeCertificateCollection"```
+
+A Collection of HpeCertificate resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11704,7 +11933,7 @@ Member of HpeCertificateCollection.HpeCertificateCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeCertificateCollection.HpeCertificateCollection
@@ -11717,6 +11946,8 @@ Member of HpeCertificateCollection.HpeCertificateCollection
 
 ## HpeComponent.v1_0_1.HpeComponent
 ```@odata.type: "#HpeComponent.v1_0_1.HpeComponent"```
+
+The HpeComponent resource describes a software or firmware update component.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11760,7 +11991,7 @@ Member of [HpeComponent.v1_0_1.HpeComponent](#hpecomponent-v1_0_1-hpecomponent)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Configuration
 Member of [HpeComponent.v1_0_1.HpeComponent](#hpecomponent-v1_0_1-hpecomponent)
@@ -11906,6 +12137,8 @@ Member of [HpeComponent.v1_0_1.HpeComponent](#hpecomponent-v1_0_1-hpecomponent)
 
 ## HpeComponentCollection.HpeComponentCollection
 ```@odata.type: "#HpeComponentCollection.HpeComponentCollection"```
+
+A Collection of HpeComponent resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -11927,7 +12160,7 @@ Member of HpeComponentCollection.HpeComponentCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeComponentCollection.HpeComponentCollection
@@ -11968,15 +12201,17 @@ Member of HpeComponentCollection.HpeComponentCollection
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-## HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet
-```@odata.type: "#HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet"```
+## HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet
+```@odata.type: "#HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet"```
+
+The HpeComponentInstallSet resource describes an Install Set, an ordered list of installation instructions that may be invoked.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/updateservice/installsets/{item}```|GET POST PATCH DELETE |
 
 ### Created
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -11987,7 +12222,7 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 |Format|date-time|
 
 ### IsRecovery
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -11997,7 +12232,7 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 |Added|iLO 5 1.10|
 
 ### Modified
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -12008,11 +12243,11 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 |Format|date-time|
 
 ### Sequence (array)
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 ```Sequence``` is an array containing elements of:
 
 **Sequence[{item}].Command**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -12031,17 +12266,26 @@ The following are the supported values:
 |```Wait```|Wait for the WaitTimeSeconds number of seconds.|
 
 **Sequence[{item}].Component**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
+
+**Sequence[{item}].ExecutionTimeoutMinutes**
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
+
+| | |
+|---|---|
+|Description|The number of minutes that this update will likely take to apply.  Applies if the command is 'ApplyUpdate'.  Ignored otherwise.|
+|Type|integer|
+|Read Only|False|
 
 **Sequence[{item}].Filename**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -12051,7 +12295,7 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 |Added|iLO 5 1.10|
 
 **Sequence[{item}].UpdatableBy (array)**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 ```UpdatableBy``` is an array containing elements of:
 
 
@@ -12069,7 +12313,7 @@ The following are the supported values:
 |```RuntimeAgent```|This component may be scheduled for update by a runtime update agent such as Smart Update Manager or Smart Update Tool.|
 
 **Sequence[{item}].WaitTimeSeconds**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 | | |
 |---|---|
@@ -12081,7 +12325,7 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 ### Actions
 
 **HpeComponentInstallSet.Invoke**
-Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)
+Member of [HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)
 
 **Parameters:**
 
@@ -12090,6 +12334,8 @@ Member of [HpeComponentInstallSet.v1_0_3.HpeComponentInstallSet](#hpecomponentin
 Previous items in the task queue can be cleared before the Install Set is invoked
 ## HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
 ```@odata.type: "#HpeComponentInstallSetCollection.HpeComponentInstallSetCollection"```
+
+A Collection of HpeComponentInstallSet resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12098,7 +12344,7 @@ Previous items in the task queue can be cleared before the Install Set is invoke
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)|
+|```Members[]```|[HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)|
 
 ### Members (array)
 Member of HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
@@ -12111,7 +12357,7 @@ Member of HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
@@ -12122,15 +12368,17 @@ Member of HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
 |Type|integer|
 |Read Only|True|
 
-## HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask
-```@odata.type: "#HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask"```
+## HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask
+```@odata.type: "#HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask"```
+
+The HpeComponentUpdateTask resource describes an Update Task, an element in the update task queue.  This represents an install instruction.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/updateservice/updatetaskqueue/{item}```||
 
 ### Command
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12149,17 +12397,17 @@ The following are the supported values:
 |```Wait```|Wait for the WaitTimeSeconds number of seconds.|
 
 ### Component
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Created
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12169,8 +12417,17 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.10|
 |Format|date-time|
 
+### ExecutionTimeoutMinutes
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
+
+| | |
+|---|---|
+|Description|The number of minutes that this update will likely take to apply.  Applies if the command is 'ApplyUpdate'.  Ignored otherwise.|
+|Type|integer|
+|Read Only|False|
+
 ### Expire
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12181,7 +12438,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Format|date-time|
 
 ### Filename
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12191,7 +12448,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.10|
 
 ### MaintenanceWindow
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12201,7 +12458,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.30|
 
 ### Modified
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12212,7 +12469,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Format|date-time|
 
 ### RecoveryPrivilege
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12223,7 +12480,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 
 ### Result
 **Result.MessageArgs (array)**
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 ```MessageArgs``` is an array containing elements of:
 
 
@@ -12233,7 +12490,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Read Only|True|
 
 **Result.MessageId**
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12243,7 +12500,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.10|
 
 ### ResultLog
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12253,7 +12510,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.10|
 
 ### StartAfter
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12264,7 +12521,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Format|date-time|
 
 ### State
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12285,7 +12542,7 @@ The following are the supported values:
 |```Canceled```|The task is no longer scheduled to run.|
 
 ### TPMOverride
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12295,7 +12552,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.10|
 
 ### UpdatableBy (array)
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 ```UpdatableBy``` is an array containing elements of:
 
 
@@ -12313,7 +12570,7 @@ The following are the supported values:
 |```RuntimeAgent```|This component may be scheduled for update by a runtime update agent such as Smart Update Manager or Smart Update Tool.|
 
 ### UpdateRecoverySet
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12323,7 +12580,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 |Added|iLO 5 1.20|
 
 ### WaitTimeSeconds
-Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)
+Member of [HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)
 
 | | |
 |---|---|
@@ -12334,6 +12591,8 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 
 ## HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection
 ```@odata.type: "#HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection"```
+
+A Collection of HpeComponentUpdateTaskQueue resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12342,7 +12601,7 @@ Member of [HpeComponentUpdateTask.v1_0_2.HpeComponentUpdateTask](#hpecomponentup
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)|
+|```Members[]```|[HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)|
 
 ### Members (array)
 Member of HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection
@@ -12355,7 +12614,7 @@ Member of HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueColle
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection
@@ -12369,7 +12628,7 @@ Member of HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueColle
 ## HpeDirectoryTest.v1_0_0.HpeDirectoryTest
 ```@odata.type: "#HpeDirectoryTest.v1_0_0.HpeDirectoryTest"```
 
-This is the schema definition for the directory test settings.
+The HpeDirectoryTest resource describes the BMC directory test.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12435,7 +12694,7 @@ Start the directory test.
 ## HpeESKM.v2_0_0.HpeESKM
 ```@odata.type: "#HpeESKM.v2_0_0.HpeESKM"```
 
-ESKM (Enterprise Security Key Manager) object enables user to connect to an operational key manager, change redundancy settings, view the key manager connection settings, test the connection, and view key management events.
+The HpeESKM resource describes properties for managing the ESKM feature.  ESKM (Enterprise Security Key Manager) enables connections to an operational key manager,change redundancy settings,view the key manager connection settings,test the connection,and view key management events.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12603,7 +12862,7 @@ There are no parameters for this action.
 ## HpeHttpsCert.v2_0_0.HpeHttpsCert
 ```@odata.type: "#HpeHttpsCert.v2_0_0.HpeHttpsCert"```
 
-This is the schema definition for the X509 Certificate.
+The HpeHttpsCert resource describes an X509 certificate.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12719,6 +12978,8 @@ The unit within the company or organization that owns this iLO subsystem.
 The state where the company or organization that owns this iLO subsystem is located.
 ## HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
 ```@odata.type: "#HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection"```
+
+A Collection of HpeiLOAccountCertificateMap resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12740,7 +13001,7 @@ Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapColle
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
@@ -12753,6 +13014,8 @@ Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapColle
 
 ## HpeiLOActiveHealthSystem.v2_3_0.HpeiLOActiveHealthSystem
 ```@odata.type: "#HpeiLOActiveHealthSystem.v2_3_0.HpeiLOActiveHealthSystem"```
+
+The HpeiLOActiveHealthSystem resource describes the properties for managing the Active Health System.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12932,6 +13195,8 @@ Member of [HpeiLOActiveHealthSystem.v2_3_0.HpeiLOActiveHealthSystem](#hpeiloacti
 There are no parameters for this action.
 ## HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile
 ```@odata.type: "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile"```
+
+The HpeiLOBackupFile resource describes the properties for managing BMC backup files.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12973,8 +13238,66 @@ Member of [HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hp
 **HpeiLOBackupFile.Restore**
 Member of [HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hpeilobackupfile)
 There are no parameters for this action.
+## HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+```@odata.type: "#HpeiLOBackupFileCollection.HpeiLOBackupFileCollection"```
+
+A Collection of HpeiLOBackupFile resource instances.
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+|```/redfish/v1/managers/{item}/backuprestoreservice/backupfiles```||
+
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|```Members[]```|[HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hpeilobackupfile)|
+
+### Members (array)
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+```Members``` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+### Oem.Hpe.BackupFileCount
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The number of backup files reported.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### Oem.Hpe.BackupFilesAllowed
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The number of backup files supported.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
 ## HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService
 ```@odata.type: "#HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService"```
+
+The HpeiLOBackupRestoreService resource describes the properties for using the BMC backup and restore features.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -12989,7 +13312,7 @@ Member of [HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService](#hpeilo
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.15|
-|Format|uri|
+|Format|uri-reference|
 
 ### BackupFiles
 Link to backup files.
@@ -13004,12 +13327,12 @@ Member of [HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService](#hpeilo
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.15|
-|Format|uri|
+|Format|uri-reference|
 
 ## HpeiLODateTime.v2_0_0.HpeiLODateTime
 ```@odata.type: "#HpeiLODateTime.v2_0_0.HpeiLODateTime"```
 
-The management processor date and time.
+The HpeiLODateTime resource describes the properties for managing the BMC data and time.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13056,7 +13379,7 @@ Member of [HpeiLODateTime.v2_0_0.HpeiLODateTime](#hpeilodatetime-v2_0_0-hpeiloda
 | | |
 |---|---|
 |Description|The current NTP server's IPv4 address, IPv6 address, or FQDN. The value either comes from DHCP or is static depending on the DHCP settings.|
-|Type|string|
+|Type|string or null|
 |Read Only|True|
 
 ### PropagateTimeToHost
@@ -13147,6 +13470,8 @@ Member of [HpeiLODateTime.v2_0_0.HpeiLODateTime](#hpeilodatetime-v2_0_0-hpeiloda
 
 ## HpeiLOEmbeddedMedia.v2_0_0.HpeiLOEmbeddedMedia
 ```@odata.type: "#HpeiLOEmbeddedMedia.v2_0_0.HpeiLOEmbeddedMedia"```
+
+The HpeiLOEmbeddedMedia resource describes the properties for the embedded media.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13186,6 +13511,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping
 ```@odata.type: "#HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping"```
+
+The HpeiLOFederatedGroupCapping resource describes the properties for managing Federated Group Capping.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13224,6 +13551,8 @@ Member of [HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping](#hpei
 
 ## HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup
 ```@odata.type: "#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup"```
+
+The HpeiLOFederationGroup resource describes the properties for managing Federation groups.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13341,6 +13670,8 @@ Member of [HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup](#hpeilofederation
 
 ## HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
 ```@odata.type: "#HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection"```
+
+A Collection of HpeiLOFederationGroup resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13362,7 +13693,7 @@ Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
@@ -13375,6 +13706,8 @@ Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
 
 ## HpeiLOFederationPeers.v2_0_0.HpeiLOFederationPeers
 ```@odata.type: "#HpeiLOFederationPeers.v2_0_0.HpeiLOFederationPeers"```
+
+The HpeiLOFederationPeers resource describes the properties for viewing Federation peers.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13438,6 +13771,8 @@ Member of [HpeiLOFederationPeers.v2_0_0.HpeiLOFederationPeers](#hpeilofederation
 
 ## HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
 ```@odata.type: "#HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection"```
+
+A Collection of HpeiLOFederationPeers resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13459,7 +13794,7 @@ Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
@@ -13470,8 +13805,10 @@ Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
 |Type|integer|
 |Read Only|True|
 
-## HpeiLOLicense.v2_1_1.HpeiLOLicense
-```@odata.type: "#HpeiLOLicense.v2_1_1.HpeiLOLicense"```
+## HpeiLOLicense.v2_3_0.HpeiLOLicense
+```@odata.type: "#HpeiLOLicense.v2_3_0.HpeiLOLicense"```
+
+The HpeiLOLicense resource describes the properties for managing BMC licenses.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13479,7 +13816,7 @@ Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
 
 ### Confirmation
 **Confirmation.Code**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13489,7 +13826,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **Confirmation.Message**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13499,7 +13836,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **Confirmation.Service**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13509,13 +13846,13 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **Confirmation.Status**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### ConfirmationRequest
 **ConfirmationRequest.EON**
 **ConfirmationRequest.EON.License**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13525,7 +13862,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **ConfirmationRequest.EON.LicenseKey**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13535,7 +13872,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **ConfirmationRequest.EON.Quantity**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13545,7 +13882,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **ConfirmationRequest.EON.State**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13569,7 +13906,7 @@ The following are the supported values:
 |```err```|error|
 
 **ConfirmationRequest.Signer**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13580,7 +13917,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 
 **ConfirmationRequest.System**
 **ConfirmationRequest.System.ChipId**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13590,7 +13927,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **ConfirmationRequest.System.Product**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13600,7 +13937,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **ConfirmationRequest.System.SerialNumber**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13610,7 +13947,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 ### License
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13620,12 +13957,12 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 ### LicenseClass
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
 |Description|The class of current license on this management processor.|
-|Type|string|
+|Type|string or null|
 |Read Only|True|
 |Added|iLO 5 1.20|
 
@@ -13645,7 +13982,7 @@ The following are the supported values:
 |```MLA```|
 
 ### LicenseErr
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13655,7 +13992,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 ### LicenseExpire
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13666,7 +14003,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 
 ### LicenseFeatures
 **LicenseFeatures.DirectoryAuth**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13676,7 +14013,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.DowngradePolicy**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13686,7 +14023,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.40|
 
 **LicenseFeatures.EmailAlert**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13696,7 +14033,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.FWScan**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13706,7 +14043,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.Federation**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13716,7 +14053,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.Jitter**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13726,7 +14063,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.KD**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13736,7 +14073,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.KeyMgr**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13746,7 +14083,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.MURC**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13755,8 +14092,17 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Read Only|True|
 |Added|iLO 5 1.10|
 
+**LicenseFeatures.ODIM**
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
+
+| | |
+|---|---|
+|Description|Open Distributed Infrastructure Management.|
+|Type|boolean|
+|Read Only|True|
+
 **LicenseFeatures.PowerReg**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13766,7 +14112,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.RC**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13776,7 +14122,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.Recovery**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13786,7 +14132,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.17|
 
 **LicenseFeatures.RemoteSyslog**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13796,7 +14142,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.Scrncap**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13806,7 +14152,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.SecureErase**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13816,7 +14162,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.SmartCard**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13826,7 +14172,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.SuiteB**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13836,7 +14182,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.TextCons**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13846,7 +14192,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.VM**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13856,7 +14202,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.VMScript**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13866,7 +14212,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 **LicenseFeatures.VSPLogging**
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13876,7 +14222,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.10|
 
 ### LicenseInstallDate
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13886,7 +14232,7 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Added|iLO 5 1.20|
 
 ### LicenseKey
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13895,8 +14241,17 @@ Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicen
 |Read Only|True|
 |Added|iLO 5 1.10|
 
+### LicenseSeats
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
+
+| | |
+|---|---|
+|Description|The number of systems authorized to use this activation key.|
+|Type|integer|
+|Read Only|True|
+
 ### LicenseTier
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13918,7 +14273,7 @@ The following are the supported values:
 |```APSE```|
 
 ### LicenseType
-Member of [HpeiLOLicense.v2_1_1.HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)
+Member of [HpeiLOLicense.v2_3_0.HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)
 
 | | |
 |---|---|
@@ -13941,6 +14296,8 @@ The following are the supported values:
 
 ## HpeiLOLicenseCollection.HpeiLOLicenseCollection
 ```@odata.type: "#HpeiLOLicenseCollection.HpeiLOLicenseCollection"```
+
+A Collection of HpeiLOLicense resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13949,7 +14306,7 @@ The following are the supported values:
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)|
+|```Members[]```|[HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)|
 
 ### Members (array)
 Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
@@ -13962,7 +14319,7 @@ Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
@@ -13975,6 +14332,8 @@ Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
 
 ## HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory
 ```@odata.type: "#HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory"```
+
+The HpeiLOResourceDirectory resource describes the resource directory.  The resource directory is a selected set of resources and resource types for faster access to resources.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -13991,7 +14350,7 @@ Member of [HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory](#hpeiloresour
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Instances[{item}].@odata.type**
 Member of [HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory-v2_0_0-hpeiloresourcedirectory)
@@ -14044,6 +14403,8 @@ Member of [HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory](#hpeiloresour
 
 ## HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard
 ```@odata.type: "#HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard"```
+
+The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -14052,7 +14413,7 @@ Member of [HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory](#hpeiloresour
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```SecurityParameters```|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)|
+|```SecurityParameters```|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
 
 ### OverallSecurityStatus
 Member of [HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard](#hpeilosecuritydashboard-v1_0_0-hpeilosecuritydashboard)
@@ -14091,17 +14452,17 @@ The following are the supported values:
 |```Enabled```|Server Configuration Lock is Enabled.|
 |```Disabled```|Server Configuration Lock is Disabled.|
 
-## HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam
-```@odata.type: "#HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam"```
+## HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam
+```@odata.type: "#HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam"```
 
-This resource defines the security parameters (configuration or status) of this manager.
+The HpeiLOSecurityParam resource describes the properties for BMC security dashboard parameters.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams/{item}```|GET |
 
 ### Ignore
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14111,7 +14472,7 @@ Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-
 |Added|iLO 5 1.40|
 
 ### IgnoredBy
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14121,7 +14482,7 @@ Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-
 |Added|iLO 5 1.40|
 
 ### IgnoredTime
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14131,7 +14492,7 @@ Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-
 |Added|iLO 5 1.40|
 
 ### RecommendedAction
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14141,7 +14502,7 @@ Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-
 |Added|iLO 5 1.40|
 
 ### SecurityStatus
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14158,7 +14519,7 @@ The following are the supported values:
 |```Ok```|This indicates no security issue associated with the security parameter.|
 
 ### State
-Member of [HpeiLOSecurityParam.v1_0_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)
+Member of [HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)
 
 | | |
 |---|---|
@@ -14178,10 +14539,14 @@ The following are the supported values:
 |```Failed```|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Failed.|
 |```Ok```|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Ok.|
 |```Insufficient```|The value of the Security Parameter is Insufficient or less than the default value.|
-|```Repaired```|The state indicate the Security State is Repaired.|
+|```Repaired```|The state of the Security Parameter is Repaired.|
+|```True```|The state of the Security Parameter is True.|
+|```False```|The state of the Security Parameter is False.|
 
 ## HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
 ```@odata.type: "#HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection"```
+
+A Collection of HpeiLOSecurityParam resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -14190,7 +14555,7 @@ The following are the supported values:
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)|
+|```Members[]```|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
 
 ### Members (array)
 Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
@@ -14203,7 +14568,7 @@ Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
@@ -14216,6 +14581,8 @@ Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
 
 ## HpeiLOSnmpService.v2_2_0.HpeiLOSnmpService
 ```@odata.type: "#HpeiLOSnmpService.v2_2_0.HpeiLOSnmpService"```
+
+The HpeiLOSnmpService resource describes the properties for managing the SNMP configuration of the BMC.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -14527,7 +14894,7 @@ There are no parameters for this action.
 ## HpeiLOSSO.v2_0_0.HpeiLOSSO
 ```@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"```
 
-This is the schema definition for the HPE SSO Trusted Server.
+The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -14544,7 +14911,7 @@ Member of [HpeiLOSSO.v2_0_0.HpeiLOSSO](#hpeilosso-v2_0_0-hpeilosso)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **ManagerTrustedCertificates[{item}].@odata.type**
 Member of [HpeiLOSSO.v2_0_0.HpeiLOSSO](#hpeilosso-v2_0_0-hpeilosso)
@@ -15022,6 +15389,8 @@ Delete all the SSO records.
 There are no parameters for this action.
 ## HpeInvalidImage.v1_0_0.HpeInvalidImage
 ```@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"```
+
+The HpeInvalidImage resource describes the properties of an invalid firmware image detected and preserved from a computer system.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -15077,7 +15446,7 @@ Member of [HpeInvalidImage.v1_0_0.HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpein
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.30|
-|Format|uri|
+|Format|uri-reference|
 
 ### SizeBytes
 Member of [HpeInvalidImage.v1_0_0.HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpeinvalidimage)
@@ -15091,6 +15460,8 @@ Member of [HpeInvalidImage.v1_0_0.HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpein
 
 ## HpeInvalidImageCollection.HpeInvalidImageCollection
 ```@odata.type: "#HpeInvalidImageCollection.HpeInvalidImageCollection"```
+
+A Collection of HpeInvalidImage resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -15112,7 +15483,7 @@ Member of HpeInvalidImageCollection.HpeInvalidImageCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeInvalidImageCollection.HpeInvalidImageCollection
@@ -15413,6 +15784,8 @@ Member of [HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator](#hpeiscsi
 
 ## HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow
 ```@odata.type: "#HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow"```
+
+The HpeMaintenanceWindow resource describes the properties for managing the time window for a software or firmware update task or install set.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -15464,6 +15837,8 @@ Member of [HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow](#hpemaintenancewind
 
 ## HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
 ```@odata.type: "#HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection"```
+
+A Collection of HpeMaintenanceWindow resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -15485,7 +15860,7 @@ Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
@@ -15499,7 +15874,7 @@ Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
 ## HpeNetworkPortEVB.v1_1_1.HpeNetworkPortEVB
 ```@odata.type: "#HpeNetworkPortEVB.v1_1_1.HpeNetworkPortEVB"```
 
-Hewlett Packard Enterprise property extensions for Network Ports Edge Virtual Bridging
+The HpeNetworkPortEVB resource describes the Hewlett Packard Enterprise property extensions for Network Ports Edge Virtual Bridging
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -15915,7 +16290,7 @@ Member of [HpeNetworkPortEVB.v1_1_1.HpeNetworkPortEVB](#hpenetworkportevb-v1_1_1
 ## HpeNetworkPortLLDP.v1_1_1.HpeNetworkPortLLDP
 ```@odata.type: "#HpeNetworkPortLLDP.v1_1_1.HpeNetworkPortLLDP"```
 
-Hewlett Packard Enterprise property extensions for Network Ports Link Layer Discovery Protocol
+The HpeNetworkPortLLDP resource describes the Hewlett Packard Enterprise property extensions for Network Ports Link Layer Discovery Protocol
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -16478,6 +16853,8 @@ Member of [HpeNetworkPortLLDP.v1_1_1.HpeNetworkPortLLDP](#hpenetworkportlldp-v1_
 
 ## HpePowerMeter.v2_0_1.HpePowerMeter
 ```@odata.type: "#HpePowerMeter.v2_0_1.HpePowerMeter"```
+
+The HpePowerMeter resource contains the computer system power history logged by the BMC.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -16709,8 +17086,10 @@ Member of [HpePowerMeter.v2_0_1.HpePowerMeter](#hpepowermeter-v2_0_1-hpepowermet
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-## HpeRemoteSupport.v2_3_0.HpeRemoteSupport
-```@odata.type: "#HpeRemoteSupport.v2_3_0.HpeRemoteSupport"```
+## HpeRemoteSupport.v2_4_0.HpeRemoteSupport
+```@odata.type: "#HpeRemoteSupport.v2_4_0.HpeRemoteSupport"```
+
+The HpeRemoteSupport resource describes the properties for management of HPE Embedded Report Support.
 
 This resource type was added in iLO 5 1.20
 
@@ -16724,10 +17103,10 @@ HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```ServiceEventLogs```|Collection of [LogEntry](#logentry-v1_0_0-logentry)|
+|```ServiceEventLogs```|Collection of [LogEntry](#logentry-v1_1_0-logentry)|
 
 ### ConnectModel
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16744,7 +17123,7 @@ The following are the supported values:
 |```CentralConnect```|
 
 ### DataCollectionFrequencyInDays
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16754,7 +17133,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### DestinationPort
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16764,7 +17143,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### DestinationURL
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16774,7 +17153,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### HpePassportPassword
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16784,7 +17163,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### HpePassportUserId
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16794,7 +17173,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### LastTransmissionDate
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16805,7 +17184,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Format|date-time|
 
 ### LastTransmissionError
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16815,7 +17194,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### LastTransmissionType
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16837,7 +17216,7 @@ The following are the supported values:
 |```Null```|
 
 ### MaintenanceModeEnabled
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16846,9 +17225,18 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Read Only|True|
 |Added|iLO 5 1.30|
 
+### MaintenanceTimeLeftInMinutes
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
+
+| | |
+|---|---|
+|Description|This indicates the time remaining in minutes for the server to be in the maintenance mode.|
+|Type|integer|
+|Read Only|True|
+
 ### ProxySettings
 **ProxySettings.Password**
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16858,7 +17246,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 **ProxySettings.Port**
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16868,7 +17256,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 **ProxySettings.Url**
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16879,7 +17267,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Format|url|
 
 **ProxySettings.Username**
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16889,7 +17277,7 @@ Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hp
 |Added|iLO 5 1.20|
 
 ### RemoteSupportEnabled
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 | | |
 |---|---|
@@ -16905,7 +17293,7 @@ ServiceEventLogs is a link (```"@odata.id": URI```) to another resource.
 ### Actions
 
 **HpeRemoteSupport.RegisterDeviceToRemoteSupport**
-Member of [HpeRemoteSupport.v2_3_0.HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)
+Member of [HpeRemoteSupport.v2_4_0.HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)
 
 **Parameters:**
 
@@ -16918,6 +17306,8 @@ Web proxy server host name or IP address when connecting using Direct Connect.
 The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
 ## HpeSecurityService.v2_2_0.HpeSecurityService
 ```@odata.type: "#HpeSecurityService.v2_2_0.HpeSecurityService"```
+
+The HpeSecurityService resource describes the properties for management of the security configuration of the BMC.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -16927,7 +17317,7 @@ The host name or IP address of the Remote Support server. This is applicable for
 |Link Name|Destination type
 |---|---|
 |```Links/SSO```|[HpeiLOSSO](#hpeilosso-v2_0_0-hpeilosso)|
-|```Links/SecurityParams```|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_0_0-hpeilosecurityparam)|
+|```Links/SecurityParams```|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
 |```Links/HttpsCert```|[HpeHttpsCert](#hpehttpscert-v2_0_0-hpehttpscert)|
 |```Links/CertAuth```|[HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)|
 |```Links/ESKM```|[HpeESKM](#hpeeskm-v2_0_0-hpeeskm)|
@@ -17019,6 +17409,8 @@ The following are the supported values:
 
 ## HpeServerAccHddService.v1_0_0.HpeServerAccHddService
 ```@odata.type: "#HpeServerAccHddService.v1_0_0.HpeServerAccHddService"```
+
+The HpeServerAccHddService resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
@@ -17142,12 +17534,38 @@ Member of [HpeServerAccHddService.v1_0_0.HpeServerAccHddService](#hpeserveracchd
 ## HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone
 ```@odata.type: "#HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone"```
 
+The HpeServerAccHddZone resource describes the properties for management of shared hard drives in an enclosure.
+
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/chassis/{item}/acchddservice/zone```|GET POST |
+
+### BackupZoneConfigurationInBmc
+**BackupZoneConfigurationInBmc.HostPort (array)**
+Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)
+```HostPort``` is an array containing elements of:
+
+**HostPort[{item}].BayNumber (array)**
+Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)
+```BayNumber``` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|integer|
+|Read Only|True|
+
+**HostPort[{item}].PortNumber**
+Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)
+
+| | |
+|---|---|
+|Description|Represents the number of physical host ports in SEP, null represents unassigned bay group.|
+|Type|integer or null|
+|Read Only|True|
 
 ### CurrentZoneConfiguration
 **CurrentZoneConfiguration.HostPort (array)**
@@ -17219,6 +17637,12 @@ Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-
 
 ### Actions
 
+**HpeServerAccHddZone.BackupConfigurationToBmc**
+Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)
+Backup Apollo Chassis Controller Hdd zone configuration to BMC.
+
+There are no parameters for this action.
+
 **HpeServerAccHddZone.LoadDefault**
 Member of [HpeServerAccHddZone.v1_0_0.HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)
 Load Apollo Chassis Controller default Hdd zone configuration.
@@ -17235,6 +17659,8 @@ Execute Apollo Chassis Controller Hdd zone configuration.
 **HostPort (array)**
 ## HpeServerAccPowerCalibration.v1_0_0.HpeServerAccPowerCalibration
 ```@odata.type: "#HpeServerAccPowerCalibration.v1_0_0.HpeServerAccPowerCalibration"```
+
+The HpeServerAccPowerCalibration resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
@@ -17531,6 +17957,8 @@ Execute the Apollo Chassis Controller power calibration configuration.
 ## HpeServerAccPowerLimit.v1_0_0.HpeServerAccPowerLimit
 ```@odata.type: "#HpeServerAccPowerLimit.v1_0_0.HpeServerAccPowerLimit"```
 
+The HpeServerAccPowerLimit resource describes the properties for management of shared power in an enclosure.
+
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
 ### Resource Instances
@@ -17633,6 +18061,8 @@ Deploy the Apollo Chassis Controller power limit configuration.
 ## HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo
 ```@odata.type: "#HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo"```
 
+The HpeServerAccPowerNodesInfo resource describes the properties for management of shared power in an enclosure.
+
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
 ### Resource Instances
@@ -17687,6 +18117,8 @@ Member of [HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo](#hpeser
 ## HpeServerAccPowerService.v1_0_0.HpeServerAccPowerService
 ```@odata.type: "#HpeServerAccPowerService.v1_0_0.HpeServerAccPowerService"```
 
+The HpeServerAccPowerService resource describes the properties for management of shared power in an enclosure.
+
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
 ### Resource Instances
@@ -17734,6 +18166,8 @@ The following are the supported values:
 
 ## HpeServerAccPowerZone.v1_0_0.HpeServerAccPowerZone
 ```@odata.type: "#HpeServerAccPowerZone.v1_0_0.HpeServerAccPowerZone"```
+
+The HpeServerAccPowerZone resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
@@ -17935,6 +18369,8 @@ Member of [HpeServerBootSettings.v2_0_0.HpeServerBootSettings](#hpeserverbootset
 ## HpeServerDevice.v2_0_0.HpeServerDevice
 ```@odata.type: "#HpeServerDevice.v2_0_0.HpeServerDevice"```
 
+The HpeServerDevice resource describes the properties of FRU devices.
+
 This resource type was added in iLO 5 1.20
 
 HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
@@ -17960,7 +18396,7 @@ Member of [HpeServerDevice.v2_0_0.HpeServerDevice](#hpeserverdevice-v2_0_0-hpese
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### DeviceType
 Member of [HpeServerDevice.v2_0_0.HpeServerDevice](#hpeserverdevice-v2_0_0-hpeserverdevice)
@@ -18074,6 +18510,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## HpeServerDeviceCollection.HpeServerDeviceCollection
 ```@odata.type: "#HpeServerDeviceCollection.HpeServerDeviceCollection"```
+
+A Collection of HpeServerDevice resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18095,7 +18533,7 @@ Member of HpeServerDeviceCollection.HpeServerDeviceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeServerDeviceCollection.HpeServerDeviceCollection
@@ -18108,6 +18546,8 @@ Member of HpeServerDeviceCollection.HpeServerDeviceCollection
 
 ## HpeServerPciDevice.v2_0_0.HpeServerPciDevice
 ```@odata.type: "#HpeServerPciDevice.v2_0_0.HpeServerPciDevice"```
+
+The HpeServerPciDevice resource describes the properties of PCI devices.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18336,6 +18776,8 @@ Member of [HpeServerPciDevice.v2_0_0.HpeServerPciDevice](#hpeserverpcidevice-v2_
 
 ## HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
 ```@odata.type: "#HpeServerPciDeviceCollection.HpeServerPciDeviceCollection"```
+
+A Collection of HpeServerPciDevice resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18357,7 +18799,7 @@ Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
@@ -18370,6 +18812,8 @@ Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
 
 ## HpeServerPCISlot.v2_1_0.HpeServerPCISlot
 ```@odata.type: "#HpeServerPCISlot.v2_1_0.HpeServerPCISlot"```
+
+The HpeServerPCISlot resource describes the properties of PCI slots.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18595,6 +19039,8 @@ Member of [HpeServerPCISlot.v2_1_0.HpeServerPCISlot](#hpeserverpcislot-v2_1_0-hp
 
 ## HpeServerPCISlotCollection.HpeServerPCISlotCollection
 ```@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"```
+
+A Collection of HpeServerPCISlot resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18616,7 +19062,7 @@ Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
@@ -18630,7 +19076,7 @@ Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
 ## HpeSmartStorage.v2_0_0.HpeSmartStorage
 ```@odata.type: "#HpeSmartStorage.v2_0_0.HpeSmartStorage"```
 
-HpSmartStorage
+The HpeSmartStorage resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -18649,7 +19095,7 @@ See the Redfish standard schema and specification for information on common Stat
 ## HpeSmartStorageArrayController.v2_2_0.HpeSmartStorageArrayController
 ```@odata.type: "#HpeSmartStorageArrayController.v2_2_0.HpeSmartStorageArrayController"```
 
-HpSmartStorageArrayController
+The HpeSmartStorageArrayController resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -19645,6 +20091,8 @@ Member of [HpeSmartStorageArrayController.v2_2_0.HpeSmartStorageArrayController]
 
 ## HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControllerCollection
 ```@odata.type: "#HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControllerCollection"```
+
+A Collection of HpeSmartStorageArrayController resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -19666,7 +20114,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControllerCollection
@@ -19680,7 +20128,7 @@ Member of HpeSmartStorageArrayControllerCollection.HpeSmartStorageArrayControlle
 ## HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive
 ```@odata.type: "#HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive"```
 
-HpSmartStorageDiskDrive
+The HpeSmartStorageDiskDrive resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20150,6 +20598,8 @@ Member of [HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive](#hpesmartst
 
 ## HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection
 ```@odata.type: "#HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection"```
+
+A Collection of HpeSmartStorageDiskDrive resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20172,7 +20622,7 @@ Member of HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection
@@ -20186,7 +20636,7 @@ Member of HpeSmartStorageDiskDriveCollection.HpeSmartStorageDiskDriveCollection
 ## HpeSmartStorageHostBusAdapter.v2_0_0.HpeSmartStorageHostBusAdapter
 ```@odata.type: "#HpeSmartStorageHostBusAdapter.v2_0_0.HpeSmartStorageHostBusAdapter"```
 
-HpSmartStorageHostBusAdapter
+The HpeSmartStorageHostBusAdapter resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20281,6 +20731,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterCollection
 ```@odata.type: "#HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterCollection"```
+
+A Collection of HpeSmartStorageHostBusAdapter resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20302,7 +20754,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterCollection
@@ -20316,7 +20768,7 @@ Member of HpeSmartStorageHostBusAdapterCollection.HpeSmartStorageHostBusAdapterC
 ## HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive
 ```@odata.type: "#HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive"```
 
-HpSmartStorageLogicalDrive
+The HpeSmartStorageLogicalDrive resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20733,6 +21185,8 @@ Member of [HpeSmartStorageLogicalDrive.v2_3_0.HpeSmartStorageLogicalDrive](#hpes
 
 ## HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveCollection
 ```@odata.type: "#HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveCollection"```
+
+A Collection of HpeSmartStorageLogicalDrive resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20754,7 +21208,7 @@ Member of HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveColle
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveCollection
@@ -20768,7 +21222,7 @@ Member of HpeSmartStorageLogicalDriveCollection.HpeSmartStorageLogicalDriveColle
 ## HpeSmartStorageStorageEnclosure.v2_0_0.HpeSmartStorageStorageEnclosure
 ```@odata.type: "#HpeSmartStorageStorageEnclosure.v2_0_0.HpeSmartStorageStorageEnclosure"```
 
-HpSmartStorageStorageEnclosure
+The HpeSmartStorageStorageEnclosure resource describes the properties of the HPE Smart Storage controller,drives,and volumes.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20958,6 +21412,8 @@ Member of [HpeSmartStorageStorageEnclosure.v2_0_0.HpeSmartStorageStorageEnclosur
 
 ## HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclosureCollection
 ```@odata.type: "#HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclosureCollection"```
+
+A Collection of HpeSmartStorageStorageEnclosure resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -20979,7 +21435,7 @@ Member of HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclos
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclosureCollection
@@ -20993,7 +21449,7 @@ Member of HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclos
 ## HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination
 ```@odata.type: "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination"```
 
-The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the management processor.
+The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
 
 This resource type was added in iLO 5 1.20
 
@@ -21057,6 +21513,8 @@ Member of [HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination](#hpesnmpalert
 
 ## HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 ```@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"```
+
+A Collection of HpeSNMPAlertDestination resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21078,7 +21536,7 @@ Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
@@ -21092,7 +21550,7 @@ Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 ## HpeSNMPUser.v2_1_0.HpeSNMPUser
 ```@odata.type: "#HpeSNMPUser.v2_1_0.HpeSNMPUser"```
 
-SNMPv3 supports the User-based Security Model (USM). With this model, security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
+The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
 
 This resource type was added in iLO 5 1.20
 
@@ -21178,6 +21636,8 @@ Member of [HpeSNMPUser.v2_1_0.HpeSNMPUser](#hpesnmpuser-v2_1_0-hpesnmpuser)
 
 ## HpeSNMPUsersCollection.HpeSNMPUsersCollection
 ```@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"```
+
+A Collection of HpeSNMPUsers resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21199,7 +21659,7 @@ Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
@@ -21383,6 +21843,8 @@ The following are the supported values:
 
 ## HpeUSBDevice.v2_0_0.HpeUSBDevice
 ```@odata.type: "#HpeUSBDevice.v2_0_0.HpeUSBDevice"```
+
+The HpeUSBDevice resource describes the properties of USB devices.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21491,7 +21953,7 @@ Member of [HpeUSBDevice.v2_0_0.HpeUSBDevice](#hpeusbdevice-v2_0_0-hpeusbdevice)
 ## HpeUSBDevicesCollection.HpeUSBDevicesCollection
 ```@odata.type: "#HpeUSBDevicesCollection.HpeUSBDevicesCollection"```
 
-This is a collection of USB devices connected during the server boot time. If a USB device is plugged in after server is booted then it will not be available.
+A Collection of HpeUSBDevices resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21513,7 +21975,7 @@ Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
@@ -21526,6 +21988,8 @@ Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
 
 ## HpeUSBPort.v2_0_0.HpeUSBPort
 ```@odata.type: "#HpeUSBPort.v2_0_0.HpeUSBPort"```
+
+The HpeUSBPort resource describes the properties of USB ports.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21653,6 +22117,8 @@ Member of [HpeUSBPort.v2_0_0.HpeUSBPort](#hpeusbport-v2_0_0-hpeusbport)
 
 ## HpeUSBPortsCollection.HpeUSBPortsCollection
 ```@odata.type: "#HpeUSBPortsCollection.HpeUSBPortsCollection"```
+
+A Collection of HpeUSBPorts resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21674,7 +22140,7 @@ Member of HpeUSBPortsCollection.HpeUSBPortsCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeUSBPortsCollection.HpeUSBPortsCollection
@@ -21687,6 +22153,8 @@ Member of HpeUSBPortsCollection.HpeUSBPortsCollection
 
 ## HpeWorkloadPerformanceAdvisor.v1_0_0.HpeWorkloadPerformanceAdvisor
 ```@odata.type: "#HpeWorkloadPerformanceAdvisor.v1_0_0.HpeWorkloadPerformanceAdvisor"```
+
+The HpeWorkloadPerformanceAdvisor resource describes the properties for managing the HPE Workload Performance Advisor.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21760,6 +22228,8 @@ The following are the supported values:
 
 ## HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
 ```@odata.type: "#HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection"```
+
+A Collection of HpeWorkloadPerformanceAdvisor resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21781,7 +22251,7 @@ Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorC
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
@@ -21794,6 +22264,8 @@ Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorC
 
 ## JsonSchemaFileCollection.JsonSchemaFileCollection
 ```@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"```
+
+A Collection of JsonSchemaFile resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -21815,7 +22287,7 @@ Member of JsonSchemaFileCollection.JsonSchemaFileCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of JsonSchemaFileCollection.JsonSchemaFileCollection
@@ -21826,17 +22298,17 @@ Member of JsonSchemaFileCollection.JsonSchemaFileCollection
 |Type|integer|
 |Read Only|True|
 
-## LogEntry.v1_0_0.LogEntry
-```@odata.type: "#LogEntry.v1_0_0.LogEntry"```
+## LogEntry.v1_1_0.LogEntry
+```@odata.type: "#LogEntry.v1_1_0.LogEntry"```
+
+This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
-|```/redfish/v1/managers/{item}/logservices/iel/entries/{item}```|GET |
-|```/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs/{item}```|GET |
 |```/redfish/v1/systems/{item}/logservices/iml/entries/{item}```|GET PATCH |
 
 ### Created
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21847,7 +22319,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Format|date-time|
 
 ### EntryType
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21863,7 +22335,7 @@ The following are the supported values:
 |```Oem```|
 
 ### Message
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21873,7 +22345,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Categories (array)
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 ```Categories``` is an array containing elements of:
 
 
@@ -21882,8 +22354,23 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Type|string or null|
 |Read Only|True|
 
+The following are the supported values:
+
+|Value|
+|---|
+|```Security```|
+|```Hardware```|
+|```Firmware```|
+|```Maintenance```|
+|```Administration```|
+|```Power```|
+|```Cooling```|
+|```Invalid User Input```|
+|```Other```|
+|```Configuration```|
+
 ### Oem.Hpe.Class
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21892,8 +22379,17 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
+### Oem.Hpe.ClassDescription
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
+
+| | |
+|---|---|
+|Description|The log entry event class description.|
+|Type|string|
+|Read Only|True|
+
 ### Oem.Hpe.Code
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21903,7 +22399,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Count
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21913,7 +22409,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Destination
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21923,7 +22419,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.EventNumber
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21933,7 +22429,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Identifier
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21943,7 +22439,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.LearnMoreLink
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21951,10 +22447,10 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.RecommendedAction
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21964,7 +22460,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Repaired
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21973,8 +22469,26 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Read Only|False|
 |Added|iLO 5 1.10|
 
+### Oem.Hpe.Severity
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
+
+| | |
+|---|---|
+|Description|The log entry event Severity.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Informational```|Informational event|
+|```Caution```|Caution event|
+|```Critical```|Critical event|
+|```Repaired```|Critical or Caution event repaired|
+
 ### Oem.Hpe.SubmitStatus
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21984,7 +22498,7 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.Updated
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -21994,8 +22508,26 @@ Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
 |Added|iLO 5 1.10|
 |Format|date-time|
 
+### Oem.Hpe.UserAction
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
+
+| | |
+|---|---|
+|Description|The User action for the event.|
+|Type|string|
+|Read Only|False|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Repaired```|The event repaired by user.|
+|```Ignored```|The event ignored by user.|
+|```None```|No user action taken on the event.|
+|```Not Applicable```|User action not applicable for the event.|
+
 ### OemRecordFormat
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -22010,9 +22542,10 @@ The following are the supported values:
 |---|
 |```Hpe-IML```|
 |```Hpe-iLOEventLog```|
+|```Hpe-SL```|
 
 ### Severity
-Member of [LogEntry.v1_0_0.LogEntry](#logentry-v1_0_0-logentry)
+Member of [LogEntry.v1_1_0.LogEntry](#logentry-v1_1_0-logentry)
 
 | | |
 |---|---|
@@ -22031,6 +22564,8 @@ The following are the supported values:
 
 ## LogEntryCollection.LogEntryCollection
 ```@odata.type: "#LogEntryCollection.LogEntryCollection"```
+
+A Collection of LogEntry resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -22041,7 +22576,7 @@ The following are the supported values:
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[LogEntry](#logentry-v1_0_0-logentry)|
+|```Members[]```|[LogEntry](#logentry-v1_1_0-logentry)|
 
 ### Members (array)
 Member of LogEntryCollection.LogEntryCollection
@@ -22054,7 +22589,7 @@ Member of LogEntryCollection.LogEntryCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Members[{item}].@odata.etag**
 Member of LogEntryCollection.LogEntryCollection
@@ -22071,7 +22606,7 @@ Member of LogEntryCollection.LogEntryCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Members[{item}].@odata.type**
 Member of LogEntryCollection.LogEntryCollection
@@ -22125,6 +22660,21 @@ Member of LogEntryCollection.LogEntryCollection
 |Type|string or null|
 |Read Only|True|
 
+The following are the supported values:
+
+|Value|
+|---|
+|```Security```|
+|```Hardware```|
+|```Firmware```|
+|```Maintenance```|
+|```Administration```|
+|```Power```|
+|```Cooling```|
+|```Invalid User Input```|
+|```Other```|
+|```Configuration```|
+
 **Members[{item}].Oem.Hpe.Class**
 Member of LogEntryCollection.LogEntryCollection
 
@@ -22134,6 +22684,15 @@ Member of LogEntryCollection.LogEntryCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO 5 1.10|
+
+**Members[{item}].Oem.Hpe.ClassDescription**
+Member of LogEntryCollection.LogEntryCollection
+
+| | |
+|---|---|
+|Description|The log entry event class description.|
+|Type|string|
+|Read Only|True|
 
 **Members[{item}].Oem.Hpe.Code**
 Member of LogEntryCollection.LogEntryCollection
@@ -22194,7 +22753,7 @@ Member of LogEntryCollection.LogEntryCollection
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 **Members[{item}].Oem.Hpe.RecommendedAction**
 Member of LogEntryCollection.LogEntryCollection
@@ -22215,6 +22774,24 @@ Member of LogEntryCollection.LogEntryCollection
 |Type|boolean|
 |Read Only|False|
 |Added|iLO 5 1.10|
+
+**Members[{item}].Oem.Hpe.Severity**
+Member of LogEntryCollection.LogEntryCollection
+
+| | |
+|---|---|
+|Description|The log entry event Severity.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Informational```|Informational event|
+|```Caution```|Caution event|
+|```Critical```|Critical event|
+|```Repaired```|Critical or Caution event repaired|
 
 **Members[{item}].Oem.Hpe.SubmitStatus**
 Member of LogEntryCollection.LogEntryCollection
@@ -22237,6 +22814,24 @@ Member of LogEntryCollection.LogEntryCollection
 |Added|iLO 5 1.10|
 |Format|date-time|
 
+**Members[{item}].Oem.Hpe.UserAction**
+Member of LogEntryCollection.LogEntryCollection
+
+| | |
+|---|---|
+|Description|The User action for the event.|
+|Type|string|
+|Read Only|False|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Repaired```|The event repaired by user.|
+|```Ignored```|The event ignored by user.|
+|```None```|No user action taken on the event.|
+|```Not Applicable```|User action not applicable for the event.|
+
 **Members[{item}].OemRecordFormat**
 Member of LogEntryCollection.LogEntryCollection
 
@@ -22252,6 +22847,7 @@ The following are the supported values:
 |---|
 |```Hpe-IML```|
 |```Hpe-iLOEventLog```|
+|```Hpe-SL```|
 
 **Members[{item}].Severity**
 Member of LogEntryCollection.LogEntryCollection
@@ -22281,6 +22877,8 @@ Member of LogEntryCollection.LogEntryCollection
 
 ## LogService.v1_0_0.LogService
 ```@odata.type: "#LogService.v1_0_0.LogService"```
+
+This resource contains properties for monitoring and configuring an event log service for the resource or service to which it is associated.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -22290,7 +22888,7 @@ Member of LogEntryCollection.LogEntryCollection
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Entries```|Collection of [LogEntry](#logentry-v1_0_0-logentry)|
+|```Entries```|Collection of [LogEntry](#logentry-v1_1_0-logentry)|
 
 ### Entries
 The URI to this log entries collection resource.
@@ -22331,6 +22929,8 @@ Member of [LogService.v1_0_0.LogService](#logservice-v1_0_0-logservice)
 There are no parameters for this action.
 ## LogServiceCollection.LogServiceCollection
 ```@odata.type: "#LogServiceCollection.LogServiceCollection"```
+
+A Collection of LogService resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -22353,7 +22953,7 @@ Member of LogServiceCollection.LogServiceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of LogServiceCollection.LogServiceCollection
@@ -22364,10 +22964,10 @@ Member of LogServiceCollection.LogServiceCollection
 |Type|integer|
 |Read Only|True|
 
-## Manager.v1_3_3.Manager
-```@odata.type: "#Manager.v1_3_3.Manager"```
+## Manager.v1_5_1.Manager
+```@odata.type: "#Manager.v1_5_1.Manager"```
 
-This is the schema definition for a manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned manageability functions.
+The Manager resource describes a manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned manageability functions.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -22377,7 +22977,7 @@ This is the schema definition for a manager.  Examples of managers are BMCs, Enc
 |Link Name|Destination type
 |---|---|
 |```Oem/Hpe/Links/DateTimeService```|[HpeiLODateTime](#hpeilodatetime-v2_0_0-hpeilodatetime)|
-|```Oem/Hpe/Links/RemoteSupport```|[HpeRemoteSupport](#hperemotesupport-v2_3_0-hperemotesupport)|
+|```Oem/Hpe/Links/RemoteSupport```|[HpeRemoteSupport](#hperemotesupport-v2_4_0-hperemotesupport)|
 |```Links/ManagerForChassis[]```|[Chassis](#chassis-v1_6_0-chassis)|
 |```VirtualMedia```|Collection of [VirtualMedia](#virtualmedia-v1_2_0-virtualmedia)|
 |```LogServices```|Collection of [LogService](#logservice-v1_0_0-logservice)|
@@ -22386,7 +22986,7 @@ This is the schema definition for a manager.  Examples of managers are BMCs, Enc
 |```Links/ManagerForServers[]```|[ComputerSystem](#computersystem-v1_4_0-computersystem)|
 |```Oem/Hpe/Links/ActiveHealthSystem```|[HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem-v2_3_0-hpeiloactivehealthsystem)|
 |```Oem/Hpe/Links/SecurityService```|[HpeSecurityService](#hpesecurityservice-v2_2_0-hpesecurityservice)|
-|```Oem/Hpe/Links/LicenseService```|Collection of [HpeiLOLicense](#hpeilolicense-v2_1_1-hpeilolicense)|
+|```Oem/Hpe/Links/LicenseService```|Collection of [HpeiLOLicense](#hpeilolicense-v2_3_0-hpeilolicense)|
 |```NetworkProtocol```|[ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)|
 |```Oem/Hpe/Links/FederationPeers```|Collection of [HpeiLOFederationPeers](#hpeilofederationpeers-v2_0_0-hpeilofederationpeers)|
 |```HostInterfaces```|Collection of [HostInterface](#hostinterface-v1_1_1-hostinterface)|
@@ -22396,7 +22996,7 @@ This is the schema definition for a manager.  Examples of managers are BMCs, Enc
 
 ### CommandShell
 **CommandShell.ConnectTypesSupported (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```ConnectTypesSupported``` is an array containing elements of:
 
 
@@ -22415,7 +23015,7 @@ The following are the supported values:
 |```Oem```|The controller supports a Command Shell connectino using an OEM-specific protocol|
 
 **CommandShell.MaxConcurrentSessions**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22425,7 +23025,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **CommandShell.ServiceEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22434,12 +23034,31 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 |Added|iLO 5 1.10|
 
+### DateTime
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
+
+| | |
+|---|---|
+|Description|The current DateTime (with offset) for the manager, used to set or read time.|
+|Type|string or null|
+|Read Only|False|
+|Format|date-time|
+
+### DateTimeLocalOffset
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
+
+| | |
+|---|---|
+|Description|The time offset from UTC that the DateTime property is set to in format: +06:00 .|
+|Type|string or null|
+|Read Only|False|
+
 ### EthernetInterfaces
 This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.
 EthernetInterfaces is a link (```"@odata.id": URI```) to another resource.
 
 ### FirmwareVersion
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22450,7 +23069,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 ### GraphicalConsole
 **GraphicalConsole.ConnectTypesSupported (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```ConnectTypesSupported``` is an array containing elements of:
 
 
@@ -22467,7 +23086,7 @@ The following are the supported values:
 |```Oem```|The controller supports a Graphical Console connection using an OEM-specific protocol|
 
 **GraphicalConsole.MaxConcurrentSessions**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22477,7 +23096,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **GraphicalConsole.ServiceEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22495,7 +23114,7 @@ Reference to a resource of type Collection with a MemberType of Logs.
 LogServices is a link (```"@odata.id": URI```) to another resource.
 
 ### ManagerType
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22513,7 +23132,7 @@ The following are the supported values:
 |```BMC```|A controller which provides management functions for a single computer system|
 
 ### Model
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22527,7 +23146,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 NetworkProtocol is a link (```"@odata.id": URI```) to another resource.
 
 ### Oem.Hpe.ClearRestApiStatus
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22545,7 +23164,7 @@ The following are the supported values:
 |```DataCleared```|External Provider data is not present in NVRAM.|
 
 ### Oem.Hpe.ConfigurationSettings
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22563,7 +23182,7 @@ The following are the supported values:
 
 ### Oem.Hpe.FederationConfig
 **Oem.Hpe.FederationConfig.IPv6MulticastScope**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22581,7 +23200,7 @@ The following are the supported values:
 |```Organization```|
 
 **Oem.Hpe.FederationConfig.MulticastAnnouncementInterval**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22604,7 +23223,7 @@ The following are the supported values:
 |```1800```|
 
 **Oem.Hpe.FederationConfig.MulticastDiscovery**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22621,7 +23240,7 @@ The following are the supported values:
 |```Disabled```|
 
 **Oem.Hpe.FederationConfig.MulticastTimeToLive**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22631,7 +23250,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.FederationConfig.iLOFederationManagement**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22650,7 +23269,7 @@ The following are the supported values:
 ### Oem.Hpe.Firmware
 **Oem.Hpe.Firmware.Backup**
 **Oem.Hpe.Firmware.Backup.BuildNumber**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22660,7 +23279,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.BuildNumberString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22670,7 +23289,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.Date**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22680,7 +23299,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.DebugBuild**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22690,7 +23309,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.Family**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22700,7 +23319,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.MajorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22710,7 +23329,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.MinorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22720,7 +23339,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.Time**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22730,7 +23349,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Backup.VersionString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22741,7 +23360,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 **Oem.Hpe.Firmware.Bootblock**
 **Oem.Hpe.Firmware.Bootblock.BuildNumber**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22751,7 +23370,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.BuildNumberString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22761,7 +23380,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.Date**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22771,7 +23390,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.DebugBuild**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22781,7 +23400,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.Family**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22791,7 +23410,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.MajorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22801,7 +23420,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.MinorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22811,7 +23430,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.Time**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22821,7 +23440,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Bootblock.VersionString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22832,7 +23451,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 **Oem.Hpe.Firmware.Current**
 **Oem.Hpe.Firmware.Current.BuildNumber**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22842,7 +23461,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.BuildNumberString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22852,7 +23471,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.Date**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22862,7 +23481,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.DebugBuild**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22872,7 +23491,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.Family**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22882,7 +23501,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.MajorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22892,7 +23511,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.MinorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22902,7 +23521,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.Time**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22912,7 +23531,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Current.VersionString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22923,7 +23542,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 **Oem.Hpe.Firmware.Pending**
 **Oem.Hpe.Firmware.Pending.BuildNumber**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22933,7 +23552,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.BuildNumberString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22943,7 +23562,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.Date**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22953,7 +23572,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.DebugBuild**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22963,7 +23582,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.Family**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22973,7 +23592,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.MajorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22983,7 +23602,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.MinorVersion**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -22993,7 +23612,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.Time**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23003,7 +23622,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Firmware.Pending.VersionString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23014,7 +23633,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 ### Oem.Hpe.FrontPanelUSB
 **Oem.Hpe.FrontPanelUSB.State**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23035,7 +23654,7 @@ The following are the supported values:
 |```Disabled```|The front panel device is disabled by user configuration.|
 
 ### Oem.Hpe.IdleConnectionTimeoutMinutes
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23056,11 +23675,11 @@ The following are the supported values:
 
 ### Oem.Hpe.IntegratedRemoteConsole
 **Oem.Hpe.IntegratedRemoteConsole.HotKeys (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```HotKeys``` is an array containing elements of:
 
 **HotKeys[{item}].KeySequence (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```KeySequence``` is an array containing elements of:
 
 
@@ -23161,7 +23780,7 @@ The following are the supported values:
 
 **Oem.Hpe.IntegratedRemoteConsole.LockKey**
 **Oem.Hpe.IntegratedRemoteConsole.LockKey.CustomKeySequence (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```CustomKeySequence``` is an array containing elements of:
 
 
@@ -23261,7 +23880,7 @@ The following are the supported values:
 |```z```|z key|
 
 **Oem.Hpe.IntegratedRemoteConsole.LockKey.LockOption**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23278,7 +23897,7 @@ The following are the supported values:
 |```Disabled```|This option disables the Remote Console Computer Lock feature.|
 
 **Oem.Hpe.IntegratedRemoteConsole.TrustedCertificateRequired**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23288,7 +23907,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 
 ### Oem.Hpe.License
 **Oem.Hpe.License.LicenseKey**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23298,7 +23917,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.License.LicenseString**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23308,7 +23927,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.License.LicenseType**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23318,7 +23937,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.PersistentMouseKeyboardEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23328,7 +23947,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.15|
 
 ### Oem.Hpe.PhysicalMonitorHealthStatusEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23337,7 +23956,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.RIBCLEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23347,7 +23966,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.RemoteConsoleThumbnailEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23356,7 +23975,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.RequireHostAuthentication
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23365,7 +23984,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.RequiredLoginForiLORBSU
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23375,7 +23994,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.SerialCLISpeed
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23395,7 +24014,7 @@ The following are the supported values:
 |```115200```|
 
 ### Oem.Hpe.SerialCLIStatus
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23414,7 +24033,7 @@ The following are the supported values:
 |```EnabledAuthReq```|Serial command line interface is enabled with authentication required.|
 
 ### Oem.Hpe.SerialCLIUART
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23430,7 +24049,7 @@ The following are the supported values:
 |```Present```|UART hardware not present.|
 
 ### Oem.Hpe.VSPDlLoggingEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23440,7 +24059,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.VSPLogDownloadEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23450,7 +24069,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.VideoPresenceDetectOverride
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23459,7 +24078,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.VideoPresenceDetectOverrideSupported
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23468,7 +24087,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|True|
 
 ### Oem.Hpe.VirtualNICEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23477,7 +24096,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.WebGuiEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23487,7 +24106,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.iLOFunctionalityEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23496,7 +24115,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|True|
 
 ### Oem.Hpe.iLOFunctionalityRequired
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23506,7 +24125,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.iLOIPduringPOSTEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23515,7 +24134,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|False|
 
 ### Oem.Hpe.iLORBSUEnabled
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23525,11 +24144,11 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.iLOSelfTestResults (array)
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```iLOSelfTestResults``` is an array containing elements of:
 
 **iLOSelfTestResults[{item}].Notes**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23538,7 +24157,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Read Only|True|
 
 **iLOSelfTestResults[{item}].SelfTestName**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23581,12 +24200,12 @@ The following are the supported values:
 |```ASICFuses```|ASIC Fuses self test result.|
 
 **iLOSelfTestResults[{item}].Status**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### Oem.Hpe.iLOServicePort
 **Oem.Hpe.iLOServicePort.MassStorageAuthenticationRequired**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23596,7 +24215,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.iLOServicePort.USBEthernetAdaptersEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23606,7 +24225,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.iLOServicePort.USBFlashDriveEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23616,7 +24235,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.iLOServicePort.iLOServicePortEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23626,12 +24245,12 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Redundancy
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 See the Redfish standard schema and specification for information on common Redundancy object.
 
 ### SerialConsole
 **SerialConsole.ConnectTypesSupported (array)**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 ```ConnectTypesSupported``` is an array containing elements of:
 
 
@@ -23650,7 +24269,7 @@ The following are the supported values:
 |```Oem```||
 
 **SerialConsole.MaxConcurrentSessions**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23660,7 +24279,7 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 **SerialConsole.ServiceEnabled**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23670,11 +24289,11 @@ Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
 |Added|iLO 5 1.10|
 
 ### Status
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### UUID
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 
 | | |
 |---|---|
@@ -23690,35 +24309,43 @@ VirtualMedia is a link (```"@odata.id": URI```) to another resource.
 ### Actions
 
 **Manager.Reset**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
-There are no parameters for this action.
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
+
+**Parameters:**
+
+**ResetType (string)**
+
+|Value|Description|
+|---|---|
+|ForceRestart|
+|GracefulRestart|
 
 **HpeiLO.ClearRestApiState**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 Clears the persistent state of the REST API.  Some portions of the API may not be available until after the server reboots.
 
 There are no parameters for this action.
 
 **HpeiLO.RequestFirmwareAndOsRecovery**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 Requests that the Recovery Install set be invoked, and when complete causes a OS reinstallation.
 
 There are no parameters for this action.
 
 **HpeiLO.DisableiLOFunctionality**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 This action will disable the iLO network and will terminate communications with operating system drivers.  To re-enable iLO functionality, use the iLO Configuration Utility (in the UEFI System Utilities) to set iLO Functionality to Enabled. For more information see the HPE UEFI System Utilities User Guide.  The action resets/reboots the manager.  iLO functionality cannot be disabled on server blades.
 
 There are no parameters for this action.
 
 **HpeiLO.ClearHotKeys**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 Clear hot keys which are used during Remote Console sessions.
 
 There are no parameters for this action.
 
 **HpeiLO.ResetToFactoryDefaults**
-Member of [Manager.v1_3_3.Manager](#manager-v1_3_3-manager)
+Member of [Manager.v1_5_1.Manager](#manager-v1_5_1-manager)
 Resets the iLO to Factory Defaults.
 
 
@@ -23731,6 +24358,8 @@ Resets the iLO to Factory Defaults.
 |Default|Reset iLO to defaults, clear logs and reboot iLO.|
 ## ManagerAccount.v1_1_3.ManagerAccount
 ```@odata.type: "#ManagerAccount.v1_1_3.ManagerAccount"```
+
+The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -23889,6 +24518,8 @@ Member of [ManagerAccount.v1_1_3.ManagerAccount](#manageraccount-v1_1_3-managera
 
 ## ManagerAccountCollection.ManagerAccountCollection
 ```@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"```
+
+A Collection of ManagerAccount resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -23910,7 +24541,7 @@ Member of ManagerAccountCollection.ManagerAccountCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of ManagerAccountCollection.ManagerAccountCollection
@@ -23923,6 +24554,8 @@ Member of ManagerAccountCollection.ManagerAccountCollection
 
 ## ManagerCollection.ManagerCollection
 ```@odata.type: "#ManagerCollection.ManagerCollection"```
+
+A Collection of Manager resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -23931,7 +24564,7 @@ Member of ManagerAccountCollection.ManagerAccountCollection
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[Manager](#manager-v1_3_3-manager)|
+|```Members[]```|[Manager](#manager-v1_5_1-manager)|
 
 ### Members (array)
 Member of ManagerCollection.ManagerCollection
@@ -23944,7 +24577,7 @@ Member of ManagerCollection.ManagerCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of ManagerCollection.ManagerCollection
@@ -24251,6 +24884,15 @@ Member of [ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol](#managernetwork
 |Read Only|False|
 |Added|iLO 5 1.10|
 
+### Oem.Hpe.VirtualMediaEncryptionEnabled
+Member of [ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)
+
+| | |
+|---|---|
+|Description|Enables or disables encryption on virtual media connections.|
+|Type|boolean|
+|Read Only|False|
+
 ### Oem.Hpe.XMLResponseEnabled
 Member of [ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)
 
@@ -24397,15 +25039,17 @@ There are no parameters for this action.
 **HpeiLOManagerNetworkService.SendTestSyslog**
 Member of [ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)
 There are no parameters for this action.
-## Memory.v1_7_0.Memory
-```@odata.type: "#Memory.v1_7_0.Memory"```
+## Memory.v1_7_1.Memory
+```@odata.type: "#Memory.v1_7_1.Memory"```
+
+The Memory resource describes a memory module.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/systems/{item}/memory/{item}```|GET |
 
 ### AllocationAlignmentMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24415,7 +25059,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### AllocationIncrementMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24425,7 +25069,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### BaseModuleType
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24449,7 +25093,7 @@ The following are the supported values:
 |```SO_DIMM_32b```|SO_DIMM_32b|
 
 ### BusWidthBits
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24459,7 +25103,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### CacheSizeMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24469,7 +25113,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### CapacityMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24479,7 +25123,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### ConfigurationLocked
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24489,7 +25133,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### DataWidthBits
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24499,7 +25143,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### DeviceID
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24509,7 +25153,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### DeviceLocator
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24519,7 +25163,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### ErrorCorrection
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24537,7 +25181,7 @@ The following are the supported values:
 |```AddressParity```|Address Parity errors can be corrected|
 
 ### FirmwareApiVersion
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24547,7 +25191,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### FirmwareRevision
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24557,7 +25201,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### LogicalSizeMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24567,7 +25211,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### Manufacturer
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24577,7 +25221,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### MemoryDeviceType
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24612,7 +25256,7 @@ The following are the supported values:
 
 ### MemoryLocation
 **MemoryLocation.Channel**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24622,7 +25266,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 **MemoryLocation.MemoryController**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24632,7 +25276,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 **MemoryLocation.Slot**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24642,7 +25286,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 **MemoryLocation.Socket**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24652,7 +25296,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### MemoryMedia (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```MemoryMedia``` is an array containing elements of:
 
 
@@ -24670,8 +25314,26 @@ The following are the supported values:
 |```Intel3DXPoint```|Intel 3D XPoint media|
 |```Proprietary```|Proprietary media|
 
+### MemorySubsystemControllerManufacturerID
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
+
+| | |
+|---|---|
+|Description|The manufacturer ID of the memory subsystem controller of this memory module.|
+|Type|string or null|
+|Read Only|True|
+
+### MemorySubsystemControllerProductID
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
+
+| | |
+|---|---|
+|Description|The product ID of the memory subsystem controller of this memory module.|
+|Type|string or null|
+|Read Only|True|
+
 ### MemoryType
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24689,8 +25351,26 @@ The following are the supported values:
 |```NVDIMM_P```|NVDIMM_P as defined by JEDEC.|
 |```IntelOptane```|The memory module is Intel Optane DC Persistent Memory and composed of a combination of non-volatile and volatile memory.|
 
+### ModuleManufacturerID
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
+
+| | |
+|---|---|
+|Description|The manufacturer ID of this memory module.|
+|Type|string or null|
+|Read Only|True|
+
+### ModuleProductID
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
+
+| | |
+|---|---|
+|Description|The product ID of this memory module.|
+|Type|string or null|
+|Read Only|True|
+
 ### NonVolatileSizeMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24700,7 +25380,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### Oem.Hpe.Armed
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24710,7 +25390,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.Attributes (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```Attributes``` is an array containing elements of:
 
 
@@ -24728,7 +25408,7 @@ The following are the supported values:
 |```HpeLogicalNVDIMM```|This DIMM is HPE Logical Memory.|
 
 ### Oem.Hpe.BaseModuleType
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24749,14 +25429,14 @@ The following are the supported values:
 |```RDIMM```|
 |```UDIMM```|
 |```NVDIMM```|
-|```RNVDIMM```|
+|```NVDIMM-N```|
 |```LRNVDIMM```|
 |```SO_RDIMM_72b```|
 |```SO_UDIMM_72b```|
 |```PMM```|
 
 ### Oem.Hpe.BlocksRead
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24766,7 +25446,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### Oem.Hpe.BlocksWritten
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24776,7 +25456,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### Oem.Hpe.DIMMStatus
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24808,7 +25488,7 @@ The following are the supported values:
 |```MapOutError```|DIMM mapped out due to training failure.|
 
 ### Oem.Hpe.MaxOperatingSpeedMTs
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24817,7 +25497,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Read Only|True|
 
 ### Oem.Hpe.MinimumVoltageVoltsX10
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24827,7 +25507,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.PredictedMediaLifeLeftPercent
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24837,7 +25517,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.ProductName
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24847,33 +25527,33 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.RelatedBackupStores (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```RelatedBackupStores``` is an array containing elements of:
 
 **RelatedBackupStores[{item}].@odata.id**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.RelatedPhysicalDIMMs (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```RelatedPhysicalDIMMs``` is an array containing elements of:
 
 **RelatedPhysicalDIMMs[{item}].@odata.id**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.RelatedPowerBackupUnitBays (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```RelatedPowerBackupUnitBays``` is an array containing elements of:
 
 
@@ -24884,7 +25564,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Read Only|True|
 
 ### Oem.Hpe.SPDBytes (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```SPDBytes``` is an array containing elements of:
 
 
@@ -24895,7 +25575,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Read Only|True|
 
 ### Oem.Hpe.SpareBlockLeftPercent
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24904,8 +25584,17 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Read Only|True|
 |Added|iLO 5 1.40|
 
+### Oem.Hpe.VendorName
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
+
+| | |
+|---|---|
+|Description|Vendor Name decoded from VendorID|
+|Type|string or null|
+|Read Only|True|
+
 ### OperatingMemoryModes (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```OperatingMemoryModes``` is an array containing elements of:
 
 
@@ -24923,7 +25612,7 @@ The following are the supported values:
 |```Block```|Block accessible system memory|
 
 ### OperatingSpeedMhz
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24933,7 +25622,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### PartNumber
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24943,7 +25632,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### PersistentRegionNumberLimit
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24953,7 +25642,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### PersistentRegionSizeLimitMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24963,7 +25652,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### PersistentRegionSizeMaxMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24973,7 +25662,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### RankCount
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -24983,11 +25672,11 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### Regions (array)
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 ```Regions``` is an array containing elements of:
 
 **Regions[{item}].MemoryClassification**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25005,7 +25694,7 @@ The following are the supported values:
 |```Block```|Block accesible memory|
 
 **Regions[{item}].PassphraseEnabled**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25015,7 +25704,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 **Regions[{item}].RegionId**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25025,7 +25714,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 **Regions[{item}].SizeMiB**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25036,7 +25725,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 
 ### SecurityCapabilities
 **SecurityCapabilities.ConfigurationLockCapable**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25046,7 +25735,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 **SecurityCapabilities.DataLockCapable**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25056,7 +25745,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 **SecurityCapabilities.PassphraseCapable**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25066,7 +25755,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 **SecurityCapabilities.PassphraseLockLimit**
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25076,12 +25765,12 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### SecurityState
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
 |Description|The current security state of this Memory|
-|Type|string|
+|Type|string or null|
 |Read Only|True|
 |Added|iLO 5 1.40|
 
@@ -25095,7 +25784,7 @@ The following are the supported values:
 |```Passphraselimit```|Number of attempts to unlock the Memory exceeded limit|
 
 ### SerialNumber
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25105,11 +25794,11 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.15|
 
 ### Status
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### SubsystemDeviceID
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25119,7 +25808,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### SubsystemVendorID
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25129,7 +25818,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### VendorID
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25139,7 +25828,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### VolatileRegionNumberLimit
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25149,7 +25838,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### VolatileRegionSizeLimitMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25159,7 +25848,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.10|
 
 ### VolatileRegionSizeMaxMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25169,7 +25858,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 |Added|iLO 5 1.40|
 
 ### VolatileSizeMiB
-Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
+Member of [Memory.v1_7_1.Memory](#memory-v1_7_1-memory)
 
 | | |
 |---|---|
@@ -25181,7 +25870,7 @@ Member of [Memory.v1_7_0.Memory](#memory-v1_7_0-memory)
 ## MemoryChunks.v1_2_2.MemoryChunks
 ```@odata.type: "#MemoryChunks.v1_2_2.MemoryChunks"```
 
-This is the schema definition of a Memory Chunk and its configuration.
+The MemoryChunks resource describes a Memory Chunk and its configuration.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25297,6 +25986,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## MemoryChunksCollection.MemoryChunksCollection
 ```@odata.type: "#MemoryChunksCollection.MemoryChunksCollection"```
+
+A Collection of MemoryChunks resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25318,7 +26009,7 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MemoryChunksCollection.MemoryChunksCollection
@@ -25331,6 +26022,8 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 
 ## MemoryCollection.MemoryCollection
 ```@odata.type: "#MemoryCollection.MemoryCollection"```
+
+A Collection of Memory resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25339,7 +26032,7 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[Memory](#memory-v1_7_0-memory)|
+|```Members[]```|[Memory](#memory-v1_7_1-memory)|
 
 ### Members (array)
 Member of MemoryCollection.MemoryCollection
@@ -25352,7 +26045,7 @@ Member of MemoryCollection.MemoryCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MemoryCollection.MemoryCollection
@@ -25499,7 +26192,7 @@ Member of MemoryCollection.MemoryCollection
 ## MemoryDomain.v1_2_1.MemoryDomain
 ```@odata.type: "#MemoryDomain.v1_2_1.MemoryDomain"```
 
-This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.
+The MemoryDomain resource describes a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25560,7 +26253,7 @@ Member of [MemoryDomain.v1_2_1.MemoryDomain](#memorydomain-v1_2_1-memorydomain)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **InterleavableMemorySets[{item}].MemorySet@odata.count**
 Member of [MemoryDomain.v1_2_1.MemoryDomain](#memorydomain-v1_2_1-memorydomain)
@@ -25569,7 +26262,7 @@ Member of [MemoryDomain.v1_2_1.MemoryDomain](#memorydomain-v1_2_1-memorydomain)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### MemoryChunks
 A reference to the collection of Memory Chunks associated with this Memory Domain.
@@ -25577,6 +26270,8 @@ MemoryChunks is a link (```"@odata.id": URI```) to another resource.
 
 ## MemoryDomainCollection.MemoryDomainCollection
 ```@odata.type: "#MemoryDomainCollection.MemoryDomainCollection"```
+
+A Collection of MemoryDomain resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25598,7 +26293,7 @@ Member of MemoryDomainCollection.MemoryDomainCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MemoryDomainCollection.MemoryDomainCollection
@@ -25611,6 +26306,8 @@ Member of MemoryDomainCollection.MemoryDomainCollection
 
 ## MessageRegistryFileCollection.MessageRegistryFileCollection
 ```@odata.type: "#MessageRegistryFileCollection.MessageRegistryFileCollection"```
+
+A Collection of MessageRegistryFile resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25632,7 +26329,7 @@ Member of MessageRegistryFileCollection.MessageRegistryFileCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MessageRegistryFileCollection.MessageRegistryFileCollection
@@ -25645,6 +26342,8 @@ Member of MessageRegistryFileCollection.MessageRegistryFileCollection
 
 ## MetricDefinition.v1_0_0.MetricDefinition
 ```@odata.type: "#MetricDefinition.v1_0_0.MetricDefinition"```
+
+The metadata information about a metric.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25798,6 +26497,8 @@ Member of [MetricDefinition.v1_0_0.MetricDefinition](#metricdefinition-v1_0_0-me
 
 ## MetricDefinitionCollection.MetricDefinitionCollection
 ```@odata.type: "#MetricDefinitionCollection.MetricDefinitionCollection"```
+
+A Collection of MetricDefinition resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25819,7 +26520,7 @@ Member of MetricDefinitionCollection.MetricDefinitionCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MetricDefinitionCollection.MetricDefinitionCollection
@@ -25832,6 +26533,8 @@ Member of MetricDefinitionCollection.MetricDefinitionCollection
 
 ## MetricReport.v1_0_0.MetricReport
 ```@odata.type: "#MetricReport.v1_0_0.MetricReport"```
+
+The metric definitions used to create a metric report.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25882,6 +26585,8 @@ Member of [MetricReport.v1_0_0.MetricReport](#metricreport-v1_0_0-metricreport)
 
 ## MetricReportCollection.MetricReportCollection
 ```@odata.type: "#MetricReportCollection.MetricReportCollection"```
+
+A Collection of MetricReport resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -25903,7 +26608,7 @@ Member of MetricReportCollection.MetricReportCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MetricReportCollection.MetricReportCollection
@@ -25916,6 +26621,8 @@ Member of MetricReportCollection.MetricReportCollection
 
 ## MetricReportDefinition.v1_0_0.MetricReportDefinition
 ```@odata.type: "#MetricReportDefinition.v1_0_0.MetricReportDefinition"```
+
+A set of metrics that are collected into a metric report.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -26030,6 +26737,8 @@ See the Redfish standard schema and specification for information on common Stat
 
 ## MetricReportDefinitionCollection.MetricReportDefinitionCollection
 ```@odata.type: "#MetricReportDefinitionCollection.MetricReportDefinitionCollection"```
+
+A Collection of MetricReportDefinition resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -26051,7 +26760,7 @@ Member of MetricReportDefinitionCollection.MetricReportDefinitionCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of MetricReportDefinitionCollection.MetricReportDefinitionCollection
@@ -26062,8 +26771,8 @@ Member of MetricReportDefinitionCollection.MetricReportDefinitionCollection
 |Type|integer|
 |Read Only|True|
 
-## NetworkAdapter.v1_2_0.NetworkAdapter
-```@odata.type: "#NetworkAdapter.v1_2_0.NetworkAdapter"```
+## NetworkAdapter.v1_3_0.NetworkAdapter
+```@odata.type: "#NetworkAdapter.v1_3_0.NetworkAdapter"```
 
 A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
 ### Resource Instances
@@ -26073,13 +26782,13 @@ A NetworkAdapter represents the physical network adapter capable of connecting t
 |```/redfish/v1/chassis/{item}/networkadapters/{item}/Settings```|GET POST PATCH |
 
 ### Controllers (array)
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```Controllers``` is an array containing elements of:
 
 **Controllers[{item}].ControllerCapabilities**
 **Controllers[{item}].ControllerCapabilities.DataCenterBridging**
 **Controllers[{item}].ControllerCapabilities.DataCenterBridging.Capable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26090,7 +26799,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].ControllerCapabilities.NPAR**
 **Controllers[{item}].ControllerCapabilities.NPAR.NparCapable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26100,7 +26809,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.40|
 
 **Controllers[{item}].ControllerCapabilities.NPAR.NparEnabled**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26111,7 +26820,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].ControllerCapabilities.NPIV**
 **Controllers[{item}].ControllerCapabilities.NPIV.MaxDeviceLogins**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26121,7 +26830,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].ControllerCapabilities.NPIV.MaxPortLogins**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26131,7 +26840,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].ControllerCapabilities.NetworkDeviceFunctionCount**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26141,7 +26850,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].ControllerCapabilities.NetworkPortCount**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26153,7 +26862,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload**
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.SRIOV**
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.SRIOV.SRIOVVEPACapable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26164,7 +26873,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.VirtualFunction**
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.VirtualFunction.DeviceMaxCount**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26174,7 +26883,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.VirtualFunction.MinAssignmentGroupSize**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26184,7 +26893,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].ControllerCapabilities.VirtualizationOffload.VirtualFunction.NetworkPortMaxCount**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26194,7 +26903,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 **Controllers[{item}].FirmwarePackageVersion**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26205,33 +26914,169 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].Links**
 **Controllers[{item}].Links.NetworkDeviceFunctions (array)**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```NetworkDeviceFunctions``` is an array containing elements of:
 
 **NetworkDeviceFunctions[{item}].@odata.id**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Controllers[{item}].Links.NetworkPorts (array)**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```NetworkPorts``` is an array containing elements of:
 
 **NetworkPorts[{item}].@odata.id**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
+
+**Controllers[{item}].Location**
+**Controllers[{item}].Location.PartLocation**
+**Controllers[{item}].Location.PartLocation.LocationOrdinalValue**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.|
+|Type|integer or null|
+|Read Only|True|
+
+**Controllers[{item}].Location.PartLocation.LocationType**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The location types for PartLocation.|
+|Type|string or null|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Null```|A value is temporarily unavailable|
+|```Slot```|The slot as the type of location.|
+|```Bay```|The bay as the type of location.|
+|```Connector```|The connector as the type of location.|
+|```Socket```|The socket as the type of location.|
+
+**Controllers[{item}].Location.PartLocation.Orientation**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The orientation for the ordering of the part location ordinal value.|
+|Type|string or null|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Null```|A value is temporarily unavailable|
+|```FrontToBack```|The ordering for LocationOrdinalValue is front to back.|
+|```BackToFront```|The ordering for the LocationOrdinalValue is back to front.|
+|```TopToBottom```|The ordering for the LocationOrdinalValue is top to bottom.|
+|```BottomToTop```|The ordering for LocationOrdinalValue is bottom to top.|
+|```LeftToRight```|The ordering for the LocationOrdinalValue is left to right.|
+|```RightToLeft```|The ordering for the LocationOrdinalValue is right to left.|
+
+**Controllers[{item}].Location.PartLocation.Reference**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The reference area for the location of the part.|
+|Type|string or null|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Null```|A value is temporarily unavailable|
+|```Top```|The part is in the top of the unit.|
+|```Bottom```|The part is in the bottom of the unit.|
+|```Front```|The part is in the front of the unit.|
+|```Rear```|The part is in the rear of the unit.|
+|```Left```|The part is on the left side of of the unit.|
+|```Right```|The part is on the right side of the unit.|
+|```Middle```|The part is in the middle of the unit.|
+
+**Controllers[{item}].Location.PartLocation.ServiceLabel**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The label of the part location, such as a silk-screened name or a printed label.|
+|Type|string or null|
+|Read Only|True|
+
+**Controllers[{item}].Location.Placement**
+**Controllers[{item}].Location.Placement.AdditionalInfo**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|Area designation or other additional info.|
+|Type|string or null|
+|Read Only|False|
+
+**Controllers[{item}].Location.Placement.Rack**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The name of a rack location within a row.|
+|Type|string or null|
+|Read Only|False|
+
+**Controllers[{item}].Location.Placement.RackOffset**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The vertical location of the item, in terms of RackOffsetUnits.|
+|Type|integer or null|
+|Read Only|False|
+
+**Controllers[{item}].Location.Placement.RackOffsetUnits**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The type of rack unit in use.|
+|Type|string or null|
+|Read Only|False|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Null```|A value is temporarily unavailable|
+|```OpenU```|A rack unit that is equal to 48 mm (1.89 in).|
+|```EIA_310```|A rack unit that is equal to 1.75 in (44.45 mm).|
+
+**Controllers[{item}].Location.Placement.Row**
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
+
+| | |
+|---|---|
+|Description|The name of the row.|
+|Type|string or null|
+|Read Only|False|
 
 ### Manufacturer
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26241,7 +27086,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### Model
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26251,33 +27096,33 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### NetworkDeviceFunctions (array)
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```NetworkDeviceFunctions``` is an array containing elements of:
 
 **NetworkDeviceFunctions[{item}].@odata.id**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### NetworkPorts (array)
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```NetworkPorts``` is an array containing elements of:
 
 **NetworkPorts[{item}].@odata.id**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.CLPVersion
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26287,16 +27132,16 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.Controllers (array)
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```Controllers``` is an array containing elements of:
 
 **Controllers[{item}].ConfigurationStatus**
 **Controllers[{item}].ConfigurationStatus.Detail (array)**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```Detail``` is an array containing elements of:
 
 **Detail[{item}].Group**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26305,7 +27150,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Detail[{item}].SubGroup**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26314,7 +27159,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Detail[{item}].Summary**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26323,7 +27168,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].ConfigurationStatus.Summary**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26332,7 +27177,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].DeviceLimitationsBitmap**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26342,7 +27187,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].EdgeVirtualBridging**
 **Controllers[{item}].EdgeVirtualBridging.ChannelDescriptionTLVCapable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26351,7 +27196,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].EdgeVirtualBridging.ChannelLinkControlTLVCapable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26361,7 +27206,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 **Controllers[{item}].EmbeddedLLDPFunctions**
 **Controllers[{item}].EmbeddedLLDPFunctions.Enabled**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26370,7 +27215,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|False|
 
 **Controllers[{item}].EmbeddedLLDPFunctions.Optional**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26379,7 +27224,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].FactoryDefaultsCurrentlyActive**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26388,11 +27233,11 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].FunctionTypeLimits (array)**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```FunctionTypeLimits``` is an array containing elements of:
 
 **FunctionTypeLimits[{item}].ConstraintDescription**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26400,7 +27245,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **FunctionTypeLimits[{item}].EthernetResourcesConsumed**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26408,7 +27253,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **FunctionTypeLimits[{item}].FCoEResourcesConsumed**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26416,7 +27261,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **FunctionTypeLimits[{item}].RDMAResourcesConsumed**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26424,7 +27269,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **FunctionTypeLimits[{item}].TotalSharedResourcesAvailable**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26432,7 +27277,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **FunctionTypeLimits[{item}].iSCSIResourcesConsumed**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26440,7 +27285,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Read Only|True|
 
 **Controllers[{item}].FunctionTypes (array)**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 ```FunctionTypes``` is an array containing elements of:
 
 
@@ -26463,7 +27308,7 @@ The following are the supported values:
 |```iWarp```|Has internet Wide-area RDMA protocol functionality.|
 
 **Controllers[{item}].MostRecentConfigurationChangeSource**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26486,7 +27331,7 @@ The following are the supported values:
 |```UEFI-HII```|UEFI Human Interface Infrastructure|
 
 ### Oem.Hpe.FactoryDefaultsActuationBehavior
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26505,7 +27350,7 @@ The following are the supported values:
 |```AtNextReboot```|Defaults take effect on next reboot to full power.|
 
 ### Oem.Hpe.PCAVersion
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26515,7 +27360,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.RedfishConfiguration
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26533,7 +27378,7 @@ The following are the supported values:
 |```Disabled```|The network adapter is operating in read-only mode relative to the Redfish management interface. To transition to this state, a network adapter reset to factory default operation is required.|
 
 ### PartNumber
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26543,7 +27388,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### SKU
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26553,7 +27398,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### SerialNumber
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26564,7 +27409,7 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 
 ### Settings
 **Settings.href**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 
 | | |
 |---|---|
@@ -26574,17 +27419,17 @@ Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networka
 |Added|iLO 5 1.20|
 
 ### Status
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### Actions
 
 **NetworkAdapter.ResetSettingsToDefault**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 There are no parameters for this action.
 
 **NetworkAdapter.FlushConfigurationToNVM**
-Member of [NetworkAdapter.v1_2_0.NetworkAdapter](#networkadapter-v1_2_0-networkadapter)
+Member of [NetworkAdapter.v1_3_0.NetworkAdapter](#networkadapter-v1_3_0-networkadapter)
 There are no parameters for this action.
 ## NetworkAdapterCollection.NetworkAdapterCollection
 ```@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"```
@@ -26598,7 +27443,7 @@ A Collection of NetworkAdapter resource instances.
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[NetworkAdapter](#networkadapter-v1_2_0-networkadapter)|
+|```Members[]```|[NetworkAdapter](#networkadapter-v1_3_0-networkadapter)|
 
 ### Members (array)
 Member of NetworkAdapterCollection.NetworkAdapterCollection
@@ -26611,7 +27456,7 @@ Member of NetworkAdapterCollection.NetworkAdapterCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of NetworkAdapterCollection.NetworkAdapterCollection
@@ -26665,7 +27510,7 @@ Member of [NetworkDeviceFunction.v1_3_0.NetworkDeviceFunction](#networkdevicefun
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### BootMode
 Member of [NetworkDeviceFunction.v1_3_0.NetworkDeviceFunction](#networkdevicefunction-v1_3_0-networkdevicefunction)
@@ -27360,7 +28205,7 @@ Member of NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection
@@ -27422,7 +28267,7 @@ Member of NetworkInterfaceCollection.NetworkInterfaceCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of NetworkInterfaceCollection.NetworkInterfaceCollection
@@ -27842,7 +28687,7 @@ Member of NetworkPortCollection.NetworkPortCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of NetworkPortCollection.NetworkPortCollection
@@ -27856,7 +28701,7 @@ Member of NetworkPortCollection.NetworkPortCollection
 ## Power.v1_3_0.Power
 ```@odata.type: "#Power.v1_3_0.Power"```
 
-This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.
+The Power resource describes the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -28184,7 +29029,7 @@ Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **PowerControl[{item}].MemberId**
 Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
@@ -28338,7 +29183,7 @@ Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **PowerControl[{item}].Status**
 Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
@@ -28355,7 +29200,7 @@ Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **PowerSupplies[{item}].FirmwareVersion**
 Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
@@ -28664,7 +29509,7 @@ Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **PowerSupplies[{item}].SerialNumber**
 Member of [Power.v1_3_0.Power](#power-v1_3_0-power)
@@ -28701,7 +29546,7 @@ See the Redfish standard schema and specification for information on common Stat
 ## Processor.v1_0_0.Processor
 ```@odata.type: "#Processor.v1_0_0.Processor"```
 
-This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System.
+The Processor resource describes the Processor resource.  It represents the properties of a processor attached to a System.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -29230,6 +30075,8 @@ Member of [Processor.v1_0_0.Processor](#processor-v1_0_0-processor)
 
 ## ProcessorCollection.ProcessorCollection
 ```@odata.type: "#ProcessorCollection.ProcessorCollection"```
+
+A Collection of Processor resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -29251,7 +30098,7 @@ Member of ProcessorCollection.ProcessorCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of ProcessorCollection.ProcessorCollection
@@ -29354,6 +30201,8 @@ Member of [Role.v1_2_1.Role](#role-v1_2_1-role)
 
 ## RoleCollection.RoleCollection
 ```@odata.type: "#RoleCollection.RoleCollection"```
+
+A Collection of Role resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -29375,7 +30224,7 @@ Member of RoleCollection.RoleCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of RoleCollection.RoleCollection
@@ -29388,6 +30237,8 @@ Member of RoleCollection.RoleCollection
 
 ## SecureBoot.v1_0_0.SecureBoot
 ```@odata.type: "#SecureBoot.v1_0_0.SecureBoot"```
+
+This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -29457,10 +30308,10 @@ This parameter specifies what type of reset action to perform.
 |ResetAllKeysToDefault|Reset to default Secure Boot keys on next boot.|
 |DeletePK|Delete Secure Boot platform keys on next boot.|
 |DeleteAllKeys|Delete all Secure Boot keys on next boot.|
-## ServiceRoot.v1_5_0.ServiceRoot
-```@odata.type: "#ServiceRoot.v1_5_0.ServiceRoot"```
+## ServiceRoot.v1_5_1.ServiceRoot
+```@odata.type: "#ServiceRoot.v1_5_1.ServiceRoot"```
 
-This object represents the HPE RESTful API root service.
+The ServiceRoot resource describes the Redfish API service root.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -29470,10 +30321,10 @@ This object represents the HPE RESTful API root service.
 |Link Name|Destination type
 |---|---|
 |```Registries```|Collection of [MessageRegistryFile](#messageregistryfile-v1_0_4-messageregistryfile)|
-|```Managers```|Collection of [Manager](#manager-v1_3_3-manager)|
+|```Managers```|Collection of [Manager](#manager-v1_5_1-manager)|
 |```AccountService```|[AccountService](#accountservice-v1_3_0-accountservice)|
 |```JsonSchemas```|Collection of [JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
-|```UpdateService```|[UpdateService](#updateservice-v1_1_0-updateservice)|
+|```UpdateService```|[UpdateService](#updateservice-v1_1_1-updateservice)|
 |```Oem/Hpe/Links/ResourceDirectory```|[HpeiLOResourceDirectory](#hpeiloresourcedirectory-v2_0_0-hpeiloresourcedirectory)|
 |```SessionService```|[SessionService](#sessionservice-v1_0_0-sessionservice)|
 |```EventService```|[EventService](#eventservice-v1_0_2-eventservice)|
@@ -29502,7 +30353,7 @@ The URI to this managers resource.
 Managers is a link (```"@odata.id": URI```) to another resource.
 
 ### Oem.Hpe.DebugCode
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29512,7 +30363,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 ### Oem.Hpe.DevSystem
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29522,12 +30373,12 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.20|
 
 ### Oem.Hpe.Manager (array)
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 ```Manager``` is an array containing elements of:
 
 **Manager[{item}].Blade**
 **Manager[{item}].Blade.BayNumber**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29536,7 +30387,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].Blade.EnclosureName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29545,7 +30396,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].Blade.RackName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29554,7 +30405,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].DefaultLanguage**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29563,7 +30414,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].FQDN**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29572,7 +30423,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].HostName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29582,11 +30433,11 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 
 **Manager[{item}].IPManager**
 **Manager[{item}].Languages (array)**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 ```Languages``` is an array containing elements of:
 
 **Languages[{item}].Language**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29595,7 +30446,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Languages[{item}].TranslationName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29604,7 +30455,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Languages[{item}].Version**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29613,7 +30464,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].ManagerFirmwareVersion**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29622,7 +30473,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].ManagerFirmwareVersionPass**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29631,7 +30482,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].ManagerType**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29640,11 +30491,11 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].SelfTestErrors (array)**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 ```SelfTestErrors``` is an array containing elements of:
 
 **SelfTestErrors[{item}].SelfTestName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29653,12 +30504,12 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 
 **Manager[{item}].Status**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### Oem.Hpe.Moniker
 **Oem.Hpe.Moniker.ADVLIC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29668,7 +30519,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.BMC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29678,7 +30529,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.BSYS**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29688,7 +30539,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.CLASS**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29698,7 +30549,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.FEDGRP**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29708,7 +30559,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.IPROV**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29718,7 +30569,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.PRODABR**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29728,7 +30579,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.PRODFAM**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29738,7 +30589,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.PRODGEN**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29748,7 +30599,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.PRODNAM**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29758,7 +30609,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.PRODTAG**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29768,7 +30619,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.STDLIC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29778,7 +30629,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.SUMABR**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29788,7 +30639,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.SUMGR**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29798,7 +30649,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.SYSFAM**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29808,7 +30659,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.VENDABR**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29818,7 +30669,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.VENDNAM**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29828,7 +30679,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWW**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29838,7 +30689,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWAHSV**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29848,7 +30699,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWBMC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29858,7 +30709,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWDOC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29868,7 +30719,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWERS**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29878,7 +30729,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWGLIS**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29888,7 +30739,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWIOL**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29898,7 +30749,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWLIC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29908,7 +30759,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWLML**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29918,7 +30769,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWPASS**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29928,7 +30779,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWPRV**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29938,7 +30789,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWQSPEC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29948,7 +30799,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWRESTDOC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29958,7 +30809,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWSUP**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29968,7 +30819,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Moniker.WWWSWLIC**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29977,9 +30828,18 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
+### Oem.Hpe.PreProd
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
+
+| | |
+|---|---|
+|Description|Specifies whether the system identifies as pre-production.|
+|Type|boolean|
+|Read Only|True|
+
 ### Oem.Hpe.Sessions
 **Oem.Hpe.Sessions.CertCommonName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29989,7 +30849,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.CertificateLoginEnabled**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -29999,7 +30859,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.KerberosEnabled**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30009,7 +30869,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.LDAPAuthLicenced**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30019,7 +30879,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.LDAPEnabled**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30029,7 +30889,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.LocalLoginEnabled**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30039,7 +30899,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.LoginFailureDelay**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30050,7 +30910,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 
 **Oem.Hpe.Sessions.LoginHint**
 **Oem.Hpe.Sessions.LoginHint.Hint**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30061,7 +30921,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 
 **Oem.Hpe.Sessions.LoginHint.HintPOSTData**
 **Oem.Hpe.Sessions.LoginHint.HintPOSTData.Password**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30071,7 +30931,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.LoginHint.HintPOSTData.UserName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30081,7 +30941,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.SecurityMessage**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30091,7 +30951,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.SecurityOverride**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30101,7 +30961,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.Sessions.ServerName**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30111,15 +30971,15 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.System (array)
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 ```System``` is an array containing elements of:
 
 **System[{item}].Status**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### Oem.Hpe.Time
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30130,7 +30990,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Format|date-time|
 
 ### Product
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30142,7 +31002,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 ### ProtocolFeaturesSupported
 **ProtocolFeaturesSupported.ExpandQuery**
 **ProtocolFeaturesSupported.ExpandQuery.ExpandAll**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30152,7 +31012,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 **ProtocolFeaturesSupported.ExpandQuery.Levels**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30162,7 +31022,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 **ProtocolFeaturesSupported.ExpandQuery.MaxLevels**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30172,7 +31032,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 **ProtocolFeaturesSupported.ExpandQuery.NoLinks**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30182,7 +31042,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 **ProtocolFeaturesSupported.FilterQuery**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30191,8 +31051,17 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Read Only|True|
 |Added|iLO 5 1.40|
 
+**ProtocolFeaturesSupported.OnlyMemberQuery**
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
+
+| | |
+|---|---|
+|Description|This indicates whether Management Processor supports the only query option.|
+|Type|boolean|
+|Read Only|True|
+
 **ProtocolFeaturesSupported.SelectQuery**
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30202,7 +31071,7 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 |Added|iLO 5 1.40|
 
 ### RedfishVersion
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30232,7 +31101,7 @@ The URI to the TelemetryService resource.
 TelemetryService is a link (```"@odata.id": URI```) to another resource.
 
 ### UUID
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30246,7 +31115,7 @@ The URI to this UpdateService resource.
 UpdateService is a link (```"@odata.id": URI```) to another resource.
 
 ### Vendor
-Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
+Member of [ServiceRoot.v1_5_1.ServiceRoot](#serviceroot-v1_5_1-serviceroot)
 
 | | |
 |---|---|
@@ -30257,6 +31126,8 @@ Member of [ServiceRoot.v1_5_0.ServiceRoot](#serviceroot-v1_5_0-serviceroot)
 
 ## Session.v1_0_0.Session
 ```@odata.type: "#Session.v1_0_0.Session"```
+
+The Session resource describes a single connection (session) between a client and a Redfish service instance.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -30501,6 +31372,8 @@ Member of [Session.v1_0_0.Session](#session-v1_0_0-session)
 
 ## SessionCollection.SessionCollection
 ```@odata.type: "#SessionCollection.SessionCollection"```
+
+A Collection of Session resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -30523,7 +31396,7 @@ Member of SessionCollection.SessionCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of SessionCollection.SessionCollection
@@ -30537,7 +31410,7 @@ Member of SessionCollection.SessionCollection
 ## SessionService.v1_0_0.SessionService
 ```@odata.type: "#SessionService.v1_0_0.SessionService"```
 
-This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.
+The SessionService resource describes the BMC Redfish Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31350,6 +32223,8 @@ Member of [SmartStorageConfig.v2_0_0.SmartStorageConfig](#smartstorageconfig-v2_
 
 ## SoftwareInventory.v1_0_0.SoftwareInventory
 ```@odata.type: "#SoftwareInventory.v1_0_0.SoftwareInventory"```
+
+The SoftwareInventory resource describes the inventory of software or firmware components.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31423,6 +32298,8 @@ Member of [SoftwareInventory.v1_0_0.SoftwareInventory](#softwareinventory-v1_0_0
 
 ## SoftwareInventoryCollection.SoftwareInventoryCollection
 ```@odata.type: "#SoftwareInventoryCollection.SoftwareInventoryCollection"```
+
+A Collection of SoftwareInventory resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31445,7 +32322,7 @@ Member of SoftwareInventoryCollection.SoftwareInventoryCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of SoftwareInventoryCollection.SoftwareInventoryCollection
@@ -31456,8 +32333,10 @@ Member of SoftwareInventoryCollection.SoftwareInventoryCollection
 |Type|integer|
 |Read Only|True|
 
-## Storage.v1_1_0.Storage
-```@odata.type: "#Storage.v1_1_0.Storage"```
+## Storage.v1_5_0.Storage
+```@odata.type: "#Storage.v1_5_0.Storage"```
+
+Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31468,41 +32347,41 @@ Member of SoftwareInventoryCollection.SoftwareInventoryCollection
 |---|---|
 |```Volumes```|Collection of [Volume](#volume-v1_0_0-volume)|
 |```Links/Enclosures[]```|[Chassis](#chassis-v1_6_0-chassis)|
-|```StorageControllers[]```|[Storage](#storage-v1_1_0-storage)|
+|```StorageControllers[]```|[Storage](#storage-v1_5_0-storage)|
 |```Drives[]```|[Drive](#drive-v1_0_0-drive)|
 
 ### Drives (array)
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 ```Drives``` is an array containing elements of:
 
 **Drives[{item}].@odata.id**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Status
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 See the Redfish standard schema and specification for information on common Status object.
 
 ### StorageControllers (array)
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 ```StorageControllers``` is an array containing elements of:
 
 **StorageControllers[{item}].@odata.id**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **StorageControllers[{item}].@odata.type**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
@@ -31510,7 +32389,7 @@ Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
 |Read Only|True|
 
 **StorageControllers[{item}].Manufacturer**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
@@ -31520,7 +32399,7 @@ Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
 |Added|iLO 5 1.10|
 
 **StorageControllers[{item}].MemberId**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
@@ -31530,7 +32409,7 @@ Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
 |Added|iLO 5 1.40|
 
 **StorageControllers[{item}].Model**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
@@ -31539,8 +32418,65 @@ Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
+**StorageControllers[{item}].PCIeInterface**
+**StorageControllers[{item}].PCIeInterface.LanesInUse**
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
+
+| | |
+|---|---|
+|Description|This is the number of PCIe lanes in use by this device.|
+|Type|integer or null|
+|Read Only|True|
+
+**StorageControllers[{item}].PCIeInterface.MaxLanes**
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
+
+| | |
+|---|---|
+|Description|This is the number of PCIe lanes supported by this device.|
+|Type|integer or null|
+|Read Only|True|
+
+**StorageControllers[{item}].PCIeInterface.MaxPCIeType**
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
+
+| | |
+|---|---|
+|Description|The highest version of the PCIe specification supported by this device.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Gen1```|A PCIe v1.0 slot.|
+|```Gen2```|A PCIe v2.0 slot.|
+|```Gen3```|A PCIe v3.0 slot.|
+|```Gen4```|A PCIe v4.0 slot.|
+|```Gen5```|A PCIe v5.0 slot.|
+
+**StorageControllers[{item}].PCIeInterface.PCIeType**
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
+
+| | |
+|---|---|
+|Description|The version of the PCIe specification in use by this device.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|```Gen1```|A PCIe v1.0 slot.|
+|```Gen2```|A PCIe v2.0 slot.|
+|```Gen3```|A PCIe v3.0 slot.|
+|```Gen4```|A PCIe v4.0 slot.|
+|```Gen5```|A PCIe v5.0 slot.|
+
 **StorageControllers[{item}].SerialNumber**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 
 | | |
 |---|---|
@@ -31550,11 +32486,11 @@ Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
 |Added|iLO 5 1.10|
 
 **StorageControllers[{item}].Status**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 See the Redfish standard schema and specification for information on common Status object.
 
 **StorageControllers[{item}].SupportedControllerProtocols (array)**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 ```SupportedControllerProtocols``` is an array containing elements of:
 
 
@@ -31570,7 +32506,7 @@ The following are the supported values:
 |```PCIe```|
 
 **StorageControllers[{item}].SupportedDeviceProtocols (array)**
-Member of [Storage.v1_1_0.Storage](#storage-v1_1_0-storage)
+Member of [Storage.v1_5_0.Storage](#storage-v1_5_0-storage)
 ```SupportedDeviceProtocols``` is an array containing elements of:
 
 
@@ -31593,6 +32529,8 @@ Volumes is a link (```"@odata.id": URI```) to another resource.
 
 ## StorageCollection.StorageCollection
 ```@odata.type: "#StorageCollection.StorageCollection"```
+
+A Collection of Storage resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31601,7 +32539,7 @@ Volumes is a link (```"@odata.id": URI```) to another resource.
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[Storage](#storage-v1_1_0-storage)|
+|```Members[]```|[Storage](#storage-v1_5_0-storage)|
 
 ### Members (array)
 Member of StorageCollection.StorageCollection
@@ -31614,7 +32552,7 @@ Member of StorageCollection.StorageCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of StorageCollection.StorageCollection
@@ -31627,6 +32565,8 @@ Member of StorageCollection.StorageCollection
 
 ## Task.v1_3_0.Task
 ```@odata.type: "#Task.v1_3_0.Task"```
+
+The Task resource describes a specific Task scheduled by or being executed by a Redfish service's Task Service.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31755,7 +32695,7 @@ Member of [Task.v1_3_0.Task](#task-v1_3_0-task)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.40|
-|Format|uri|
+|Format|uri-reference|
 
 ### StartTime
 Member of [Task.v1_3_0.Task](#task-v1_3_0-task)
@@ -31777,7 +32717,7 @@ Member of [Task.v1_3_0.Task](#task-v1_3_0-task)
 |Type|string or null|
 |Read Only|True|
 |Added|iLO 5 1.40|
-|Format|uri|
+|Format|uri-reference|
 
 ### TaskState
 Member of [Task.v1_3_0.Task](#task-v1_3_0-task)
@@ -31825,6 +32765,8 @@ The following are the supported values:
 
 ## TaskCollection.TaskCollection
 ```@odata.type: "#TaskCollection.TaskCollection"```
+
+A Collection of Task resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31846,7 +32788,7 @@ Member of TaskCollection.TaskCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of TaskCollection.TaskCollection
@@ -31860,7 +32802,7 @@ Member of TaskCollection.TaskCollection
 ## TaskService.v1_1_1.TaskService
 ```@odata.type: "#TaskService.v1_1_1.TaskService"```
 
-This is the schema definition for the Task service. It represents the properties for the service itself and has links to the actual list of tasks.
+The TaskService resource describes the Task service. It represents the properties for the service itself and has links to the actual list of tasks.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -31928,6 +32870,8 @@ Tasks is a link (```"@odata.id": URI```) to another resource.
 
 ## TelemetryService.v1_0_0.TelemetryService
 ```@odata.type: "#TelemetryService.v1_0_0.TelemetryService"```
+
+The TelemetryService resource describes the Metrics Service.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -32003,7 +32947,7 @@ Triggers is a link (```"@odata.id": URI```) to another resource.
 ## Thermal.v1_1_0.Thermal
 ```@odata.type: "#Thermal.v1_1_0.Thermal"```
 
-The schema definition for the Thermal Metrics. It represents the properties for temperature and cooling.
+The Thermal resource describes the system thermal metrics. It represents the properties for temperature and cooling.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -32020,7 +32964,7 @@ Member of [Thermal.v1_1_0.Thermal](#thermal-v1_1_0-thermal)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Fans[{item}].CorrelatableID**
 Member of [Thermal.v1_1_0.Thermal](#thermal-v1_1_0-thermal)
@@ -32263,7 +33207,7 @@ Member of [Thermal.v1_1_0.Thermal](#thermal-v1_1_0-thermal)
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 **Temperatures[{item}].CorrelatableID**
 Member of [Thermal.v1_1_0.Thermal](#thermal-v1_1_0-thermal)
@@ -32455,6 +33399,8 @@ Member of [Thermal.v1_1_0.Thermal](#thermal-v1_1_0-thermal)
 
 ## Triggers.v1_0_0.Triggers
 ```@odata.type: "#Triggers.v1_0_0.Triggers"```
+
+The Triggers resource describes the a metric trigger, which apply to metrics.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -32667,6 +33613,8 @@ The following are the supported values:
 
 ## TriggersCollection.TriggersCollection
 ```@odata.type: "#TriggersCollection.TriggersCollection"```
+
+A Collection of Triggers resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -32688,7 +33636,7 @@ Member of TriggersCollection.TriggersCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of TriggersCollection.TriggersCollection
@@ -32699,8 +33647,10 @@ Member of TriggersCollection.TriggersCollection
 |Type|integer|
 |Read Only|True|
 
-## UpdateService.v1_1_0.UpdateService
-```@odata.type: "#UpdateService.v1_1_0.UpdateService"```
+## UpdateService.v1_1_1.UpdateService
+```@odata.type: "#UpdateService.v1_1_1.UpdateService"```
+
+The UpdateService resource describes the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -32709,18 +33659,18 @@ Member of TriggersCollection.TriggersCollection
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Oem/Hpe/InstallSets```|Collection of [HpeComponentInstallSet](#hpecomponentinstallset-v1_0_3-hpecomponentinstallset)|
+|```Oem/Hpe/InstallSets```|Collection of [HpeComponentInstallSet](#hpecomponentinstallset-v1_1_0-hpecomponentinstallset)|
 |```Oem/Hpe/ComponentRepository```|Collection of [HpeComponent](#hpecomponent-v1_0_1-hpecomponent)|
 |```FirmwareInventory```|Collection of [SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
 |```SoftwareInventory```|Collection of [SoftwareInventory](#softwareinventory-v1_0_0-softwareinventory)|
-|```Oem/Hpe/UpdateTaskQueue```|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask-v1_0_2-hpecomponentupdatetask)|
+|```Oem/Hpe/UpdateTaskQueue```|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask-v1_2_0-hpecomponentupdatetask)|
 
 ### FirmwareInventory
 Link to Firmware Inventory.
 FirmwareInventory is a link (```"@odata.id": URI```) to another resource.
 
 ### HttpPushUri
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32728,14 +33678,14 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### Oem.Hpe.ComponentRepository
 Link to the Component Repository.
 ComponentRepository is a link (```"@odata.id": URI```) to another resource.
 
 ### Oem.Hpe.CurrentTime
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32746,7 +33696,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Format|date-time|
 
 ### Oem.Hpe.DowngradePolicy
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32765,7 +33715,7 @@ The following are the supported values:
 
 ### Oem.Hpe.FirmwareIntegrity
 **Oem.Hpe.FirmwareIntegrity.EnableBackgroundScan**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32775,7 +33725,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Added|iLO 5 1.10|
 
 **Oem.Hpe.FirmwareIntegrity.LastFailedImageUri**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32783,10 +33733,10 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Type|string or null|
 |Read Only|True|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 **Oem.Hpe.FirmwareIntegrity.LastScanResult**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32805,7 +33755,7 @@ The following are the supported values:
 |```Stopped```|The last firmware integrity scan was stopped prior to completion.  Refer to the event log for details.|
 
 **Oem.Hpe.FirmwareIntegrity.LastScanTime**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32816,7 +33766,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Format|date-time|
 
 **Oem.Hpe.FirmwareIntegrity.OnIntegrityFailure**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32833,7 +33783,7 @@ The following are the supported values:
 |```LogAndRepairAutomatically```|Log failures to the iLO event log and automatically attempt to repair.|
 
 **Oem.Hpe.FirmwareIntegrity.ScanEveryDays**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32843,7 +33793,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.FlashProgressPercent
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32866,7 +33816,7 @@ MaintenanceWindows is a link (```"@odata.id": URI```) to another resource.
 
 ### Oem.Hpe.Result
 **Oem.Hpe.Result.MessageArgs (array)**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 ```MessageArgs``` is an array containing elements of:
 
 
@@ -32876,7 +33826,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Read Only|True|
 
 **Oem.Hpe.Result.MessageId**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32886,7 +33836,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Added|iLO 5 1.10|
 
 ### Oem.Hpe.State
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32911,7 +33861,7 @@ Link to the Update Task Queue.
 UpdateTaskQueue is a link (```"@odata.id": URI```) to another resource.
 
 ### Oem.Hpe.UploadCurrentEtag
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32921,7 +33871,7 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 |Added|iLO 5 1.10|
 
 ### ServiceEnabled
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 | | |
 |---|---|
@@ -32937,7 +33887,7 @@ SoftwareInventory is a link (```"@odata.id": URI```) to another resource.
 ### Actions
 
 **UpdateService.SimpleUpdate**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 **Parameters:**
 
@@ -32945,34 +33895,28 @@ Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservi
 
 |Value|Description|
 |---|---|
-|FTP|File Transfer Protocol|
 |HTTP|Hypertext Transfer Protocol|
-|CIFS|Common Internet File System protocol|
 |HTTPS|HTTP Secure protocol|
-|NSF|Network File System protocol|
-|OEM|A protocol defined by the manufacturer.|
-|TFTP|Trivial File Transfer Protocol|
-|SCP|Secure File Copy protocol|
 
 **ImageURI (string)**
 
 **HpeiLOUpdateServiceExt.DeleteInstallSets**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 **Parameters:**
 
 **IncludeRecoverySet (boolean)**
 
 **HpeiLOUpdateServiceExt.DeleteUnlockedComponents**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 There are no parameters for this action.
 
 **HpeiLOUpdateServiceExt.DeleteMaintenanceWindows**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 There are no parameters for this action.
 
 **HpeiLOUpdateServiceExt.AddFromUri**
-Member of [UpdateService.v1_1_0.UpdateService](#updateservice-v1_1_0-updateservice)
+Member of [UpdateService.v1_1_1.UpdateService](#updateservice-v1_1_1-updateservice)
 
 **Parameters:**
 
@@ -32990,7 +33934,7 @@ client-supplied etag (during component upload) indicating to what UploadStatus i
 ## VirtualMedia.v1_2_0.VirtualMedia
 ```@odata.type: "#VirtualMedia.v1_2_0.VirtualMedia"```
 
-This is the schema definition for the Virtual Media service.
+The VirtualMedia resource describes the BMC virtual media feature.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -33024,7 +33968,7 @@ Member of [VirtualMedia.v1_2_0.VirtualMedia](#virtualmedia-v1_2_0-virtualmedia)
 |Type|string or null|
 |Read Only|False|
 |Added|iLO 5 1.10|
-|Format|uri|
+|Format|uri-reference|
 
 ### ImageName
 Member of [VirtualMedia.v1_2_0.VirtualMedia](#virtualmedia-v1_2_0-virtualmedia)
@@ -33148,6 +34092,8 @@ A text description of the reason for this action invocation.
 A RSA2048 SHA-256 signature validating the provided Intent (Base64 encoded).
 ## VirtualMediaCollection.VirtualMediaCollection
 ```@odata.type: "#VirtualMediaCollection.VirtualMediaCollection"```
+
+A Collection of VirtualMedia resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -33169,7 +34115,7 @@ Member of VirtualMediaCollection.VirtualMediaCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of VirtualMediaCollection.VirtualMediaCollection
@@ -33182,6 +34128,8 @@ Member of VirtualMediaCollection.VirtualMediaCollection
 
 ## Volume.v1_0_0.Volume
 ```@odata.type: "#Volume.v1_0_0.Volume"```
+
+The Volume resource describes a volume, virtual disk, LUN, or other logical storage entity for any system.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -33224,6 +34172,8 @@ The following are the supported values:
 
 ## VolumeCollection.VolumeCollection
 ```@odata.type: "#VolumeCollection.VolumeCollection"```
+
+A Collection of Volume resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
@@ -33245,7 +34195,7 @@ Member of VolumeCollection.VolumeCollection
 |---|---|
 |Type|string|
 |Read Only|True|
-|Format|uri|
+|Format|uri-reference|
 
 ### Members@odata.count
 Member of VolumeCollection.VolumeCollection
@@ -33257,7 +34207,7 @@ Member of VolumeCollection.VolumeCollection
 |Read Only|True|
 
 
-### Base.1.0.AccessDenied
+### Base.1.4.AccessDenied
 While attempting to access, connect to, or transfer to/from another resource, the service was denied access.
 
 | | |
@@ -33266,7 +34216,7 @@ While attempting to access, connect to, or transfer to/from another resource, th
 |Severity|Critical
 |Resolution|Verify that the URI is correct and that the service has the appropriate credentials.
 
-### Base.1.0.AccountForSessionNoLongerExists
+### Base.1.4.AccountForSessionNoLongerExists
 The account for the current session is removed, and the current session is also removed.
 
 | | |
@@ -33275,7 +34225,7 @@ The account for the current session is removed, and the current session is also 
 |Severity|OK
 |Resolution|Attempt to connect using a valid account.
 
-### Base.1.0.AccountModified
+### Base.1.4.AccountModified
 The account was modified successfully.
 
 | | |
@@ -33284,7 +34234,7 @@ The account was modified successfully.
 |Severity|OK
 |Resolution|None.
 
-### Base.1.0.AccountNotModified
+### Base.1.4.AccountNotModified
 The request was unable to modify the account.
 
 | | |
@@ -33293,7 +34243,7 @@ The request was unable to modify the account.
 |Severity|Warning
 |Resolution|If the operation did not complete, check the authorization or the request body for issues and resubmit the request.
 
-### Base.1.0.AccountRemoved
+### Base.1.4.AccountRemoved
 The account was removed successfully.
 
 | | |
@@ -33302,7 +34252,7 @@ The account was removed successfully.
 |Severity|OK
 |Resolution|None.
 
-### Base.1.0.ActionNotSupported
+### Base.1.4.ActionNotSupported
 The action supplied in the POST operation is not supported by the resource.
 
 | | |
@@ -33311,7 +34261,7 @@ The action supplied in the POST operation is not supported by the resource.
 |Severity|Critical
 |Resolution|The action was invalid or the wrong resource was the target. See the implementation documentation for assistance.
 
-### Base.1.0.ActionParameterDuplicate
+### Base.1.4.ActionParameterDuplicate
 The action was submitted with a duplicate parameter in the request body.
 
 | | |
@@ -33320,7 +34270,7 @@ The action was submitted with a duplicate parameter in the request body.
 |Severity|Warning
 |Resolution|Resubmit the action with only one instance of the parameter in the request body.
 
-### Base.1.0.ActionParameterMissing
+### Base.1.4.ActionParameterMissing
 The requested action is missing a parameter that is required to process the action.
 
 | | |
@@ -33329,7 +34279,7 @@ The requested action is missing a parameter that is required to process the acti
 |Severity|Critical
 |Resolution|Resubmit the action with the required parameter in the request body.
 
-### Base.1.0.ActionParameterNotSupported
+### Base.1.4.ActionParameterNotSupported
 The action parameter is not supported on the target resource.
 
 | | |
@@ -33338,7 +34288,7 @@ The action parameter is not supported on the target resource.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the parameter and resubmit the request.
 
-### Base.1.0.ActionParameterUnknown
+### Base.1.4.ActionParameterUnknown
 An action was submitted, but a supplied parameter did not match any of the known parameters.
 
 | | |
@@ -33347,7 +34297,7 @@ An action was submitted, but a supplied parameter did not match any of the known
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the invalid parameter and resubmit the request.
 
-### Base.1.0.ActionParameterValueFormatError
+### Base.1.4.ActionParameterValueFormatError
 The value type is correct, but the format is not supported or the size/length is exceeded.
 
 | | |
@@ -33356,7 +34306,7 @@ The value type is correct, but the format is not supported or the size/length is
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the parameter value in the request body and resubmit the request.
 
-### Base.1.0.ActionParameterValueTypeError
+### Base.1.4.ActionParameterValueTypeError
 The parameter contains an incorrect value type. For example, a number value for a string parameter type.
 
 | | |
@@ -33365,7 +34315,7 @@ The parameter contains an incorrect value type. For example, a number value for 
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the parameter value in the request body and resubmit the request.
 
-### Base.1.0.CouldNotEstablishConnection
+### Base.1.4.CouldNotEstablishConnection
 An attempt to access the resource, image, or file at the URI was unsuccessful because a session could not be established.
 
 | | |
@@ -33374,7 +34324,7 @@ An attempt to access the resource, image, or file at the URI was unsuccessful be
 |Severity|Critical
 |Resolution|Verify that the URI contains a valid and reachable node name, protocol information, and other URI components.
 
-### Base.1.0.CreateFailedMissingReqProperties
+### Base.1.4.CreateFailedMissingReqProperties
 A create operation was attempted on a resource, but a required property was missing from the request.
 
 | | |
@@ -33383,7 +34333,7 @@ A create operation was attempted on a resource, but a required property was miss
 |Severity|Critical
 |Resolution|If the operation did not complete, include the required property with a valid value in the request body and resubmit the request.
 
-### Base.1.0.CreateLimitReachedForResource
+### Base.1.4.CreateLimitReachedForResource
 Additional resources cannot be created.
 
 | | |
@@ -33392,7 +34342,7 @@ Additional resources cannot be created.
 |Severity|Critical
 |Resolution|If the operation did not complete, delete resources and resubmit the request.
 
-### Base.1.0.Created
+### Base.1.4.Created
 The resource has been created successfully.
 
 | | |
@@ -33401,7 +34351,16 @@ The resource has been created successfully.
 |Severity|OK
 |Resolution|None
 
-### Base.1.0.EventSubscriptionLimitExceeded
+### Base.1.4.EmptyJSON
+Indicates that the request body contained an empty JSON object when one or more properties are expected in the body.
+
+| | |
+|:---|:---|
+|Message Format|"The request body submitted contained an empty JSON object and the service is unable to process it."
+|Severity|Warning
+|Resolution|Add properties in the JSON object and resubmit the request.
+
+### Base.1.4.EventSubscriptionLimitExceeded
 The event subscription establishment has been requested, but the operation did not complete. The number of simultaneous subscriptions exceeded the maximum number allowed by the implementation.
 
 | | |
@@ -33410,7 +34369,16 @@ The event subscription establishment has been requested, but the operation did n
 |Severity|Critical
 |Resolution|Before attempting to establish the event subscription, reduce the number of subscriptions or increase the maximum number of simultaneous subscriptions allowed (if supported).
 
-### Base.1.0.InsufficientPrivilege
+### Base.1.4.GeneralError
+Indicates that a general error has occurred.  Use in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.
+
+| | |
+|:---|:---|
+|Message Format|"A general error has occurred. See Resolution for information on how to resolve the error."
+|Severity|Critical
+|Resolution|None.
+
+### Base.1.4.InsufficientPrivilege
 The account or credentials associated with the current session are not authorized to perform the requested operation.
 
 | | |
@@ -33419,7 +34387,7 @@ The account or credentials associated with the current session are not authorize
 |Severity|Critical
 |Resolution|Retry the operation with an authorized account or credentials.
 
-### Base.1.0.InternalError
+### Base.1.4.InternalError
 The request did not complete due to an unknown internal error, but the service is still operational.
 
 | | |
@@ -33428,7 +34396,16 @@ The request did not complete due to an unknown internal error, but the service i
 |Severity|Critical
 |Resolution|Resubmit the request. If the problem persists, consider resetting the service.
 
-### Base.1.0.InvalidObject
+### Base.1.4.InvalidIndex
+The Index is not valid.
+
+| | |
+|:---|:---|
+|Message Format|"The Index %1 is not a valid offset into the array."
+|Severity|Warning
+|Resolution|Verify the index value provided is within the bounds of the array.
+
+### Base.1.4.InvalidObject
 The object is not valid.
 
 | | |
@@ -33437,7 +34414,7 @@ The object is not valid.
 |Severity|Critical
 |Resolution|If the operation did not complete, the object is malformed or the URI is incorrect. Make the appropriate corrections and resubmit the request.
 
-### Base.1.0.MalformedJSON
+### Base.1.4.MalformedJSON
 The request body contains malformed JSON.
 
 | | |
@@ -33446,7 +34423,16 @@ The request body contains malformed JSON.
 |Severity|Critical
 |Resolution|Verify that the request body is valid JSON and resubmit the request.
 
-### Base.1.0.NoValidSession
+### Base.1.4.NoOperation
+Indicates that the requested operation will not perform any changes on the service.
+
+| | |
+|:---|:---|
+|Message Format|"The request body submitted contain no data to act upon and no changes to the resource took place."
+|Severity|Warning
+|Resolution|Add properties in the JSON object and resubmit the request.
+
+### Base.1.4.NoValidSession
 The operation did not complete because a valid session is required in order to access resources.
 
 | | |
@@ -33455,7 +34441,7 @@ The operation did not complete because a valid session is required in order to a
 |Severity|Critical
 |Resolution|Establish a session before attempting any operations.
 
-### Base.1.0.PropertyDuplicate
+### Base.1.4.PropertyDuplicate
 A duplicate property is in the request body.
 
 | | |
@@ -33464,7 +34450,7 @@ A duplicate property is in the request body.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the duplicate property from the request body and resubmit the request.
 
-### Base.1.0.PropertyMissing
+### Base.1.4.PropertyMissing
 The request does not include a required property.
 
 | | |
@@ -33473,7 +34459,7 @@ The request does not include a required property.
 |Severity|Warning
 |Resolution|If the operation did not complete, verify the property is in the request body and has a valid value.
 
-### Base.1.0.PropertyNotWritable
+### Base.1.4.PropertyNotWritable
 The request included a value for a read-only property.
 
 | | |
@@ -33482,7 +34468,7 @@ The request included a value for a read-only property.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the property from the request body and resubmit the request.
 
-### Base.1.0.PropertyUnknown
+### Base.1.4.PropertyUnknown
 An unknown property is in the request body.
 
 | | |
@@ -33491,7 +34477,7 @@ An unknown property is in the request body.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the unknown property from the request body and resubmit the request.
 
-### Base.1.0.PropertyValueFormatError
+### Base.1.4.PropertyValueFormatError
 The value type is correct, but the format is not supported or the size/length is exceeded.
 
 | | |
@@ -33500,7 +34486,16 @@ The value type is correct, but the format is not supported or the size/length is
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### Base.1.0.PropertyValueNotInList
+### Base.1.4.PropertyValueModified
+Indicates that a property was given the correct value type but the value of that property was modified.  Examples are truncated or rounded values.
+
+| | |
+|:---|:---|
+|Message Format|"The property %1 was assigned the value %2 due to modification by the service."
+|Severity|Warning
+|Resolution|No resolution is required.
+
+### Base.1.4.PropertyValueNotInList
 The value type is correct, but the value is not supported.
 
 | | |
@@ -33509,7 +34504,7 @@ The value type is correct, but the value is not supported.
 |Severity|Warning
 |Resolution|If the operation did not complete, choose a value from the enumeration list and resubmit your request.
 
-### Base.1.0.PropertyValueTypeError
+### Base.1.4.PropertyValueTypeError
 The property value contains an incorrect property type. For example, a number value for a string property type.
 
 | | |
@@ -33518,7 +34513,7 @@ The property value contains an incorrect property type. For example, a number va
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### Base.1.0.QueryNotSupported
+### Base.1.4.QueryNotSupported
 The query is not supported by the implementation.
 
 | | |
@@ -33527,7 +34522,7 @@ The query is not supported by the implementation.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the query parameter and resubmit the request.
 
-### Base.1.0.QueryNotSupportedOnResource
+### Base.1.4.QueryNotSupportedOnResource
 The query is not supported on the resource. For example, a start/count query is attempted on a resource that is not a collection.
 
 | | |
@@ -33536,7 +34531,7 @@ The query is not supported on the resource. For example, a start/count query is 
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the query parameters and resubmit the request.
 
-### Base.1.0.QueryParameterOutOfRange
+### Base.1.4.QueryParameterOutOfRange
 The query parameter value is out of range for the resource. For example, a page is requested that is outside the valid page range.
 
 | | |
@@ -33545,7 +34540,7 @@ The query parameter value is out of range for the resource. For example, a page 
 |Severity|Warning
 |Resolution|Specify a query parameter value that is within range. For example, a page that is within the valid range of pages.
 
-### Base.1.0.QueryParameterValueFormatError
+### Base.1.4.QueryParameterValueFormatError
 The value type is correct, but the format is not supported or the size/length was exceeded.
 
 | | |
@@ -33554,7 +34549,7 @@ The value type is correct, but the format is not supported or the size/length wa
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.
 
-### Base.1.0.QueryParameterValueTypeError
+### Base.1.4.QueryParameterValueTypeError
 The query parameter contains an incorrect value type. For example, a number supplied for a query parameter that requires a string.
 
 | | |
@@ -33563,16 +34558,16 @@ The query parameter contains an incorrect value type. For example, a number supp
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.
 
-### Base.1.0.ResourceAlreadyExists
-The create resource operation did not complete because the resource already exists.
+### Base.1.4.ResourceAlreadyExists
+Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.
 
 | | |
 |:---|:---|
-|Message Format|"The requested resource already exists."
+|Message Format|"The requested resource of type %1 with the property %2 with the value %3 already exists."
 |Severity|Critical
-|Resolution|Do not attempt the create operation because the resource already exists.
+|Resolution|Do not repeat the create operation as the resource has already been created.
 
-### Base.1.0.ResourceAtUriInUnknownFormat
+### Base.1.4.ResourceAtUriInUnknownFormat
 The URI is valid, but the resource or image at that URI is in a format that is not supported by the service.
 
 | | |
@@ -33581,7 +34576,7 @@ The URI is valid, but the resource or image at that URI is in a format that is n
 |Severity|Critical
 |Resolution|Place a resource, image, or file that is supported by the service at the URI.
 
-### Base.1.0.ResourceAtUriUnauthorized
+### Base.1.4.ResourceAtUriUnauthorized
 An attempt to access the resource, image, or file at the URI is unauthorized.
 
 | | |
@@ -33590,7 +34585,7 @@ An attempt to access the resource, image, or file at the URI is unauthorized.
 |Severity|Critical
 |Resolution|Verify that the appropriate access is provided for the service to access the URI.
 
-### Base.1.0.ResourceCannotBeDeleted
+### Base.1.4.ResourceCannotBeDeleted
 A delete operation was attempted on a resource that cannot be deleted.
 
 | | |
@@ -33599,7 +34594,16 @@ A delete operation was attempted on a resource that cannot be deleted.
 |Severity|Critical
 |Resolution|Do not attempt to delete a resource that does not support the REST API DELETE operation.
 
-### Base.1.0.ResourceInStandby
+### Base.1.4.ResourceExhaustion
+Indicates that a resource could not satisfy the request due to some unavailability of resources.  An example is that available capacity has been allocated.
+
+| | |
+|:---|:---|
+|Message Format|"The resource %1 was unable to satisfy the request due to unavailability of resources."
+|Severity|Critical
+|Resolution|Ensure that the resources are available and resubmit the request.
+
+### Base.1.4.ResourceInStandby
 Indicates that the request could not be performed because the resource is in standby.
 
 | | |
@@ -33608,7 +34612,7 @@ Indicates that the request could not be performed because the resource is in sta
 |Severity|Critical
 |Resolution|Ensure that the resource is in the correct power state and resubmit the request.
 
-### Base.1.0.ResourceInUse
+### Base.1.4.ResourceInUse
 The request to change the resource was rejected because the resource was in use or in transition.
 
 | | |
@@ -33617,7 +34621,7 @@ The request to change the resource was rejected because the resource was in use 
 |Severity|Warning
 |Resolution|If the operation did not complete, wait until the resource is free and resubmit the request.
 
-### Base.1.0.ResourceMissingAtURI
+### Base.1.4.ResourceMissingAtURI
 The operation expected an image or resource at the provided URI, but found none.
 
 | | |
@@ -33626,7 +34630,25 @@ The operation expected an image or resource at the provided URI, but found none.
 |Severity|Critical
 |Resolution|Place a valid resource at the URI or correct the URI and resubmit the request.
 
-### Base.1.0.ServiceInUnknownState
+### Base.1.4.ResourceNotFound
+Indicates that the operation expected a resource identifier that corresponds to an existing resource but one was not found.
+
+| | |
+|:---|:---|
+|Message Format|"The requested resource of type %1 named %2 was not found."
+|Severity|Critical
+|Resolution|Provide a valid resource identifier and resubmit the request.
+
+### Base.1.4.ResourceTypeIncompatible
+Indicates that the resource type of the operation does not match that for the operation destination.  Examples of when this can happen include during a POST to a collection using the wrong resource type, an update where the @odata.types do not match or on a major version incompatability.
+
+| | |
+|:---|:---|
+|Message Format|"The @odata.type of the request body %1 is incompatible with the @odata.type of the resource which is %2."
+|Severity|Critical
+|Resolution|Resubmit the request with a payload compatible with the resource's schema.
+
+### Base.1.4.ServiceInUnknownState
 The operation did not complete because the service is in an unknown state and cannot take incoming requests.
 
 | | |
@@ -33635,7 +34657,7 @@ The operation did not complete because the service is in an unknown state and ca
 |Severity|Critical
 |Resolution|If the operation did not complete, restart the service and resubmit the request.
 
-### Base.1.0.ServiceShuttingDown
+### Base.1.4.ServiceShuttingDown
 The operation did not complete because the service is shutting down.
 
 | | |
@@ -33644,7 +34666,7 @@ The operation did not complete because the service is shutting down.
 |Severity|Critical
 |Resolution|If the operation did not complete, resubmit the request when the service is available.
 
-### Base.1.0.ServiceTemporarilyUnavailable
+### Base.1.4.ServiceTemporarilyUnavailable
 The service is temporarily unavailable.
 
 | | |
@@ -33653,7 +34675,7 @@ The service is temporarily unavailable.
 |Severity|Critical
 |Resolution|Wait for the indicated retry duration and retry the operation.
 
-### Base.1.0.SessionLimitExceeded
+### Base.1.4.SessionLimitExceeded
 Session establishment has been requested, but the operation did not complete because the number of simultaneous sessions exceeded the maximum number allowed by the implementation.
 
 | | |
@@ -33662,7 +34684,16 @@ Session establishment has been requested, but the operation did not complete bec
 |Severity|Critical
 |Resolution|Before attempting to establish the session, reduce the number of sessions or increase the maximum number of simultaneous sessions allowed (if supported).
 
-### Base.1.0.SourceDoesNotSupportProtocol
+### Base.1.4.SessionTerminated
+Indicates that the DELETE operation on the Session resource resulted in the successful termination of the session.
+
+| | |
+|:---|:---|
+|Message Format|"The session was successfully terminated."
+|Severity|OK
+|Resolution|No resolution is required.
+
+### Base.1.4.SourceDoesNotSupportProtocol
 While attempting to access, connect to, or transfer from another location, the other end of the connection did not support the specified protocol.
 
 | | |
@@ -33671,7 +34702,16 @@ While attempting to access, connect to, or transfer from another location, the o
 |Severity|Critical
 |Resolution|Change protocols or URIs. 
 
-### Base.1.0.Success
+### Base.1.4.StringValueTooLong
+Indicates that a string value passed to the given resource exceeded its length limit. An example is when a shorter limit is imposed by an implementation than that allowed by the specification.
+
+| | |
+|:---|:---|
+|Message Format|"The string %1 exceeds the length limit %2."
+|Severity|Warning
+|Resolution|Resubmit the request with an appropriate string length.
+
+### Base.1.4.Success
 The operation completed successfully.
 
 | | |
@@ -33680,7 +34720,7 @@ The operation completed successfully.
 |Severity|OK
 |Resolution|None
 
-### Base.1.0.UnrecognizedRequestBody
+### Base.1.4.UnrecognizedRequestBody
 The service detected a request body with malformed JSON.
 
 | | |
@@ -33806,7 +34846,7 @@ A previously requested property value change was reverted because the current ha
 |Severity|Warning
 |Resolution|Ensure that the system's hardware configuration supports the property value.
 
-### iLO.2.8.AHSDisabled
+### iLO.2.13.AHSDisabled
 Modifying AHS properties is not possible with AHS disabled.
 
 | | |
@@ -33815,7 +34855,7 @@ Modifying AHS properties is not possible with AHS disabled.
 |Severity|Warning
 |Resolution|Enable AHS, and then modify the AHS properties.
 
-### iLO.2.8.Accepted
+### iLO.2.13.Accepted
 Indicates that one or more properties were correctly changed, but may not be in effect yet.
 
 | | |
@@ -33824,7 +34864,7 @@ Indicates that one or more properties were correctly changed, but may not be in 
 |Severity|OK
 |Resolution|None
 
-### iLO.2.8.ActionParameterValueNotInList
+### iLO.2.13.ActionParameterValueNotInList
 Indicates that the correct value type was supplied for the action parameter, but the value is not supported. (The value is not in the enumeration list.)
 
 | | |
@@ -33833,7 +34873,7 @@ Indicates that the correct value type was supplied for the action parameter, but
 |Severity|Warning
 |Resolution|Choose a value from the enumeration list and resubmit the request if the operation failed.
 
-### iLO.2.8.AlertDestinationAssociationError
+### iLO.2.13.AlertDestinationAssociationError
 AlertDestination cannot be configured with both SNMPv1 and SNMPv3.
 
 | | |
@@ -33842,7 +34882,7 @@ AlertDestination cannot be configured with both SNMPv1 and SNMPv3.
 |Severity|Warning
 |Resolution|For SNMPv1 alert, configure SNMPAlertProtocol to SNMPv1. For SNMPv3 alert, configure SNMPAlertProtocol to SNMPv3.
 
-### iLO.2.8.AlertMailFeatureDisabled
+### iLO.2.13.AlertMailFeatureDisabled
 AlertMail feature is disabled.
 
 | | |
@@ -33851,7 +34891,7 @@ AlertMail feature is disabled.
 |Severity|Warning
 |Resolution|Enable AlertMail feature to send test alert message.
 
-### iLO.2.8.AlreadyInProgress
+### iLO.2.13.AlreadyInProgress
 An operation is already in progress.
 
 | | |
@@ -33860,7 +34900,7 @@ An operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current operation to complete, and then retry the operation.
 
-### iLO.2.8.AlreadyUpToDate
+### iLO.2.13.AlreadyUpToDate
 The update did not occur because the component was already up to date.
 
 | | |
@@ -33869,7 +34909,7 @@ The update did not occur because the component was already up to date.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ApmPowerCapModeInUsed
+### iLO.2.13.ApmPowerCapModeInUsed
 Operation is currently unavailable because the power regulator is set to APM Power Capping Mode.
 
 | | |
@@ -33878,7 +34918,7 @@ Operation is currently unavailable because the power regulator is set to APM Pow
 |Severity|Warning
 |Resolution|Change the power regulator to other modes rather than APM Power Capping Mode through APM interface.
 
-### iLO.2.8.ArrayPropertyAlreadyExists
+### iLO.2.13.ArrayPropertyAlreadyExists
 Duplicate value.
 
 | | |
@@ -33887,16 +34927,16 @@ Duplicate value.
 |Severity|Warning
 |Resolution|If the operation did not complete, correct the property value in the request body and resubmit the request.
 
-### iLO.2.8.ArrayPropertyOutOfBound
+### iLO.2.13.ArrayPropertyOutOfBound
 The number of items in the array exceeds the maximum number supported.
 
 | | |
 |:---|:---|
-|Message Format|"An array %1 was supplied with %2 items that exceeds the maximum supported count of %3."
+|Message Format|"An array %1 was supplied with %2 items that does not meet the minimum supported count of %3 or exceeds the maximum supported count of %4."
 |Severity|Warning
 |Resolution|Retry the operation using the correct number of items for the array.
 
-### iLO.2.8.ArrayPropertyValueBadParam
+### iLO.2.13.ArrayPropertyValueBadParam
 The property value is not valid.
 
 | | |
@@ -33905,7 +34945,7 @@ The property value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.BatteryBackupUnitSettingsDisabled
+### iLO.2.13.BatteryBackupUnitSettingsDisabled
 Battery Backup Unit settings are currently disabled.
 
 | | |
@@ -33914,7 +34954,7 @@ Battery Backup Unit settings are currently disabled.
 |Severity|Warning
 |Resolution|To re-enable Battery Backup Unit settings, disable Scalable Persistent Memory functionality in the system ROM RBSU.
 
-### iLO.2.8.BiosActionTBD
+### iLO.2.13.BiosActionTBD
 The BIOS action supplied in the POST operation is not yet implemented.
 
 | | |
@@ -33923,7 +34963,7 @@ The BIOS action supplied in the POST operation is not yet implemented.
 |Severity|Critical
 |Resolution|The action was invalid or the wrong resource was the target. See the implementation documentation for assistance.
 
-### iLO.2.8.BiosPasswordInfoInvalid
+### iLO.2.13.BiosPasswordInfoInvalid
 The stored BIOS password information is invalid. A system reboot is neccessary to retore password defaults.
 
 | | |
@@ -33932,7 +34972,7 @@ The stored BIOS password information is invalid. A system reboot is neccessary t
 |Severity|Critical
 |Resolution|The system will need to be rebooted to restore BIOS password information to defaults.
 
-### iLO.2.8.BiosPasswordMismatch
+### iLO.2.13.BiosPasswordMismatch
 The provided OldPassword does not match the stored BIOS password.
 
 | | |
@@ -33941,7 +34981,7 @@ The provided OldPassword does not match the stored BIOS password.
 |Severity|Critical
 |Resolution|Retry the action with the matching password.
 
-### iLO.2.8.CalibrateInProgress
+### iLO.2.13.CalibrateInProgress
 Power calibrate is in progress.
 
 | | |
@@ -33950,7 +34990,7 @@ Power calibrate is in progress.
 |Severity|Warning
 |Resolution|Wait for previous power calibrate complete or stop previous power calibrate, and then retry the operation.
 
-### iLO.2.8.CannotRemoveDefaultLanguagePack
+### iLO.2.13.CannotRemoveDefaultLanguagePack
 Cannot remove default language pack.
 
 | | |
@@ -33959,7 +34999,7 @@ Cannot remove default language pack.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.CannotRemoveLanguagePack
+### iLO.2.13.CannotRemoveLanguagePack
 Cannot remove language pack.
 
 | | |
@@ -33968,7 +35008,7 @@ Cannot remove language pack.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.CannotRemoveLicense
+### iLO.2.13.CannotRemoveLicense
 Cannot remove the base license.
 
 | | |
@@ -33977,7 +35017,7 @@ Cannot remove the base license.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ChassisPowerDataUnAvailable
+### iLO.2.13.ChassisPowerDataUnAvailable
 Chassis power regulation data is currently unavailable.
 
 | | |
@@ -33986,7 +35026,7 @@ Chassis power regulation data is currently unavailable.
 |Severity|Warning
 |Resolution|Reset the management processor or chassis manager, and then retry the operation.
 
-### iLO.2.8.ChassisResetRequired
+### iLO.2.13.ChassisResetRequired
 The chassis properties were correctly changed, but will not take effect until the chassis is reset or all nodes in chassis remain powered off for at least 5 seconds.
 
 | | |
@@ -33995,7 +35035,7 @@ The chassis properties were correctly changed, but will not take effect until th
 |Severity|Warning
 |Resolution|Reset chassis or remain power off for all nodes in chassis for at least 5 seconds for the settings to take effect.
 
-### iLO.2.8.ComponentUploadAlreadyInProgress
+### iLO.2.13.ComponentUploadAlreadyInProgress
 A component upload operation is already in progress.
 
 | | |
@@ -34004,7 +35044,7 @@ A component upload operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current component upload to complete, and then retry the operation.
 
-### iLO.2.8.ComponentUploadFailed
+### iLO.2.13.ComponentUploadFailed
 A component upload operation failed.
 
 | | |
@@ -34013,7 +35053,16 @@ A component upload operation failed.
 |Severity|Warning
 |Resolution|Wait for the current component upload to complete, and then retry the operation.
 
-### iLO.2.8.DemoLicenseKeyPreviouslyInstalled
+### iLO.2.13.DailyUpdateLimitExceeded
+An update operation failed due to exceeding a daily limit.
+
+| | |
+|:---|:---|
+|Message Format|"An update operation failed due to exceeding a daily limit."
+|Severity|Warning
+|Resolution|Retry the operation at a later date.
+
+### iLO.2.13.DemoLicenseKeyPreviouslyInstalled
 A license was previously activated and now a demo key may not be used.
 
 | | |
@@ -34022,7 +35071,7 @@ A license was previously activated and now a demo key may not be used.
 |Severity|Warning
 |Resolution|The system is no longer eligible for demo licenses.
 
-### iLO.2.8.DeviceIsBusy
+### iLO.2.13.DeviceIsBusy
 Device was not available for communication.
 
 | | |
@@ -34031,7 +35080,7 @@ Device was not available for communication.
 |Severity|Warning
 |Resolution|Retry the attempted operation after a delay.
 
-### iLO.2.8.DeviceResetRequired
+### iLO.2.13.DeviceResetRequired
 Indicates that one or more properties were correctly changed, but will not take effect until device is reset.
 
 | | |
@@ -34040,7 +35089,7 @@ Indicates that one or more properties were correctly changed, but will not take 
 |Severity|Warning
 |Resolution|Reset the device for the settings to take effect.
 
-### iLO.2.8.DiagsTestAlreadyRunning
+### iLO.2.13.DiagsTestAlreadyRunning
 A diagnostics self test is already running.
 
 | | |
@@ -34049,7 +35098,7 @@ A diagnostics self test is already running.
 |Severity|Warning
 |Resolution|Stop the running test and try again.
 
-### iLO.2.8.DowngradeNotAllowed
+### iLO.2.13.DowngradeNotAllowed
 The task did not execute because a downgrade is not allowed by policy.
 
 | | |
@@ -34058,7 +35107,7 @@ The task did not execute because a downgrade is not allowed by policy.
 |Severity|Warning
 |Resolution|Obtain the latest available component and retry, and clear the task from the queue so processing can continue.
 
-### iLO.2.8.DowngradePolicyAlreadySet
+### iLO.2.13.DowngradePolicyAlreadySet
 The downgrade policy has been set and cannot be changed.
 
 | | |
@@ -34067,7 +35116,7 @@ The downgrade policy has been set and cannot be changed.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ESKMServersNotConfigured
+### iLO.2.13.ESKMServersNotConfigured
 Enterprise Secure Key Manager Servers are not configured.
 
 | | |
@@ -34076,7 +35125,7 @@ Enterprise Secure Key Manager Servers are not configured.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ETagTooLong
+### iLO.2.13.ETagTooLong
 The supplied ETag is too long. The maximum supported ETag length is 63 bytes.
 
 | | |
@@ -34085,7 +35134,7 @@ The supplied ETag is too long. The maximum supported ETag length is 63 bytes.
 |Severity|Warning
 |Resolution|Retry the operation using an ETag with a length of 63 bytes or less.
 
-### iLO.2.8.EmptyDNSName
+### iLO.2.13.EmptyDNSName
 DNS name is empty.
 
 | | |
@@ -34094,7 +35143,7 @@ DNS name is empty.
 |Severity|Warning
 |Resolution|Retry the request with a valid DNS name.
 
-### iLO.2.8.ErrorIntializingESKM
+### iLO.2.13.ErrorIntializingESKM
 Failed to initialize ESKM.
 
 | | |
@@ -34103,7 +35152,7 @@ Failed to initialize ESKM.
 |Severity|Warning
 |Resolution|Check if Account Group, Local CA Certificate Name, Login Name and Password are correct and try again.
 
-### iLO.2.8.EventLogCleared
+### iLO.2.13.EventLogCleared
 Event log cleared successfully.
 
 | | |
@@ -34112,7 +35161,7 @@ Event log cleared successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.EventSubscriptionModified
+### iLO.2.13.EventSubscriptionModified
 The event subscription was modified successfully.
 
 | | |
@@ -34121,7 +35170,7 @@ The event subscription was modified successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.EventSubscriptionRemoved
+### iLO.2.13.EventSubscriptionRemoved
 The event subscription was removed successfully.
 
 | | |
@@ -34130,7 +35179,7 @@ The event subscription was removed successfully.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ExtendedInfo
+### iLO.2.13.ExtendedInfo
 Indicates that extended information is available.
 
 | | |
@@ -34139,7 +35188,7 @@ Indicates that extended information is available.
 |Severity|OK
 |Resolution|See @Message.ExtendedInfo for more information.
 
-### iLO.2.8.FWFlashSuccessTPMOverrideEnabled
+### iLO.2.13.FWFlashSuccessTPMOverrideEnabled
 A Trusted Module is  detected in this system. If you have not performed the proper OS encryption procedures, you will lose access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. TPMOverrideFlag is enabled and firmware flash initiated.
 
 | | |
@@ -34148,7 +35197,7 @@ A Trusted Module is  detected in this system. If you have not performed the prop
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.FWFlashSuccessTrustedModuleOverrideEnabled
+### iLO.2.13.FWFlashSuccessTrustedModuleOverrideEnabled
 A Trusted Module (type unspecified) is installed in the system and TPMOverrideFlag is enabled. Firmware flash initiated.
 
 | | |
@@ -34157,7 +35206,7 @@ A Trusted Module (type unspecified) is installed in the system and TPMOverrideFl
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.FWFlashTPMOverrideFlagRequired
+### iLO.2.13.FWFlashTPMOverrideFlagRequired
 A Trusted Module is  detected in this system. Failure to perform proper OS encryption procedures will result in loss of access to your data if recovery key is not available. Recommended procedure is to suspend encryption software prior to System ROM or Option ROM firmware flash. If you do not have your recovery key or have not suspended encryption software, cancel this firmware upload. Failure to follow these instructions will result in loss of access to your data. To continue with firmware flash TPMOverrideFlag is required.
 
 | | |
@@ -34166,7 +35215,7 @@ A Trusted Module is  detected in this system. Failure to perform proper OS encry
 |Severity|Warning
 |Resolution|Please set the TPMOverrideFlag to true and try again.
 
-### iLO.2.8.FWFlashTrustedModuleOverrideFlagRequired
+### iLO.2.13.FWFlashTrustedModuleOverrideFlagRequired
 A Trusted Module (type unspecified) is installed in the system, TPMOverrideFlag is required for firmware flash to proceed.
 
 | | |
@@ -34175,7 +35224,7 @@ A Trusted Module (type unspecified) is installed in the system, TPMOverrideFlag 
 |Severity|Warning
 |Resolution|Please set the TPMOverrideFlag to true and try again.
 
-### iLO.2.8.FirmwareFlashAlreadyInProgress
+### iLO.2.13.FirmwareFlashAlreadyInProgress
 A firmware upgrade operation is already in progress.
 
 | | |
@@ -34184,7 +35233,7 @@ A firmware upgrade operation is already in progress.
 |Severity|Warning
 |Resolution|Wait for the current firmware flash to complete, and then retry the operation.
 
-### iLO.2.8.GeneratingCertificate
+### iLO.2.13.GeneratingCertificate
 Generating the X509 Certificate.
 
 | | |
@@ -34193,7 +35242,16 @@ Generating the X509 Certificate.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.HardDriveZoneFailure
+### iLO.2.13.HardDriveZoneBackupFailure
+Backup hard drive zoning configuration to BMC has encountered an error.
+
+| | |
+|:---|:---|
+|Message Format|"Backup hard drive zoning configuration to BMC has encountered an error."
+|Severity|Warning
+|Resolution|Retry the operation. If the problem persists, consider resetting the BMC or the entire chassis.
+
+### iLO.2.13.HardDriveZoneFailure
 Hard Drive Zoning was in error state.
 
 | | |
@@ -34202,7 +35260,7 @@ Hard Drive Zoning was in error state.
 |Severity|Critical
 |Resolution|Retry the operation. If the problem persists, consider resetting the entire chassis.
 
-### iLO.2.8.ICRUInvalidAddress
+### iLO.2.13.ICRUInvalidAddress
 ICRU returned invalid address for translation.
 
 | | |
@@ -34211,7 +35269,7 @@ ICRU returned invalid address for translation.
 |Severity|Warning
 |Resolution|Input valid address for translation.
 
-### iLO.2.8.ICRUNotSupported
+### iLO.2.13.ICRUNotSupported
 ICRU feature or function is not supported on the system.
 
 | | |
@@ -34220,7 +35278,7 @@ ICRU feature or function is not supported on the system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.IPv6ConfigurationError
+### iLO.2.13.IPv6ConfigurationError
 The specified IPv6 configuration caused an error.
 
 | | |
@@ -34229,7 +35287,7 @@ The specified IPv6 configuration caused an error.
 |Severity|Warning
 |Resolution|Resolve the indicated error in the configuration data.
 
-### iLO.2.8.ImportCertSuccessful
+### iLO.2.13.ImportCertSuccessful
 Import Certificate was successful.
 
 | | |
@@ -34238,7 +35296,7 @@ Import Certificate was successful.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ImportCertSuccessfuliLOResetinProgress
+### iLO.2.13.ImportCertSuccessfuliLOResetinProgress
 Import Certificate was successful and the management processor is being reset.
 
 | | |
@@ -34247,7 +35305,7 @@ Import Certificate was successful and the management processor is being reset.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.ImportCertificateFailed
+### iLO.2.13.ImportCertificateFailed
 Failed importing Certificate.
 
 | | |
@@ -34256,7 +35314,7 @@ Failed importing Certificate.
 |Severity|Warning
 |Resolution|Retry the operation with proper Certificate information.
 
-### iLO.2.8.ImportSSOParamError
+### iLO.2.13.ImportSSOParamError
 Not a valid parameter.
 
 | | |
@@ -34265,7 +35323,7 @@ Not a valid parameter.
 |Severity|Warning
 |Resolution|Retry the request with valid parameters.
 
-### iLO.2.8.ImportSSOUriError
+### iLO.2.13.ImportSSOUriError
 Not a valid Uri to import SSO certificate.
 
 | | |
@@ -34274,7 +35332,7 @@ Not a valid Uri to import SSO certificate.
 |Severity|Warning
 |Resolution|Retry the request with valid URI.
 
-### iLO.2.8.IndicatorLedInvalidStateChange
+### iLO.2.13.IndicatorLedInvalidStateChange
 The request to change the state of the Indicator LED cannot be granted because the current state is either Blinking or is Unknown.
 
 | | |
@@ -34283,7 +35341,7 @@ The request to change the state of the Indicator LED cannot be granted because t
 |Severity|Warning
 |Resolution|Please wait until the server has completed its reserved state.
 
-### iLO.2.8.InstallSetWriteError
+### iLO.2.13.InstallSetWriteError
 The InstallSet write failed.
 
 | | |
@@ -34292,7 +35350,7 @@ The InstallSet write failed.
 |Severity|Warning
 |Resolution|Ensure a valid name for the item and that space exists to hold the item.
 
-### iLO.2.8.InterfaceDisabledResetRequired
+### iLO.2.13.InterfaceDisabledResetRequired
 Disabling one or more interfaces/features will cause certain functionalities to be not available. Please refer to User Guide for details on the implications. Changes will not take effect until the management processor is reset
 
 | | |
@@ -34301,7 +35359,7 @@ Disabling one or more interfaces/features will cause certain functionalities to 
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.InternalErrorWithParam
+### iLO.2.13.InternalErrorWithParam
 The operation was not successful due to an internal service error (shown), but the service is still operational.
 
 | | |
@@ -34310,7 +35368,7 @@ The operation was not successful due to an internal service error (shown), but t
 |Severity|Critical
 |Resolution|Retry the operation. If the problem persists, consider resetting the service.
 
-### iLO.2.8.InvalidConfigurationSpecified
+### iLO.2.13.InvalidConfigurationSpecified
 The specified configuration is not valid.
 
 | | |
@@ -34319,7 +35377,7 @@ The specified configuration is not valid.
 |Severity|Warning
 |Resolution|Correct the configuration, and then retry the operation.
 
-### iLO.2.8.InvalidConfigurationSpecifiedForFederation
+### iLO.2.13.InvalidConfigurationSpecifiedForFederation
 iLO Federation Management cannot be supported in the current configuration.
 
 | | |
@@ -34328,7 +35386,7 @@ iLO Federation Management cannot be supported in the current configuration.
 |Severity|Warning
 |Resolution|Review the management processor network settings or Onboard Administrator settings and refer to the User Guide.
 
-### iLO.2.8.InvalidDwellTime
+### iLO.2.13.InvalidDwellTime
 The dwell time specified is not valid.
 
 | | |
@@ -34337,7 +35395,7 @@ The dwell time specified is not valid.
 |Severity|Warning
 |Resolution|Adhere to the dwell time supported.
 
-### iLO.2.8.InvalidEngineID
+### iLO.2.13.InvalidEngineID
 EngineID should be a hexadecimal number starting with 0x (for example, 0x0102030405abcdef). The string length should be an even number, greater than or equal to 6 characters (excluding the "0x"), and less than or equal to 32 characters.
 
 | | |
@@ -34346,16 +35404,7 @@ EngineID should be a hexadecimal number starting with 0x (for example, 0x0102030
 |Severity|Warning
 |Resolution|Retry the operation using an EngineID within the specified parameters.
 
-### iLO.2.8.InvalidIndex
-The Index is not valid.
-
-| | |
-|:---|:---|
-|Message Format|"The Index provided is not valid."
-|Severity|Warning
-|Resolution|Adhere to the indexes supported in the self links.
-
-### iLO.2.8.InvalidLicenseKey
+### iLO.2.13.InvalidLicenseKey
 The license key is not valid.
 
 | | |
@@ -34364,7 +35413,7 @@ The license key is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a valid license key.
 
-### iLO.2.8.InvalidOperationForAutoPowerOnState
+### iLO.2.13.InvalidOperationForAutoPowerOnState
 The operation was not successful because the current auto power on mode specifies power is to remain off.
 
 | | |
@@ -34373,7 +35422,7 @@ The operation was not successful because the current auto power on mode specifie
 |Severity|Warning
 |Resolution|Verify that the system auto power on mode is set to turn power on or follow the previous power setting.
 
-### iLO.2.8.InvalidOperationForSystemState
+### iLO.2.13.InvalidOperationForSystemState
 The operation was not successful due to the current power state (for example, attempting to turn the power off when it is already off).
 
 | | |
@@ -34382,16 +35431,16 @@ The operation was not successful due to the current power state (for example, at
 |Severity|Warning
 |Resolution|Verify that the system is in the correct power state, and then retry the operation.
 
-### iLO.2.8.InvalidPassphraseLength
-The passphrase must contain 8 to 49 characters.
+### iLO.2.13.InvalidPassphraseLength
+The passphrase length is not valid.
 
 | | |
 |:---|:---|
-|Message Format|"%1 must contain 8 to 49 characters."
+|Message Format|"%1 must contain from %2 to %3 characters."
 |Severity|Warning
 |Resolution|Correct the passphrase, and then retry the operation.
 
-### iLO.2.8.InvalidPasswordComplexity
+### iLO.2.13.InvalidPasswordComplexity
 The password failed the complexity enforcement.
 
 | | |
@@ -34400,7 +35449,7 @@ The password failed the complexity enforcement.
 |Severity|Critical
 |Resolution|Retry the operation using a corrected password.
 
-### iLO.2.8.InvalidPasswordLength
+### iLO.2.13.InvalidPasswordLength
 The password length is not valid.
 
 | | |
@@ -34409,7 +35458,16 @@ The password length is not valid.
 |Severity|Critical
 |Resolution|Retry the operation using a corrected password.
 
-### iLO.2.8.LicenseKeyDenied
+### iLO.2.13.InvalidSerialNumberLength
+The serial number length is not valid.
+
+| | |
+|:---|:---|
+|Message Format|"A valid serial number must be %1 characters of length."
+|Severity|Critical
+|Resolution|Adjust the length of the serial number and retry the operation.
+
+### iLO.2.13.LicenseKeyDenied
 The license key activation was refused.  Includes details.
 
 | | |
@@ -34418,7 +35476,7 @@ The license key activation was refused.  Includes details.
 |Severity|Warning
 |Resolution|Address the condition or use a valid license activation key.
 
-### iLO.2.8.LicenseKeyNotSupported
+### iLO.2.13.LicenseKeyNotSupported
 The license key supplied is unsupported on this system.  The key may activate a different product or unsupported tier.
 
 | | |
@@ -34427,7 +35485,7 @@ The license key supplied is unsupported on this system.  The key may activate a 
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.LicenseKeyRequired
+### iLO.2.13.LicenseKeyRequired
 A license key is required to use this operation or feature.
 
 | | |
@@ -34436,7 +35494,7 @@ A license key is required to use this operation or feature.
 |Severity|Warning
 |Resolution|Install a license key to use this feature.
 
-### iLO.2.8.LoginAttemptDelayed
+### iLO.2.13.LoginAttemptDelayed
 The login was not successful, so the service enforces a delay before another login is allowed.
 
 | | |
@@ -34445,7 +35503,7 @@ The login was not successful, so the service enforces a delay before another log
 |Severity|Warning
 |Resolution|Wait for the delay time to expire, and then retry the login.
 
-### iLO.2.8.LoginAttemptDelayedSeconds
+### iLO.2.13.LoginAttemptDelayedSeconds
 The login was not successful, so the service enforces a delay before another login is allowed.
 
 | | |
@@ -34454,7 +35512,7 @@ The login was not successful, so the service enforces a delay before another log
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MCTPDiscoveryDisabled
+### iLO.2.13.MCTPDiscoveryDisabled
 Telemetry service and Workload Performance advisor will be not available with MCTP discovery disabled.
 
 | | |
@@ -34463,7 +35521,7 @@ Telemetry service and Workload Performance advisor will be not available with MC
 |Severity|Warning
 |Resolution|Enable MCTP discovery for Telemetry service and Workload Performance advisor.
 
-### iLO.2.8.MaxProviders
+### iLO.2.13.MaxProviders
 The maximum number of providers are already registered.
 
 | | |
@@ -34472,7 +35530,7 @@ The maximum number of providers are already registered.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MaxVirtualMediaConnectionEstablished
+### iLO.2.13.MaxVirtualMediaConnectionEstablished
 No more Virtual Media connections are available, because the maximum number of connections are already established.
 
 | | |
@@ -34481,7 +35539,7 @@ No more Virtual Media connections are available, because the maximum number of c
 |Severity|Warning
 |Resolution|Close an established Virtual Media connection, and then retry creating or opening another connection.
 
-### iLO.2.8.MembistVariablesNotSupported
+### iLO.2.13.MembistVariablesNotSupported
 Membist variables are not supported on the system.
 
 | | |
@@ -34490,7 +35548,7 @@ Membist variables are not supported on the system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.MemoryInterleaveSetError
+### iLO.2.13.MemoryInterleaveSetError
 The memory set specified in InterleaveSets is not supported.
 
 | | |
@@ -34499,16 +35557,34 @@ The memory set specified in InterleaveSets is not supported.
 |Severity|Warning
 |Resolution|Ensure the memory set specified in InterleaveSets matches the first set in the memory domain's InterleavableMemrorySets.
 
-### iLO.2.8.NoEventSubscriptions
-There are no event subscriptions registerd.
+### iLO.2.13.NewerVersionRequired
+Update does not meet minimum version requirements.
 
 | | |
 |:---|:---|
-|Message Format|"The opeartion can not be completed because there are no event subscribers."
+|Message Format|"Update does not meet minimum version requirements."
+|Severity|Warning
+|Resolution|Use newer version.
+
+### iLO.2.13.NoContent
+The requested resource exists but has no content.
+
+| | |
+|:---|:---|
+|Message Format|"The resource exists but has no content."
+|Severity|OK
+|Resolution|None
+
+### iLO.2.13.NoEventSubscriptions
+There are no event subscriptions registered.
+
+| | |
+|:---|:---|
+|Message Format|"The operation cannot be completed because there are no event subscribers."
 |Severity|Warning
 |Resolution|
 
-### iLO.2.8.NoPowerMetering
+### iLO.2.13.NoPowerMetering
 No support for power metering available on platform.
 
 | | |
@@ -34517,7 +35593,7 @@ No support for power metering available on platform.
 |Severity|OK
 |Resolution|Enable Power Metering on platform if supported.
 
-### iLO.2.8.NoSNMPAlertDestinationsConfigured
+### iLO.2.13.NoSNMPAlertDestinationsConfigured
 No SNMP alert destinations configured or none of the configured destinations are associated with SNMPv1 protocol or SNMPv3 protocol and user.
 
 | | |
@@ -34526,7 +35602,7 @@ No SNMP alert destinations configured or none of the configured destinations are
 |Severity|Warning
 |Resolution|Configure at least one SNMP alert destination and associate it with SNMPv1 protocol or SNMPv3 protocol and user.
 
-### iLO.2.8.NoSamples
+### iLO.2.13.NoSamples
 No power history samples are available.
 
 | | |
@@ -34535,7 +35611,7 @@ No power history samples are available.
 |Severity|OK
 |Resolution|To accumulate power history samples, power on the server, and then wait at least 5 minutes.
 
-### iLO.2.8.NoScriptedVirtualMediaConnectionAvailable
+### iLO.2.13.NoScriptedVirtualMediaConnectionAvailable
 No scripted virtual media connections exist to perform the operation.
 
 | | |
@@ -34544,7 +35620,7 @@ No scripted virtual media connections exist to perform the operation.
 |Severity|Warning
 |Resolution|Create or open a scripted virtual media connection, and then retry the operation.
 
-### iLO.2.8.NoSpaceforDNSName
+### iLO.2.13.NoSpaceforDNSName
 No space to store DNS name.
 
 | | |
@@ -34553,7 +35629,7 @@ No space to store DNS name.
 |Severity|Warning
 |Resolution|Make sure SSO database has enough space to store DNS name.
 
-### iLO.2.8.NoVirtualMediaConnectionAvailable
+### iLO.2.13.NoVirtualMediaConnectionAvailable
 No Virtual Media connections exist to perform the operation.
 
 | | |
@@ -34562,7 +35638,7 @@ No Virtual Media connections exist to perform the operation.
 |Severity|Warning
 |Resolution|Create or open a Virtual Media connection, and then retry the operation.
 
-### iLO.2.8.NodeAssignedCrossRegion
+### iLO.2.13.NodeAssignedCrossRegion
 Each zone can only manage the node in the same region, cannot manage overlap region.
 
 | | |
@@ -34571,7 +35647,7 @@ Each zone can only manage the node in the same region, cannot manage overlap reg
 |Severity|Warning
 |Resolution|Correct the out of range value, and then retry the operation.
 
-### iLO.2.8.NodeNotPresentInZone
+### iLO.2.13.NodeNotPresentInZone
 Operation is currently unavailable because there is no node installed in the zone.
 
 | | |
@@ -34580,7 +35656,7 @@ Operation is currently unavailable because there is no node installed in the zon
 |Severity|Warning
 |Resolution|Install at least one node in the zone and retry the operation.
 
-### iLO.2.8.NotSupportedOnNIC
+### iLO.2.13.NotSupportedOnNIC
 This property is not supported by the indicated network port.
 
 | | |
@@ -34589,7 +35665,7 @@ This property is not supported by the indicated network port.
 |Severity|Warning
 |Resolution|Do not specify this property on the indicated network port.
 
-### iLO.2.8.NotValidIPAddrOrDNS
+### iLO.2.13.NotValidIPAddrOrDNS
 The value for the property is not a valid IPv4/v6 address or DNS name.
 
 | | |
@@ -34598,7 +35674,7 @@ The value for the property is not a valid IPv4/v6 address or DNS name.
 |Severity|Warning
 |Resolution|Correct the IPv4/v6 address or DNS name, and then retry the operation.
 
-### iLO.2.8.NotValidIPAddress
+### iLO.2.13.NotValidIPAddress
 The value for the property is not a valid IP address.
 
 | | |
@@ -34607,7 +35683,7 @@ The value for the property is not a valid IP address.
 |Severity|Warning
 |Resolution|Use a valid IP address.
 
-### iLO.2.8.NotValidSubnetMask
+### iLO.2.13.NotValidSubnetMask
 The value for the property is not a valid subnet mask.
 
 | | |
@@ -34616,16 +35692,25 @@ The value for the property is not a valid subnet mask.
 |Severity|Warning
 |Resolution|Use a valid subnet mask.
 
-### iLO.2.8.OperationWillCompleteAfterSystemPOST
+### iLO.2.13.OperationAvailableAfterSystemPOST
+The value for the property can not be set until System BIOS POST completes.
+
+| | |
+|:---|:---|
+|Message Format|"Property %1 will be settable after the System BIOS completes POST."
+|Severity|Warning
+|Resolution|Wait to see the change in value until after the System BIOS completes POST.
+
+### iLO.2.13.OperationWillCompleteAfterSystemPOST
 The value for the property will be applied after System BIOS POST completes.
 
 | | |
 |:---|:---|
 |Message Format|"The value for property %1 will be changed after the System BIOS completes POST."
-|Severity|Information
+|Severity|OK
 |Resolution|Wait to see the change in value until after the System BIOS completes POST.
 
-### iLO.2.8.PowerCapOACntrld
+### iLO.2.13.PowerCapOACntrld
 The enclosure Onboard Administrator is currently managing the power cap.
 
 | | |
@@ -34634,7 +35719,7 @@ The enclosure Onboard Administrator is currently managing the power cap.
 |Severity|Warning
 |Resolution|Use Onboard Administrator to Manage the PowerCap
 
-### iLO.2.8.PowerCapROMCntrld
+### iLO.2.13.PowerCapROMCntrld
 The System ROM is currently managing the power cap.
 
 | | |
@@ -34643,7 +35728,7 @@ The System ROM is currently managing the power cap.
 |Severity|Warning
 |Resolution|Enable RESTful API management of the power cap in System ROM
 
-### iLO.2.8.PowerLimitMayNotTakeEffect
+### iLO.2.13.PowerLimitMayNotTakeEffect
 One of power limit setpoint may become unreachable due to power limit range is unknown. It's not recommended configure power limit setpoint when power limit range is unknown.
 
 | | |
@@ -34652,7 +35737,7 @@ One of power limit setpoint may become unreachable due to power limit range is u
 |Severity|Warning
 |Resolution|Please execute calibrate action to get power limit range then reconfigure power limit setpoint.
 
-### iLO.2.8.PowerRegulationNotDisable
+### iLO.2.13.PowerRegulationNotDisable
 Operation is currently unavailable because chassis power regulation is enabled.
 
 | | |
@@ -34661,7 +35746,7 @@ Operation is currently unavailable because chassis power regulation is enabled.
 |Severity|Warning
 |Resolution|Disable chassis power regulation, and then retry the operation.
 
-### iLO.2.8.PowerSettingAdjustRequired
+### iLO.2.13.PowerSettingAdjustRequired
 Indicates that one or more power limit setting were correctly changed, but will not take effect until power regulation enable and power regulator mode switch to user configurable mode.
 
 | | |
@@ -34670,7 +35755,7 @@ Indicates that one or more power limit setting were correctly changed, but will 
 |Severity|Warning
 |Resolution|Enable power regulation and switch power regulator mode to user configurable mode for the settings to take effect.
 
-### iLO.2.8.PowerValueBadParam
+### iLO.2.13.PowerValueBadParam
 The power cap value is not valid.
 
 | | |
@@ -34679,7 +35764,7 @@ The power cap value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.PowerValueInvalidCalibrationData
+### iLO.2.13.PowerValueInvalidCalibrationData
 The request to set the power cap failed. Invalid power cap calibration data. The Power Cap feature is currently unavailable.
 
 | | |
@@ -34688,16 +35773,16 @@ The request to set the power cap failed. Invalid power cap calibration data. The
 |Severity|Warning
 |Resolution|Restart the server to retrieve calibration data from initial POST.
 
-### iLO.2.8.PowerValueNotOptimal
+### iLO.2.13.PowerValueNotOptimal
 Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than this threshold.
 
 | | |
 |:---|:---|
-|Message Format|"Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than %1%."
+|Message Format|"Power caps set below the specified percentage threshold might become unreachable due to changes in the server. It is recommended to not set a cap for less than %1."
 |Severity|Warning
 |Resolution|Please provide an optimal value in integer considering the power cap range.
 
-### iLO.2.8.PowerValueUnAvailable
+### iLO.2.13.PowerValueUnAvailable
 Advanced power capping is not currently available due to the system configuration or state.
 
 | | |
@@ -34706,7 +35791,7 @@ Advanced power capping is not currently available due to the system configuratio
 |Severity|Warning
 |Resolution|Change the system configuration or wait for the system to become fully initialized, and then retry the operation.
 
-### iLO.2.8.PowerValueUnSupported
+### iLO.2.13.PowerValueUnSupported
 Advanced power capping is not supported on this system.
 
 | | |
@@ -34715,7 +35800,7 @@ Advanced power capping is not supported on this system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.PrimaryESKMServerAccessible
+### iLO.2.13.PrimaryESKMServerAccessible
 Only the primary ESKM server is accessible.
 
 | | |
@@ -34724,7 +35809,7 @@ Only the primary ESKM server is accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PrimarySecondaryAddressesResolveToSameServer
+### iLO.2.13.PrimarySecondaryAddressesResolveToSameServer
 Primary and secondary ESKM server addresses resolve to the same server.
 
 | | |
@@ -34733,7 +35818,7 @@ Primary and secondary ESKM server addresses resolve to the same server.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PrimarySecondaryESKMServersAccessible
+### iLO.2.13.PrimarySecondaryESKMServersAccessible
 Both primary and secondary ESKM servers are accessible.
 
 | | |
@@ -34742,7 +35827,7 @@ Both primary and secondary ESKM servers are accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.PropertyNotSupported
+### iLO.2.13.PropertyNotSupported
 The property is not supported.
 
 | | |
@@ -34751,7 +35836,7 @@ The property is not supported.
 |Severity|Warning
 |Resolution|Do not attempt to modify this property.
 
-### iLO.2.8.PropertyNotWritableOrUnknown
+### iLO.2.13.PropertyNotWritableOrUnknown
 The request included a value for a  read-only or unknown property.
 
 | | |
@@ -34760,7 +35845,7 @@ The request included a value for a  read-only or unknown property.
 |Severity|Warning
 |Resolution|If the operation did not complete, remove the property from the request body and resubmit the request.
 
-### iLO.2.8.PropertyValueBadParam
+### iLO.2.13.PropertyValueBadParam
 The property value is not valid.
 
 | | |
@@ -34769,7 +35854,7 @@ The property value is not valid.
 |Severity|Warning
 |Resolution|Retry the operation using a corrected value.
 
-### iLO.2.8.PropertyValueExceedsMaxLength
+### iLO.2.13.PropertyValueExceedsMaxLength
 The value for the property exceeds the maximum length.
 
 | | |
@@ -34778,7 +35863,7 @@ The value for the property exceeds the maximum length.
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueIncompatible
+### iLO.2.13.PropertyValueIncompatible
 The value for the property is the correct type, but this value is incompatible with the current value of another property.
 
 | | |
@@ -34787,7 +35872,7 @@ The value for the property is the correct type, but this value is incompatible w
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueOutOfRange
+### iLO.2.13.PropertyValueOutOfRange
 The value for the property is out of range.
 
 | | |
@@ -34796,7 +35881,7 @@ The value for the property is out of range.
 |Severity|Warning
 |Resolution|Correct the value for the property in the request body, and then retry the operation.
 
-### iLO.2.8.PropertyValueRequired
+### iLO.2.13.PropertyValueRequired
 Indicates that a property was required but not specified.
 
 | | |
@@ -34805,7 +35890,7 @@ Indicates that a property was required but not specified.
 |Severity|Warning
 |Resolution|Include the required property in the request body and then retry the operation.
 
-### iLO.2.8.RecoveryInstallSetRequired
+### iLO.2.13.RecoveryInstallSetRequired
 A recovery install set is required for this action.
 
 | | |
@@ -34814,7 +35899,7 @@ A recovery install set is required for this action.
 |Severity|Critical
 |Resolution|Create a recovery install set (install set with IsRecovery property set true).
 
-### iLO.2.8.RepairNotSupported
+### iLO.2.13.RepairNotSupported
 IML event with this severity is not supported to be repaired. IML events with Critical or Warning severities can marked as repaired.
 
 | | |
@@ -34823,7 +35908,7 @@ IML event with this severity is not supported to be repaired. IML events with Cr
 |Severity|Warning
 |Resolution|Please do not try to repair IML events with severity other than Critical or Warning.
 
-### iLO.2.8.RequiredPropertyMissing
+### iLO.2.13.RequiredPropertyMissing
 Indicates that a required property is not specified.
 
 | | |
@@ -34832,7 +35917,7 @@ Indicates that a required property is not specified.
 |Severity|Warning
 |Resolution|Include the required property in the request body and then retry the operation.
 
-### iLO.2.8.ResetInProgress
+### iLO.2.13.ResetInProgress
 A management processor reset is in progress.
 
 | | |
@@ -34841,7 +35926,7 @@ A management processor reset is in progress.
 |Severity|Warning
 |Resolution|Wait for management processor reset to complete, and then retry the operation.
 
-### iLO.2.8.ResetRequired
+### iLO.2.13.ResetRequired
 One or more properties were changed, but these changes will not take effect until the management processor is reset.
 
 | | |
@@ -34850,7 +35935,7 @@ One or more properties were changed, but these changes will not take effect unti
 |Severity|Warning
 |Resolution|To enable the changed properties, reset the management processor.
 
-### iLO.2.8.ResourceBeingFlashed
+### iLO.2.13.ResourceBeingFlashed
 The change to the requested resource failed because the resource is being flashed.
 
 | | |
@@ -34859,7 +35944,7 @@ The change to the requested resource failed because the resource is being flashe
 |Severity|Warning
 |Resolution|Retry the operation when the firmware upgrade has completed.
 
-### iLO.2.8.ResourceInUseWithDetail
+### iLO.2.13.ResourceInUseWithDetail
 The change could not be made because the resource was in use or in a transitioning state.
 
 | | |
@@ -34868,7 +35953,7 @@ The change could not be made because the resource was in use or in a transitioni
 |Severity|Warning
 |Resolution|Retry the request.
 
-### iLO.2.8.ResourceNotReadyRetry
+### iLO.2.13.ResourceNotReadyRetry
 The resource is present but is not ready to perform operations due to an internal condition such as initialization or reset.
 
 | | |
@@ -34877,7 +35962,7 @@ The resource is present but is not ready to perform operations due to an interna
 |Severity|Warning
 |Resolution|Retry the operation when the resource is ready.
 
-### iLO.2.8.ResourceTemporarilyUnavailable
+### iLO.2.13.ResourceTemporarilyUnavailable
 The resource is temporarily unavailable because the firmware is being flashed.
 
 | | |
@@ -34886,7 +35971,7 @@ The resource is temporarily unavailable because the firmware is being flashed.
 |Severity|Warning
 |Resolution|Retry the operation when the firmware upgrade has completed.
 
-### iLO.2.8.SMBIOSRecordNotFound
+### iLO.2.13.SMBIOSRecordNotFound
 The SMBIOS record type is not found or is not supported on the system.
 
 | | |
@@ -34895,7 +35980,7 @@ The SMBIOS record type is not found or is not supported on the system.
 |Severity|Warning
 |Resolution|Reset the system to update the SMBIOS records. If the problem persists then the SMBIOS record type is not supported.
 
-### iLO.2.8.SNMPAlertDisabled
+### iLO.2.13.SNMPAlertDisabled
 The operation could not be completed because SNMP alerts are disabled.
 
 | | |
@@ -34904,7 +35989,7 @@ The operation could not be completed because SNMP alerts are disabled.
 |Severity|Warning
 |Resolution|Enable SNMP alerts and retry the operation.
 
-### iLO.2.8.SNMPDisabled
+### iLO.2.13.SNMPDisabled
 Modifying SNMP properties is not possible with SNMP disabled.
 
 | | |
@@ -34913,7 +35998,7 @@ Modifying SNMP properties is not possible with SNMP disabled.
 |Severity|Warning
 |Resolution|Enable SNMP, and then modify the SNMP properties.
 
-### iLO.2.8.SNMPTestAlertFailed
+### iLO.2.13.SNMPTestAlertFailed
 The SNMP Test Alert did not send successfully.
 
 | | |
@@ -34922,7 +36007,7 @@ The SNMP Test Alert did not send successfully.
 |Severity|Warning
 |Resolution|Verify the test alert content and retry.
 
-### iLO.2.8.SNTPConfigurationManagedByDHCPAndIsReadOnly
+### iLO.2.13.SNTPConfigurationManagedByDHCPAndIsReadOnly
 SNTP configuration is currently managed by DHCP and is therefore read-only.
 
 | | |
@@ -34931,7 +36016,7 @@ SNTP configuration is currently managed by DHCP and is therefore read-only.
 |Severity|Warning
 |Resolution|Disable SNTP configuration options in both DHCPv4 and DHCPv6 (see /Managers/n/NICs), and then reconfigure SNTP as desired with static settings.
 
-### iLO.2.8.SSOCertficateEmpty
+### iLO.2.13.SSOCertficateEmpty
 SSO Certificate is Empty.
 
 | | |
@@ -34940,7 +36025,7 @@ SSO Certificate is Empty.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.SSOCertificateReadError
+### iLO.2.13.SSOCertificateReadError
 SSO Certificate Read Error.
 
 | | |
@@ -34949,7 +36034,7 @@ SSO Certificate Read Error.
 |Severity|Warning
 |Resolution|Retry the request with valid SSO certificate.
 
-### iLO.2.8.SSONoSpaceError
+### iLO.2.13.SSONoSpaceError
 No space to store SSO certificate.
 
 | | |
@@ -34958,7 +36043,7 @@ No space to store SSO certificate.
 |Severity|Warning
 |Resolution|Make sure SSO database has enough space to store SSO certificate.
 
-### iLO.2.8.SSORecordNotFound
+### iLO.2.13.SSORecordNotFound
 SSO Record Not Found.
 
 | | |
@@ -34967,16 +36052,16 @@ SSO Record Not Found.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.SamplesNotCaptured
+### iLO.2.13.SamplesNotCaptured
 Samples are not captured for %1 duration.
 
 | | |
 |:---|:---|
 |Message Format|"Samples for metrics are not captured for %1 duration."
-|Severity|Ok
+|Severity|OK
 |Resolution|Wait for the current duration to complete, and then retry.
 
-### iLO.2.8.SecondaryESKMServerAccessible
+### iLO.2.13.SecondaryESKMServerAccessible
 Only the secondary ESKM server is accessible.
 
 | | |
@@ -34985,7 +36070,16 @@ Only the secondary ESKM server is accessible.
 |Severity|OK
 |Resolution|None.
 
-### iLO.2.8.ServerConfigurationLockEnabled
+### iLO.2.13.ServerConfigLockStatusUnknown
+The current status of Server Configuration Lock is unknown.
+
+| | |
+|:---|:---|
+|Message Format|"The current status of Server Configuration Lock is unknown."
+|Severity|Warning
+|Resolution|Ensure if the BIOS firmware supports Server Configuration Lock. If supported, reboot the server and retry the operation
+
+### iLO.2.13.ServerConfigurationLockEnabled
 Server Configuration Lock is enabled.
 
 | | |
@@ -34994,7 +36088,7 @@ Server Configuration Lock is enabled.
 |Severity|Warning
 |Resolution|Disable Server Configuration Lock to initiate secure erase of the system
 
-### iLO.2.8.SuccessFeedback
+### iLO.2.13.SuccessFeedback
 The operation completed successfully.
 
 | | |
@@ -35003,7 +36097,7 @@ The operation completed successfully.
 |Severity|OK
 |Resolution|None
 
-### iLO.2.8.SyslogFeatureDisabled
+### iLO.2.13.SyslogFeatureDisabled
 Remote Syslog feature is disabled.
 
 | | |
@@ -35012,7 +36106,7 @@ Remote Syslog feature is disabled.
 |Severity|Warning
 |Resolution|Enable remote syslog feature to send test syslog message.
 
-### iLO.2.8.SystemPowerOffRequired
+### iLO.2.13.SystemPowerOffRequired
 To perform this operation, power off the system. AutoPowerOn must be set to achieve a power restore.
 
 | | |
@@ -35021,7 +36115,16 @@ To perform this operation, power off the system. AutoPowerOn must be set to achi
 |Severity|OK
 |Resolution|To perform this operation, power off the system.
 
-### iLO.2.8.SystemResetRequired
+### iLO.2.13.SystemPowerStateChangeFailed
+System power state change failed (for example, attempting to turn the system power On/Off failed)
+
+| | |
+|:---|:---|
+|Message Format|"System power state change failed"
+|Severity|Warning
+|Resolution|Retry the request.
+
+### iLO.2.13.SystemResetRequired
 The system properties were correctly changed, but will not take effect until the system is reset.
 
 | | |
@@ -35030,7 +36133,7 @@ The system properties were correctly changed, but will not take effect until the
 |Severity|Warning
 |Resolution|Reset system for the settings to take effect.
 
-### iLO.2.8.TokenRequired
+### iLO.2.13.TokenRequired
 Proper 'X-HPRESTFULAPI-AuthToken' authorization token not provided.
 
 | | |
@@ -35039,7 +36142,7 @@ Proper 'X-HPRESTFULAPI-AuthToken' authorization token not provided.
 |Severity|Critical
 |Resolution|Create proper 'X-HPRESTFULAPI-AuthToken' authorization token. Send token in using the proper HTTP header.
 
-### iLO.2.8.UnableModifyRights
+### iLO.2.13.UnableModifyRights
 Unable to modify user rights.
 
 | | |
@@ -35048,7 +36151,7 @@ Unable to modify user rights.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UnableToModifyAfterVirtualMediaInsert
+### iLO.2.13.UnableToModifyAfterVirtualMediaInsert
 The value for the property cannot be changed after virual media image is inserted.
 
 | | |
@@ -35057,7 +36160,7 @@ The value for the property cannot be changed after virual media image is inserte
 |Severity|Warning
 |Resolution|Retry the operation during virtual media image inseration.
 
-### iLO.2.8.UnableToModifyDueToMissingComponent
+### iLO.2.13.UnableToModifyDueToMissingComponent
 The value for the property cannot be changed because a related hardware component is not installed.
 
 | | |
@@ -35066,7 +36169,7 @@ The value for the property cannot be changed because a related hardware componen
 |Severity|Warning
 |Resolution|Install the hardware component and retry the operation.
 
-### iLO.2.8.UnableToModifyDuringSystemPOST
+### iLO.2.13.UnableToModifyDuringSystemPOST
 The value for the property cannot be changed while the computer system BIOS is in POST.
 
 | | |
@@ -35075,7 +36178,7 @@ The value for the property cannot be changed while the computer system BIOS is i
 |Severity|Warning
 |Resolution|After the computer system is either fully booted or powered off, retry the operation.
 
-### iLO.2.8.UnauthorizedLoginAttempt
+### iLO.2.13.UnauthorizedLoginAttempt
 The login was not successful, because the supplied credentials could not be authorized.
 
 | | |
@@ -35084,7 +36187,7 @@ The login was not successful, because the supplied credentials could not be auth
 |Severity|Warning
 |Resolution|Log in with authorized user name and password credentials.
 
-### iLO.2.8.UnsupportedCipherAlgo
+### iLO.2.13.UnsupportedCipherAlgo
 Incompatible Cipher Algorithm in FIPS or CNSA Mode.
 
 | | |
@@ -35093,7 +36196,7 @@ Incompatible Cipher Algorithm in FIPS or CNSA Mode.
 |Severity|Warning
 |Resolution|Select compatible Cipher Algorithm.
 
-### iLO.2.8.UnsupportedOperation
+### iLO.2.13.UnsupportedOperation
 This operation is not supported by RIS for the current system.
 
 | | |
@@ -35102,7 +36205,7 @@ This operation is not supported by RIS for the current system.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UnsupportedOperationInChassisVersion
+### iLO.2.13.UnsupportedOperationInChassisVersion
 This operation is not supported by the current version of the XL Chassis firmware.
 
 | | |
@@ -35111,7 +36214,7 @@ This operation is not supported by the current version of the XL Chassis firmwar
 |Severity|Warning
 |Resolution|Please update the XL Chassis firmware to latest version.
 
-### iLO.2.8.UnsupportedOperationInLegacyBootMode
+### iLO.2.13.UnsupportedOperationInLegacyBootMode
 This operation is not supported when the system Boot Mode is set to Legacy BIOS.
 
 | | |
@@ -35120,7 +36223,7 @@ This operation is not supported when the system Boot Mode is set to Legacy BIOS.
 |Severity|Warning
 |Resolution|Change the Boot Mode to UEFI and retry the operation.
 
-### iLO.2.8.UnsupportedOperationInSystemBIOS
+### iLO.2.13.UnsupportedOperationInSystemBIOS
 This operation is not supported by the current version of the system BIOS.
 
 | | |
@@ -35129,97 +36232,106 @@ This operation is not supported by the current version of the system BIOS.
 |Severity|Warning
 |Resolution|None.
 
-### iLO.2.8.UpdateBadParameter
+### iLO.2.13.UnsupportedSecurityState
+The operation was not successful due to the current security state of the management processor.
 
+| | |
+|:---|:---|
+|Message Format|"The operation was not successful due to the current security state of the management processor."
+|Severity|Warning
+|Resolution|Retry the operation with the correct security state.
+
+### iLO.2.13.UpdateBadParameter
+The update failed because a bad parameter was supplied.
 
 | | |
 |:---|:---|
 |Message Format|"The update failed because a bad parameter was supplied."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Supply correct parameters to the component and retry the update.
 
-### iLO.2.8.UpdateCancelled
-
+### iLO.2.13.UpdateCancelled
+The update was canceled by the update process.
 
 | | |
 |:---|:---|
 |Message Format|"The update was canceled by the update process."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update.
 
-### iLO.2.8.UpdateDependencyFailure
-
+### iLO.2.13.UpdateDependencyFailure
+The update did not complete because the component failed a dependency check.
 
 | | |
 |:---|:---|
 |Message Format|"The update did not complete because the component failed a dependency check."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Install any dependent components first and then retry this update.
 
-### iLO.2.8.UpdateFailed
-
+### iLO.2.13.UpdateFailed
+The update failed with a component specific error (%1).
 
 | | |
 |:---|:---|
 |Message Format|"The update failed with a component specific error (%1)."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update after remedying the component error.
 
-### iLO.2.8.UpdateInPOST
-
+### iLO.2.13.UpdateInPOST
+System must not be booted past POST in order to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System must not be booted past POST in order to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Boot to UEFI and retry the update.
 
-### iLO.2.8.UpdateInterrupted
-
+### iLO.2.13.UpdateInterrupted
+The update was interrupted.
 
 | | |
 |:---|:---|
 |Message Format|"The update was interrupted."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update.
 
-### iLO.2.8.UpdateInvalidFile
-
+### iLO.2.13.UpdateInvalidFile
+The update operation failed because the file is not valid.
 
 | | |
 |:---|:---|
 |Message Format|"The update operation failed because the file is not valid."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Remove and re-add the component to the repository and try the operation again.
 
-### iLO.2.8.UpdateInvalidOS
-
+### iLO.2.13.UpdateInvalidOS
+The update did not occur because the running OS is not valid.
 
 | | |
 |:---|:---|
 |Message Format|"The update did not occur because the running OS is not valid."
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update while running the correct OS.
 
-### iLO.2.8.UpdateNotApplicable
-
+### iLO.2.13.UpdateNotApplicable
+The task was not completed because the component was not applicable to this system.
 
 | | |
 |:---|:---|
 |Message Format|"The task was not completed because the component was not applicable to this system."
-|Severity|Warning
+|Severity|Critical
 |Resolution|None.
 
-### iLO.2.8.UpdateRepositoryUnavailable
-
+### iLO.2.13.UpdateRepositoryUnavailable
+The update operation failed because the component repository is unavailable.
 
 | | |
 |:---|:---|
 |Message Format|"The update operation failed because the component repository is unavailable."
-|Severity|Warning
+|Severity|Critical
 |Resolution|None.
 
-### iLO.2.8.UpdateTaskQueueFull
+### iLO.2.13.UpdateTaskQueueFull
 The Invoke action was not successful because the update task queue is full.
 
 | | |
@@ -35228,7 +36340,7 @@ The Invoke action was not successful because the update task queue is full.
 |Severity|Critical
 |Resolution|Remove completed tasks from the update task queue to retry the operation.
 
-### iLO.2.8.UpdateTaskQueueWriteError
+### iLO.2.13.UpdateTaskQueueWriteError
 The UpdateTaskQueue write failed.
 
 | | |
@@ -35237,34 +36349,34 @@ The UpdateTaskQueue write failed.
 |Severity|Warning
 |Resolution|Ensure a valid name for the item and that space exists to hold the item.
 
-### iLO.2.8.UpdateTemporarilyUnavailable
-
+### iLO.2.13.UpdateTemporarilyUnavailable
+The system is temporarily unable to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"The system is temporarily unable to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Retry the update, ensuring that power state is stable.
 
-### iLO.2.8.UpdateWithPowerOff
-
+### iLO.2.13.UpdateWithPowerOff
+System power must be off to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System power must be off to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Power system on and retry the update.
 
-### iLO.2.8.UpdateWithPowerOn
-
+### iLO.2.13.UpdateWithPowerOn
+System power must be on to perform this update
 
 | | |
 |:---|:---|
 |Message Format|"System power must be on to perform this update"
-|Severity|Warning
+|Severity|Critical
 |Resolution|Power system on and retry the update.
 
-### iLO.2.8.UserAlreadyExist
+### iLO.2.13.UserAlreadyExist
 The user or login user name already exists.
 
 | | |
@@ -35273,7 +36385,7 @@ The user or login user name already exists.
 |Severity|Warning
 |Resolution|Try a different user or login user name.
 
-### iLO.2.8.UserNameAlreadyExists
+### iLO.2.13.UserNameAlreadyExists
 Duplicate SNMPv3 User.
 
 | | |
@@ -35282,7 +36394,7 @@ Duplicate SNMPv3 User.
 |Severity|Warning
 |Resolution|Enter a different name and try again.
 
-### iLO.2.8.VirtualMediaIsDisabled
+### iLO.2.13.VirtualMediaIsDisabled
 Virtual Media has been disabled.
 
 | | |
@@ -35291,7 +36403,7 @@ Virtual Media has been disabled.
 |Severity|Warning
 |Resolution|Enable Virtual Media to perform this operation.
 
-### iLO.2.8.ZonePowerLimitExceeded
+### iLO.2.13.ZonePowerLimitExceeded
 The sum of zone power limit cannot be more than chassis power limit.
 
 | | |
@@ -35300,7 +36412,7 @@ The sum of zone power limit cannot be more than chassis power limit.
 |Severity|Warning
 |Resolution|Correct the value avoid the sum of power limit exceeds chassis power limit, and then retry the operation.
 
-### iLO.2.8.iLOResetAndSystemRebootRequired
+### iLO.2.13.iLOResetAndSystemRebootRequired
 Indicates that one or more properties were correctly changed, but will not take effect until device is reset and system is rebooted.
 
 | | |
@@ -35309,7 +36421,7 @@ Indicates that one or more properties were correctly changed, but will not take 
 |Severity|Warning
 |Resolution|Reset the management processor and reboot the server.
 
-### iLO.2.8.iLOSubnetConflict
+### iLO.2.13.iLOSubnetConflict
 The subnet being configured has conflicts.
 
 | | |
@@ -35318,7 +36430,7 @@ The subnet being configured has conflicts.
 |Severity|Warning
 |Resolution|Configure this interface with a different IP Address or Subnet Mask.
 
-### iLO.2.8.iLOVirtualNICDisabled
+### iLO.2.13.iLOVirtualNICDisabled
 The Virtual NIC is disabled.
 
 | | |
@@ -35326,3 +36438,84 @@ The Virtual NIC is disabled.
 |Message Format|"The Virtual NIC is disabled."
 |Severity|Warning
 |Resolution|Enable iLO Virtual NIC to perform this operation.
+
+### TaskEvent.1.0.TaskAborted
+The task with id %1 has been aborted.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been aborted."
+|Severity|Critical
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCancelled
+The task with id %1 has been cancelled.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been cancelled."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCompletedOK
+The task with id %1 has completed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has completed."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskCompletedWarning
+The task with id %1 has completed with warnings.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has completed with warnings."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskPaused
+The task with id %1 has been paused.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been paused."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskProgessChanged
+The task with id %1 has changed to progress %2 percent complete.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has changed to progress %2 percent complete."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskRemoved
+The task with id %1 has been removed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been removed."
+|Severity|Warning
+|Resolution|None.
+
+### TaskEvent.1.0.TaskResumed
+The task with id %1 has been resumed.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has been resumed."
+|Severity|OK
+|Resolution|None.
+
+### TaskEvent.1.0.TaskStarted
+The task with id %1 has started.
+
+| | |
+|:---|:---|
+|Message Format|"The task with id %1 has started."
+|Severity|OK
+|Resolution|None.

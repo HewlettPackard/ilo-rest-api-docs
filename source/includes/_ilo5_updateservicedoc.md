@@ -131,8 +131,9 @@ Additions to the repository are made via the UpdateService actions. Removals are
 #### Upload Components
 See details on the HttpPushUri in the Update Service resource first. The upload process can alternatively be used to add components to the iLO Repository. As with update, the POST must be a multipart/form-data.
 
-The following HTTP headers must be supplied:
-```
+> The following HTTP headers must be supplied:
+
+```python
     # build the HTTP headers
     # 'Content-Type': 'multipart/form-data',
     headers = {'Accept': 'application/json',
@@ -141,7 +142,9 @@ The following HTTP headers must be supplied:
                'X-Auth-Token': sessionkey,
                'Cookie': 'sessionKey=' + sessionkey}
 ```
-The body:
+
+> The HTTP POST body:
+
 ```
 -----------------------------64062213329524
 Content-Disposition: form-data; name="sessionKey"
@@ -186,6 +189,7 @@ The following parameters may be specified in a JSON object as part of the upload
 *NOTE: The two free-form parameters, 'ExecutionParameters' and 'Configuration' (used by SUM to communicate to the components) are not supplied here, but can be PATCHed later once the components are in the Repository.*
 
 iLO self-flash Example:
+
 ```json
 {
   "UploadCurrentEtag": "<client-defined-string>",
@@ -194,6 +198,7 @@ iLO self-flash Example:
 }
 ```
 Smart Component Example:
+
 ```json
 {
   "UploadCurrentEtag": "<client-defined-string>"

@@ -25,7 +25,7 @@ curl https://{iLO}/redfish/v1/systems/ -i --insecure -u username:password -L
 
 ```python
 import sys
-import ilorest
+import redfish
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
@@ -34,7 +34,7 @@ login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -76,7 +76,7 @@ curl https://{host}/redfish/v1/systems/{item}/ -i --insecure -u username:passwor
 
 ```python
 import sys
-import ilorest
+import redfish
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
@@ -85,7 +85,7 @@ login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -135,7 +135,7 @@ curl https://{host}/redfish/v1/chassis/{item}/ -i --insecure -u username:passwor
 
 ```python
 import sys
-import ilorest
+import redfish
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
@@ -144,7 +144,7 @@ login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -195,7 +195,7 @@ curl https://{host}/redfish/v1/managers/{item}/ -i --insecure -u username:passwo
 
 ```python
 import sys
-import ilorest
+import redfish
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
@@ -204,7 +204,7 @@ login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = ilorest.redfish_client(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session

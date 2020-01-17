@@ -16,6 +16,7 @@ includes:
   - ilo5_performingaction
   - ilo5_adaptation
   - ilo5_accountservice
+  - ilo5_time
   - ilo5_exampleuse
   - ilo5_updateservicedoc
   - ilo5_biosdoc
