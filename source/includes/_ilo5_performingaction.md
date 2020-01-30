@@ -13,7 +13,7 @@
   				"Nmi",
   				"PushPowerButton"
   			],
-  			"target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/"
+  			"target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset"
   		}
   	}
   }
@@ -22,32 +22,8 @@
 > This action may be invoked by performing:
 
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/ -u username:password --insecure
+curl --header "Content-Type: application/json" --request POST --data '{"ResetType": "ForceRestart"}' https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset -u username:password --insecure
 ```
-
-<blockquote class="lang-specific python">
-    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex04_reset_server.py">ex04_reset_server.py</a></b>
-</blockquote>
-
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"ResetType": "ForceRestart"}</p>
-</blockquote>
-
-> alternative pre-Redfish action invocation:
-
-```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Systems/1 -u username:password --insecure
-```
-
-<blockquote class="lang-specific python">
-    <b>For a full Rest example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex04_reset_server.py">ex04_reset_server.py</a></b>
-</blockquote>
-
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"Action": "Reset", "ResetType": "ForceRestart"}</p>
-</blockquote>
 
 REST resources usually support HTTP GET to read the current state, and some support modification and removal with HTTP POST, PUT, PATCH, or DELETE.
 
@@ -63,18 +39,11 @@ When writing new Redfish REST client code, the first example is the recommended 
 
 ## Actions on HPE-specific Extensions
 
+Actions on HPE-specific extentions are invoked in the same way.  Find the `target` URI for the action and POST a JSON request with parameters.
+
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/ -u username:password --insecure
+curl --header "Content-Type: application/json" --request POST --data '{"PushType": "PressAndHold"}' https://{iLO}//redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/ -u username:password --insecure
 ```
-
-<blockquote class="lang-specific python">
-    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Rest/ex04_reset_server.py">ex04_reset_server.py</a></b>
-</blockquote>
-
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"Action": "PowerButton", "PushType": "PressAndHold", "Target": "/Oem/Hp"}</p>
-</blockquote>
 
 The embedded extensions may also have Actions not specified by the Redfish standard.  They are invoked in a similar way.  The POST URI may include indicate the HPE specific nature of the action.
 

@@ -26,7 +26,7 @@ iLO 4 2.30 achieves Redfish 1.0 conformance and backward compatibility by:
 1. Returning both compatibility and Redfish properties by default.
 1. Returning only Redfish conformant properties (with Hewlett Packard Enterprise extensions) if the Redfish-required OData header is included in the request (`OData-Version: 4.0`).
 
-Full details on how Redfish 1.0 was implemented in iLO 4 2.30 and how it impacts clients written for previous versions is found here:  [http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en](http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en "Redfish Implementation on HP RESTful API for HPE iLO 4 - Technical White Paper")
+Full details on how Redfish 1.0 was implemented in iLO 4 2.30 and how it impacts clients written for previous versions is found here:  [http://www.hpe.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en](http://www.hpe.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&cc=us&lc=en "Redfish Implementation on HP RESTful API for HPE iLO 4 - Technical White Paper")
 
 ## REST APIs Architected using HATEOS
 

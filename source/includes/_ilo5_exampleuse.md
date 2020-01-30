@@ -587,28 +587,18 @@ or more parameter properties.
 
 ### Reset a server example
 ```shell
-curl -H "Content-Type: application/json" -X POST --data "@data.json" https://{iLO}/redfish/v1/systems/1/ -u username:password --insecure
+curl --header "Content-Type: application/json" --request POST --data '{"ResetType": "ForceRestart"}' https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset -u username:password --insecure
 ```
 
-<blockquote class="lang-specific shell">
-	<p>Contents of data.json</p>
-    <p>{"Action":"ComputerSystem.Reset", "ResetType":"ForceRestart"}</p>
-</blockquote>
-
-<blockquote class="lang-specific python">
-    <b>For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ex04_reset_server.py">ex04_reset_server.py</a></b>
-	</br>
-</blockquote>
 **Prerequisites** 
 
 Minimum required session ID privileges: Configure
 
-1. Iterate through `/redfish/v1/Systems/` and choose a member `ComputerSystem` that allows `POST` operations.
-  * `{ilo-ip-address}/redfish/v1/Systems/1/`
+1. Iterate through `/redfish/v1/Systems` collection and choose a member `ComputerSystem` that allows `POST` operations.
+  * `{ilo-ip-address}/redfish/v1/Systems/1`
 2. Get the "Actions" -> "#ComputerSystem.Reset" -> "target" Uri.
-2. Construct an Action object to submit to iLO.
-  * `{"Action":"ComputerSystem.Reset","ResetType":"ForceRestart"}`
-3. Change the `Action` and `ResetType` properties to `{"Action":"ComputerSystem.Reset","ResetType":"ForceRestart"}.`
+3. Construct an Action object to submit to iLO.
+  * `{"ResetType":"ForceRestart"}`
 4. Reset the server by posting the body to the target Uri.
   * `POST {ilo-ip-address}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/`
 
