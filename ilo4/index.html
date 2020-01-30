@@ -285,7 +285,7 @@
 <li>Returning only Redfish conformant properties (with Hewlett Packard Enterprise extensions) if the Redfish-required OData header is included in the request (<code class="prettyprint">OData-Version: 4.0</code>).</li>
 </ol>
 
-<p>Full details on how Redfish 1.0 was implemented in iLO 4 2.30 and how it impacts clients written for previous versions is found here:  <a href="http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&amp;cc=us&amp;lc=en" title="Redfish Implementation on HP RESTful API for HPE iLO 4 - Technical White Paper">http://www8.hp.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&amp;cc=us&amp;lc=en</a></p>
+<p>Full details on how Redfish 1.0 was implemented in iLO 4 2.30 and how it impacts clients written for previous versions is found here:  <a href="http://www.hpe.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&amp;cc=us&amp;lc=en" title="Redfish Implementation on HP RESTful API for HPE iLO 4 - Technical White Paper">http://www.hpe.com/h20195/V2/GetDocument.aspx?docname=4AA6-1727ENW&amp;cc=us&amp;lc=en</a></p>
 
 <h2 id="rest-apis-architected-using-hateos">REST APIs Architected using HATEOS</h2>
 
@@ -510,7 +510,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <h2 id="iterating-collections">Iterating Collections</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>iLO<span class="o">}</span>/redfish/v1/systems/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -519,7 +519,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -554,7 +554,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <h2 id="find-a-compute-node">Find a Compute Node</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>host<span class="o">}</span>/redfish/v1/systems/<span class="o">{</span>item<span class="o">}</span>/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -563,7 +563,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -606,7 +606,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <h2 id="find-a-chassis">Find a Chassis</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>host<span class="o">}</span>/redfish/v1/chassis/<span class="o">{</span>item<span class="o">}</span>/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -615,7 +615,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -659,7 +659,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <h2 id="find-the-ilo-4-management-processor">Find the iLO 4 Management Processor</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>host<span class="o">}</span>/redfish/v1/managers/<span class="o">{</span>item<span class="o">}</span>/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -668,7 +668,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -738,7 +738,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <h2 id="basic-authentication">Basic Authentication</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>iLO<span class="o">}</span>/redfish/v1/systems/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -747,7 +747,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -760,7 +760,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 
 <h2 id="creating-and-using-sessions">Creating and Using Sessions</h2>
 <pre class="highlight shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -H <span class="s2">"OData-Version: 4.0"</span> -X POST --data <span class="s2">"@data.json"</span> https://<span class="o">{</span>iLO<span class="o">}</span>/redfish/v1/SessionService/Sessions/ --insecure
-</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">ilorest</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -769,7 +769,7 @@ A select few URIs are documented to be stable starting points. Your client code 
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -845,7 +845,7 @@ It is good practice to save the Location URI of the newly created session.  This
 
 <h2 id="log-out-of-a-session">Log Out of a Session</h2>
 <pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> https://<span class="o">{</span>iLO<span class="o">}</span>/redfish/v1/SessionService/Sessions/<span class="o">{</span>item<span class="o">}</span>/ -u admin:password --insecure
-</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">ilorest</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -854,7 +854,7 @@ It is good practice to save the Location URI of the newly created session.  This
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
@@ -1062,7 +1062,7 @@ When the server is reset, the BIOS settings are validated and adopted.</li>
 <h2 id="reading-bios-defaults-example">Reading BIOS Defaults example</h2>
 <pre class="highlight shell"><code>curl https://<span class="o">{</span>iLO<span class="o">}</span>/rest/v1/systems/1/bios/BaseConfigs/ -i --insecure -u username:password -L
 </code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">ilorest</span>
+<span class="kn">import</span> <span class="nn">redfish</span>
 
 <span class="c"># When running remotely connect using the iLO address, iLO account name, </span>
 <span class="c"># and password to send https requests</span>
@@ -1071,7 +1071,7 @@ When the server is reset, the BIOS settings are validated and adopted.</li>
 <span class="n">login_password</span> <span class="o">=</span> <span class="s">"password"</span>
 
 <span class="c">## Create a REDFISH object</span>
-<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">ilorest</span><span class="o">.</span><span class="n">redfish_client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
+<span class="n">REDFISH_OBJ</span> <span class="o">=</span> <span class="n">redfish</span><span class="o">.</span><span class="n">RedfishClient</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">iLO_host</span><span class="p">,</span><span class="n">username</span><span class="o">=</span><span class="n">login_account</span><span class="p">,</span> \
                           <span class="n">password</span><span class="o">=</span><span class="n">login_password</span><span class="p">,</span> <span class="n">default_prefix</span><span class="o">=</span><span class="s">'/redfish/v1'</span><span class="p">)</span>
 
 <span class="c"># Login into the server and create a session</span>
