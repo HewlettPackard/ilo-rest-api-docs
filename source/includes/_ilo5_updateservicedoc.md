@@ -492,18 +492,20 @@ Each Install Set must have a unique `"Name"` property. Additionally, the name of
 ```json
 {
     "Name": "unique name of the install set.",
-    "Sequence": [{
-        "Name": "Client supplied friendly name of this task item.",
-        "IsRecovery": false,
-        "UpdatableBy": [
-            "Uefi",
-            "RuntimeAgent"
-        ],
-        "Command": "ApplyUpdate",
-        "Component": {
-            "@odata.id": "/redfish/v1/updateservice/componentrepository/1/"
+    "IsRecovery": false,
+    "Sequence": 
+    [
+        {
+            "Name": "Client supplied friendly name of this task item.",
+            "UpdatableBy": 
+	    [
+                "Uefi",
+                "RuntimeAgent"
+            ],
+            "Command": "ApplyUpdate",
+            "Filename": "Name of the file as it apperars in the repository."        
         }
-    }]
+    ]
 }
 ```
 
